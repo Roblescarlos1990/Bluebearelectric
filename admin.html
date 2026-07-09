@@ -14,16 +14,16 @@
 
   <div class="admin-dashboard" data-admin-dashboard style="display:none">
     <div class="admin-top"><div><div class="eyebrow">Blue Bear OS</div><h2>Command Center</h2></div><button class="btn dark" data-logout>Sign Out</button></div>
-    <p class="form-status" data-admin-message></p>
+    <p class="form-status ok">V5.3 Project Workspace loaded. Use the yellow tabs below.</p><p class="form-status" data-admin-message></p>
     <div class="admin-stats" data-admin-stats></div>
 
     <div class="command-tabs">
-      <button class="tab-btn active" data-tab="overview">Overview</button>
-      <button class="tab-btn" data-tab="workspace">Project Workspace</button>
+      <button class="tab-btn active" data-tab="workspace">Project Workspace</button>
+      <button class="tab-btn" data-tab="overview">Overview</button>
       <button class="tab-btn" data-tab="forms">Quick Add</button>
     </div>
 
-    <div class="tab-page active" data-tab-page="overview">
+    <div class="tab-page" data-tab-page="overview">
       <div class="admin-grid">
         <section class="admin-panel wide"><h3>Website Leads</h3><p class="small">New estimate requests from the public contact form.</p><div data-leads-list></div></section>
         <section class="admin-panel wide"><h3>Project Board</h3><p class="small">Open a project workspace to manage photos, estimates, invoices and schedule items.</p><div class="project-board" data-project-board></div></section>
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="tab-page" data-tab-page="workspace">
+    <div class="tab-page active" data-tab-page="workspace">
       <div class="workspace-head admin-panel">
         <div><h3>Project Workspace</h3><p class="small">Select a project and manage all job files from one place.</p></div>
         <select data-workspace-project><option value="">Choose project</option></select>
