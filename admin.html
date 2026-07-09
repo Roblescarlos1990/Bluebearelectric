@@ -1,6 +1,6 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Dashboard | Blue Bear Electric</title><link rel="stylesheet" href="style.css"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Command Center | Blue Bear Electric</title><link rel="stylesheet" href="style.css"></head><body>
 <header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb">☰</button><div class="mobile"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
-<section class="page-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.94),rgba(4,9,16,.55)),url('assets/switchgear.jpg')"><div><div class="eyebrow">Private Area</div><h1>Admin Dashboard</h1><p class="lead">Lead management, customers, services, projects and review drafts connected to Supabase.</p></div></section>
+<section class="page-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.94),rgba(4,9,16,.55)),url('assets/switchgear.jpg')"><div><div class="eyebrow">Blue Bear OS</div><h1>Command Center</h1><p class="lead">Projects, photos, estimates, invoices and scheduling connected to Supabase.</p></div></section>
 <section class="section admin-shell">
   <div class="admin-login" data-admin-login>
     <div class="section-title"><h2>Admin Login</h2><p>Use the admin email/password created in Supabase Authentication.</p></div>
@@ -11,18 +11,62 @@
       <p class="form-status" data-login-status></p>
     </form>
   </div>
+
   <div class="admin-dashboard" data-admin-dashboard style="display:none">
     <div class="admin-top"><div><div class="eyebrow">Blue Bear OS</div><h2>Command Center</h2></div><button class="btn dark" data-logout>Sign Out</button></div>
     <p class="form-status" data-admin-message></p>
     <div class="admin-stats" data-admin-stats></div>
-    <div class="admin-grid">
-      <section class="admin-panel wide"><h3>Website Leads</h3><p class="small">New estimate requests from the public contact form.</p><div data-leads-list></div></section>
-      <section class="admin-panel"><h3>Add Customer</h3><form data-new-customer class="mini-form"><input name="full_name" placeholder="Full name" required><input name="company" placeholder="Company"><input name="phone" placeholder="Phone"><input name="email" placeholder="Email"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Customer</button></form></section>
-      <section class="admin-panel"><h3>Add Project</h3><form data-new-project class="mini-form"><input name="project_name" placeholder="Project name" required><input name="service_type" placeholder="Service type"><input name="status" placeholder="Status" value="Planning"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Project</button></form></section>
-      <section class="admin-panel wide"><h3>Project Photo Upload</h3><p class="small">Upload job photos and documents into the private Supabase bucket: <b>project-photos</b>.</p><form data-photo-upload class="photo-form"><select name="project_id" data-project-select><option value="">Choose project</option></select><select name="category"><option>Before</option><option>During</option><option>After</option><option>Thermal</option><option>Drone</option><option>Reports</option><option>Warranty</option><option>General</option></select><input name="title" placeholder="Photo/document title"><input name="file" type="file" accept="image/*,.pdf,.doc,.docx" required><textarea name="description" placeholder="Notes about this upload"></textarea><button class="btn yellow" type="submit">Upload to Project</button></form><div class="media-grid" data-gallery-list></div></section>
-      <section class="admin-panel"><h3>Add Service</h3><form data-new-service class="mini-form"><input name="title" placeholder="Service title" required><input name="category" placeholder="Category"><textarea name="description" placeholder="Description"></textarea><button class="btn yellow" type="submit">Save Service</button></form><div class="admin-list" data-services-list></div></section>
-      <section class="admin-panel"><h3>Add Review Draft</h3><form data-new-review class="mini-form"><input name="customer_name" placeholder="Customer name" required><input name="city" placeholder="City"><select name="rating"><option>5</option><option>4</option><option>3</option></select><textarea name="review_text" placeholder="Review text"></textarea><button class="btn yellow" type="submit">Save Review</button></form><div class="admin-list" data-reviews-list></div></section>
-      <section class="admin-panel"><h3>Recent Projects</h3><div class="admin-list" data-projects-list></div></section>
+
+    <div class="command-tabs">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="workspace">Project Workspace</button>
+      <button class="tab-btn" data-tab="forms">Quick Add</button>
+    </div>
+
+    <div class="tab-page active" data-tab-page="overview">
+      <div class="admin-grid">
+        <section class="admin-panel wide"><h3>Website Leads</h3><p class="small">New estimate requests from the public contact form.</p><div data-leads-list></div></section>
+        <section class="admin-panel wide"><h3>Project Board</h3><p class="small">Open a project workspace to manage photos, estimates, invoices and schedule items.</p><div class="project-board" data-project-board></div></section>
+        <section class="admin-panel wide"><h3>Recent Project Photos</h3><div class="media-grid" data-gallery-list></div></section>
+      </div>
+    </div>
+
+    <div class="tab-page" data-tab-page="workspace">
+      <div class="workspace-head admin-panel">
+        <div><h3>Project Workspace</h3><p class="small">Select a project and manage all job files from one place.</p></div>
+        <select data-workspace-project><option value="">Choose project</option></select>
+      </div>
+      <div data-workspace-empty class="admin-panel"><h3>No project selected</h3><p class="small">Choose a project from the dropdown or the project board.</p></div>
+      <div data-workspace-body style="display:none">
+        <section class="admin-panel workspace-summary"><div><div class="eyebrow" data-ws-status>Planning</div><h2 data-ws-title>Project</h2><p class="small" data-ws-meta></p><p data-ws-notes></p></div><div class="ws-actions"><button class="btn dark" data-ws-refresh>Refresh</button></div></section>
+        <div class="workspace-tabs">
+          <button class="ws-tab active" data-ws-tab="photos">Photos</button>
+          <button class="ws-tab" data-ws-tab="estimate">Estimate</button>
+          <button class="ws-tab" data-ws-tab="invoice">Invoice</button>
+          <button class="ws-tab" data-ws-tab="schedule">Schedule</button>
+        </div>
+        <div class="ws-page active" data-ws-page="photos">
+          <section class="admin-panel wide"><h3>Automatic Project Gallery</h3><form data-photo-upload class="photo-form"><input name="project_id" type="hidden" data-photo-project-id><select name="category"><option>Before</option><option>During</option><option>After</option><option>Thermal</option><option>Drone</option><option>Reports</option><option>Warranty</option><option>General</option></select><input name="title" placeholder="Photo/document title"><input name="file" type="file" accept="image/*,.pdf,.doc,.docx" required><textarea name="description" placeholder="Notes about this upload"></textarea><button class="btn yellow" type="submit">Upload to Project</button></form><div class="stage-galleries" data-project-gallery></div></section>
+        </div>
+        <div class="ws-page" data-ws-page="estimate">
+          <section class="admin-panel wide"><h3>Estimate Builder</h3><form data-estimate-item class="line-form"><input name="description" placeholder="Line item description" required><input name="quantity" type="number" step="0.01" min="0" placeholder="Qty" value="1"><input name="unit_price" type="number" step="0.01" min="0" placeholder="Unit price"><button class="btn yellow" type="submit">Add Item</button></form><div data-estimate-list></div><div class="totals" data-estimate-total></div></section>
+        </div>
+        <div class="ws-page" data-ws-page="invoice">
+          <section class="admin-panel wide"><h3>Invoice Generator</h3><p class="small">Generate a simple invoice record from the current estimate total.</p><form data-create-invoice class="line-form"><input name="invoice_number" placeholder="Invoice # e.g. BB-INV-001"><input name="due_date" type="date"><button class="btn yellow" type="submit">Create Invoice</button></form><div data-invoice-list></div></section>
+        </div>
+        <div class="ws-page" data-ws-page="schedule">
+          <section class="admin-panel wide"><h3>Scheduling Calendar</h3><form data-schedule-event class="line-form"><input name="title" placeholder="Event title" required><input name="event_type" placeholder="Type: site visit, install, inspection"><input name="start_time" type="datetime-local"><input name="end_time" type="datetime-local"><input name="location" placeholder="Location / address"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Add Schedule Event</button></form><div data-schedule-list></div></section>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-page" data-tab-page="forms">
+      <div class="admin-grid">
+        <section class="admin-panel"><h3>Add Customer</h3><form data-new-customer class="mini-form"><input name="full_name" placeholder="Full name" required><input name="company" placeholder="Company"><input name="phone" placeholder="Phone"><input name="email" placeholder="Email"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Customer</button></form></section>
+        <section class="admin-panel"><h3>Add Project</h3><form data-new-project class="mini-form"><input name="project_name" placeholder="Project name" required><input name="service_type" placeholder="Service type"><input name="status" placeholder="Status" value="Planning"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Project</button></form></section>
+        <section class="admin-panel"><h3>Add Service</h3><form data-new-service class="mini-form"><input name="title" placeholder="Service title" required><input name="category" placeholder="Category"><textarea name="description" placeholder="Description"></textarea><button class="btn yellow" type="submit">Save Service</button></form><div class="admin-list" data-services-list></div></section>
+        <section class="admin-panel"><h3>Add Review Draft</h3><form data-new-review class="mini-form"><input name="customer_name" placeholder="Customer name" required><input name="city" placeholder="City"><select name="rating"><option>5</option><option>4</option><option>3</option></select><textarea name="review_text" placeholder="Review text"></textarea><button class="btn yellow" type="submit">Save Review</button></form><div class="admin-list" data-reviews-list></div></section>
+      </div>
     </div>
   </div>
 </section>
