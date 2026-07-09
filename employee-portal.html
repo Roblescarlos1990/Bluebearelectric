@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Employee Portal | Blue Bear Electric</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="admin.html">Admin</a><a href="customer-portal.html">Customer Portal</a><a href="contact.html">Contact</a></div><a class="btn yellow" href="tel:7602348306">Call</a><button class="hamb">☰</button></nav></header>
+<section class="page-hero admin-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.96),rgba(4,9,16,.55)),url('assets/truck.jpg')"><div><div class="eyebrow">Blue Bear OS V6.2</div><h1>Employee Portal</h1><p class="lead">Mobile-friendly field view for schedule, projects, photo documentation, and time entries.</p></div></section>
+<section class="section admin-shell v6-shell">
+  <div data-employee-login>
+    <div class="section-title"><h2>Employee Login</h2><p>Use the employee account created in Supabase Auth and mapped in employee_users.</p></div>
+    <form class="form admin-form" data-employee-login-form><input name="email" type="email" placeholder="Employee email" required><input name="password" type="password" placeholder="Password" required><button class="btn yellow" type="submit">Sign In</button><p class="form-status" data-employee-login-status></p></form>
+  </div>
+  <div data-employee-app style="display:none">
+    <div class="admin-top"><div><div class="eyebrow">Employee Portal</div><h2 data-employee-name>Field Dashboard</h2><p class="small green">Mobile field workspace loaded.</p></div><button class="btn dark" data-employee-logout>Sign Out</button></div>
+    <p class="form-status" data-employee-message></p>
+    <div class="command-tabs v6-tabs"><button class="tab-btn active" data-emp-tab="today">Today</button><button class="tab-btn" data-emp-tab="projects">Projects</button><button class="tab-btn" data-emp-tab="time">Time Entry</button></div>
+    <div class="tab-page active" data-emp-page="today"><div class="admin-grid"><section class="admin-panel wide"><h3>Schedule</h3><div data-employee-schedule></div></section></div></div>
+    <div class="tab-page" data-emp-page="projects"><section class="admin-panel wide"><h3>Project List</h3><div class="project-card-grid" data-employee-projects></div></section></div>
+    <div class="tab-page" data-emp-page="time"><section class="admin-panel wide"><h3>Clock / Time Entry</h3><form data-time-entry-form class="line-form"><select name="project_id" data-time-project><option value="">Choose project</option></select><input name="start_time" type="datetime-local"><input name="end_time" type="datetime-local"><textarea name="notes" placeholder="Work performed / job notes"></textarea><button class="btn yellow" type="submit">Save Time Entry</button></form><div data-time-entry-list></div></section></div>
+  </div>
+</section>
+<footer class="footer"><div class="foot-grid"><div><img src="assets/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>Field Notes</h4><p class="small">Time entries and schedule are tied to logged-in employees.</p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="employee-portal.js"></script></body></html>
