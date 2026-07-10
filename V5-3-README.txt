@@ -1,22 +1,24 @@
-BLUE BEAR ELECTRIC V5.3 COMMAND CENTER
+-- Blue Bear OS V6.4 AI Operations Center
+-- Optional table for saving generated AI/manual drafts later.
 
-This package fixes the admin UI visibility issue by making Project Workspace the first visible tab.
+create table if not exists public.ai_drafts (
+  id uuid primary key default gen_random_uuid(),
+  project_id uuid references public.projects(id) on delete set null,
+  draft_type text default 'proposal',
+  title text,
+  content text not null,
+  created_by uuid,
+  created_at timestamptz default now()
+);
 
-Upload the full extracted folder to GitHub, replacing the older files.
-Required files to replace:
-- admin.html
-- admin-backend.js
-- style.css
-- supabase-config.js
-- all assets/
+alter table public.ai_drafts enable row level security;
 
-After Vercel redeploys:
-1. Open /admin.html
-2. Hard refresh: Ctrl + Shift + R
-3. Sign out and sign back in
-4. You should see: "V5.3 Project Workspace loaded. Use the yellow tabs below."
-5. Select a project in Project Workspace.
-6. Test Photos, Estimate, Invoice, and Schedule tabs.
+drop policy if exists "Admins manage ai drafts" on public.ai_drafts;
+create policy "Admins manage ai drafts"
+on public.ai_drafts
+for all
+to authenticated
+using (public.is_admin())
+with check (public.is_admin());
 
-SQL:
-If permissions fail, run V5-3-FULL-POLICIES.sql in Supabase SQL Editor.
+grant select, insert, update, delete on public.ai_drafts to authenticated;

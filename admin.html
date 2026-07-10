@@ -1,148 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blue Bear OS V7 | Repolish</title><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body>
-<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb">☰</button><div class="mobile"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
-<section class="page-hero admin-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.96),rgba(4,9,16,.58)),url('assets/images/site/switchgear.jpg')"><div><div class="eyebrow">Blue Bear OS V7</div><h1>Command Center</h1><p class="lead">Repolished command center with cleaner spacing, stronger navigation, smoother cards, better mobile layout, and a more premium contractor-software feel.</p></div></section>
-<section class="section admin-shell v6-shell">
-  <div class="admin-login" data-admin-login>
-    <div class="section-title"><h2>Admin Login</h2><p>Use the admin email/password created in Supabase Authentication.</p></div>
-    <form class="form admin-form" data-login-form><input name="email" type="email" placeholder="Admin email" required><input name="password" type="password" placeholder="Password" required><button class="btn yellow" type="submit">Sign In</button><p class="form-status" data-login-status></p></form>
-  </div>
-  <div class="admin-dashboard" data-admin-dashboard style="display:none">
-    <div class="admin-top"><div><div class="eyebrow">Blue Bear OS V7</div><h2>Command Center</h2><p class="small green">V7 professional restructure loaded: technician daily reports, safety/JSA, vehicle checks, material requests, completion checklists, and admin review queue.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
-    <p class="form-status" data-admin-message></p>
-    <div class="admin-stats v6-stats" data-admin-stats></div>
-    <div class="os-layout">
-      <aside class="os-sidebar">
-        <div class="os-logo">BLUE BEAR OS</div>
-        <button class="tab-btn active" data-tab="dashboard">🏠 <span>Dashboard</span></button>
-        <button class="tab-btn" data-tab="crm">👥 <span>CRM</span></button>
-        <button class="tab-btn" data-tab="projects">📁 <span>Projects</span></button>
-        <button class="tab-btn" data-tab="activity">🧾 <span>Activity</span></button>
-        <button class="tab-btn" data-tab="workspace">🛠 <span>Workspace</span></button>
-        <button class="tab-btn" data-tab="reports">📊 <span>Reports</span></button>
-        <button class="tab-btn" data-tab="ai">🤖 <span>AI Ops</span></button>
-        <button class="tab-btn" data-tab="docs">📄 <span>Docs</span></button>
-        <button class="tab-btn" data-tab="portals">🔐 <span>Portals</span></button>
-        <button class="tab-btn" data-tab="fieldops">👷 <span>Field Ops</span></button>
-        <button class="tab-btn" data-tab="quickadd">➕ <span>Quick Add</span></button>
-        <a class="tab-btn" href="customize.html">🎨 <span>Customizer</span></a>
-      </aside>
-      <div class="os-main">
-    <div class="tab-page active" data-tab-page="dashboard">
-      <div class="admin-grid">
-        <section class="admin-panel wide"><h3>Executive Dashboard</h3><div class="kpi-grid" data-kpi-grid></div></section>
-        <section class="admin-panel"><h3>Website Leads</h3><p class="small">New estimate requests from the public contact form.</p><div data-leads-list></div></section>
-        <section class="admin-panel"><h3>Today / Upcoming Schedule</h3><div data-dashboard-schedule></div></section>
-        <section class="admin-panel wide"><h3>Recent Files</h3><div class="media-grid" data-gallery-list></div></section>
-      </div>
-    </div>
-    <div class="tab-page" data-tab-page="crm">
-      <div class="admin-grid"><section class="admin-panel wide"><h3>Customer CRM</h3><p class="small">Customer cards show contact info and project counts.</p><div class="customer-cards" data-customer-cards></div></section></div>
-    </div>
-    <div class="tab-page" data-tab-page="projects">
-      <section class="admin-panel wide"><div class="panel-head"><div><h3>Project Cards</h3><p class="small">Open a project workspace directly from the card.</p></div><input data-project-search placeholder="Search projects / city / service"></div><div class="project-card-grid" data-project-card-grid></div></section>
-    </div>
-    <div class="tab-page" data-tab-page="activity">
-      <section class="admin-panel wide"><div class="panel-head"><div><h3>Activity Timeline</h3><p class="small">Recent project events, uploads, invoices, and schedule items.</p></div><button class="btn dark" data-refresh-activity>Refresh</button></div><div class="activity-feed" data-activity-feed></div></section>
-    </div>
-    <div class="tab-page" data-tab-page="workspace">
-      <div class="workspace-head admin-panel"><div><h3>Project Workspace</h3><p class="small">Photos, timeline, estimate, invoice, schedule, and proposal draft.</p></div><select data-workspace-project><option value="">Choose project</option></select></div>
-      <div data-workspace-empty class="admin-panel"><h3>No project selected</h3><p class="small">Choose a project from the dropdown or the project cards.</p></div>
-      <div data-workspace-body style="display:none">
-        <section class="admin-panel workspace-summary"><div><div class="eyebrow" data-ws-status>Planning</div><h2 data-ws-title>Project</h2><p class="small" data-ws-meta></p><p data-ws-notes></p></div><div class="ws-actions"><button class="btn dark" data-ws-refresh>Refresh</button><button class="btn yellow" data-print-proposal>Print Proposal</button></div></section>
-        <div class="workspace-tabs"><button class="ws-tab active" data-ws-tab="overview">Overview</button><button class="ws-tab" data-ws-tab="photos">Photos</button><button class="ws-tab" data-ws-tab="estimate">Estimate</button><button class="ws-tab" data-ws-tab="invoice">Invoice</button><button class="ws-tab" data-ws-tab="schedule">Schedule</button><button class="ws-tab" data-ws-tab="proposal">AI Draft</button><button class="ws-tab" data-ws-tab="closeout">Closeout</button></div>
-        <div class="ws-page active" data-ws-page="overview"><section class="admin-panel wide"><h3>Project Timeline</h3><form data-milestone-form class="line-form"><input name="label" placeholder="Milestone: Site Visit, Estimate Sent, Inspection"><select name="status"><option>Pending</option><option>Done</option><option>Blocked</option></select><button class="btn yellow" type="submit">Add Milestone</button></form><div class="timeline-list" data-timeline-list></div></section></div>
-        <div class="ws-page" data-ws-page="photos"><section class="admin-panel wide"><h3>Automatic Project Gallery</h3><form data-photo-upload class="photo-form"><select name="category"><option>Before</option><option>During</option><option>After</option><option>Thermal</option><option>Drone</option><option>Reports</option><option>Warranty</option><option>General</option></select><input name="title" placeholder="Photo/document title"><input name="file" type="file" accept="image/*,.pdf,.doc,.docx" required><textarea name="description" placeholder="Notes about this upload"></textarea><button class="btn yellow" type="submit">Upload to Project</button></form><div class="stage-galleries" data-project-gallery></div></section></div>
-        <div class="ws-page" data-ws-page="estimate"><section class="admin-panel wide"><h3>Estimate Builder</h3><form data-estimate-item class="line-form"><input name="description" placeholder="Line item description" required><input name="quantity" type="number" step="0.01" min="0" placeholder="Qty" value="1"><input name="unit_price" type="number" step="0.01" min="0" placeholder="Unit price"><button class="btn yellow" type="submit">Add Item</button></form><div data-estimate-list></div><div class="totals" data-estimate-total></div><button class="btn dark" data-print-estimate>Print Estimate</button></section></div>
-        <div class="ws-page" data-ws-page="invoice"><section class="admin-panel wide"><h3>Invoice Generator</h3><form data-create-invoice class="line-form"><input name="invoice_number" placeholder="Invoice # e.g. BB-INV-001"><input name="due_date" type="date"><button class="btn yellow" type="submit">Create Invoice From Estimate</button></form><div data-invoice-list></div></section></div>
-        <div class="ws-page" data-ws-page="schedule"><section class="admin-panel wide"><h3>Scheduling Calendar</h3><form data-schedule-event class="line-form"><input name="title" placeholder="Event title" required><input name="event_type" placeholder="Type: site visit, install, inspection"><input name="start_time" type="datetime-local"><input name="end_time" type="datetime-local"><input name="location" placeholder="Location / address"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Add Schedule Event</button></form><div data-schedule-list></div></section></div>
-        <div class="ws-page" data-ws-page="proposal"><section class="admin-panel wide"><h3>AI-style Proposal Draft</h3><p class="small">This drafts a professional scope from project info and estimate line items. Later we can connect a real AI API.</p><button class="btn yellow" data-generate-proposal>Generate Draft</button><textarea class="proposal-box" data-proposal-output placeholder="Proposal draft will appear here..."></textarea></section></div>
-        <div class="ws-page" data-ws-page="closeout"><section class="admin-panel wide"><h3>Project Closeout Checklist</h3><div class="closeout-grid"><label><input type="checkbox"> Before photos saved</label><label><input type="checkbox"> After photos saved</label><label><input type="checkbox"> Estimate/invoice complete</label><label><input type="checkbox"> Customer approval documented</label><label><input type="checkbox"> Warranty notes added</label><label><input type="checkbox"> Final inspection complete</label></div><p class="small">Checklist is local UI for now. V6.2 can save checklist history to Supabase.</p></section></div>
-      </div>
-    </div>
-    <div class="tab-page" data-tab-page="reports">
-      <div class="admin-grid">
-        <section class="admin-panel wide"><h3>Business Reports</h3><p class="small">Live summary using your current Supabase data.</p><div class="report-grid" data-report-grid></div></section>
-        <section class="admin-panel"><h3>Project Status Breakdown</h3><div class="mini-chart" data-status-chart></div></section>
-        <section class="admin-panel"><h3>Service Mix</h3><div class="mini-chart" data-service-chart></div></section>
-      </div>
-    </div>
-    <div class="tab-page" data-tab-page="ai">
-      <section class="admin-panel wide ai-ops-panel">
-        <div class="panel-head"><div><h3>AI Operations Center</h3><p class="small">Manual AI workspace inside the admin. No API key required yet. Use these tools to draft proposals, scopes, estimates, customer emails, safety notes, and troubleshooting plans.</p></div><span class="badge">V6.4 Local AI Workspace</span></div>
-        <div class="ai-mode-grid">
-          <button class="ai-mode active" data-ai-mode="proposal">Proposal</button>
-          <button class="ai-mode" data-ai-mode="scope">Scope of Work</button>
-          <button class="ai-mode" data-ai-mode="estimate">Estimate Plan</button>
-          <button class="ai-mode" data-ai-mode="email">Customer Email</button>
-          <button class="ai-mode" data-ai-mode="safety">Safety / JSA</button>
-          <button class="ai-mode" data-ai-mode="troubleshoot">Troubleshooting</button>
-          <button class="ai-mode" data-ai-mode="maintenance">Maintenance PM</button>
-          <button class="ai-mode" data-ai-mode="inspection">Inspection Report</button>
-        </div>
-        <div class="ai-workspace-grid">
-          <form class="ai-form" data-ai-form>
-            <label>Customer / Company<input name="customer" placeholder="ABC Warehouse"></label>
-            <label>Project / Equipment<input name="project" placeholder="Replace 400A service / troubleshoot VFD / BESS PM"></label>
-            <label>Service Type<select name="service"><option>Industrial</option><option>Commercial</option><option>Residential</option><option>Solar</option><option>BESS</option><option>Emergency Service</option><option>Maintenance</option><option>Inspection</option></select></label>
-            <label>Location<input name="location" placeholder="Imperial, CA"></label>
-            <label>Important Notes<textarea name="notes" placeholder="Existing condition, customer concern, shutdown window, known equipment, photos, safety notes..."></textarea></label>
-            <div class="ai-actions"><button class="btn yellow" type="submit">Generate Draft</button><button class="btn dark" type="button" data-ai-use-project>Use Open Project</button><button class="btn dark" type="button" data-ai-save-draft>Save Draft</button><button class="btn dark" type="button" data-ai-copy>Copy</button></div>
-          </form>
-          <div class="ai-output-wrap">
-            <div class="panel-head"><h4 data-ai-output-title>Proposal Draft</h4><button class="btn yellow" data-print-proposal>Print</button></div>
-            <textarea class="proposal-box ai-output" data-ai-global-output placeholder="Generated draft will appear here..."></textarea>
-          </div>
-        </div>
-        <div class="ai-drafts-box"><div class="panel-head"><h4>Saved Drafts</h4><button class="btn dark" data-ai-clear-drafts>Clear Local Drafts</button></div><div class="activity-feed" data-ai-drafts></div></div>
-      </section>
-    </div>
+Blue Bear Electric V6.1 - Project Workspace Polish
 
-    <div class="tab-page" data-tab-page="docs">
-      <section class="admin-panel wide doc-center-panel">
-        <div class="panel-head"><div><h3>Document Center</h3><p class="small">Generate printable customer proposals, estimates, invoices, closeout packages, and customer email templates from the open project workspace.</p></div><span class="badge">V6.5 PDF / Print Tools</span></div>
-        <div class="ai-mode-grid doc-mode-grid">
-          <button class="ai-mode active" data-doc-type="proposal">Proposal</button>
-          <button class="ai-mode" data-doc-type="estimate">Estimate</button>
-          <button class="ai-mode" data-doc-type="invoice">Invoice</button>
-          <button class="ai-mode" data-doc-type="closeout">Closeout</button>
-          <button class="ai-mode" data-doc-type="email">Customer Email</button>
-        </div>
-        <div class="doc-actions">
-          <button class="btn yellow" data-open-doc="proposal">Print Proposal / Save PDF</button>
-          <button class="btn dark" data-open-doc="estimate">Print Estimate</button>
-          <button class="btn dark" data-open-doc="invoice">Print Invoice</button>
-          <button class="btn dark" data-open-doc="closeout">Print Closeout</button>
-          <button class="btn dark" data-copy-customer-email>Copy Customer Email</button>
-        </div>
-        <div class="doc-actions">
-          <button class="btn dark" data-download-doc="proposal">Download Proposal HTML</button>
-          <button class="btn dark" data-download-doc="estimate">Download Estimate HTML</button>
-          <button class="btn dark" data-download-doc="invoice">Download Invoice HTML</button>
-          <button class="btn dark" data-download-doc="closeout">Download Closeout HTML</button>
-        </div>
-        <div class="doc-preview-shell"><div class="doc-preview" data-doc-preview></div></div>
-      </section>
-    </div>
-    <div class="tab-page" data-tab-page="portals">
-      <div class="admin-grid"><section class="admin-panel"><h3>Customer Portal</h3><p class="small">Customers can view approved project photos, invoices, notes, and project status after they are mapped to a customer account.</p><a class="btn yellow" href="customer-portal.html">Open Customer Portal</a></section><section class="admin-panel"><h3>Employee Portal</h3><p class="small">Technicians can view assigned work, log time entries, and upload job notes as this module expands.</p><a class="btn yellow" href="employee-portal.html">Open Employee Portal</a></section></div>
-    </div>
+What's new:
+- Polished project cards with progress bars and job metrics.
+- Activity Timeline tab for recent projects, files, invoices, and schedule items.
+- Lightbox viewer for project photos.
+- Closeout checklist UI inside each project workspace.
+- Better KPI cards and mobile-friendly admin polish.
 
-    <div class="tab-page" data-tab-page="fieldops">
-      <section class="admin-panel wide">
-        <div class="panel-head"><div><h3>Field Operations Review</h3><p class="small">Review technician daily reports, safety/JSA forms, vehicle inspections, material requests, and completion checklists.</p></div><button class="btn dark" data-refresh-fieldops>Refresh</button></div>
-        <div class="field-review-grid">
-          <div><h4>Daily Reports</h4><div data-admin-daily-reports></div></div>
-          <div><h4>Safety / JSA</h4><div data-admin-jsa-forms></div></div>
-          <div><h4>Vehicle Inspections</h4><div data-admin-vehicle-inspections></div></div>
-          <div><h4>Material Requests</h4><div data-admin-material-requests></div></div>
-          <div><h4>Completion Checklists</h4><div data-admin-completion-checklists></div></div>
-        </div>
-      </section>
-    </div>
-    <div class="tab-page" data-tab-page="quickadd"><div class="admin-grid"><section class="admin-panel"><h3>Add Customer</h3><form data-new-customer class="mini-form"><input name="full_name" placeholder="Full name" required><input name="company" placeholder="Company"><input name="phone" placeholder="Phone"><input name="email" placeholder="Email"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Customer</button></form></section><section class="admin-panel"><h3>Add Project</h3><form data-new-project class="mini-form"><input name="project_name" placeholder="Project name" required><input name="service_type" placeholder="Service type"><input name="status" placeholder="Status" value="Planning"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Project</button></form></section></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-<footer class="footer"><div class="foot-grid"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>Blue Bear OS</h4><p class="small">V7 Command Center</p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/supabase-config.js"></script><script src="assets/js/script.js"></script><script src="assets/js/admin-backend.js"></script><script src="assets/js/v6-3-command-center.js"></script><script src="assets/js/v6-4-ai-ops.js"></script><script src="assets/js/v6-5-doc-center.js"></script><script src="assets/js/v6-7-field-ops-admin.js"></script><script src="assets/js/theme-loader.js"></script></body></html>
+Deploy steps:
+1. Upload/replace the full extracted folder in GitHub.
+2. Let Vercel redeploy.
+3. Hard refresh /admin.html.
+4. No new SQL is required if V6-SQL.sql was already run.
+
+Recommended test:
+- Open /admin.html
+- Open a project card
+- Upload a photo and click it to test lightbox
+- Add estimate item
+- Create invoice
+- Add schedule event
+- Open Activity tab

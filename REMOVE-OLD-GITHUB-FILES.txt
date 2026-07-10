@@ -1,0 +1,14 @@
+REMOVE ONLY AFTER THE NEW V7 DEPLOYMENT WORKS:
+
+Remove old duplicate release artifacts from the GitHub root, especially files/folders whose names begin with:
+- V4-
+- V5-
+- V6-
+- blue-bear-electric-v4-
+- blue-bear-electric-v5-
+- blue-bear-electric-v6-
+- ADMIN-
+
+Keep the current production files listed in GITHUB-ROOT-MANIFEST.txt.
+
+The GitHub root should not contain multiple copies of index.html, admin.html, style.css, or script.js under versioned names.

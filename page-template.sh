@@ -1,8 +1,22 @@
-make_page(){ file="$1"; title="$2"; subtitle="$3"; image="$4"; body="$5"; cat > "/mnt/data/blue-bear-electric-site-v4/$file" <<HTML
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>$title | Blue Bear Electric</title><link rel="stylesheet" href="style.css"></head><body>
-<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb">☰</button><div class="mobile"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
-<section class="page-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.94),rgba(4,9,16,.55)),url('assets/$image')"><div><div class="eyebrow">Blue Bear Electric</div><h1>$title</h1><p class="lead">$subtitle</p><div class="cta-row"><a class="btn yellow" href="tel:7602348306">Call 760-234-8306</a><a class="btn blue" href="contact.html">Request Estimate</a></div></div></section>
-<section class="section">$body</section>
-<footer class="footer"><div class="foot-grid"><div><img src="assets/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>Quick Links</h4><p class="small"><a href="index.html">Home</a><br><a href="services.html">Services</a><br><a href="projects.html">Projects</a></p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer><script src="script.js"></script></body></html>
-HTML
-}
+BLUE BEAR ELECTRIC V5.3 COMMAND CENTER
+
+This package fixes the admin UI visibility issue by making Project Workspace the first visible tab.
+
+Upload the full extracted folder to GitHub, replacing the older files.
+Required files to replace:
+- admin.html
+- admin-backend.js
+- style.css
+- supabase-config.js
+- all assets/
+
+After Vercel redeploys:
+1. Open /admin.html
+2. Hard refresh: Ctrl + Shift + R
+3. Sign out and sign back in
+4. You should see: "V5.3 Project Workspace loaded. Use the yellow tabs below."
+5. Select a project in Project Workspace.
+6. Test Photos, Estimate, Invoice, and Schedule tabs.
+
+SQL:
+If permissions fail, run V5-3-FULL-POLICIES.sql in Supabase SQL Editor.

@@ -1,59 +1,84 @@
-Blue Bear Electric V4.1 - Photo + Animation Upgrade
+-- Blue Bear Electric V5.3 full admin policies
+-- Run this after all V5 tables have been created.
 
-WHAT WAS ADDED
-1. All project photos remain inside /assets and are referenced by the HTML pages.
-2. Button animations:
-   - Hover lift
-   - Yellow/blue shine sweep
-   - Click ripple effect
-3. Page transitions:
-   - Scroll reveal animations for sections, cards, timeline steps, forms, gallery cards
-   - Header changes when scrolling
-4. Photo motion:
-   - Image zoom/saturation on hover
-   - Project and service cards lift on hover
-5. Timeline animation:
-   - Animated line flow
-   - Pulse rings on step numbers
-6. Mobile upgrade:
-   - Floating Call Now button
-   - Swipe-ready service cards
+insert into public.admin_users (user_id, role)
+values
+  ('6baffde2-009b-4f38-8744-9cc483232d77', 'admin'),
+  ('b98e5a28-3f6f-4345-86f7-dbf7e0514e16', 'admin')
+on conflict (user_id) do update set role = 'admin';
 
-WHERE TO ADD MORE PHOTOS
-Put new photos here:
-/assets/
+create or replace function public.is_admin()
+returns boolean
+language sql
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.admin_users
+    where user_id = auth.uid()
+    and role = 'admin'
+  );
+$$;
 
-Recommended file names:
-truck-2.jpg
-industrial-panel-2.jpg
-solar-field-2.jpg
-commercial-lighting-1.jpg
-residential-panel-1.jpg
-before-after-1.jpg
+grant execute on function public.is_admin() to authenticated;
+grant usage on schema public to anon, authenticated;
 
-Then update the matching <img src="assets/your-file-name.jpg"> line in:
-index.html
-projects.html
-industrial.html
-commercial.html
-residential.html
-solar-bess.html
-service-repair.html
+grant select on public.admin_users to authenticated;
+grant select, insert, update, delete on public.customers to authenticated;
+grant select, insert, update, delete on public.projects to authenticated;
+grant select, insert, update, delete on public.gallery to authenticated;
+grant select, insert, update, delete on public.services to authenticated;
+grant select, insert, update, delete on public.reviews to authenticated;
+grant select, insert, update, delete on public.estimate_items to authenticated;
+grant select, insert, update, delete on public.estimates to authenticated;
+grant select, insert, update, delete on public.invoices to authenticated;
+grant select, insert, update, delete on public.schedule_events to authenticated;
 
-BEST PLACES FOR ANIMATION LATER
-1. Hero section: video background or photo slider.
-2. Services section: true carousel with arrows/dots.
-3. Projects page: filterable gallery with lightbox popups.
-4. Process section: animated timeline icons.
-5. Contact form: submit success animation.
-6. Admin page: dashboard charts and lead status animations.
+alter table public.customers enable row level security;
+alter table public.projects enable row level security;
+alter table public.gallery enable row level security;
+alter table public.services enable row level security;
+alter table public.reviews enable row level security;
+alter table public.estimate_items enable row level security;
+alter table public.estimates enable row level security;
+alter table public.invoices enable row level security;
+alter table public.schedule_events enable row level security;
 
-DEPLOYMENT
-Upload the full extracted folder to GitHub. Make sure these are included:
-/assets
-index.html
-style.css
-script.js
-all .html pages
+drop policy if exists "TEMP authenticated can manage customers" on public.customers;
+drop policy if exists "TEMP authenticated can manage projects" on public.projects;
+drop policy if exists "TEMP authenticated can manage gallery" on public.gallery;
+drop policy if exists "Admins can manage customers" on public.customers;
+drop policy if exists "Admins can manage projects" on public.projects;
+drop policy if exists "Admins can manage gallery" on public.gallery;
+drop policy if exists "Admins can manage services" on public.services;
+drop policy if exists "Admins can manage reviews" on public.reviews;
+drop policy if exists "Admins can manage estimate items" on public.estimate_items;
+drop policy if exists "Admins can manage estimates" on public.estimates;
+drop policy if exists "Admins can manage invoices" on public.invoices;
+drop policy if exists "Admins can manage schedule events" on public.schedule_events;
 
-Vercel will redeploy automatically after GitHub commit.
+create policy "Admins can manage customers" on public.customers for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage projects" on public.projects for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage gallery" on public.gallery for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage services" on public.services for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage reviews" on public.reviews for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage estimate items" on public.estimate_items for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage estimates" on public.estimates for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage invoices" on public.invoices for all to authenticated using (public.is_admin()) with check (public.is_admin());
+create policy "Admins can manage schedule events" on public.schedule_events for all to authenticated using (public.is_admin()) with check (public.is_admin());
+
+-- Storage policies for the private project-photos bucket.
+drop policy if exists "TEMP authenticated can upload project photos" on storage.objects;
+drop policy if exists "TEMP authenticated can view project photos" on storage.objects;
+drop policy if exists "TEMP authenticated can update project photos" on storage.objects;
+drop policy if exists "TEMP authenticated can delete project photos" on storage.objects;
+drop policy if exists "Admin users can upload project photos" on storage.objects;
+drop policy if exists "Admin users can view project photos" on storage.objects;
+drop policy if exists "Admin users can update project photos" on storage.objects;
+drop policy if exists "Admin users can delete project photos" on storage.objects;
+
+create policy "Admin users can upload project photos" on storage.objects for insert to authenticated with check (bucket_id = 'project-photos' and public.is_admin());
+create policy "Admin users can view project photos" on storage.objects for select to authenticated using (bucket_id = 'project-photos' and public.is_admin());
+create policy "Admin users can update project photos" on storage.objects for update to authenticated using (bucket_id = 'project-photos' and public.is_admin()) with check (bucket_id = 'project-photos' and public.is_admin());
+create policy "Admin users can delete project photos" on storage.objects for delete to authenticated using (bucket_id = 'project-photos' and public.is_admin());

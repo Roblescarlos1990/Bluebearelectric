@@ -1,38 +1,37 @@
-BLUE BEAR ELECTRIC - ADMIN DASHBOARD CONNECTION STEPS
+-- Blue Bear OS V6 database additions
+create table if not exists public.project_milestones (
+  id uuid primary key default gen_random_uuid(),
+  project_id uuid references public.projects(id) on delete cascade,
+  label text not null,
+  status text default 'Pending',
+  notes text,
+  created_at timestamptz default now()
+);
 
-1) Supabase tables are already created.
-You should see: admin_users, leads, customers, services, projects, gallery, reviews.
+-- Helpful project fields for V6 growth
+alter table public.projects
+add column if not exists priority text default 'Normal',
+add column if not exists estimated_value numeric default 0,
+add column if not exists assigned_to text,
+add column if not exists latitude numeric,
+add column if not exists longitude numeric;
 
-2) Create the admin login user:
-Supabase > Authentication > Users > Add user
-Use Jonathan/staff email and a password.
+-- RLS for V6 tables
+alter table public.project_milestones enable row level security;
 
-3) Copy that user's UUID.
+drop policy if exists "TEMP authenticated can manage milestones" on public.project_milestones;
+drop policy if exists "Owner can manage milestones" on public.project_milestones;
 
-4) In SQL Editor, run this with the real UUID:
-insert into public.admin_users (user_id, role)
-values ('PASTE-USER-UUID-HERE', 'admin')
-on conflict (user_id) do update set role = 'admin';
+-- Use the confirmed logged-in website UID from your admin session.
+create policy "Owner can manage milestones"
+on public.project_milestones
+for all
+to authenticated
+using (auth.uid() = '6baffde2-009b-4f38-8744-9cc483232d77')
+with check (auth.uid() = '6baffde2-009b-4f38-8744-9cc483232d77');
 
-5) Optional but recommended security policies:
-Run ADMIN-POLICIES.sql in Supabase SQL Editor.
-
-6) Upload this full extracted folder to GitHub.
-Important files to include:
-- admin.html
-- contact.html
-- supabase-config.js
-- admin-backend.js
-- contact-backend.js
-- style.css
-- script.js
-- assets folder
-
-7) Vercel will redeploy automatically.
-
-8) Test:
-- Submit contact form on /contact.html
-- Open /admin.html
-- Login with the Supabase Auth user
-- Confirm the new lead appears
-- Change the lead status
+grant select, insert, update, delete on public.project_milestones to authenticated;
+grant select, insert, update, delete on public.estimate_items to authenticated;
+grant select, insert, update, delete on public.estimates to authenticated;
+grant select, insert, update, delete on public.invoices to authenticated;
+grant select, insert, update, delete on public.schedule_events to authenticated;

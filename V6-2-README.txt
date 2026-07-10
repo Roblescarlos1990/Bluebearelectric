@@ -1,35 +1,35 @@
-Blue Bear Electric V6.2 - Customer + Employee Portal Starter
+BLUE BEAR ELECTRIC WEBSITE V4
 
-What was added:
-- customer-portal.html
-- employee-portal.html
-- customer-portal.js
-- employee-portal.js
-- V6-2-SQL.sql
+HOW TO VIEW LOCALLY
+1. Unzip the folder.
+2. Open index.html from the extracted folder, not inside the ZIP.
+3. If images/style do not load on Android, use a local server app or upload to Netlify/Vercel.
 
-Steps:
-1. Upload the full extracted folder to GitHub.
-2. Let Vercel redeploy.
-3. Run V6-2-SQL.sql in Supabase SQL Editor.
-4. Create customer/employee users in Supabase Authentication.
-5. Map users to customers/employees with SQL examples below.
+HOSTING OPTION 1: NETLIFY DRAG & DROP
+1. Go to Netlify.com and create an account.
+2. Click Add new site > Deploy manually.
+3. Drag the entire blue-bear-electric-site-v4 folder into Netlify.
+4. Netlify will give you a temporary link.
+5. Add a custom domain later under Domain settings.
 
-Customer user mapping example:
-insert into public.customer_users (user_id, customer_id, role)
-values ('AUTH-USER-UUID-HERE', 'CUSTOMER-ID-HERE', 'customer')
-on conflict (user_id) do update set customer_id = excluded.customer_id, role='customer';
+HOSTING OPTION 2: VERCEL
+1. Create a GitHub repository.
+2. Upload all files inside blue-bear-electric-site-v4.
+3. Go to Vercel.com > New Project.
+4. Import the GitHub repository.
+5. Deploy.
 
-Employee user mapping example:
-insert into public.employee_users (user_id, full_name, role, phone, active)
-values ('AUTH-USER-UUID-HERE', 'Employee Name', 'technician', '760-000-0000', true)
-on conflict (user_id) do update set full_name=excluded.full_name, role=excluded.role, phone=excluded.phone, active=true;
+DOMAIN STEPS
+1. Buy the domain, for example bluebearelectric.com.
+2. Point DNS to Netlify or Vercel.
+3. Enable HTTPS/SSL.
 
-Test links:
-/customer-portal.html
-/employee-portal.html
-/admin.html
-
-Notes:
-- Customer portal only shows projects tied to the mapped customer_id.
-- Customer gallery only shows files where gallery.is_public = true.
-- Employee portal shows projects and schedule events, and can create time entries.
+NEXT BACKEND UPGRADE
+V4.1 can add Supabase for:
+- Admin login
+- Lead database
+- Photo uploads
+- Email notifications
+- Project gallery manager
+- Review manager
+- Customer request tracking

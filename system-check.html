@@ -1,1 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blue Bear V7 System Check</title><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body><main class="section"><div class="section-title"><h1>V7 System Check</h1><p>This page confirms that the new folder structure deployed correctly.</p></div><div class="admin-grid"><section class="admin-panel"><h3>CSS</h3><p id="css-status">Checking…</p></section><section class="admin-panel"><h3>JavaScript</h3><p id="js-status">Checking…</p></section><section class="admin-panel"><h3>Images</h3><img id="img-test" src="assets/images/site/logo.jpg" alt="Blue Bear logo" style="max-width:220px"><p id="img-status">Checking…</p></section></div><p><a class="btn yellow" href="index.html">Open Website</a> <a class="btn dark" href="admin.html">Open Admin</a></p></main><script>document.getElementById('js-status').textContent='Loaded successfully';const bg=getComputedStyle(document.body).backgroundColor;document.getElementById('css-status').textContent=bg&&bg!=='rgba(0, 0, 0, 0)'?'Loaded successfully':'CSS may be missing';const im=document.getElementById('img-test');im.onload=()=>document.getElementById('img-status').textContent='Loaded successfully';im.onerror=()=>document.getElementById('img-status').textContent='Image path failed';</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blue Bear V7 System Check</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body style="padding:32px">
+  <main class="admin-panel" style="max-width:850px;margin:auto">
+    <h1>Blue Bear V7 System Check</h1>
+    <p>If this page has a dark Blue Bear layout, the root CSS loaded.</p>
+    <div id="js-check" class="badge">JavaScript pending…</div>
+    <h3>Image check</h3>
+    <img src="assets/images/site/logo.jpg" alt="Blue Bear logo" style="max-width:260px;border-radius:12px" onload="document.getElementById('img-check').textContent='Image loaded successfully'" onerror="document.getElementById('img-check').textContent='IMAGE FAILED — assets/images/site/logo.jpg is missing'">
+    <p id="img-check">Image pending…</p>
+    <h3>Direct checks</h3>
+    <p><a class="btn yellow" href="style.css">Open root CSS</a> <a class="btn blue" href="assets/images/site/logo.jpg">Open logo file</a> <a class="btn dark" href="admin.html">Open Admin</a></p>
+  </main>
+  <script>document.getElementById('js-check').textContent='JavaScript loaded successfully';</script>
+</body>
+</html>

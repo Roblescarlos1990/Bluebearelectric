@@ -1,18 +1,38 @@
-Blue Bear Electric V6.7 Field Operations
+Blue Bear Electric V5 Photo Upload Steps
 
-Added to employee portal:
-- Technician Daily Report
-- Safety / JSA form
-- Vehicle Inspection
-- Material Request
-- Job Completion Checklist
-- Recent Field Activity panel
+1) Confirm Supabase Storage bucket exists:
+   project-photos
+   Private bucket: ON/private
 
-Install:
-1. Upload/replace full folder in GitHub.
-2. Let Vercel redeploy.
-3. Run V6-7-SQL.sql in Supabase SQL Editor.
-4. Open employee-portal.html, hard refresh, sign in as mapped employee.
-5. Test each form.
+2) Confirm these storage policies were already created successfully:
+   - Admin users can upload project photos
+   - Admin users can view project photos
+   - Admin users can update project photos
+   - Admin users can delete project photos
 
-If an employee cannot save forms, confirm their Auth UID is present in public.employee_users and active=true.
+3) Upload this full extracted folder to GitHub.
+   Important files:
+   - admin.html
+   - admin-backend.js
+   - style.css
+   - supabase-config.js
+   - assets/
+
+4) Let Vercel redeploy.
+
+5) Test:
+   - Open /admin.html
+   - Log in
+   - Create or confirm at least one project exists
+   - Go to Project Photo Upload
+   - Choose a project, category, and image
+   - Click Upload to Project
+
+6) Verify in Supabase:
+   Storage -> project-photos -> project-id/category/file
+   Table Editor -> gallery -> new row with image_url path
+
+Notes:
+- Bucket is private, so the dashboard creates temporary signed links for previews.
+- Customers cannot see the bucket unless we later build a customer portal with its own rules.
+- Public project gallery can be added later by using approved gallery items and signed/public delivery rules.
