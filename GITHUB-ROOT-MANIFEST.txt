@@ -1,5 +1,65 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact | Blue Bear Electric</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body>
-<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb">☰</button><div class="mobile"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
-<section class="page-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.94),rgba(4,9,16,.55)),url('assets/images/site/truck.jpg')"><div><div class="eyebrow">Blue Bear Electric</div><h1>Contact</h1><p class="lead">Call Blue Bear Electric or request an estimate for industrial, commercial, residential, solar or emergency electrical work.</p><div class="cta-row"><a class="btn yellow" href="tel:7602348306">Call 760-234-8306</a><a class="btn blue" href="contact.html">Request Estimate</a></div></div></section>
-<section class="section"><div class="estimate"><div><h2>Request a Free Estimate</h2><p class="small">Phone: 760-234-8306<br>Service Area: Imperial County, CA<br>CA License #1141313</p><p class="small">V4 form is ready for future backend connection to Supabase, email alerts and an admin dashboard.</p></div><form class="form" data-lead-form><input name="full_name" placeholder="Name" required><input name="phone" placeholder="Phone" required><input name="email" type="email" placeholder="Email"><input name="city" placeholder="City / Service Area"><select name="service_type" required><option value="">Service Needed</option><option>Industrial</option><option>Commercial</option><option>Residential</option><option>Solar / BESS</option><option>Emergency Repair</option><option>Maintenance</option></select><select name="urgency"><option>Normal</option><option>This Week</option><option>Emergency</option></select><textarea name="message" placeholder="Tell us about the project"></textarea><button class="btn yellow" type="submit">Submit Request</button><p class="form-status" data-form-status></p></form></div></section>
-<footer class="footer"><div class="foot-grid"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>Quick Links</h4><p class="small"><a href="index.html">Home</a><br><a href="services.html">Services</a><br><a href="projects.html">Projects</a></p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="contact-backend.js"></script><script src="theme-loader.js"></script></body></html>
+BLUE BEAR ELECTRIC V7 — EXACT GITHUB ROOT
+
+Upload the CONTENTS of this folder directly into the root of your GitHub repository.
+Do not upload the outer folder as a nested folder.
+
+KEEP / REQUIRED AT ROOT:
+- index.html
+- services.html
+- industrial.html
+- commercial.html
+- residential.html
+- solar-bess.html
+- service-repair.html
+- projects.html
+- about.html
+- contact.html
+- admin.html
+- customer-portal.html
+- employee-portal.html
+- customize.html
+- system-check.html
+- style.css
+- theme.css
+- script.js
+- supabase-config.js
+- admin-backend.js
+- contact-backend.js
+- customer-portal.js
+- employee-portal.js
+- v6-3-command-center.js
+- v6-4-ai-ops.js
+- v6-5-doc-center.js
+- v6-7-field-ops-admin.js
+- theme-loader.js
+- customizer.js
+- favicon.svg
+- vercel.json
+- assets/   (complete folder)
+- docs/     (optional for website runtime, but keep for project records)
+
+REQUIRED INSIDE assets/:
+assets/css/style.css
+assets/css/theme.css
+assets/js/*.js
+assets/images/site/*.jpg
+
+SAFE TO REMOVE FROM THE OLD GITHUB ROOT AFTER V7 IS VERIFIED:
+- old version ZIP files
+- duplicate V4/V5/V6 release folders or version-labeled HTML files
+- obsolete standalone SQL files already archived in docs/sql/
+- duplicate screenshots and temporary upload files
+
+DO NOT REMOVE:
+- current root HTML files
+- style.css / theme.css
+- JavaScript runtime files
+- assets folder
+- vercel.json
+
+DEPLOYMENT TEST:
+1. Wait for Vercel deployment to finish.
+2. Open /system-check.html
+3. Open /style.css directly; it must show CSS text, not 404.
+4. Open /assets/images/site/logo.jpg directly; it must display the logo.
+5. Hard refresh with Ctrl+Shift+R.
