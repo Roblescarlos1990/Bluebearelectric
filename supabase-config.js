@@ -1,2 +1,2 @@
-window.BLUE_BEAR_SUPABASE_URL = 'https://xpnkybwbliiqulsgqgho.supabase.co';
-window.BLUE_BEAR_SUPABASE_KEY = 'sb_publishable_shb3xQEsmtWtYAIBnDzDPQ_GfT35KF-';
+// V7 compatibility loader for legacy references.
+(function(){var s=document.createElement('script');s.src='assets/js/supabase-config.js';document.head.appendChild(s);}());
