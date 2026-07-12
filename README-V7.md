@@ -1,7 +1,7 @@
 # Blue Bear Electric V7 — Professional Restructure
 
 ## Why V7
-V7 keeps the working public website and Blue Bear OS backend, but fixes asset-path drift and standardizes the repository.
+V7 keeps the working public website and VoltFlow backend, but fixes asset-path drift and standardizes the repository.
 
 ## Required root files
 Keep all `.html` files, `vercel.json`, `favicon.svg`, and the entire `assets/` folder.

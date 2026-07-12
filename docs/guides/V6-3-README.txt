@@ -1,7 +1,7 @@
 Blue Bear Electric V6.3 Command Center
 
 What changed:
-- New Blue Bear OS module sidebar
+- New VoltFlow module sidebar
 - Reports tab with live counts and simple charts
 - AI Assistant tab for proposal draft generation
 - Portal launcher tab
@@ -12,7 +12,7 @@ Install:
 2. Let Vercel redeploy.
 3. Run V6-3-SQL.sql in Supabase SQL Editor. Optional but recommended for future modules.
 4. Open /admin.html and hard refresh.
-5. Confirm the header says Blue Bear OS V6.3.
+5. Confirm the header says VoltFlow V6.3.
 
 Test:
 - Dashboard loads stats

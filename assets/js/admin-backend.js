@@ -78,6 +78,14 @@
   function printDoc(title, body){ const w=window.open('','_blank'); w.document.write(`<html><head><title>${esc(title)}</title><style>body{font-family:Arial;padding:32px;color:#111}h1{color:#062a52}.logo{font-weight:900;color:#062a52}.line{border-bottom:1px solid #ccc;padding:8px 0;display:flex;justify-content:space-between}</style></head><body><div class="logo">BLUE BEAR ELECTRIC</div><p>CA License #1141313 | 760-234-8306</p>${body}</body></html>`); w.document.close(); w.print(); }
   $('[data-print-estimate]')?.addEventListener('click',()=>{ const p=state.selectedProject||{}; const rows=(state.estimateItems||[]).map(i=>`<div class="line"><span>${esc(i.description)} (${i.quantity} x ${money(i.unit_price)})</span><b>${money(i.total)}</b></div>`).join(''); const total=(state.estimateItems||[]).reduce((s,r)=>s+Number(r.total||0),0); printDoc('Estimate',`<h1>Estimate</h1><h2>${esc(p.project_name||'Project')}</h2>${rows}<h2>Total: ${money(total)}</h2>`); });
   $('[data-print-proposal]')?.addEventListener('click',()=>{ printDoc('Proposal',`<pre style="white-space:pre-wrap;font-family:Arial">${esc(proposalText())}</pre>`); });
+  $('[data-export-ai]')?.addEventListener('click',()=>{
+    const output=$('[data-ai-output]');
+    const title=$('[data-ai-output-title]')?.textContent?.trim() || 'AI Draft';
+    const text=(output?.value || output?.textContent || '').trim();
+    if(!text){ alert('Generate or enter an AI draft before exporting.'); return; }
+    const p=state.selectedProject||{};
+    printDoc(title,`<h1>${esc(title)}</h1><p><b>Project:</b> ${esc(p.project_name||'Unassigned')}</p><pre style="white-space:pre-wrap;font-family:Arial;line-height:1.55">${esc(text)}</pre><p style="margin-top:36px;font-size:12px;color:#666">Draft prepared in VoltFlow. Review technical details, pricing, code requirements, and site conditions before customer release.</p>`);
+  });
   bindTabs();
   client.auth.getSession().then(({data})=> data.session ? showDash() : showLogin());
 })();

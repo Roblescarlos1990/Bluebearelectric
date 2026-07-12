@@ -1,4 +1,4 @@
-BLUE BEAR OS V6
+VOLTFLOW V6
 
 What is new:
 - Dashboard 2.0 KPI cards
