@@ -75,3 +75,41 @@ input,select,textarea{transition:border-color .25s var(--ease),box-shadow .25s v
 @media(max-width:640px){.admin-shell{padding-left:12px;padding-right:12px}.admin-top{display:block;padding:18px}.admin-top .btn{margin-top:12px;width:100%}.admin-panel{padding:16px;border-radius:20px}.os-sidebar{margin-left:-4px;margin-right:-4px}.os-sidebar .tab-btn span{display:none}.os-sidebar .tab-btn{font-size:18px;padding:12px 14px;min-width:50px;justify-content:center}.panel-head{display:block}.panel-head input{width:100%;margin-top:10px}.workspace-summary{display:block}.ws-actions{display:grid;grid-template-columns:1fr;gap:10px}.doc-actions .btn,.ai-actions .btn{width:100%}.doc-preview-shell{padding:8px}.doc-preview{padding:16px}.doc-preview .top,.doc-preview .grid,.doc-preview .sig{display:block}.doc-preview .line{grid-template-columns:1fr;font-size:13px}.line-table>div{grid-template-columns:1fr!important}.page-hero.admin-hero{min-height:260px}.page-hero h1{font-size:34px}}
 /* V6.7 Field Operations */
 .field-tabs{flex-wrap:wrap;gap:8px}.field-ops-shell .mini-form label.checkline,.checkline{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.95rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px}.field-review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field-review-grid>div{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}.field-review-grid h4{margin:0 0 12px;color:#fff}@media(max-width:800px){.field-review-grid{grid-template-columns:1fr}.field-tabs .tab-btn{flex:1 1 45%;justify-content:center}}
+
+
+/* =========================================
+   VoltFlow V8.1 Production Form + CTA Polish
+   ========================================= */
+.btn{min-height:48px;padding:13px 20px;border-radius:12px;letter-spacing:.025em;line-height:1.15;isolation:isolate}
+.btn:focus-visible,.form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{outline:3px solid rgba(255,196,0,.38);outline-offset:3px}
+.btn.yellow{background:linear-gradient(135deg,#ffd21c,#ffb800);box-shadow:0 12px 28px rgba(255,196,0,.22),inset 0 1px 0 rgba(255,255,255,.45)}
+.btn.yellow:hover{box-shadow:0 18px 38px rgba(255,196,0,.3),0 0 0 1px rgba(255,220,80,.35)}
+.btn.blue{background:linear-gradient(135deg,#0755a8,#0d8bff);box-shadow:0 12px 28px rgba(13,139,255,.2)}
+.btn.dark{background:linear-gradient(135deg,rgba(10,23,40,.95),rgba(3,9,16,.95));border-color:rgba(255,255,255,.22)}
+.btn[disabled]{cursor:not-allowed;opacity:.72;transform:none!important}
+.btn.is-loading .btn-arrow{display:none}
+.btn.is-loading::after{content:"";width:17px;height:17px;border:2px solid rgba(5,16,29,.3);border-top-color:#05101d;border-radius:50%;animation:buttonSpin .7s linear infinite;margin-left:8px}
+@keyframes buttonSpin{to{transform:rotate(360deg)}}
+.btn-arrow{font-size:18px;transition:transform .22s ease}.submit-estimate-btn:hover .btn-arrow{transform:translateX(4px)}
+.estimate-polished{position:relative;overflow:hidden;box-shadow:0 26px 70px rgba(0,0,0,.34)}
+.estimate-polished::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(#ffc400,#0d8bff)}
+.estimate-intro{align-self:center}.estimate-intro h2{font-size:clamp(30px,4vw,44px);margin:12px 0}
+.estimate-benefits{display:grid;gap:9px;margin:20px 0 24px;color:#dcecff;font-weight:700}.estimate-benefits span{display:flex;align-items:flex-start;gap:8px}
+.lead-form input,.lead-form select,.lead-form textarea{min-height:50px;border-radius:12px;border-color:rgba(160,190,225,.22);background:rgba(4,17,32,.86);transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+.lead-form textarea{min-height:132px;resize:vertical}
+.lead-form input:hover,.lead-form select:hover,.lead-form textarea:hover{border-color:rgba(13,139,255,.42)}
+.lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{border-color:#0d8bff;box-shadow:0 0 0 4px rgba(13,139,255,.12);background:#07182b}
+.lead-form input::placeholder,.lead-form textarea::placeholder{color:#9eb0c4}
+.form-status{grid-column:1/-1;min-height:0;margin:0;font-weight:800;line-height:1.45;border-radius:12px;transition:.2s ease}
+.form-status:empty{display:none}.form-status.ok{display:block;padding:13px 15px;color:#baffd4;background:rgba(31,190,100,.12);border:1px solid rgba(72,255,148,.28)}
+.form-status.error{display:block;padding:13px 15px;color:#ffd1d1;background:rgba(255,64,64,.11);border:1px solid rgba(255,96,96,.3)}
+.form-privacy{grid-column:1/-1;margin:0;color:#879bb3;font-size:12px;line-height:1.5}
+.service-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:rgba(255,196,0,.12);border:1px solid rgba(255,196,0,.28);color:#ffc400;font-size:22px;margin-bottom:14px}
+.estimate-success-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:rgba(1,6,12,.78);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease}
+.estimate-success-modal.open{opacity:1;visibility:visible}.estimate-success-card{position:relative;width:min(560px,100%);padding:34px;background:linear-gradient(160deg,#0d2847,#06111f 72%);border:1px solid rgba(88,255,160,.28);border-radius:26px;box-shadow:0 30px 100px rgba(0,0,0,.62);text-align:center;transform:translateY(18px) scale(.98);transition:transform .24s ease}
+.estimate-success-modal.open .estimate-success-card{transform:translateY(0) scale(1)}
+.estimate-success-card h2{font-size:34px;margin:10px 0}.estimate-success-card p{font-size:17px;line-height:1.55;color:#e9f3ff}.estimate-success-card a:not(.btn){color:#ffc400;font-weight:900}
+.success-check{width:72px;height:72px;margin:0 auto 16px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#31d77c,#0b9f57);color:white;font-size:40px;font-weight:950;box-shadow:0 0 0 10px rgba(49,215,124,.08),0 16px 40px rgba(49,215,124,.24)}
+.success-close{position:absolute;right:16px;top:14px;width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:rgba(0,0,0,.24);color:white;font-size:26px;cursor:pointer}.success-close:hover{background:rgba(255,255,255,.1)}
+.success-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}
+@media(max-width:700px){.estimate-success-card{padding:30px 20px}.estimate-success-card h2{font-size:28px}.success-actions .btn{width:100%}.btn-call{width:100%}}
