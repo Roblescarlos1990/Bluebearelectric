@@ -1,5 +1,3 @@
-# VoltFlow V8.3
+# VoltFlow V8.5
 
-VoltFlow is the contractor operations platform powering the Blue Bear Electric public website, admin command center, customer portal and employee field workflows.
-
-See `README-V8.3.md` and `docs/PRODUCT_VISION_AND_ROADMAP.md`.
+Complete contractor operations platform repository. See `README-V8.5.md` for the CRM release steps and `docs/PRODUCT_VISION_AND_ROADMAP.md` for the long-term SaaS vision.
