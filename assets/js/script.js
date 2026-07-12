@@ -71,3 +71,20 @@ if(!document.querySelector('.floating-call')){
   call.textContent='Call Now';
   document.body.appendChild(call);
 }
+
+
+// VoltFlow V8.2 technical territory-map interaction
+const territoryMap=document.querySelector('[data-territory-map]');
+if(territoryMap && window.matchMedia('(pointer:fine) and (min-width:951px)').matches){
+  territoryMap.addEventListener('mousemove',event=>{
+    const rect=territoryMap.getBoundingClientRect();
+    const px=(event.clientX-rect.left)/rect.width-.5;
+    const py=(event.clientY-rect.top)/rect.height-.5;
+    territoryMap.style.setProperty('--ry',`${px*2.2}deg`);
+    territoryMap.style.setProperty('--rx',`${py*-1.5}deg`);
+  });
+  territoryMap.addEventListener('mouseleave',()=>{
+    territoryMap.style.setProperty('--ry','0deg');
+    territoryMap.style.setProperty('--rx','0deg');
+  });
+}

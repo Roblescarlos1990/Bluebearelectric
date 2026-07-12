@@ -113,3 +113,28 @@ input,select,textarea{transition:border-color .25s var(--ease),box-shadow .25s v
 .success-close{position:absolute;right:16px;top:14px;width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:rgba(0,0,0,.24);color:white;font-size:26px;cursor:pointer}.success-close:hover{background:rgba(255,255,255,.1)}
 .success-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}
 @media(max-width:700px){.estimate-success-card{padding:30px 20px}.estimate-success-card h2{font-size:28px}.success-actions .btn{width:100%}.btn-call{width:100%}}
+
+
+/* =====================================
+   VoltFlow V8.2 Service Territory System
+   ===================================== */
+.territory-section{position:relative;max-width:1460px;margin:0 auto;padding:82px 20px 72px;overflow:hidden}
+.territory-section::before{content:"";position:absolute;inset:4% 0 auto;height:76%;background:radial-gradient(circle at 50% 50%,rgba(13,139,255,.16),transparent 58%);pointer-events:none;filter:blur(18px)}
+.territory-heading{position:relative;z-index:2;display:flex;align-items:end;justify-content:space-between;gap:36px;max-width:1220px;margin:0 auto 28px;padding:0 4px}
+.territory-heading h2{margin:7px 0 0;font-size:clamp(34px,4vw,58px);line-height:.95;text-transform:uppercase;letter-spacing:-.025em}
+.territory-heading p{max-width:570px;margin:0;color:var(--muted);font-size:16px;line-height:1.65;text-align:right}
+.territory-viewport{--rx:0deg;--ry:0deg;position:relative;z-index:1;max-width:1380px;margin:auto;border:1px solid rgba(13,139,255,.42);border-radius:26px;overflow:hidden;background:#020812;box-shadow:0 38px 90px rgba(0,0,0,.62),0 0 0 1px rgba(255,196,0,.06),0 0 60px rgba(13,139,255,.1);transform:perspective(1600px) rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .45s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.territory-viewport:hover{border-color:rgba(13,139,255,.72);box-shadow:0 46px 110px rgba(0,0,0,.7),0 0 0 1px rgba(255,196,0,.12),0 0 82px rgba(13,139,255,.18)}
+.territory-viewport img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transform:scale(1.002);filter:saturate(1.05) contrast(1.03);transition:transform 1.1s var(--ease),filter .55s var(--ease)}
+.territory-viewport:hover img{transform:scale(1.016);filter:saturate(1.14) contrast(1.07)}
+.territory-grid{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.2;background-image:linear-gradient(rgba(13,139,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(13,139,255,.16) 1px,transparent 1px);background-size:68px 68px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 52%);animation:territoryGrid 12s linear infinite}
+.territory-scan{position:absolute;left:0;right:0;top:-18%;height:22%;z-index:3;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(13,139,255,.04),rgba(13,139,255,.24),rgba(255,196,0,.08),transparent);mix-blend-mode:screen;filter:blur(.2px);animation:territoryScan 7.5s linear infinite}
+.territory-viewport::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(115deg,transparent 0 42%,rgba(255,255,255,.08) 49%,transparent 56% 100%);transform:translateX(-115%);animation:territorySweep 8s ease-in-out infinite}
+.territory-corner{position:absolute;z-index:5;width:66px;height:66px;pointer-events:none;border-color:var(--yellow);opacity:.78}
+.corner-a{left:17px;top:17px;border-left:2px solid;border-top:2px solid}
+.corner-b{right:17px;bottom:17px;border-right:2px solid;border-bottom:2px solid}
+@keyframes territoryGrid{to{background-position:68px 68px}}
+@keyframes territoryScan{0%{transform:translateY(0);opacity:0}10%{opacity:.75}88%{opacity:.65}100%{transform:translateY(620%);opacity:0}}
+@keyframes territorySweep{0%,55%{transform:translateX(-115%)}78%,100%{transform:translateX(115%)}}
+@media(max-width:950px){.territory-section{padding:58px 16px 54px}.territory-heading{align-items:flex-start;flex-direction:column;gap:13px}.territory-heading p{text-align:left}.territory-viewport{border-radius:18px}.territory-viewport img{aspect-ratio:auto}.territory-grid{background-size:42px 42px}.territory-corner{width:42px;height:42px}}
+@media(prefers-reduced-motion:reduce){.territory-grid,.territory-scan,.territory-viewport::after{animation:none}.territory-viewport{transform:none!important}.territory-viewport img{transition:none}}
