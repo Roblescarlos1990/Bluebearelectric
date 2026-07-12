@@ -1,3 +1,1 @@
-# VoltFlow V8.5
-
-Complete contractor operations platform repository. See `README-V8.5.md` for the CRM release steps and `docs/PRODUCT_VISION_AND_ROADMAP.md` for the long-term SaaS vision.
+VoltFlow V8.6 complete repository: public Blue Bear Electric website plus VoltFlow CRM, content management, professional estimating, billing, portals, and field operations.
