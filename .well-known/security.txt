@@ -1,0 +1,5 @@
+Contact: mailto:security@bluebearelectric.com
+Preferred-Languages: en
+Canonical: https://bluebearelectric.com/.well-known/security.txt
+Policy: https://bluebearelectric.com/security-policy.html
+Expires: 2027-07-31T23:59:59Z

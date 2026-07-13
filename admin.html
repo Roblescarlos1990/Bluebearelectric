@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VoltFlow V8.6 | Estimating & Billing</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>VoltFlow V8.6.6 | Security Hardened</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body>
 <header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb">☰</button><div class="mobile"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
 <section class="page-hero admin-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.96),rgba(4,9,16,.58)),url('assets/images/site/switchgear.jpg')"><div><div class="eyebrow">VoltFlow</div><h1>Command Center</h1><p class="lead">Lead operations, customer follow-up, conversion tracking, projects, documents, website publishing, and field workflows in one secure command center.</p></div></section>
 <section class="section admin-shell v6-shell">
@@ -7,7 +7,7 @@
     <form class="form admin-form" data-login-form><input name="email" type="email" placeholder="Admin email" required><input name="password" type="password" placeholder="Password" required><button class="btn yellow" type="submit">Sign In</button><p class="form-status" data-login-status></p></form>
   </div>
   <div class="admin-dashboard" data-admin-dashboard style="display:none">
-    <div class="admin-top"><div><div class="eyebrow">VoltFlow V8.6</div><h2>Command Center</h2><p class="small green">V8.6 estimating and billing loaded: build professional estimates, convert approved work to invoices, record payments, and track financial activity.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
+    <div class="admin-top"><div><div class="eyebrow">VoltFlow V8.6.6</div><h2>Command Center</h2><p class="small green">Security hardening active: secure quote endpoint, abuse controls, admin verification, monitoring, and protected session behavior.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
     <p class="form-status" data-admin-message></p>
     <div class="admin-stats v6-stats" data-admin-stats></div>
     <div class="os-layout">
@@ -24,6 +24,7 @@
         <button class="tab-btn" data-tab="docs">📄 <span>Docs</span></button>
         <button class="tab-btn" data-tab="portals">🔐 <span>Portals</span></button>
         <button class="tab-btn" data-tab="fieldops">👷 <span>Field Ops</span></button>
+        <button class="tab-btn" data-tab="security">🛡️ <span>Security</span></button>
         <button class="tab-btn" data-tab="quickadd">➕ <span>Quick Add</span></button>
         <button class="tab-btn" data-tab="website">🌐 <span>Website</span></button>
         <a class="tab-btn" href="customize.html">🎨 <span>Theme</span></a>
@@ -189,6 +190,15 @@
         </div>
       </section>
     </div>
+
+    <div class="tab-page" data-tab-page="security">
+      <section class="security-command">
+        <div class="admin-panel wide security-hero-panel"><div><div class="eyebrow">VoltFlow Protection</div><h3>Security Monitoring</h3><p class="small">Monitor secure quote submissions, bot challenges, spam blocks, rate limits, countries, and high-severity application events.</p></div><button class="btn blue" type="button" data-refresh-security>Refresh Security Data</button></div>
+        <p class="form-status" data-security-status></p>
+        <div class="security-kpi-grid" data-security-kpis></div>
+        <div class="security-layout"><section class="admin-panel wide"><div class="panel-head"><div><h3>Recent Security Events</h3><p class="small">Identifiers are hashed; raw visitor IP addresses are not stored in the application database.</p></div></div><div class="security-event-list" data-security-events></div></section><section class="admin-panel"><h3>Traffic by Country</h3><div class="security-country-list" data-security-countries></div><div class="security-posture"><h4>Security Posture</h4><p>✓ Server-side quote API</p><p>✓ Bot and spam verification</p><p>✓ Layered rate limiting</p><p>✓ Admin membership validation</p><p>✓ 30-minute idle timeout</p><p>✓ AI crawler rules</p></div></section></div>
+      </section>
+    </div>
     <div class="tab-page" data-tab-page="quickadd"><div class="admin-grid"><section class="admin-panel"><h3>Add Customer</h3><form data-new-customer class="mini-form"><input name="full_name" placeholder="Full name" required><input name="company" placeholder="Company"><input name="phone" placeholder="Phone"><input name="email" placeholder="Email"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Customer</button></form></section><section class="admin-panel"><h3>Add Project</h3><form data-new-project class="mini-form"><input name="project_name" placeholder="Project name" required><input name="service_type" placeholder="Service type"><input name="status" placeholder="Status" value="Planning"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Project</button></form></section></div></div>
     <div class="tab-page" data-tab-page="website">
       <p class="form-status" data-site-manager-status></p>
@@ -210,4 +220,4 @@
   </div>
 </section>
 <footer class="footer"><div class="foot-grid"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>VoltFlow</h4><p class="small">Contractor Operations Platform</p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="admin-backend.js"></script><script src="v6-3-command-center.js"></script><script src="v6-4-ai-ops.js"></script><script src="v6-5-doc-center.js"></script><script src="v6-7-field-ops-admin.js"></script><script src="theme-loader.js"></script><script src="content-manager.js"></script><script src="crm-v8-5.js"></script><script src="billing-v8-6.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="admin-backend.js"></script><script src="v6-3-command-center.js"></script><script src="v6-4-ai-ops.js"></script><script src="v6-5-doc-center.js"></script><script src="v6-7-field-ops-admin.js"></script><script src="theme-loader.js"></script><script src="content-manager.js"></script><script src="crm-v8-5.js"></script><script src="billing-v8-6.js"></script><script src="security-dashboard.js"></script></body></html>

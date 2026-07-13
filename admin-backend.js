@@ -11,7 +11,28 @@
   const loginBox=$('[data-admin-login]'), dash=$('[data-admin-dashboard]'), loginForm=$('[data-login-form]'), loginStatus=$('[data-login-status]'), msg=$('[data-admin-message]');
   function notify(text, ok=true){ if(msg){ msg.textContent=text; msg.className='form-status '+(ok?'success':'error'); } }
   function showLogin(text=''){ if(loginBox) loginBox.style.display='block'; if(dash) dash.style.display='none'; if(loginStatus) loginStatus.textContent=text; }
-  function showDash(){ if(loginBox) loginBox.style.display='none'; if(dash) dash.style.display='block'; notify(''); loadAll(); }
+  const IDLE_LIMIT_MS=30*60*1000;
+  let idleTimer=null;
+  function resetIdleTimer(){
+    clearTimeout(idleTimer);
+    if(!state.session) return;
+    idleTimer=setTimeout(async()=>{await client.auth.signOut();state.session=null;showLogin('Your secure session expired after 30 minutes of inactivity.');},IDLE_LIMIT_MS);
+  }
+  ['click','keydown','pointerdown','touchstart'].forEach(eventName=>document.addEventListener(eventName,resetIdleTimer,{passive:true}));
+  async function verifyAdmin(session){
+    if(!session?.user?.id) return false;
+    const {data,error}=await client.from('admin_users').select('user_id,role').eq('user_id',session.user.id).eq('role','admin').maybeSingle();
+    if(error){console.error('Admin verification failed:',error);return false;}
+    return Boolean(data);
+  }
+  async function showDash(session){
+    const activeSession=session||state.session;
+    if(!await verifyAdmin(activeSession)){
+      await client.auth.signOut();state.session=null;showLogin('This account is not authorized for VoltFlow administration.');return;
+    }
+    state.session=activeSession;
+    if(loginBox) loginBox.style.display='none'; if(dash) dash.style.display='block'; notify(''); resetIdleTimer(); loadAll();
+  }
   async function count(table){ const {count,error}=await client.from(table).select('*',{count:'exact',head:true}); return error?0:(count||0); }
   function bindTabs(){ $$('.tab-btn').forEach(btn=>btn.onclick=()=>{ $$('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); $$('.tab-page').forEach(p=>p.classList.remove('active')); $(`[data-tab-page="${btn.dataset.tab}"]`)?.classList.add('active'); }); $$('.ws-tab').forEach(btn=>btn.onclick=()=>{ $$('.ws-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); $$('.ws-page').forEach(p=>p.classList.remove('active')); $(`[data-ws-page="${btn.dataset.wsTab}"]`)?.classList.add('active'); }); }
   async function loadStats(){
@@ -59,8 +80,14 @@
   function renderTimeline(){ const wrap=$('[data-timeline-list]'); if(!wrap) return; const defaults=['Lead Received','Site Visit','Estimate Sent','Approved','Materials Ordered','Work Started','Inspection','Invoice Sent','Paid','Closed']; const rows=(state.milestones&&state.milestones.length)?state.milestones:defaults.map((label,i)=>({label,status:i<1?'Done':'Pending'})); wrap.innerHTML=rows.map(m=>`<div class="timeline-item"><span class="dot ${String(m.status).toLowerCase()}"></span><div><b>${esc(m.label||m.title)}</b><p class="small">${esc(m.notes||'')}</p></div><span class="badge">${esc(m.status||'Pending')}</span></div>`).join(''); }
   async function loadAll(){ await loadData(); renderLeads(); renderCustomers(); renderProjects(); await renderRecentGallery(); renderScheduleDash(); renderActivity(); await loadStats(); if(state.selectedProjectId){ state.selectedProject=state.projects.find(p=>p.id===state.selectedProjectId); renderWorkspaceShell(); await loadWorkspace(); } }
   async function insertFromForm(form, table, fields){ const fd=new FormData(form); const row={}; fields.forEach(f=>row[f]=String(fd.get(f)||'').trim()); const {error}=await client.from(table).insert(row); if(error){console.error(error); notify(`Could not add ${table}.`,false);} else {form.reset(); notify(`${table} added.`); await loadAll();} }
-  loginForm?.addEventListener('submit',async e=>{e.preventDefault(); const fd=new FormData(loginForm); loginStatus.textContent='Signing in...'; const {error}=await client.auth.signInWithPassword({email:fd.get('email'),password:fd.get('password')}); if(error){loginStatus.textContent='Login failed.';return;} showDash();});
-  $('[data-logout]')?.addEventListener('click',async()=>{await client.auth.signOut(); showLogin('Signed out.');});
+  loginForm?.addEventListener('submit',async e=>{
+    e.preventDefault();const fd=new FormData(loginForm);loginStatus.textContent='Signing in securely...';
+    const {data,error}=await client.auth.signInWithPassword({email:fd.get('email'),password:fd.get('password')});
+    if(error){loginStatus.textContent='Login failed. Check your credentials and try again.';return;}
+    if(!await verifyAdmin(data.session)){await client.auth.signOut();loginStatus.textContent='This account is not authorized for administration.';return;}
+    showDash(data.session);
+  });
+  $('[data-logout]')?.addEventListener('click',async()=>{clearTimeout(idleTimer);await client.auth.signOut();state.session=null;showLogin('Signed out securely.');});
   $('[data-new-customer]')?.addEventListener('submit',e=>{e.preventDefault(); insertFromForm(e.currentTarget,'customers',['full_name','company','phone','email','city','notes']);});
   $('[data-new-project]')?.addEventListener('submit',e=>{e.preventDefault(); insertFromForm(e.currentTarget,'projects',['project_name','service_type','status','city','notes']);});
   document.addEventListener('click',e=>{ const card=e.target.closest('[data-open-project]'); if(card) openProject(card.dataset.openProject); const img=e.target.closest('[data-lightbox]'); if(img){ const overlay=document.createElement('div'); overlay.className='bb-lightbox'; overlay.innerHTML=`<button aria-label="Close">×</button><img src="${img.dataset.lightbox}" alt="Project photo">`; overlay.onclick=()=>overlay.remove(); document.body.appendChild(overlay); } });
@@ -87,5 +114,11 @@
     printDoc(title,`<h1>${esc(title)}</h1><p><b>Project:</b> ${esc(p.project_name||'Unassigned')}</p><pre style="white-space:pre-wrap;font-family:Arial;line-height:1.55">${esc(text)}</pre><p style="margin-top:36px;font-size:12px;color:#666">Draft prepared in VoltFlow. Review technical details, pricing, code requirements, and site conditions before customer release.</p>`);
   });
   bindTabs();
-  client.auth.getSession().then(({data})=> data.session ? showDash() : showLogin());
+  client.auth.getSession().then(async({data})=>{
+    if(data.session&&await verifyAdmin(data.session)) showDash(data.session); else showLogin();
+  });
+  client.auth.onAuthStateChange(async(event,session)=>{
+    if(event==='SIGNED_OUT'){state.session=null;clearTimeout(idleTimer);showLogin('Signed out.');}
+    if(event==='TOKEN_REFRESHED'&&session){state.session=session;resetIdleTimer();}
+  });
 })();
