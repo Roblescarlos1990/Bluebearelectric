@@ -80,6 +80,67 @@ function suspiciousText(payload) {
   return links > 2 || spamTerms.some(term => joined.includes(term));
 }
 
+
+async function buildAcknowledgement(payload, reference) {
+  const fallback = `Hi ${payload.full_name},
+
+Thank you for contacting Blue Bear Electric regarding ${payload.service_type.toLowerCase()} electrical service.
+
+We received your request${payload.city ? ` for the ${payload.city} area` : ''}. A member of our team will review the details and contact you to confirm the next step. For urgent electrical conditions, please call 760-234-8306.
+
+Reference: ${reference || 'Pending'}
+
+Blue Bear Electric
+Powered by VoltFlow`;
+
+  if (!process.env.OPENAI_API_KEY) return fallback;
+  try {
+    const response = await fetch('https://api.openai.com/v1/responses', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: process.env.OPENAI_EMAIL_MODEL || 'gpt-5-mini',
+        input: [
+          { role: 'system', content: 'Write a concise, professional acknowledgement email for Blue Bear Electric. Do not promise pricing, arrival times, code compliance, or availability. Mention that a team member will review the request. Return only the email body.' },
+          { role: 'user', content: JSON.stringify({ name: payload.full_name, service: payload.service_type, urgency: payload.urgency, city: payload.city, message: payload.message, reference }) }
+        ],
+        max_output_tokens: 280
+      })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(JSON.stringify(data));
+    return data.output_text || fallback;
+  } catch (error) {
+    console.error('ai_email_generation_failed', error.message);
+    return fallback;
+  }
+}
+async function sendAcknowledgement(payload, reference, body) {
+  if (!process.env.RESEND_API_KEY || !payload.email) return { skipped: true };
+  const from = process.env.ADMIN_FROM_EMAIL || 'Blue Bear Electric <onboarding@resend.dev>';
+  const replyTo = process.env.ADMIN_REPLY_TO_EMAIL || process.env.ADMIN_NOTIFICATION_EMAIL || undefined;
+  const customer = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ from, to: [payload.email], reply_to: replyTo, subject: `We received your estimate request${reference ? ` — ${reference}` : ''}`, text: body })
+  });
+  if (!customer.ok) throw new Error(await customer.text());
+  if (process.env.ADMIN_NOTIFICATION_EMAIL) {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from,
+        to: [process.env.ADMIN_NOTIFICATION_EMAIL],
+        reply_to: payload.email || undefined,
+        subject: `New ${payload.service_type} estimate request — ${payload.full_name}`,
+        text: `New lead received.\n\nName: ${payload.full_name}\nPhone: ${payload.phone}\nEmail: ${payload.email || 'Not provided'}\nCity: ${payload.city || 'Not provided'}\nUrgency: ${payload.urgency}\nService: ${payload.service_type}\nReference: ${reference || 'Pending'}\n\nMessage:\n${payload.message || 'No message provided.'}`
+      })
+    });
+  }
+  return { sent: true };
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return json(res, 405, { ok: false, message: 'Method not allowed.' });
   if (!allowedOrigin(req)) return json(res, 403, { ok: false, message: 'Request origin is not allowed.' });
@@ -171,7 +232,18 @@ module.exports = async function handler(req, res) {
     const lead = Array.isArray(inserted) ? inserted[0] : inserted;
     await recordAttempt({ ...baseAttempt, accepted: true, reason: 'accepted' });
     await recordEvent('quote_accepted', 'info', { country, ip_hash, reason: 'accepted', metadata: { lead_id: lead?.id || null, service_type: payload.service_type } });
-    return json(res, 201, { ok: true, message: 'Request delivered successfully.', reference: lead?.id ? String(lead.id).slice(0, 8).toUpperCase() : null });
+    const reference = lead?.id ? String(lead.id).slice(0, 8).toUpperCase() : null;
+    let email_status = 'not_configured';
+    try {
+      const acknowledgement = await buildAcknowledgement(payload, reference);
+      const sent = await sendAcknowledgement(payload, reference, acknowledgement);
+      email_status = sent.sent ? 'sent' : 'not_configured';
+    } catch (emailError) {
+      email_status = 'failed';
+      console.error('automatic_email_failed', emailError.message);
+      await recordEvent('automatic_email_failed', 'medium', { country, ip_hash, reason: 'email_provider_error' });
+    }
+    return json(res, 201, { ok: true, message: 'Request delivered successfully.', reference, email_status });
   } catch (error) {
     console.error('secure_quote_insert_failed', error);
     await recordAttempt({ ...baseAttempt, reason: 'database_error' });

@@ -1,13 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>VoltFlow V8.8 | Operations Intelligence</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>VoltFlow V8.8.1 | Experience Edition</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body><div class="vf-boot" data-vf-boot aria-live="polite">
+  <div class="vf-boot-grid"></div>
+  <div class="vf-boot-core">
+    <svg class="vf-boot-logo" viewBox="0 0 120 120" role="img" aria-label="VoltFlow">
+      <defs><linearGradient id="vfBolt" x1="0" x2="1"><stop stop-color="#54b4ff"/><stop offset="1" stop-color="#ffc400"/></linearGradient></defs>
+      <path class="vf-v" d="M18 22 L48 96 L60 73 L72 96 L103 22 L82 22 L60 68 L38 22 Z" fill="none" stroke="url(#vfBolt)" stroke-width="9" stroke-linejoin="round"/>
+      <path class="vf-bolt" d="M66 13 L43 58 H59 L52 106 L82 51 H65 Z" fill="url(#vfBolt)"/>
+    </svg>
+    <div class="vf-boot-word">VOLTFLOW</div>
+    <div class="vf-boot-tag">Contractor Operating System</div>
+    <div class="vf-boot-status" data-vf-boot-status>Initializing secure workspace</div>
+    <div class="vf-boot-progress"><span data-vf-boot-progress></span></div>
+  </div>
+</div>
 <header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb">☰</button><div class="mobile"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
 <section class="page-hero admin-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.96),rgba(4,9,16,.58)),url('assets/images/site/switchgear.jpg')"><div><div class="eyebrow">VoltFlow</div><h1>Command Center</h1><p class="lead">Lead operations, customer follow-up, conversion tracking, projects, documents, website publishing, and field workflows in one secure command center.</p></div></section>
 <section class="section admin-shell v6-shell">
   <div class="admin-login" data-admin-login>
-    <div class="section-title"><h2>Admin Login</h2><p>Use the admin email/password created in Supabase Authentication.</p></div>
+    <div class="vf-login-brand">
+<svg viewBox="0 0 90 90" class="vf-login-mark" aria-hidden="true"><path d="M12 16 L35 73 L45 55 L55 73 L78 16 L62 16 L45 51 L28 16 Z" fill="none" stroke="currentColor" stroke-width="7"/><path d="M51 8 L34 43 H47 L41 82 L65 39 H52 Z" fill="currentColor"/></svg>
+<div><div class="eyebrow">Secure Workspace</div><h2>Sign in to VoltFlow</h2><p>Blue Bear Electric enterprise workspace</p></div>
+</div>
     <form class="form admin-form" data-login-form><input name="email" type="email" placeholder="Admin email" required><input name="password" type="password" placeholder="Password" required><button class="btn yellow" type="submit">Sign In</button><p class="form-status" data-login-status></p></form>
   </div>
   <div class="admin-dashboard" data-admin-dashboard style="display:none">
-    <div class="admin-top"><div><div class="eyebrow">VoltFlow V8.8</div><h2>Operations Intelligence</h2><p class="small green">Executive visibility, universal search, proactive operational insights, live notifications, project health, and financial awareness.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
+    <div class="admin-top"><div><div class="eyebrow">VoltFlow V8.8.1</div><h2>Experience Edition</h2><p class="small green">Executive visibility, universal search, proactive operational insights, live notifications, project health, and financial awareness.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
     <p class="form-status" data-admin-message></p>
     <div class="admin-stats v6-stats" data-admin-stats></div>
     <div class="os-layout">
@@ -251,7 +267,20 @@
           <button class="btn dark" data-download-doc="invoice">Download Invoice HTML</button>
           <button class="btn dark" data-download-doc="closeout">Download Closeout HTML</button>
         </div>
-        <div class="doc-preview-shell"><div class="doc-preview" data-doc-preview></div></div>
+        <div class="document-studio">
+<div class="panel-head"><div><h3>Document Studio</h3><p class="small">Edit the current document directly, save versions, restore a prior version, and export the approved content.</p></div><span class="badge" data-doc-save-state>Not saved</span></div>
+<div class="document-studio-toolbar">
+<input data-doc-title placeholder="Document title">
+<select data-doc-project><option value="">No project selected</option></select>
+<button class="btn blue" type="button" data-doc-load-preview>Load Current Preview</button>
+<button class="btn yellow" type="button" data-doc-save-version>Save Version</button>
+<button class="btn dark" type="button" data-doc-export-editable>Print / Save PDF</button>
+</div>
+<div class="document-studio-grid">
+<div class="document-editor" contenteditable="true" data-document-editor aria-label="Editable document"></div>
+<aside class="document-version-panel"><h4>Version History</h4><div data-document-versions><p class="small">Select a project and save a version.</p></div></aside>
+</div>
+</div><div class="doc-preview-shell"><div class="doc-preview" data-doc-preview></div></div>
       </section>
     </div>
     <div class="tab-page" data-tab-page="portals">
@@ -300,4 +329,4 @@
   </div>
 </section>
 <footer class="footer"><div class="foot-grid"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>VoltFlow</h4><p class="small">Contractor Operations Platform</p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="admin-backend.js"></script><script src="v6-3-command-center.js"></script><script src="v6-4-ai-ops.js"></script><script src="v6-5-doc-center.js"></script><script src="v6-7-field-ops-admin.js"></script><script src="theme-loader.js"></script><script src="content-manager.js"></script><script src="crm-v8-5.js"></script><script src="billing-v8-6.js"></script><script src="security-dashboard.js"></script><script src="project-command-center-v8-7.js"></script><script src="media-v8-7-2.js"></script><script src="operations-intelligence-v8-8.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="admin-backend.js"></script><script src="v6-3-command-center.js"></script><script src="v6-4-ai-ops.js"></script><script src="v6-5-doc-center.js"></script><script src="v6-7-field-ops-admin.js"></script><script src="theme-loader.js"></script><script src="content-manager.js"></script><script src="crm-v8-5.js"></script><script src="billing-v8-6.js"></script><script src="security-dashboard.js"></script><script src="project-command-center-v8-7.js"></script><script src="media-v8-7-2.js"></script><script src="operations-intelligence-v8-8.js"></script><script src="experience-v8-8-1.js"></script><script src="document-studio-v8-8-1.js"></script></body></html>
