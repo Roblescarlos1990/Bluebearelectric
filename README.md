@@ -3,3 +3,7 @@ VoltFlow V8.6 complete repository: public Blue Bear Electric website plus VoltFl
 
 ## Current Release
 VoltFlow V8.8 — Operations Intelligence
+
+
+## Current Release
+VoltFlow V8.9 — Company Brand & Document Experience

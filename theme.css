@@ -79,3 +79,30 @@
 @media(max-width:900px){.document-studio-toolbar{grid-template-columns:1fr 1fr}.document-studio-grid{grid-template-columns:1fr}.document-version-panel{order:-1}.service-card img{height:190px}}
 @media(prefers-reduced-motion:reduce){.vf-boot-grid,.vf-boot-logo,.tab-page,.vf-toast{animation:none!important}.depth-photo{transform:none!important}.review-compact{transition:none}}
 
+
+
+/* VoltFlow V8.9 — Blue Bear Company Brand & Document Experience */
+.blue-bear-branded{position:relative}
+.blue-bear-branded:before{
+  content:"";position:fixed;z-index:-1;pointer-events:none;
+  width:min(760px,72vw);aspect-ratio:1.3;right:-9vw;top:18vh;
+  background:url("assets/branding/blue-bear/watermark-dark.png") center/contain no-repeat;
+  opacity:var(--company-watermark-opacity,.06);
+  filter:saturate(.85);transform:rotate(-4deg);
+}
+.blue-bear-branded main,.blue-bear-branded header,.blue-bear-branded footer{position:relative}
+.bbe-site-intro{position:fixed;inset:0;z-index:12000;display:grid;place-items:center;background:#01060d;color:#fff;transition:opacity .42s ease,visibility .42s ease}
+.bbe-site-intro.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.bbe-intro-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(40,133,232,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(40,133,232,.08) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at center,#000,transparent 72%)}
+.bbe-intro-core{position:relative;width:min(520px,88vw);text-align:center}
+.bbe-intro-core img{display:block;width:min(300px,68vw);max-height:260px;object-fit:contain;margin:0 auto 8px;filter:drop-shadow(0 0 28px rgba(31,123,232,.36))}
+.bbe-intro-core h1{margin:8px 0 2px;font-size:clamp(27px,5vw,48px);letter-spacing:.05em;text-transform:uppercase}
+.bbe-intro-core p{margin:0;color:#b7c4d5;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+.bbe-intro-bar{height:3px;width:min(280px,72vw);margin:25px auto 0;background:rgba(255,255,255,.09);border-radius:999px;overflow:hidden}
+.bbe-intro-bar span{display:block;width:100%;height:100%;background:linear-gradient(90deg,#1479e8,#ffc400);transform-origin:left;animation:bbeLoad .85s ease both;box-shadow:0 0 18px rgba(20,121,232,.65)}
+@keyframes bbeLoad{from{transform:scaleX(.04)}to{transform:scaleX(1)}}
+.bbe-company-context{display:flex;align-items:center;gap:10px}
+.bbe-company-context img{width:38px;height:38px;object-fit:contain}
+@media(max-width:720px){.blue-bear-branded:before{width:92vw;right:-30vw;top:24vh}}
+@media(prefers-reduced-motion:reduce){.bbe-intro-bar span{animation:none}.bbe-site-intro{transition:none}}
+

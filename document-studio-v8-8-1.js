@@ -33,7 +33,7 @@
   });
   $('[data-doc-export-editable]')?.addEventListener('click',()=>{
     if(!editor.innerText.trim())return;
-    const w=open('','_blank');w.document.write(`<html><head><title>${esc(title.value||'Document')}</title><style>body{font-family:Arial,sans-serif;max-width:850px;margin:40px auto;padding:30px;color:#111;line-height:1.55}img{max-width:100%}</style></head><body>${editor.innerHTML}</body></html>`);w.document.close();w.focus();w.print();
+    const w=window.BlueBearDocuments?.open(title.value||'Document',editor.innerHTML,{status:'CUSTOMER COPY'});if(w)setTimeout(()=>w.print(),250);
   });
   projectSel?.addEventListener('change',loadVersions);
   versions?.addEventListener('click',async e=>{
