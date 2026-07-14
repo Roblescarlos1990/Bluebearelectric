@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>VoltFlow V8.7 | Project Command Center</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>VoltFlow V8.8 | Operations Intelligence</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="favicon.svg" type="image/svg+xml"></head><body>
 <header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb">☰</button><div class="mobile"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
 <section class="page-hero admin-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.96),rgba(4,9,16,.58)),url('assets/images/site/switchgear.jpg')"><div><div class="eyebrow">VoltFlow</div><h1>Command Center</h1><p class="lead">Lead operations, customer follow-up, conversion tracking, projects, documents, website publishing, and field workflows in one secure command center.</p></div></section>
 <section class="section admin-shell v6-shell">
@@ -7,12 +7,12 @@
     <form class="form admin-form" data-login-form><input name="email" type="email" placeholder="Admin email" required><input name="password" type="password" placeholder="Password" required><button class="btn yellow" type="submit">Sign In</button><p class="form-status" data-login-status></p></form>
   </div>
   <div class="admin-dashboard" data-admin-dashboard style="display:none">
-    <div class="admin-top"><div><div class="eyebrow">VoltFlow V8.7</div><h2>Command Center</h2><p class="small green">Project Command Center active: unified project status, milestones, tasks, activity, financial visibility, documents, and field operations.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
+    <div class="admin-top"><div><div class="eyebrow">VoltFlow V8.8</div><h2>Operations Intelligence</h2><p class="small green">Executive visibility, universal search, proactive operational insights, live notifications, project health, and financial awareness.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
     <p class="form-status" data-admin-message></p>
     <div class="admin-stats v6-stats" data-admin-stats></div>
     <div class="os-layout">
       <aside class="os-sidebar">
-        <div class="os-brand-block"><div class="os-logo">VOLTFLOW</div><div class="os-subtitle">Contractor Operations</div></div>
+        <div class="os-brand-block"><div class="os-logo">VOLTFLOW</div><div class="os-subtitle">Operations Intelligence</div></div>
         <div class="os-nav-group"><div class="os-nav-label">Overview</div>
           <button class="tab-btn active" data-tab="dashboard"><span>Operations Center</span></button>
         </div>
@@ -43,12 +43,61 @@
       </aside>
       <div class="os-main">
     <div class="tab-page active" data-tab-page="dashboard">
-      <div class="admin-grid">
-        <section class="admin-panel wide"><h3>Executive Dashboard</h3><div class="kpi-grid" data-kpi-grid></div></section>
-        <section class="admin-panel"><h3>Website Leads</h3><p class="small">New estimate requests from the public contact form.</p><div data-leads-list></div></section>
-        <section class="admin-panel"><h3>Today / Upcoming Schedule</h3><div data-dashboard-schedule></div></section>
-        <section class="admin-panel wide"><h3>Recent Files</h3><div class="media-grid" data-gallery-list></div></section>
-      </div>
+      <section class="vf88-command">
+        <header class="vf88-command-header">
+          <div>
+            <div class="eyebrow">Company Operations</div>
+            <h2 data-vf88-greeting>Operations Center</h2>
+            <p class="small">A prioritized view of revenue, projects, customers, field activity, and the actions requiring attention now.</p>
+          </div>
+          <div class="vf88-command-actions">
+            <button class="btn dark" type="button" data-vf88-open-search>Search Everything</button>
+            <button class="btn blue" type="button" data-vf88-refresh>Refresh Intelligence</button>
+          </div>
+        </header>
+
+        <section class="vf88-search-strip">
+          <label class="vf88-global-search">
+            <span>Universal Search</span>
+            <input type="search" data-vf88-search placeholder="Search customers, projects, leads, invoices, files, schedule, cities, phone numbers...">
+          </label>
+          <div class="vf88-search-results" data-vf88-search-results hidden></div>
+        </section>
+
+        <div class="vf88-kpi-grid" data-vf88-kpis></div>
+
+        <div class="vf88-dashboard-grid">
+          <section class="admin-panel vf88-priority-panel">
+            <div class="panel-head"><div><h3>Needs Attention</h3><p class="small">Rule-based operational findings generated from live company data.</p></div><span class="badge" data-vf88-alert-count>0 alerts</span></div>
+            <div class="vf88-insight-list" data-vf88-insights></div>
+          </section>
+
+          <section class="admin-panel">
+            <div class="panel-head"><div><h3>Today's Operations</h3><p class="small">Upcoming site visits, work windows, and inspections.</p></div></div>
+            <div data-dashboard-schedule></div>
+          </section>
+
+          <section class="admin-panel">
+            <div class="panel-head"><div><h3>Opportunity Pipeline</h3><p class="small">Newest website leads and follow-up status.</p></div><button class="text-action" type="button" data-vf88-jump="crm">Open CRM</button></div>
+            <div data-leads-list></div>
+          </section>
+
+          <section class="admin-panel">
+            <div class="panel-head"><div><h3>Project Health</h3><p class="small">Active work grouped by health and status.</p></div><button class="text-action" type="button" data-vf88-jump="projects">Open Projects</button></div>
+            <div class="vf88-health-list" data-vf88-project-health></div>
+          </section>
+
+          <section class="admin-panel wide">
+            <div class="panel-head"><div><h3>Live Activity</h3><p class="small">Recent operational changes across projects, media, billing, and scheduling.</p></div><button class="text-action" type="button" data-vf88-refresh-activity>Refresh</button></div>
+            <div class="vf88-activity-stream" data-vf88-activity></div>
+          </section>
+
+          <section class="admin-panel wide">
+            <div class="panel-head"><div><h3>Recent Project Media</h3><p class="small">Latest project evidence and documentation.</p></div><button class="text-action" type="button" data-vf88-jump="workspace">Open Media Center</button></div>
+            <div class="media-grid" data-gallery-list></div>
+          </section>
+        </div>
+      </section>
     </div>
     <div class="tab-page" data-tab-page="crm">
       <section class="crm-command" data-crm-command>
@@ -150,7 +199,7 @@
     </div>
     <div class="tab-page" data-tab-page="ai">
       <section class="admin-panel wide ai-ops-panel">
-        <div class="panel-head"><div><h3>AI Operations Center</h3><p class="small">Manual AI workspace inside the admin. No API key required yet. Use these tools to draft proposals, scopes, estimates, customer emails, safety notes, and troubleshooting plans.</p></div><span class="badge">V6.4 Local AI Workspace</span></div>
+        <div class="panel-head"><div><h3>AI Operations Center</h3><p class="small">Manual AI workspace inside the admin. No API key required yet. Use these tools to draft proposals, scopes, estimates, customer emails, safety notes, and troubleshooting plans.</p></div><span class="badge">Operations Intelligence Workspace</span></div>
         <div class="ai-mode-grid">
           <button class="ai-mode active" data-ai-mode="proposal">Proposal</button>
           <button class="ai-mode" data-ai-mode="scope">Scope of Work</button>
@@ -251,4 +300,4 @@
   </div>
 </section>
 <footer class="footer"><div class="foot-grid"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>VoltFlow</h4><p class="small">Contractor Operations Platform</p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="admin-backend.js"></script><script src="v6-3-command-center.js"></script><script src="v6-4-ai-ops.js"></script><script src="v6-5-doc-center.js"></script><script src="v6-7-field-ops-admin.js"></script><script src="theme-loader.js"></script><script src="content-manager.js"></script><script src="crm-v8-5.js"></script><script src="billing-v8-6.js"></script><script src="security-dashboard.js"></script><script src="project-command-center-v8-7.js"></script><script src="media-v8-7-2.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="script.js"></script><script src="admin-backend.js"></script><script src="v6-3-command-center.js"></script><script src="v6-4-ai-ops.js"></script><script src="v6-5-doc-center.js"></script><script src="v6-7-field-ops-admin.js"></script><script src="theme-loader.js"></script><script src="content-manager.js"></script><script src="crm-v8-5.js"></script><script src="billing-v8-6.js"></script><script src="security-dashboard.js"></script><script src="project-command-center-v8-7.js"></script><script src="media-v8-7-2.js"></script><script src="operations-intelligence-v8-8.js"></script></body></html>
