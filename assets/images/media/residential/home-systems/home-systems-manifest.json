@@ -1,0 +1,149 @@
+{
+  "version": "8.9.2",
+  "systems": {
+    "panel": {
+      "title": "Main Electrical Panel",
+      "description": "The panel distributes power through the home and is reviewed for condition, capacity, labeling and suitability for added loads.",
+      "features": [
+        "Capacity and condition review",
+        "Breaker and circuit organization",
+        "Upgrade planning for added loads"
+      ],
+      "items": [
+        {
+          "src": "assets/images/media/residential/home-systems/panel/panel-01.jpg",
+          "title": "Main Electrical Panel \u2014 View 1",
+          "alt": "Main Electrical Panel residential electrical service image 1"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/panel/panel-02.jpg",
+          "title": "Main Electrical Panel \u2014 View 2",
+          "alt": "Main Electrical Panel residential electrical service image 2"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/panel/panel-03.jpg",
+          "title": "Main Electrical Panel \u2014 View 3",
+          "alt": "Main Electrical Panel residential electrical service image 3"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/panel/panel-04.jpg",
+          "title": "Main Electrical Panel \u2014 View 4",
+          "alt": "Main Electrical Panel residential electrical service image 4"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/panel/panel-05.jpg",
+          "title": "Main Electrical Panel \u2014 View 5",
+          "alt": "Main Electrical Panel residential electrical service image 5"
+        }
+      ]
+    },
+    "ev": {
+      "title": "EV Charging",
+      "description": "Home charging requires a review of charger specifications, available capacity, routing and the proposed mounting location.",
+      "features": [
+        "Charger and circuit requirements",
+        "Load and capacity review",
+        "Routing and mounting plan"
+      ],
+      "items": [
+        {
+          "src": "assets/images/media/residential/home-systems/ev/ev-01.jpg",
+          "title": "EV Charging \u2014 View 1",
+          "alt": "EV Charging residential electrical service image 1"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/ev/ev-02.jpg",
+          "title": "EV Charging \u2014 View 2",
+          "alt": "EV Charging residential electrical service image 2"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/ev/ev-03.jpg",
+          "title": "EV Charging \u2014 View 3",
+          "alt": "EV Charging residential electrical service image 3"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/ev/ev-04.jpg",
+          "title": "EV Charging \u2014 View 4",
+          "alt": "EV Charging residential electrical service image 4"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/ev/ev-05.jpg",
+          "title": "EV Charging \u2014 View 5",
+          "alt": "EV Charging residential electrical service image 5"
+        }
+      ]
+    },
+    "lighting": {
+      "title": "Lighting & Controls",
+      "description": "Lighting upgrades improve function, comfort and exterior visibility while adding modern switching and control options.",
+      "features": [
+        "Interior and exterior lighting",
+        "Switching and dimming",
+        "Ceiling fans and specialty fixtures"
+      ],
+      "items": [
+        {
+          "src": "assets/images/media/residential/home-systems/lighting/lighting-01.jpg",
+          "title": "Lighting & Controls \u2014 View 1",
+          "alt": "Lighting & Controls residential electrical service image 1"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/lighting/lighting-02.jpg",
+          "title": "Lighting & Controls \u2014 View 2",
+          "alt": "Lighting & Controls residential electrical service image 2"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/lighting/lighting-03.jpg",
+          "title": "Lighting & Controls \u2014 View 3",
+          "alt": "Lighting & Controls residential electrical service image 3"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/lighting/lighting-04.jpg",
+          "title": "Lighting & Controls \u2014 View 4",
+          "alt": "Lighting & Controls residential electrical service image 4"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/lighting/lighting-05.jpg",
+          "title": "Lighting & Controls \u2014 View 5",
+          "alt": "Lighting & Controls residential electrical service image 5"
+        }
+      ]
+    },
+    "garage": {
+      "title": "Garage & Shop Power",
+      "description": "Garages and workshops often need dedicated circuits, receptacles, lighting and equipment-specific power.",
+      "features": [
+        "Dedicated equipment circuits",
+        "Shop receptacles and lighting",
+        "Future expansion planning"
+      ],
+      "items": [
+        {
+          "src": "assets/images/media/residential/home-systems/garage/garage-01.jpg",
+          "title": "Garage & Shop Power \u2014 View 1",
+          "alt": "Garage & Shop Power residential electrical service image 1"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/garage/garage-02.jpg",
+          "title": "Garage & Shop Power \u2014 View 2",
+          "alt": "Garage & Shop Power residential electrical service image 2"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/garage/garage-03.jpg",
+          "title": "Garage & Shop Power \u2014 View 3",
+          "alt": "Garage & Shop Power residential electrical service image 3"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/garage/garage-04.jpg",
+          "title": "Garage & Shop Power \u2014 View 4",
+          "alt": "Garage & Shop Power residential electrical service image 4"
+        },
+        {
+          "src": "assets/images/media/residential/home-systems/garage/garage-05.jpg",
+          "title": "Garage & Shop Power \u2014 View 5",
+          "alt": "Garage & Shop Power residential electrical service image 5"
+        }
+      ]
+    }
+  }
+}
