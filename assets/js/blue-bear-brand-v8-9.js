@@ -23,10 +23,10 @@
       </div>`;
     document.body.prepend(splash);
     sessionStorage.setItem('blueBearIntroSeen','1');
-    const ready=()=>setTimeout(()=>splash.classList.add('is-hidden'),reduced?40:Math.max(250,Math.min(850,performance.now())));
+    const ready=()=>setTimeout(()=>splash.classList.add('is-hidden'),reduced?40:1650);
     if(document.readyState==='complete')ready();else addEventListener('load',ready,{once:true});
-    setTimeout(()=>splash.classList.add('is-hidden'),1400);
-    setTimeout(()=>splash.remove(),2200);
+    setTimeout(()=>splash.classList.add('is-hidden'),2400);
+    setTimeout(()=>splash.remove(),3100);
   }
 
   // Replace any legacy site logo with the current company mark.
