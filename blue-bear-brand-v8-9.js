@@ -16,7 +16,7 @@
     splash.innerHTML=`
       <div class="bbe-intro-grid"></div>
       <div class="bbe-intro-core">
-        <img src="${cfg.logoPrimary||'assets/branding/blue-bear/logo-primary.png'}" alt="${cfg.companyName||'Blue Bear Electric'}">
+        <img src="${cfg.introLogo||cfg.logoPrimary||'assets/branding/blue-bear/logo-intro-hd.webp'}" alt="${cfg.companyName||'Blue Bear Electric'}">
         <h1>${cfg.companyName||'Blue Bear Electric'}</h1>
         <p>${cfg.tagline||'Powering solutions. Delivering excellence.'}</p>
         <div class="bbe-intro-bar"><span></span></div>
