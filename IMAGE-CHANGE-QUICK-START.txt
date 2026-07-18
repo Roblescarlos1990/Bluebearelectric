@@ -1,0 +1,11 @@
+BLUE BEAR V8.9.1 - QUICK IMAGE CHANGE
+
+1. Open MEDIA-CONTROL-CENTER.html for a visual list.
+2. Replace image files inside assets/images/media/<service>/hero/.
+3. KEEP THE EXACT FILENAMES.
+4. Push to GitHub.
+5. Wait for Vercel.
+6. Press Ctrl+Shift+R on the live page.
+
+Full guide:
+docs/guides/V8-9-1-IMAGE-AND-CAROUSEL-GUIDE.md

@@ -1,0 +1,141 @@
+{
+  "version": "8.9.1",
+  "instructions": "Replace files in assets/images/media while keeping exact filenames. The site updates after deployment.",
+  "carousels": {
+    "residential": [
+      {
+        "src": "assets/images/media/residential/hero/residential-hero-01.jpg",
+        "title": "Panel Upgrades",
+        "caption": "Service equipment, capacity planning and clean circuit organization."
+      },
+      {
+        "src": "assets/images/media/residential/hero/residential-hero-02.jpg",
+        "title": "Testing & Troubleshooting",
+        "caption": "Documented field testing to identify the electrical condition."
+      },
+      {
+        "src": "assets/images/media/residential/hero/residential-hero-03.jpg",
+        "title": "Modern Electrical Systems",
+        "caption": "Professional installation for expanding home power needs."
+      },
+      {
+        "src": "assets/images/media/residential/hero/residential-hero-04.jpg",
+        "title": "Responsive Field Service",
+        "caption": "Prepared technicians, organized work and clear communication."
+      },
+      {
+        "src": "assets/images/media/residential/hero/residential-hero-05.jpg",
+        "title": "Protection & Reliability",
+        "caption": "Electrical improvements planned for dependable long-term operation."
+      }
+    ],
+    "industrial": [
+      {
+        "src": "assets/images/media/industrial/hero/industrial-hero-01.jpg",
+        "title": "Switchgear & Distribution",
+        "caption": "Industrial electrical infrastructure and distribution support."
+      },
+      {
+        "src": "assets/images/media/industrial/hero/industrial-hero-02.jpg",
+        "title": "Medium Voltage",
+        "caption": "Terminations, cabinets and field equipment support."
+      },
+      {
+        "src": "assets/images/media/industrial/hero/industrial-hero-03.jpg",
+        "title": "Commissioning Tests",
+        "caption": "Documented testing and troubleshooting."
+      },
+      {
+        "src": "assets/images/media/industrial/hero/industrial-hero-04.jpg",
+        "title": "Diagnostic Equipment",
+        "caption": "Professional electrical measurements and condition verification."
+      },
+      {
+        "src": "assets/images/media/industrial/hero/industrial-hero-05.jpg",
+        "title": "Controls & Drives",
+        "caption": "Power conversion, controls and operating support."
+      }
+    ],
+    "commercial": [
+      {
+        "src": "assets/images/media/commercial/hero/commercial-hero-01.jpg",
+        "title": "Commercial Panels",
+        "caption": "Electrical distribution for occupied facilities."
+      },
+      {
+        "src": "assets/images/media/commercial/hero/commercial-hero-02.jpg",
+        "title": "Testing & Service",
+        "caption": "Troubleshooting and documented corrective work."
+      },
+      {
+        "src": "assets/images/media/commercial/hero/commercial-hero-03.jpg",
+        "title": "Responsive Support",
+        "caption": "Field-ready service for commercial operations."
+      },
+      {
+        "src": "assets/images/media/commercial/hero/commercial-hero-04.jpg",
+        "title": "Professional Terminations",
+        "caption": "Clean, organized electrical installation."
+      },
+      {
+        "src": "assets/images/media/commercial/hero/commercial-hero-05.jpg",
+        "title": "Facility Electrical",
+        "caption": "Maintenance, upgrades and service support."
+      }
+    ],
+    "solar-bess": [
+      {
+        "src": "assets/images/media/solar-bess/hero/solar-bess-hero-01.jpg",
+        "title": "Solar Field Systems",
+        "caption": "Utility-scale field equipment and DC collection."
+      },
+      {
+        "src": "assets/images/media/solar-bess/hero/solar-bess-hero-02.jpg",
+        "title": "Combiner Equipment",
+        "caption": "DC collection, protection and field terminations."
+      },
+      {
+        "src": "assets/images/media/solar-bess/hero/solar-bess-hero-03.jpg",
+        "title": "Field Wiring",
+        "caption": "Inspection and support for solar collection wiring."
+      },
+      {
+        "src": "assets/images/media/solar-bess/hero/solar-bess-hero-04.jpg",
+        "title": "Power Conversion",
+        "caption": "Electrical equipment supporting energy conversion."
+      },
+      {
+        "src": "assets/images/media/solar-bess/hero/solar-bess-hero-05.jpg",
+        "title": "Grid Interface",
+        "caption": "Switching, protection and collection infrastructure."
+      }
+    ],
+    "service-repair": [
+      {
+        "src": "assets/images/media/service-repair/hero/service-repair-hero-01.jpg",
+        "title": "Emergency Evaluation",
+        "caption": "Failure investigation and corrective planning."
+      },
+      {
+        "src": "assets/images/media/service-repair/hero/service-repair-hero-02.jpg",
+        "title": "Electrical Testing",
+        "caption": "Documented measurements for troubleshooting."
+      },
+      {
+        "src": "assets/images/media/service-repair/hero/service-repair-hero-03.jpg",
+        "title": "Insulation Resistance",
+        "caption": "Diagnostic testing for electrical systems."
+      },
+      {
+        "src": "assets/images/media/service-repair/hero/service-repair-hero-04.jpg",
+        "title": "Controls & Equipment",
+        "caption": "Operational troubleshooting and service."
+      },
+      {
+        "src": "assets/images/media/service-repair/hero/service-repair-hero-05.jpg",
+        "title": "Field Response",
+        "caption": "Prepared service support across Imperial County."
+      }
+    ]
+  }
+}
