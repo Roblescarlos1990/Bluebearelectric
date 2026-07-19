@@ -414,3 +414,12 @@ opacity:calc(1 - (abs(var(--offset)) * .25));transition:transform .62s cubic-bez
   }
   .bbe-cinematic-scene{transform:none}
 }
+
+/* V8.9.6 */
+.bbe-classic-intro{display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,rgba(18,105,214,.16),transparent 35%),#01070f}
+.bbe-classic-intro .bbe-intro-grid{opacity:.52;background-image:linear-gradient(rgba(34,119,204,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(34,119,204,.09) 1px,transparent 1px);background-size:48px 48px}
+.bbe-intro-energy{position:absolute;width:min(540px,82vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(19,119,238,.23),rgba(19,119,238,.05) 45%,transparent 69%);animation:bbeClassicPulse 2.25s ease-in-out infinite}
+.bbe-classic-intro .bbe-intro-core{z-index:2}.bbe-classic-intro .bbe-intro-core img{width:min(390px,72vw);max-height:310px;background:transparent!important;filter:drop-shadow(0 0 29px rgba(19,119,238,.43));animation:bbeClassicLogo 2.25s ease-in-out infinite}.bbe-intro-percent{margin-top:9px;color:#56b4ff;font-weight:900}.bbe-classic-intro .bbe-intro-bar span{width:0;animation:none!important;transition:none!important}
+@keyframes bbeClassicPulse{0%,100%{opacity:.4;transform:scale(.9)}50%{opacity:1;transform:scale(1.08)}}@keyframes bbeClassicLogo{0%,100%{transform:scale(.985)}50%{transform:scale(1.025)}}
+.service-photo-3d{position:relative;overflow:hidden;border-radius:18px;perspective:1100px;cursor:zoom-in}.service-photo-3d img{--photo-rx:0deg;--photo-ry:0deg;transform:perspective(1050px) rotateX(var(--photo-rx)) rotateY(var(--photo-ry)) scale(1.025);transition:transform .2s ease,filter .25s ease}.service-photo-3d:hover img{filter:saturate(1.08) contrast(1.04)}.service-photo-lightbox{position:fixed;inset:0;z-index:23000;display:grid;place-items:center;padding:5vh;background:rgba(0,4,10,.95);backdrop-filter:blur(16px)}.service-photo-lightbox button{position:absolute;right:24px;top:18px;border:0;background:none;color:#fff;font-size:46px}.service-photo-lightbox img{max-width:92vw;max-height:84vh;border-radius:16px}
+@media(prefers-reduced-motion:reduce){.bbe-intro-energy,.bbe-classic-intro .bbe-intro-core img{animation:none!important}.service-photo-3d img{transform:none!important}}

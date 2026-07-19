@@ -3,9 +3,17 @@
   const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
   const escapeHTML=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-  function createCarousel(root){
+  async function createCarousel(root){
     let items=[];
     try{items=JSON.parse(root.dataset.items||'[]')}catch(e){console.error('Invalid carousel data',e)}
+    const page=root.dataset.page, section=root.dataset.section||'service-gallery', key=root.dataset.carouselKey||'hero';
+    if(page&&window.supabase&&window.BLUE_BEAR_SUPABASE_URL&&window.BLUE_BEAR_SUPABASE_KEY){
+      try{
+        const c=window.supabase.createClient(window.BLUE_BEAR_SUPABASE_URL,window.BLUE_BEAR_SUPABASE_KEY);
+        const r=await c.from('website_carousel_items').select('*').eq('tenant_key','blue-bear-electric').eq('page_key',page).eq('section_key',section).eq('carousel_key',key).eq('is_published',true).order('display_order');
+        if(!r.error&&r.data?.length)items=r.data.map(x=>({src:x.public_url,title:x.title,caption:x.caption||x.alt_text||'',alt:x.alt_text||x.title}));
+      }catch(e){console.warn('Managed carousel fallback',e)}
+    }
     if(!items.length)return;
     let active=0, timer=null, startX=0, dragging=false;
     root.innerHTML=`
@@ -106,5 +114,5 @@
     render();
   }
 
-  document.querySelectorAll('[data-bb3d-carousel]').forEach(createCarousel);
+  document.querySelectorAll('[data-bb3d-carousel]').forEach(root=>createCarousel(root));
 })();
