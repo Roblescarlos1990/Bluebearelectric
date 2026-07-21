@@ -125,7 +125,7 @@
             <div class="bbt-metric"><strong>05</strong><span>Major<br>regions</span></div>
             <div class="bbt-metric"><strong>24/7</strong><span>Field<br>availability</span></div>
             <div class="bbt-metric"><strong>Fast</strong><span>Regional<br>response</span></div>
-            <a class="bbt-metricCta" href="tel:+17605409527">Dispatch a crew ${arrowIcon}</a>
+            <a class="bbt-metricCta" href="tel:+17602348306">Dispatch a crew ${arrowIcon}</a>
           </div>
 
           <div class="bbt-stage">
@@ -163,7 +163,7 @@
                       <span class="bbt-faceTag">Coverage intelligence</span><h3 class="bbt-coordinates"></h3><p class="bbt-backDescription"></p><div class="bbt-coverageRing" aria-hidden="true"><span>500+</span><small>miles</small></div>
                     </div>
                     <div class="bbt-cubeFace bbt-faceLeft">
-                      <span class="bbt-faceTag">Rapid dispatch</span><h3 class="bbt-response"></h3><p>Tell us what is happening. We will align the right electrical capability to the work.</p><a href="tel:+17605409527">Call (760) 540-9527 ${arrowIcon}</a>
+                      <span class="bbt-faceTag">Rapid dispatch</span><h3 class="bbt-response"></h3><p>Tell us what is happening. We will align the right electrical capability to the work.</p><a href="tel:+17602348306">Call 760-234-8306 ${arrowIcon}</a>
                     </div>
                     <div class="bbt-cubeFace bbt-faceTop">${boltIcon}<strong>Blue Bear Electric</strong></div>
                     <div class="bbt-cubeFace bbt-faceBottom">CA · AZ</div>
