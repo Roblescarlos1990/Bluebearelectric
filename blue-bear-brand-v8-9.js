@@ -1,33 +1,17 @@
 (function(){
-  const cfg=window.VOLTFLOW_COMPANY||{};
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.documentElement.style.setProperty('--company-watermark-opacity',String(cfg.publicWatermarkOpacity||.06));
-  document.body.classList.add('blue-bear-branded');
-  const isHome=/\/$|\/index\.html$/i.test(location.pathname);
-  const seen=sessionStorage.getItem('blueBearIntroSeen');
-  if(isHome&&!seen){
-    const splash=document.createElement('div');
-    splash.className='bbe-site-intro bbe-classic-intro';
-    splash.setAttribute('aria-live','polite');
-    splash.innerHTML=`
-      <div class="bbe-intro-grid"></div><div class="bbe-intro-energy"></div>
-      <div class="bbe-intro-core">
-        <img src="${cfg.introLogo||cfg.logoPrimary||'assets/branding/blue-bear/logo-transparent-hd.png'}" alt="${cfg.companyName||'Blue Bear Electric'}">
-        <h1>${cfg.companyName||'Blue Bear Electric'}</h1>
-        <p>${cfg.tagline||'Powering solutions. Delivering excellence.'}</p>
-        <div class="bbe-intro-bar"><span data-bbe-intro-progress></span></div>
-        <div class="bbe-intro-percent" data-bbe-intro-percent>0%</div>
-      </div>`;
-    document.body.prepend(splash); sessionStorage.setItem('blueBearIntroSeen','1');
-    const bar=splash.querySelector('[data-bbe-intro-progress]'),pct=splash.querySelector('[data-bbe-intro-percent]');
-    const start=performance.now(),duration=reduced?80:2200;
-    function tick(now){const raw=Math.min(1,(now-start)/duration),eased=1-Math.pow(1-raw,3),v=Math.round(eased*100);if(bar)bar.style.width=v+'%';if(pct)pct.textContent=v+'%';if(raw<1)requestAnimationFrame(tick)}
-    requestAnimationFrame(tick);
-    const hide=()=>setTimeout(()=>splash.classList.add('is-hidden'),reduced?60:2250);
-    if(document.readyState==='complete')hide();else addEventListener('load',hide,{once:true});
-    setTimeout(()=>splash.classList.add('is-hidden'),2900);setTimeout(()=>splash.remove(),3500);
-  }
-  document.querySelectorAll('img[alt*="Blue Bear" i], .brand img, .footer img').forEach(img=>{
-    if(!img.closest('.vf-boot')&&!img.closest('.vf-login-brand')&&!img.closest('.bbe-site-intro'))img.src=cfg.logoPrimary||img.src;
-  });
+const cfg=window.VOLTFLOW_COMPANY||{},reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.style.setProperty('--company-watermark-opacity',String(cfg.publicWatermarkOpacity||.06));document.body.classList.add('blue-bear-branded');
+const isHome=/\/$|\/index\.html$/i.test(location.pathname),seen=sessionStorage.getItem('blueBearIntroSeen');
+if(isHome&&!seen){
+ const splash=document.createElement('div');splash.className='bbe-site-intro bbe-cinematic-3d-intro';splash.setAttribute('aria-live','polite');
+ splash.innerHTML=`<div class="bbe-cinema-bg"><div class="bbe-grid-plane"></div><div class="bbe-energy-field"></div><div class="bbe-arc bbe-arc-one"></div><div class="bbe-arc bbe-arc-two"></div><div class="bbe-particles" data-bbe-particles></div></div><div class="bbe-logo-stage" data-bbe-logo-stage><div class="bbe-logo-halo"></div><img src="assets/branding/blue-bear/logo-cinematic-wide.png" alt="${cfg.companyName||'Blue Bear Electric'}"><div class="bbe-logo-shine"></div></div><div class="bbe-intro-footer"><div class="bbe-loader-label">Powering up Blue Bear Electric</div><div class="bbe-intro-bar"><span data-bbe-intro-progress></span></div><div class="bbe-loader-percent" data-bbe-intro-percent>0%</div></div>`;
+ document.body.prepend(splash);sessionStorage.setItem('blueBearIntroSeen','1');
+ const stage=splash.querySelector('[data-bbe-logo-stage]'),parts=splash.querySelector('[data-bbe-particles]'),bar=splash.querySelector('[data-bbe-intro-progress]'),pct=splash.querySelector('[data-bbe-intro-percent]');
+ for(let i=0;i<34;i++){const p=document.createElement('span');p.style.setProperty('--x',Math.random()*100+'%');p.style.setProperty('--y',Math.random()*100+'%');p.style.setProperty('--d',(1.8+Math.random()*3.5)+'s');p.style.setProperty('--delay',(Math.random()*2.5)+'s');p.style.setProperty('--size',(1+Math.random()*3)+'px');parts.appendChild(p)}
+ splash.addEventListener('pointermove',e=>{if(reduced||innerWidth<760)return;const r=splash.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;stage.style.setProperty('--intro-ry',x*8+'deg');stage.style.setProperty('--intro-rx',y*-6+'deg');stage.style.setProperty('--intro-x',x*16+'px');stage.style.setProperty('--intro-y',y*12+'px');splash.style.setProperty('--light-x',(x+.5)*100+'%');splash.style.setProperty('--light-y',(y+.5)*100+'%')});
+ splash.addEventListener('pointerleave',()=>['--intro-ry','--intro-rx','--intro-x','--intro-y'].forEach(v=>stage.style.removeProperty(v)));
+ const start=performance.now(),duration=reduced?120:2600;function tick(now){const raw=Math.min(1,(now-start)/duration),eased=1-Math.pow(1-raw,3),v=Math.round(eased*100);if(bar)bar.style.width=v+'%';if(pct)pct.textContent=v+'%';if(raw<1)requestAnimationFrame(tick)}requestAnimationFrame(tick);
+ const hide=()=>setTimeout(()=>splash.classList.add('is-hidden'),reduced?80:2700);if(document.readyState==='complete')hide();else addEventListener('load',hide,{once:true});setTimeout(()=>splash.classList.add('is-hidden'),3400);setTimeout(()=>splash.remove(),4100)
+}
+document.querySelectorAll('img[alt*="Blue Bear" i], .brand img, .footer img').forEach(img=>{if(!img.closest('.vf-boot')&&!img.closest('.vf-login-brand')&&!img.closest('.bbe-site-intro'))img.src=cfg.logoPrimary||img.src});
 })();
