@@ -1,0 +1,278 @@
+{
+  "version": "9.1.2",
+  "slots": [
+    {
+      "slot_key": "index-truck",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/truck.jpg",
+      "alt_text": "Blue Bear Electric service truck"
+    },
+    {
+      "slot_key": "index-switchgear",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/switchgear.jpg",
+      "alt_text": "industrial electrical switchgear"
+    },
+    {
+      "slot_key": "index-vfd",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/vfd.jpg",
+      "alt_text": "VFD drives"
+    },
+    {
+      "slot_key": "index-fuse-panel",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/fuse-panel.jpg",
+      "alt_text": "commercial electrical panel"
+    },
+    {
+      "slot_key": "index-instagram",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/instagram.jpg",
+      "alt_text": "residential work"
+    },
+    {
+      "slot_key": "index-solar-field",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/solar-field.jpg",
+      "alt_text": "solar field"
+    },
+    {
+      "slot_key": "index-megger",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/megger.jpg",
+      "alt_text": "electrical testing"
+    },
+    {
+      "slot_key": "index-service-territory-map",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/service-territory-map.png",
+      "alt_text": "3D technical service territory map showing Los Angeles, Coachella Valley, San Diego, Imperial Valley and Yuma, Arizona"
+    },
+    {
+      "slot_key": "index-testing",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/testing.jpg",
+      "alt_text": "insulation resistance testing"
+    },
+    {
+      "slot_key": "index-mv-cabinet",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/mv-cabinet.jpg",
+      "alt_text": "medium voltage cabinet"
+    },
+    {
+      "slot_key": "index-burnt-combiner",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/burnt-combiner.jpg",
+      "alt_text": "damaged electrical combiner box"
+    },
+    {
+      "slot_key": "index-solar-wire",
+      "page_key": "index",
+      "section_label": "Index",
+      "current_src": "assets/images/site/solar-wire.jpg",
+      "alt_text": "solar field wiring"
+    },
+    {
+      "slot_key": "services-vfd",
+      "page_key": "services",
+      "section_label": "Services",
+      "current_src": "assets/images/site/vfd.jpg",
+      "alt_text": "Vfd"
+    },
+    {
+      "slot_key": "services-fuse-panel",
+      "page_key": "services",
+      "section_label": "Services",
+      "current_src": "assets/images/site/fuse-panel.jpg",
+      "alt_text": "Fuse Panel"
+    },
+    {
+      "slot_key": "services-instagram",
+      "page_key": "services",
+      "section_label": "Services",
+      "current_src": "assets/images/site/instagram.jpg",
+      "alt_text": "Instagram"
+    },
+    {
+      "slot_key": "services-solar-field",
+      "page_key": "services",
+      "section_label": "Services",
+      "current_src": "assets/images/site/solar-field.jpg",
+      "alt_text": "Solar Field"
+    },
+    {
+      "slot_key": "services-megger",
+      "page_key": "services",
+      "section_label": "Services",
+      "current_src": "assets/images/site/megger.jpg",
+      "alt_text": "Megger"
+    },
+    {
+      "slot_key": "services-engineering-inspection-hero",
+      "page_key": "services",
+      "section_label": "Services",
+      "current_src": "assets/images/engineering-inspection/case-study/engineering-inspection-hero.webp",
+      "alt_text": "Aerial drone and thermal electrical inspection"
+    },
+    {
+      "slot_key": "industrial-megger",
+      "page_key": "industrial",
+      "section_label": "Industrial",
+      "current_src": "assets/images/site/megger.jpg",
+      "alt_text": "Electrical insulation resistance testing equipment"
+    },
+    {
+      "slot_key": "commercial-fuse-panel",
+      "page_key": "commercial",
+      "section_label": "Commercial",
+      "current_src": "assets/images/site/fuse-panel.jpg",
+      "alt_text": "Commercial electrical distribution panel"
+    },
+    {
+      "slot_key": "solar-bess-solar-field",
+      "page_key": "solar-bess",
+      "section_label": "Solar Bess",
+      "current_src": "assets/images/site/solar-field.jpg",
+      "alt_text": "Utility scale solar array"
+    },
+    {
+      "slot_key": "solar-bess-testing",
+      "page_key": "solar-bess",
+      "section_label": "Solar Bess",
+      "current_src": "assets/images/site/testing.jpg",
+      "alt_text": "Electrical testing at renewable energy site"
+    },
+    {
+      "slot_key": "service-repair-testing",
+      "page_key": "service-repair",
+      "section_label": "Service Repair",
+      "current_src": "assets/images/site/testing.jpg",
+      "alt_text": "Testing"
+    },
+    {
+      "slot_key": "projects-vfd",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/vfd.jpg",
+      "alt_text": "Allen-Bradley VFD equipment"
+    },
+    {
+      "slot_key": "projects-testing",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/testing.jpg",
+      "alt_text": "Megger insulation resistance testing"
+    },
+    {
+      "slot_key": "projects-locator",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/locator.jpg",
+      "alt_text": "3M cable and fault locator"
+    },
+    {
+      "slot_key": "projects-switchgear",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/switchgear.jpg",
+      "alt_text": "Industrial electrical switchgear"
+    },
+    {
+      "slot_key": "projects-combiner",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/combiner.jpg",
+      "alt_text": "Solar combiner electrical cabinet"
+    },
+    {
+      "slot_key": "projects-burnt-combiner",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/burnt-combiner.jpg",
+      "alt_text": "Damaged solar combiner box"
+    },
+    {
+      "slot_key": "projects-mv-cabinet",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/mv-cabinet.jpg",
+      "alt_text": "Medium-voltage cabinet"
+    },
+    {
+      "slot_key": "projects-solar-wire",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/solar-wire.jpg",
+      "alt_text": "Solar field wiring"
+    },
+    {
+      "slot_key": "projects-fuse-panel",
+      "page_key": "projects",
+      "section_label": "Projects",
+      "current_src": "assets/images/site/fuse-panel.jpg",
+      "alt_text": "Electrical fuse panel"
+    },
+    {
+      "slot_key": "about-truck",
+      "page_key": "about",
+      "section_label": "About",
+      "current_src": "assets/images/site/truck.jpg",
+      "alt_text": "Truck"
+    },
+    {
+      "slot_key": "engineering-inspection-engineering-inspection-hero",
+      "page_key": "engineering-inspection",
+      "section_label": "Engineering Inspection",
+      "current_src": "assets/images/engineering-inspection/case-study/engineering-inspection-hero.webp",
+      "alt_text": "Aerial visual and thermal inspection of high-voltage electrical equipment"
+    },
+    {
+      "slot_key": "engineering-inspection-visual-overhead",
+      "page_key": "engineering-inspection",
+      "section_label": "Engineering Inspection",
+      "current_src": "assets/images/engineering-inspection/case-study/visual-overhead.webp",
+      "alt_text": "Aerial visual inspection view"
+    },
+    {
+      "slot_key": "engineering-inspection-thermal-overhead-blended",
+      "page_key": "engineering-inspection",
+      "section_label": "Engineering Inspection",
+      "current_src": "assets/images/engineering-inspection/case-study/thermal-overhead-blended.webp",
+      "alt_text": "Blended aerial thermal inspection view"
+    },
+    {
+      "slot_key": "engineering-inspection-thermal-overhead-detail",
+      "page_key": "engineering-inspection",
+      "section_label": "Engineering Inspection",
+      "current_src": "assets/images/engineering-inspection/case-study/thermal-overhead-detail.webp",
+      "alt_text": "Detailed overhead thermal view"
+    },
+    {
+      "slot_key": "engineering-inspection-thermal-oblique",
+      "page_key": "engineering-inspection",
+      "section_label": "Engineering Inspection",
+      "current_src": "assets/images/engineering-inspection/case-study/thermal-oblique.webp",
+      "alt_text": "Oblique thermal inspection view"
+    },
+    {
+      "slot_key": "engineering-inspection-visual-oblique",
+      "page_key": "engineering-inspection",
+      "section_label": "Engineering Inspection",
+      "current_src": "assets/images/engineering-inspection/case-study/visual-oblique.webp",
+      "alt_text": "Oblique visual inspection reference"
+    }
+  ]
+}
