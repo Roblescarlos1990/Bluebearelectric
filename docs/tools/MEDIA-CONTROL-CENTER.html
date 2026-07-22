@@ -11,7 +11,7 @@
 <div id="content"></div>
 <section class="section"><h2>Quality Checklist</h2><ul class="check"><li>Image is sharp at full screen.</li><li>Electrical work is safe, clean and professional.</li><li>No customer names, access badges, license plates or confidential labels are visible.</li><li>Landscape crop leaves room around the subject.</li><li>The five images tell a consistent story.</li></ul></section>
 </main><script>
-fetch('assets/images/media/media-manifest.json').then(r=>r.json()).then(data=>{
+fetch('../../assets/images/media/media-manifest.json').then(r=>r.json()).then(data=>{
  const out=document.getElementById('content');
  Object.entries(data.carousels).forEach(([name,items])=>{
   const section=document.createElement('section');section.className='section';

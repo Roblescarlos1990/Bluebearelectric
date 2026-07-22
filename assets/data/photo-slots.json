@@ -1,5 +1,5 @@
 {
-  "version": "9.1.2",
+  "version": "9.2.0",
   "slots": [
     {
       "slot_key": "index-truck",
@@ -49,13 +49,6 @@
       "section_label": "Index",
       "current_src": "assets/images/site/megger.jpg",
       "alt_text": "electrical testing"
-    },
-    {
-      "slot_key": "index-service-territory-map",
-      "page_key": "index",
-      "section_label": "Index",
-      "current_src": "assets/images/site/service-territory-map.png",
-      "alt_text": "3D technical service territory map showing Los Angeles, Coachella Valley, San Diego, Imperial Valley and Yuma, Arizona"
     },
     {
       "slot_key": "index-testing",

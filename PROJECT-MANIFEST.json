@@ -1,0 +1,45 @@
+{
+  "project": "Blue Bear Electric Website",
+  "version": "9.2.0",
+  "deployment": "Vercel static multi-page site with serverless API",
+  "runtime": {
+    "public_pages": [
+      "about.html",
+      "admin.html",
+      "commercial.html",
+      "contact.html",
+      "customer-portal.html",
+      "customize.html",
+      "employee-portal.html",
+      "engineering-inspection.html",
+      "index.html",
+      "industrial.html",
+      "projects.html",
+      "residential.html",
+      "security-policy.html",
+      "service-repair.html",
+      "services.html",
+      "solar-bess.html",
+      "system-check.html"
+    ],
+    "javascript_directory": "assets/js",
+    "stylesheets": [
+      "style.css",
+      "theme.css"
+    ],
+    "api_directory": "api",
+    "sql_directory": "docs/sql"
+  },
+  "features": [
+    "secure quote workflow",
+    "admin portal",
+    "customer portal",
+    "employee portal",
+    "managed carousels",
+    "individual photo slots",
+    "engineering inspection division",
+    "document studio",
+    "project command center"
+  ],
+  "archive_policy": "Historical release notes and legacy guides remain under docs/archive and docs/releases."
+}
