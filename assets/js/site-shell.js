@@ -1,6 +1,31 @@
 const hamb=document.querySelector('.hamb');
 const mobile=document.querySelector('.mobile');
-if(hamb){hamb.addEventListener('click',()=>mobile.classList.toggle('open'))}
+if(hamb&&mobile){
+  const setMenuState=(open)=>{
+    mobile.classList.toggle('open',open);
+    hamb.setAttribute('aria-expanded',String(open));
+    hamb.setAttribute('aria-label',open?'Close navigation':'Open navigation');
+    const label=hamb.querySelector('span');
+    if(label)label.textContent=open?'Close':'Menu';
+  };
+
+  if(!mobile.id)mobile.id='mobile-navigation';
+  hamb.type='button';
+  hamb.setAttribute('aria-controls',mobile.id);
+  setMenuState(false);
+
+  hamb.addEventListener('click',()=>setMenuState(!mobile.classList.contains('open')));
+  mobile.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenuState(false)));
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&mobile.classList.contains('open')){
+      setMenuState(false);
+      hamb.focus();
+    }
+  });
+  window.addEventListener('resize',()=>{
+    if(window.innerWidth>1120)setMenuState(false);
+  },{passive:true});
+}
 
 document.querySelectorAll('[data-scroll]').forEach(btn=>btn.addEventListener('click',e=>{
   e.preventDefault();
@@ -25,15 +50,19 @@ revealTargets.forEach((el,i)=>{
   el.style.transitionDelay=`${Math.min(i%6*70,350)}ms`;
 });
 
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('in');
-      observer.unobserve(entry.target);
-    }
-  });
-},{threshold:.13,rootMargin:'0px 0px -70px 0px'});
-revealTargets.forEach(el=>observer.observe(el));
+if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.13,rootMargin:'0px 0px -70px 0px'});
+  revealTargets.forEach(el=>observer.observe(el));
+}else{
+  revealTargets.forEach(el=>el.classList.add('in'));
+}
 
 // Button ripple animation
 function addRipple(e){
@@ -70,6 +99,15 @@ if(!document.querySelector('.floating-call')){
   call.className='floating-call';
   call.textContent='Call Now';
   document.body.appendChild(call);
+  const estimateSection=document.querySelector('#estimate-form');
+  const setFloatingCall=()=>{
+    const estimateBounds=estimateSection?.getBoundingClientRect();
+    const estimateVisible=Boolean(estimateBounds&&estimateBounds.top<window.innerHeight&&estimateBounds.bottom>0);
+    call.classList.toggle('is-visible',window.scrollY>520&&!estimateVisible);
+  };
+  setFloatingCall();
+  window.addEventListener('scroll',setFloatingCall,{passive:true});
+  window.addEventListener('resize',setFloatingCall,{passive:true});
 }
 
 

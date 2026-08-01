@@ -673,3 +673,121 @@ opacity:calc(1 - (abs(var(--offset)) * .25));transition:transform .62s cubic-bez
 @media(max-width:980px){.photo-slot-manager-grid{grid-template-columns:1fr}.photo-slot-filters{position:static}.photo-slot-card{grid-template-columns:130px 1fr}.photo-slot-actions{grid-column:1/-1;grid-template-columns:repeat(3,1fr)}}
 @media(max-width:620px){.photo-slot-card{grid-template-columns:1fr}.photo-slot-preview{height:190px}.photo-slot-actions{grid-template-columns:1fr}}
 
+/* Blue Bear V9.3 — logo-only cinematic intro */
+html.bbe-intro-active,html.bbe-intro-active body{overflow:hidden}
+.bbe-cinematic-3d-intro{
+  --light-x:50%;
+  --light-y:45%;
+  position:fixed;
+  inset:0;
+  z-index:12000;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  opacity:0;
+  visibility:hidden;
+  transform:none;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(16,91,194,.2),transparent 30%),
+    radial-gradient(circle at 50% 70%,rgba(255,196,0,.075),transparent 28%),
+    linear-gradient(180deg,#01050b 0%,#020a14 55%,#01050a 100%);
+  transition:opacity .48s ease,visibility .48s ease;
+}
+.bbe-cinematic-3d-intro.is-visible{opacity:1;visibility:visible}
+.bbe-cinematic-3d-intro.is-hidden{opacity:0;visibility:hidden;transform:none;pointer-events:none}
+.bbe-cinematic-3d-intro .bbe-cinema-bg{position:absolute;inset:0;overflow:hidden}
+.bbe-cinematic-3d-intro .bbe-grid-plane{
+  position:absolute;
+  inset:-15%;
+  opacity:.5;
+  background-image:linear-gradient(rgba(49,128,218,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(49,128,218,.065) 1px,transparent 1px);
+  background-size:64px 64px;
+  transform:perspective(700px) rotateX(64deg) translateY(34%);
+  transform-origin:center bottom;
+  animation:bbeIntroGrid 2.2s var(--ease) both;
+}
+.bbe-cinematic-3d-intro .bbe-energy-vignette{
+  position:absolute;
+  left:50%;
+  top:48%;
+  width:min(920px,92vw);
+  aspect-ratio:1.5;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse at center,rgba(19,114,255,.3),rgba(19,114,255,.08) 42%,transparent 72%);
+  filter:blur(30px);
+  animation:bbeIntroBreathe 1.9s ease-in-out both;
+}
+.bbe-cinematic-3d-intro .bbe-electric-ring{
+  position:absolute;
+  left:50%;
+  top:48%;
+  aspect-ratio:1;
+  border:1px solid rgba(71,157,255,.2);
+  border-radius:50%;
+  box-shadow:0 0 44px rgba(26,117,238,.12),inset 0 0 40px rgba(26,117,238,.08);
+  transform:translate(-50%,-50%) scale(.72);
+  opacity:0;
+}
+.bbe-cinematic-3d-intro .ring-a{width:min(680px,78vw);animation:bbeIntroRing 1.5s .12s var(--ease) both}
+.bbe-cinematic-3d-intro .ring-b{width:min(870px,94vw);animation:bbeIntroRing 1.6s .32s var(--ease) both}
+.bbe-cinematic-3d-intro .bbe-scene-sweep{
+  position:absolute;
+  inset:-15%;
+  opacity:0;
+  transform:translateX(-90%) skewX(-15deg);
+  background:linear-gradient(90deg,transparent 42%,rgba(92,188,255,.24) 49%,rgba(255,212,69,.32) 51%,transparent 58%);
+  mix-blend-mode:screen;
+  animation:bbeIntroSweep 1.3s .46s var(--ease) both;
+}
+.bbe-cinematic-3d-intro .bbe-logo-stage{
+  position:relative;
+  z-index:3;
+  width:clamp(240px,36vw,480px);
+  opacity:0;
+  transform:translateY(18px) scale(.82);
+  animation:bbeIntroMark 1.25s .1s var(--ease) forwards;
+}
+.bbe-cinematic-3d-intro .bbe-logo-stage img{
+  position:relative;
+  z-index:2;
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  background:transparent!important;
+  filter:drop-shadow(0 0 18px rgba(31,132,255,.28)) drop-shadow(0 0 28px rgba(255,196,0,.2));
+  animation:none;
+}
+.bbe-cinematic-3d-intro .bbe-logo-backlight{
+  position:absolute;
+  inset:5% -10%;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(21,114,255,.34),rgba(255,196,0,.08) 48%,transparent 72%);
+  filter:blur(34px);
+}
+.bbe-cinematic-3d-intro .bbe-logo-floor-glow{
+  position:absolute;
+  left:50%;
+  bottom:-8%;
+  width:76%;
+  height:12%;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(255,201,44,.3),rgba(20,122,255,.12) 45%,transparent 76%);
+  filter:blur(16px);
+}
+.bbe-cinematic-3d-intro :is(.bbe-intro-footer,.bbe-transmission-field,.bbe-electric-strike,.bbe-particles,.bbe-premium-flash,.bbe-voltage-streak){display:none!important}
+@keyframes bbeIntroGrid{from{opacity:0;transform:perspective(700px) rotateX(64deg) translateY(40%)}to{opacity:.5;transform:perspective(700px) rotateX(64deg) translateY(32%)}}
+@keyframes bbeIntroBreathe{0%{opacity:0;transform:translate(-50%,-50%) scale(.72)}60%{opacity:1}100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}}
+@keyframes bbeIntroRing{0%{opacity:0;transform:translate(-50%,-50%) scale(.68)}55%{opacity:.72}100%{opacity:.12;transform:translate(-50%,-50%) scale(1.08)}}
+@keyframes bbeIntroSweep{0%{opacity:0;transform:translateX(-90%) skewX(-15deg)}28%{opacity:.9}100%{opacity:0;transform:translateX(90%) skewX(-15deg)}}
+@keyframes bbeIntroMark{0%{opacity:0;transform:translateY(18px) scale(.82);filter:brightness(.72)}62%{opacity:1;transform:translateY(-2px) scale(1.03);filter:brightness(1.1)}100%{opacity:1;transform:translateY(0) scale(1);filter:brightness(1)}}
+@media(max-width:640px){
+  .bbe-cinematic-3d-intro .bbe-logo-stage{width:min(78vw,350px)}
+  .bbe-cinematic-3d-intro .bbe-grid-plane{background-size:44px 44px}
+}
+@media(prefers-reduced-motion:reduce){
+  .bbe-cinematic-3d-intro{display:none!important}
+}
+
