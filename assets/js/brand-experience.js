@@ -28,7 +28,7 @@
         <div class="bbe-logo-backlight"></div>
         <div class="bbe-logo-floor-glow"></div>
         <img
-          src="${config.logoMark || 'assets/branding/blue-bear/logo-mark.png'}"
+          src="${config.logoMark || 'assets/branding/blue-bear/logo-mark-solid.png'}"
           alt=""
           width="470"
           height="360"

@@ -21,7 +21,7 @@ The website is deployed as a static multi-page Vercel site. Public page filename
 - `assets/branding/` — production logo, watermark and intro assets.
 - `assets/data/photo-slots.json` — permanent individual website image locations.
 
-The canonical browser icon and homepage intro asset is `assets/branding/blue-bear/logo-mark.png`. `site.webmanifest` provides browser and app metadata without duplicating the source artwork.
+The canonical browser icon and homepage intro asset is `assets/branding/blue-bear/logo-mark-solid.png`. `site.webmanifest` provides browser and app metadata without duplicating the source artwork.
 
 ## Naming conventions
 

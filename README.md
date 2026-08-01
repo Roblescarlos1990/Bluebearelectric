@@ -73,7 +73,7 @@ Then verify the homepage, mobile navigation, service pages, project filters and 
 
 ## Brand assets
 
-`assets/branding/blue-bear/logo-mark.png` is the canonical bear mark used by the homepage intro, favicon, and app metadata. Preserve the original artwork and transparent background. Other logo variants support documents, watermarks, and wider placements.
+`assets/branding/blue-bear/logo-mark-solid.png` is the canonical solid-color bear mark used by the homepage intro, favicon, and app metadata. The original artwork is retained separately; other logo variants support documents, watermarks, and wider placements.
 
 ## Content and data
 

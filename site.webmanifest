@@ -9,16 +9,10 @@
   "theme_color": "#030a13",
   "icons": [
     {
-      "src": "/assets/branding/blue-bear/logo-mark.png",
-      "sizes": "470x360",
+      "src": "/assets/branding/blue-bear/logo-mark-solid.png",
+      "sizes": "1254x1254",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/assets/branding/blue-bear/logo-primary.png",
-      "sizes": "687x526",
-      "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }

@@ -15,7 +15,7 @@ window.VOLTFLOW_COMPANY = Object.freeze({
   secondaryColor: "#1479e8",
   logoPrimary: "assets/branding/blue-bear/logo-transparent-hd.png",
   introLogo: "assets/branding/blue-bear/logo-cinematic-wide.png",
-  logoMark: "assets/branding/blue-bear/logo-mark.png",
+  logoMark: "assets/branding/blue-bear/logo-mark-solid.png",
   documentLogo: "assets/branding/blue-bear/document-logo.png",
   watermarkDark: "assets/branding/blue-bear/watermark-dark.png",
   watermarkPrint: "assets/branding/blue-bear/watermark-print.png",
