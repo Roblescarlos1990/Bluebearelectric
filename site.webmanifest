@@ -1,0 +1,24 @@
+{
+  "name": "Blue Bear Electric",
+  "short_name": "Blue Bear",
+  "description": "Licensed electrical contractor serving Imperial County, California.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#030a13",
+  "theme_color": "#030a13",
+  "icons": [
+    {
+      "src": "/assets/branding/blue-bear/logo-mark.png",
+      "sizes": "470x360",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/branding/blue-bear/logo-primary.png",
+      "sizes": "687x526",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

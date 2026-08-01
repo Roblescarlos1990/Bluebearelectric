@@ -1,6 +1,6 @@
 {
   "project": "Blue Bear Electric Website",
-  "version": "9.2.0",
+  "version": "9.3.0",
   "deployment": "Vercel static multi-page site with serverless API",
   "runtime": {
     "public_pages": [
@@ -38,6 +38,9 @@
     "managed carousels",
     "individual photo slots",
     "engineering inspection division",
+    "logo-only cinematic intro",
+    "responsive production design system",
+    "browser and app icon metadata",
     "document studio",
     "project command center"
   ],

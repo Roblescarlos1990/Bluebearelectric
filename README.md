@@ -1,36 +1,90 @@
-# Blue Bear Electric — Production Website
+# Blue Bear Electric
 
-**Current production baseline:** V9.2.0
+Production website and operations portal for Blue Bear Electric, a licensed electrical contractor serving Imperial County, California.
 
-This repository contains the live Blue Bear Electric marketing website, customer and employee portals, VoltFlow-powered admin tools, quote API, Supabase integrations, managed website media, and engineering-inspection services.
+The repository is a static, multi-page Vercel site with serverless quote handling, Supabase-backed content and portal features, managed media, and the engineering inspection division.
 
-## Production entry points
+## Production routes
 
-- `index.html` — public homepage
-- `services.html` — service overview
-- `engineering-inspection.html` — drone and thermal inspection division
-- `admin.html` — internal administration portal
-- `customer-portal.html` — customer portal
-- `employee-portal.html` — employee portal
-- `api/quote.js` — secured quote-request endpoint
+| Area | Entry point |
+| --- | --- |
+| Public website | `index.html` |
+| Services | `services.html` |
+| Project gallery | `projects.html` |
+| Quote requests | `contact.html` and `api/quote.js` |
+| Drone and thermal inspections | `engineering-inspection.html` |
+| Customer portal | `customer-portal.html` |
+| Employee portal | `employee-portal.html` |
+| Internal administration | `admin.html` |
 
-## Main directories
+## Repository structure
 
-- `assets/js/` — all browser JavaScript
-- `assets/images/` — website, branding, carousel and inspection media
-- `assets/data/` — managed photo-slot registry
-- `api/` — Vercel serverless endpoints
-- `docs/sql/` — Supabase migrations
-- `docs/guides/` — active operating guides
-- `docs/releases/` — historical release notes
-- `docs/archive/` — legacy implementation notes
-- `database/` — database diagnostics, seeds and compatibility migrations
-- `scripts/` — deployment and security checks
+```text
+.
+├── api/                  Vercel serverless endpoints
+├── assets/
+│   ├── branding/         Canonical Blue Bear logo and watermark assets
+│   ├── data/             Managed photo-slot registry
+│   ├── images/           Public, service, and inspection media
+│   └── js/               Browser behavior and feature modules
+├── database/             Diagnostics, compatibility migrations, and seeds
+├── docs/
+│   ├── guides/           Active operating guides
+│   ├── releases/         Historical release notes
+│   ├── sql/              Supabase migrations
+│   └── archive/          Legacy reference material only
+├── scripts/              Local validation and deployed security checks
+├── *.html                Stable public and portal routes
+├── style.css             Shared layout and component styles
+├── theme.css             Brand and feature-specific presentation
+├── site.webmanifest      Browser and app metadata
+└── vercel.json           Routing and security headers
+```
+
+Root HTML and CSS files are intentional. Existing production URLs and root-relative image behavior depend on this static deployment structure; feature JavaScript and media belong under `assets/`.
+
+## Local preview
+
+No build step or package installation is required.
+
+```powershell
+python -m http.server 4173
+```
+
+Open `http://127.0.0.1:4173/`. Use a private browser window when checking the one-time homepage intro.
+
+## Validation
+
+Run the repository validator before publishing:
+
+```powershell
+node scripts/validate-site.mjs
+```
+
+The validator checks HTML metadata, local links and assets, the web manifest, and JavaScript syntax.
+
+For a deployed preview, also run:
+
+```powershell
+node scripts/security-smoke-test.mjs https://your-preview-domain.example
+```
+
+Then verify the homepage, mobile navigation, service pages, project filters and lightbox, quote form validation, and authenticated portal entry points.
+
+## Brand assets
+
+`assets/branding/blue-bear/logo-mark.png` is the canonical bear mark used by the homepage intro, favicon, and app metadata. Preserve the original artwork and transparent background. Other logo variants support documents, watermarks, and wider placements.
+
+## Content and data
+
+- Static marketing copy lives in the root HTML pages.
+- Managed public content and media use Supabase.
+- Permanent image locations are registered in `assets/data/photo-slots.json`.
+- Active database changes belong in `docs/sql/` or `database/` as documented in `docs/ACTIVE-SQL-MIGRATIONS.md`.
+- Historical files under `docs/archive/` and `docs/releases/` must not be restored to the runtime root.
 
 ## Deployment
 
-Deploy the repository root to Vercel. Do not set a subdirectory as the project root. Environment variables and Supabase setup are documented in `docs/DEPLOYMENT.md`.
+Deploy the repository root to Vercel. Do not configure a subdirectory as the project root. Required environment variables and the release checklist are documented in `docs/DEPLOYMENT.md`.
 
-## Production rule
-
-Do not restore historical files from `docs/archive/` into the runtime root. New browser code belongs in `assets/js/`; new SQL belongs in `docs/sql/`.
+Never commit secrets, service-role keys, customer data, or local environment files.

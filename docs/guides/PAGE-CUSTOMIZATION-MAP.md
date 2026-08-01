@@ -1,9 +1,10 @@
 # VoltFlow Page Customization Map
 
 ## Global files
-- `assets/css/style.css`: layouts, cards, forms, navigation, animations, responsive rules.
-- `assets/css/theme.css`: brand colors, radius, shadows, and theme overrides.
-- `assets/js/script.js`: public navigation, motion, buttons, and territory-map interaction.
+- `style.css`: layouts, cards, forms, navigation, animations, responsive rules.
+- `theme.css`: brand colors, radius, shadows, and theme overrides.
+- `assets/js/site-shell.js`: public navigation, motion, buttons, and territory-map interaction.
+- `assets/js/brand-experience.js`: logo-only homepage intro and shared brand image behavior.
 - `assets/images/site/`: all public website imagery.
 
 ## Homepage
