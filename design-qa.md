@@ -3,10 +3,10 @@
 - Source visual truth: `C:\Users\prins\.codex\generated_images\019fba57-9267-79f0-b440-9a16c52c3bbb\exec-55c52c20-f67c-41b2-a257-b2ea9a77c167.png`
 - Implementation screenshot: `C:\Users\prins\Documents\Codex\2026-07-31\referenced-chatgpt-conversation-this-is-untrusted\outputs\mobile-option-1-final.png`
 - Final comparison: `C:\Users\prins\Documents\Codex\2026-07-31\referenced-chatgpt-conversation-this-is-untrusted\outputs\mobile-option-1-comparison-v3.png`
-- Target viewport: 390 Ã— 844 CSS px
-- Source pixels: 853 Ã— 1844
-- Implementation capture pixels: 375 Ã— 812
-- Density normalization: both artifacts were resampled to 390 Ã— 844 before the side-by-side comparison.
+- Target viewport: 390 × 844 CSS px
+- Source pixels: 853 × 1844
+- Implementation capture pixels: 375 × 812
+- Density normalization: both artifacts were resampled to 390 × 844 before the side-by-side comparison.
 - State: mobile homepage, intro dismissed, navigation closed.
 
 ## Full-view comparison evidence
@@ -43,9 +43,9 @@ A separate crop was not needed because the normalized full-view comparison keeps
 - Mobile menu closes correctly.
 - Primary estimate action navigates to `contact.html`.
 - Call action retains the `tel:7602348306` destination.
-- No horizontal overflow at 390 Ã— 844.
+- No horizontal overflow at 390 × 844.
 - No browser console errors or warnings observed.
-- Desktop check at 1280 Ã— 720 keeps the existing desktop hero and card visible while hiding the mobile-only hero.
+- Desktop check at 1280 × 720 keeps the existing desktop hero and card visible while hiding the mobile-only hero.
 - Repository validator passes all 18 HTML pages, 41 JavaScript files, and local references.
 
 ## Follow-up polish
@@ -53,4 +53,3 @@ A separate crop was not needed because the normalized full-view comparison keeps
 - [P3] The real switchgear photograph is darker and less right-weighted than the generated source. This is acceptable because it preserves the site's authentic production imagery.
 
 final result: passed
-
