@@ -1,6 +1,6 @@
 {
   "project": "Blue Bear Electric Website",
-  "version": "9.3.0",
+  "version": "9.3.1",
   "deployment": "Vercel static multi-page site with serverless API",
   "runtime": {
     "public_pages": [
@@ -28,7 +28,8 @@
       "theme.css"
     ],
     "api_directory": "api",
-    "sql_directory": "docs/sql"
+    "sql_directory": "supabase/migrations",
+    "historical_sql_directory": "docs/sql"
   },
   "features": [
     "secure quote workflow",
@@ -46,3 +47,4 @@
   ],
   "archive_policy": "Historical release notes and legacy guides remain under docs/archive and docs/releases."
 }
+

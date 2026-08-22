@@ -10,4 +10,13 @@ Current feature migrations include:
 - V9.0 engineering inspection division
 - V9.1.2 individual website photo slots
 
+Current operational migration:
+
+- `supabase/migrations/20260822155652_database_hardening.sql` — V9.3.1 RLS hardening, authorization-helper cleanup, migration-history access, and foreign-key indexes
+
+New operational schema changes belong in `supabase/migrations/` and should be
+created with `supabase migration new <name>`. The historical SQL under
+`docs/sql/` remains the bootstrap record for earlier releases.
+
 Never rerun a destructive statement without reviewing it first.
+

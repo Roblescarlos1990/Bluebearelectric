@@ -116,29 +116,51 @@ Powered by VoltFlow`;
   }
 }
 async function sendAcknowledgement(payload, reference, body) {
-  if (!process.env.RESEND_API_KEY || !payload.email) return { skipped: true };
-  const from = process.env.ADMIN_FROM_EMAIL || 'Blue Bear Electric <onboarding@resend.dev>';
-  const replyTo = process.env.ADMIN_REPLY_TO_EMAIL || process.env.ADMIN_NOTIFICATION_EMAIL || undefined;
-  const customer = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from, to: [payload.email], reply_to: replyTo, subject: `We received your estimate request${reference ? ` — ${reference}` : ''}`, text: body })
-  });
-  if (!customer.ok) throw new Error(await customer.text());
-  if (process.env.ADMIN_NOTIFICATION_EMAIL) {
-    await fetch('https://api.resend.com/emails', {
+  if (!process.env.RESEND_API_KEY) return { skipped: true };
+  const sendingDomain = normalize(process.env.RESEND_EMAIL_DOMAIN, 253);
+  const from = process.env.ADMIN_FROM_EMAIL || (sendingDomain ? `Blue Bear Electric <estimates@${sendingDomain}>` : 'Blue Bear Electric <onboarding@resend.dev>');
+  const adminNotificationEmail = normalize(process.env.ADMIN_NOTIFICATION_EMAIL, 254);
+  const replyTo = process.env.ADMIN_REPLY_TO_EMAIL || adminNotificationEmail || undefined;
+
+  if (!payload.email && !adminNotificationEmail) return { skipped: true };
+
+  if (payload.email) {
+    const customer = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+        'Idempotency-Key': `blue-bear-estimate-customer-${reference || hash(payload.email)}`
+      },
+      body: JSON.stringify({ from, to: [payload.email], reply_to: replyTo, subject: `We received your estimate request${reference ? ` — ${reference}` : ''}`, text: body })
+    });
+    if (!customer.ok) throw new Error(`customer_email_failed: ${await customer.text()}`);
+  }
+
+  if (adminNotificationEmail) {
+    const admin = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+        'Idempotency-Key': `blue-bear-estimate-admin-${reference || hash(payload.phone)}`
+      },
       body: JSON.stringify({
         from,
-        to: [process.env.ADMIN_NOTIFICATION_EMAIL],
+        to: [adminNotificationEmail],
         reply_to: payload.email || undefined,
         subject: `New ${payload.service_type} estimate request — ${payload.full_name}`,
         text: `New lead received.\n\nName: ${payload.full_name}\nPhone: ${payload.phone}\nEmail: ${payload.email || 'Not provided'}\nCity: ${payload.city || 'Not provided'}\nUrgency: ${payload.urgency}\nService: ${payload.service_type}\nReference: ${reference || 'Pending'}\n\nMessage:\n${payload.message || 'No message provided.'}`
       })
     });
+    if (!admin.ok) throw new Error(`admin_notification_failed: ${await admin.text()}`);
   }
-  return { sent: true };
+
+  return {
+    sent: true,
+    customer_sent: Boolean(payload.email),
+    admin_sent: Boolean(adminNotificationEmail)
+  };
 }
 
 module.exports = async function handler(req, res) {
@@ -251,3 +273,4 @@ module.exports = async function handler(req, res) {
     return json(res, 500, { ok: false, message: 'The request system is temporarily unavailable. Please call 760-234-8306.' });
   }
 };
+

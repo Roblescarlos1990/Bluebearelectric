@@ -2,7 +2,7 @@
 
 ## Before deployment
 
-1. Run the latest required Supabase migrations in `docs/sql/`.
+1. Run pending operational Supabase migrations in `supabase/migrations/`; use `docs/sql/` only for historical bootstrap migrations.
 2. Confirm Vercel environment variables are configured for Production and Preview.
 3. Verify the `site-media` Supabase Storage bucket exists and has the intended policies.
 4. Run `node scripts/validate-site.mjs` locally.
@@ -28,3 +28,17 @@
 - Reduced-motion users do not receive the cinematic intro
 - Image overrides and carousels load
 - Drone and thermal page loads all imagery
+
+## Quote email variables
+
+Configure these in Vercel for Production and Preview, then create a new deployment:
+
+- `RESEND_API_KEY` — provisioned by the Resend integration
+- `RESEND_EMAIL_DOMAIN` — verified sending domain provisioned by the Resend integration
+- `ADMIN_NOTIFICATION_EMAIL` — internal recipient for new estimate notifications
+
+Optional overrides:
+
+- `ADMIN_FROM_EMAIL` — defaults to `Blue Bear Electric <estimates@${RESEND_EMAIL_DOMAIN}>`
+- `ADMIN_REPLY_TO_EMAIL` — defaults to `ADMIN_NOTIFICATION_EMAIL`
+

@@ -25,6 +25,7 @@ Run:
 Add in Vercel only when ready:
 
 - `RESEND_API_KEY`
+- `RESEND_EMAIL_DOMAIN`
 - `ADMIN_FROM_EMAIL`
 - `ADMIN_REPLY_TO_EMAIL`
 - `ADMIN_NOTIFICATION_EMAIL`
@@ -39,3 +40,4 @@ The quote form continues working even when email or AI is not configured. Email 
 ## Important
 
 Resend requires a verified sending domain for production mail. Until verified, use the provider's permitted test sender. Customer reviews included in this package are starter placeholders and must be replaced with approved, authentic reviews before marketing use.
+
