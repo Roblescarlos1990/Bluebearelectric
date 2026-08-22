@@ -34,6 +34,7 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 │   ├── sql/              Supabase migrations
 │   └── archive/          Legacy reference material only
 ├── scripts/              Local validation and deployed security checks
+├── supabase/migrations/  Incremental production database migrations
 ├── *.html                Stable public and portal routes
 ├── style.css             Shared layout and component styles
 ├── theme.css             Brand and feature-specific presentation
@@ -80,7 +81,7 @@ Then verify the homepage, mobile navigation, service pages, project filters and 
 - Static marketing copy lives in the root HTML pages.
 - Managed public content and media use Supabase.
 - Permanent image locations are registered in `assets/data/photo-slots.json`.
-- Active database changes belong in `docs/sql/` or `database/` as documented in `docs/ACTIVE-SQL-MIGRATIONS.md`.
+- New database changes belong in `supabase/migrations/`; historical bootstrap SQL remains in `docs/sql/` and `database/` as documented in `docs/ACTIVE-SQL-MIGRATIONS.md`.
 - Historical files under `docs/archive/` and `docs/releases/` must not be restored to the runtime root.
 
 ## Deployment
@@ -88,3 +89,4 @@ Then verify the homepage, mobile navigation, service pages, project filters and 
 Deploy the repository root to Vercel. Do not configure a subdirectory as the project root. Required environment variables and the release checklist are documented in `docs/DEPLOYMENT.md`.
 
 Never commit secrets, service-role keys, customer data, or local environment files.
+
