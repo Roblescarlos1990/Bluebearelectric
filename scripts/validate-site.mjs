@@ -7,6 +7,15 @@ import { spawnSync } from 'node:child_process';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
 const warnings = [];
+const ignoredDirectories = new Set([
+  '.git',
+  '.npm-cache',
+  '.playwright-browsers',
+  'coverage',
+  'node_modules',
+  'playwright-report',
+  'test-results',
+]);
 
 async function exists(filePath) {
   try {
@@ -21,9 +30,9 @@ async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   const files = [];
   for (const entry of entries) {
-    if (entry.name === '.git' || entry.name === 'node_modules') continue;
+    if (entry.isDirectory() && ignoredDirectories.has(entry.name)) continue;
     const absolute = path.join(directory, entry.name);
-    if (entry.isDirectory()) files.push(...await walk(absolute));
+    if (entry.isDirectory()) files.push(...(await walk(absolute)));
     else files.push(absolute);
   }
   return files;
@@ -38,14 +47,19 @@ for (const htmlFile of htmlFiles) {
   const html = await readFile(htmlFile, 'utf8');
 
   if (!/<html\b[^>]*\blang=["']en["']/i.test(html)) errors.push(`${relative}: missing lang="en"`);
-  if (!/<meta\b[^>]*name=["']viewport["']/i.test(html)) errors.push(`${relative}: missing viewport metadata`);
+  if (!/<meta\b[^>]*name=["']viewport["']/i.test(html))
+    errors.push(`${relative}: missing viewport metadata`);
   if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${relative}: missing document title`);
   if (path.dirname(relative) === '.') {
-    if (!/<link\b[^>]*rel=["']icon["']/i.test(html)) errors.push(`${relative}: missing favicon metadata`);
-    if (!/<link\b[^>]*rel=["']manifest["']/i.test(html)) errors.push(`${relative}: missing web manifest metadata`);
+    if (!/<link\b[^>]*rel=["']icon["']/i.test(html))
+      errors.push(`${relative}: missing favicon metadata`);
+    if (!/<link\b[^>]*rel=["']manifest["']/i.test(html))
+      errors.push(`${relative}: missing web manifest metadata`);
   }
 
-  const references = [...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)].map((match) => match[1]);
+  const references = [...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)].map(
+    (match) => match[1],
+  );
   for (const reference of references) {
     if (/^(?:https?:|mailto:|tel:|data:|blob:|#)/i.test(reference)) continue;
     const cleanReference = reference.split('#')[0].split('?')[0];
@@ -53,7 +67,7 @@ for (const htmlFile of htmlFiles) {
     const resolved = cleanReference.startsWith('/')
       ? path.join(root, cleanReference.slice(1))
       : path.resolve(path.dirname(htmlFile), cleanReference);
-    if (!await exists(resolved)) errors.push(`${relative}: missing local asset ${reference}`);
+    if (!(await exists(resolved))) errors.push(`${relative}: missing local asset ${reference}`);
   }
 }
 
@@ -66,7 +80,7 @@ for (const javascriptFile of javascriptFiles) {
 }
 
 const manifestPath = path.join(root, 'site.webmanifest');
-if (!await exists(manifestPath)) errors.push('site.webmanifest is missing');
+if (!(await exists(manifestPath))) errors.push('site.webmanifest is missing');
 else {
   try {
     const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
@@ -77,14 +91,15 @@ else {
         continue;
       }
       const iconPath = path.join(root, icon.src.replace(/^\//, ''));
-      if (!await exists(iconPath)) errors.push(`site.webmanifest: missing icon ${icon.src}`);
+      if (!(await exists(iconPath))) errors.push(`site.webmanifest: missing icon ${icon.src}`);
     }
   } catch (error) {
     errors.push(`site.webmanifest is invalid JSON: ${error.message}`);
   }
 }
 
-if (!htmlFiles.some((file) => path.basename(file) === 'index.html')) errors.push('index.html is missing');
+if (!htmlFiles.some((file) => path.basename(file) === 'index.html'))
+  errors.push('index.html is missing');
 if (warnings.length) warnings.forEach((warning) => console.warn(`WARN ${warning}`));
 
 if (errors.length) {
@@ -92,4 +107,6 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`PASS ${htmlFiles.length} HTML pages, ${javascriptFiles.length} JavaScript files, and all local references validated.`);
+console.log(
+  `PASS ${htmlFiles.length} HTML pages, ${javascriptFiles.length} JavaScript files, and all local references validated.`,
+);

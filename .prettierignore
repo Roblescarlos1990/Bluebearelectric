@@ -1,0 +1,15 @@
+# Runtime source formatting is intentionally deferred to Phase 2.
+*.html
+style.css
+theme.css
+portal.css
+api/
+assets/
+docs/archive/
+docs/releases/
+
+node_modules/
+.npm-cache/
+test-results/
+playwright-report/
+coverage/

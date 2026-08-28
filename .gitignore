@@ -5,5 +5,10 @@ Thumbs.db
 .env.*
 !.env.example
 node_modules/
+.npm-cache/
+.playwright-browsers/
 .vercel/
 coverage/
+test-results/
+playwright-report/
+blob-report/

@@ -6,16 +6,16 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 
 ## Production routes
 
-| Area | Entry point |
-| --- | --- |
-| Public website | `index.html` |
-| Services | `services.html` |
-| Project gallery | `projects.html` |
-| Quote requests | `contact.html` and `api/quote.js` |
-| Drone and thermal inspections | `engineering-inspection.html` |
-| Customer portal | `customer-portal.html` |
-| Employee portal | `employee-portal.html` |
-| Internal administration | `admin.html` |
+| Area                          | Entry point                       |
+| ----------------------------- | --------------------------------- |
+| Public website                | `index.html`                      |
+| Services                      | `services.html`                   |
+| Project gallery               | `projects.html`                   |
+| Quote requests                | `contact.html` and `api/quote.js` |
+| Drone and thermal inspections | `engineering-inspection.html`     |
+| Customer portal               | `customer-portal.html`            |
+| Employee portal               | `employee-portal.html`            |
+| Internal administration       | `admin.html`                      |
 
 ## Repository structure
 
@@ -46,13 +46,40 @@ Root HTML and CSS files are intentional. Existing production URLs and root-relat
 
 ## Local preview
 
-No build step or package installation is required.
+The production site remains static and has no build step. A simple preview still works without installing packages:
 
 ```powershell
 python -m http.server 4173
 ```
 
 Open `http://127.0.0.1:4173/`. Use a private browser window when checking the one-time homepage intro.
+
+## Development quality checks
+
+Node.js 22 or newer is required for the development-only quality suite. The packages do not ship to production.
+
+```powershell
+npm ci
+npm run test:install
+npm run test:all
+```
+
+The first browser installation downloads an isolated Chromium runtime. Individual checks are available when working on a focused change:
+
+| Command                       | Purpose                                                                                                                                                                      |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run format:check`        | Check tooling, tests, workflow files, JSON, and Markdown with Prettier. Runtime HTML, CSS, and browser modules remain excluded until the mechanical Phase 2 formatting pass. |
+| `npm run lint:html`           | Validate all runtime HTML with `html-validate`.                                                                                                                              |
+| `npm run lint:css`            | Check active root stylesheets with Stylelint.                                                                                                                                |
+| `npm run lint:js`             | Check active API, browser, test, and script JavaScript with ESLint.                                                                                                          |
+| `npm run validate:site`       | Run the repository metadata, asset-reference, and JavaScript syntax validator.                                                                                               |
+| `npm run test:links`          | Verify local runtime links, assets, and URL fragments.                                                                                                                       |
+| `npm run test:accessibility`  | Scan the primary public conversion pages with axe and fail on accessibility regressions beyond the recorded baseline.                                                        |
+| `npm run test:browser`        | Run Chromium smoke tests for navigation, mobile behavior, services, gallery, form validation, portals, and horizontal overflow.                                              |
+| `npm run test:browser:headed` | Run the browser smoke suite with a visible Chromium window for debugging.                                                                                                    |
+| `npm run test:all`            | Run the complete Phase 1 quality gate in CI order.                                                                                                                           |
+
+Playwright records screenshots, traces, and video only when a browser test fails. GitHub Actions uploads `playwright-report/` and `test-results/` on failure. Configure the `Phase 1 quality gate / Formatting, lint, accessibility, and browser tests` check as required in the `main` branch ruleset before merging cleanup pull requests.
 
 ## Validation
 
@@ -89,4 +116,3 @@ Then verify the homepage, mobile navigation, service pages, project filters and 
 Deploy the repository root to Vercel. Do not configure a subdirectory as the project root. Required environment variables and the release checklist are documented in `docs/DEPLOYMENT.md`.
 
 Never commit secrets, service-role keys, customer data, or local environment files.
-

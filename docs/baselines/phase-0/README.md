@@ -17,16 +17,16 @@ Production public HTML was compared with the baseline commit after normalizing l
 
 ## Deployment and security checks
 
-| Check | Result | Evidence |
-| --- | --- | --- |
-| Vercel deployment | Pass | GitHub reports the Vercel deployment check completed successfully for the baseline commit. |
-| Production availability | Pass | `https://bluebearelectric.com/` and all listed public routes returned HTTP 200. |
-| Supabase Preview check | Fail | GitHub check run `97075482860` failed after four seconds on the baseline commit. This is an existing baseline issue. |
-| Security configuration endpoint | Pass | HTTP 200. |
-| Quote endpoint rejects GET | Pass | HTTP 405. |
-| Robots policy | Pass | HTTP 200. |
-| Security contact | Pass | HTTP 200. |
-| Admin no-index header | Pass | HTTP 200 response included the expected no-index policy. |
+| Check                           | Result | Evidence                                                                                                             |
+| ------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
+| Vercel deployment               | Pass   | GitHub reports the Vercel deployment check completed successfully for the baseline commit.                           |
+| Production availability         | Pass   | `https://bluebearelectric.com/` and all listed public routes returned HTTP 200.                                      |
+| Supabase Preview check          | Fail   | GitHub check run `97075482860` failed after four seconds on the baseline commit. This is an existing baseline issue. |
+| Security configuration endpoint | Pass   | HTTP 200.                                                                                                            |
+| Quote endpoint rejects GET      | Pass   | HTTP 405.                                                                                                            |
+| Robots policy                   | Pass   | HTTP 200.                                                                                                            |
+| Security contact                | Pass   | HTTP 200.                                                                                                            |
+| Admin no-index header           | Pass   | HTTP 200 response included the expected no-index policy.                                                             |
 
 Command used for the deployed security check:
 
@@ -72,15 +72,15 @@ All of these public routes returned HTTP 200:
 
 Private entry routes returned HTTP 200 while keeping their protected data behind authentication. Search-indexing observations:
 
-| Route | Meta robots | `X-Robots-Tag` | Baseline observation |
-| --- | --- | --- | --- |
-| `/customer-portal` | `noindex` | `noindex` | Browser navigation currently redirects to `/employee-portal`. |
-| `/employee-portal` | `noindex` | `noindex` | Entry page loads. |
-| `/admin` | `noindex` | `noindex` | Sign-in entry loads. |
-| `/customize` | `noindex` | `noindex` | Entry page loads. |
-| `/system-check` | `noindex` | `noindex` | Entry page loads. |
-| `/admin-portal.html` | `noindex` | Missing | Existing header inconsistency. |
-| `/reset-password.html` | `noindex` | Missing | Existing header inconsistency. |
+| Route                  | Meta robots | `X-Robots-Tag` | Baseline observation                                          |
+| ---------------------- | ----------- | -------------- | ------------------------------------------------------------- |
+| `/customer-portal`     | `noindex`   | `noindex`      | Browser navigation currently redirects to `/employee-portal`. |
+| `/employee-portal`     | `noindex`   | `noindex`      | Entry page loads.                                             |
+| `/admin`               | `noindex`   | `noindex`      | Sign-in entry loads.                                          |
+| `/customize`           | `noindex`   | `noindex`      | Entry page loads.                                             |
+| `/system-check`        | `noindex`   | `noindex`      | Entry page loads.                                             |
+| `/admin-portal.html`   | `noindex`   | Missing        | Existing header inconsistency.                                |
+| `/reset-password.html` | `noindex`   | Missing        | Existing header inconsistency.                                |
 
 ## Browser baseline
 
@@ -95,33 +95,33 @@ Private entry routes returned HTTP 200 while keeping their protected data behind
 
 ## Screenshot inventory
 
-| File | What it records |
-| --- | --- |
-| `desktop-homepage.png` | Homepage at the desktop viewport after the intro completes. |
-| `mobile-homepage.png` | Homepage at the mobile viewport. |
-| `mobile-navigation-open.png` | Expanded mobile navigation. |
-| `intro-logo-reveal-fullpage.png` | The existing cinematic logo intro during the initial baseline capture. |
-| `services.png` | Services page. |
-| `industrial-service.png` | Individual industrial service page. |
-| `project-gallery.png` | Project gallery. |
-| `contact.png` | Contact page. |
-| `estimate-validation-state.png` | First invalid estimate control focused. |
-| `estimate-validation-message.png` | Visible estimate validation summary. |
-| `estimate-confirmation.png` | Successful approved production test submission, reference `80A8D6E8`. |
-| `customer-portal-entry.png` | Actual destination reached from the customer portal URL (employee portal at baseline). |
-| `employee-portal-entry.png` | Employee portal entry. |
-| `admin-sign-in-entry.png` | Admin sign-in entry. |
+| File                              | What it records                                                                        |
+| --------------------------------- | -------------------------------------------------------------------------------------- |
+| `desktop-homepage.png`            | Homepage at the desktop viewport after the intro completes.                            |
+| `mobile-homepage.png`             | Homepage at the mobile viewport.                                                       |
+| `mobile-navigation-open.png`      | Expanded mobile navigation.                                                            |
+| `intro-logo-reveal-fullpage.png`  | The existing cinematic logo intro during the initial baseline capture.                 |
+| `services.png`                    | Services page.                                                                         |
+| `industrial-service.png`          | Individual industrial service page.                                                    |
+| `project-gallery.png`             | Project gallery.                                                                       |
+| `contact.png`                     | Contact page.                                                                          |
+| `estimate-validation-state.png`   | First invalid estimate control focused.                                                |
+| `estimate-validation-message.png` | Visible estimate validation summary.                                                   |
+| `estimate-confirmation.png`       | Successful approved production test submission, reference `80A8D6E8`.                  |
+| `customer-portal-entry.png`       | Actual destination reached from the customer portal URL (employee portal at baseline). |
+| `employee-portal-entry.png`       | Employee portal entry.                                                                 |
+| `admin-sign-in-entry.png`         | Admin sign-in entry.                                                                   |
 
 The approved test created one production estimate record and triggered the configured notification workflow. It was not retried.
 
 ## Phase 0 gate
 
-| Requirement | Status |
-| --- | --- |
-| Existing validator passes | Pass — all 20 HTML pages, 44 JavaScript files, and local references validate after the approved metadata-only repair. |
-| Production site is documented | Pass |
-| Baseline screenshots are saved | Pass |
-| Rollback point is confirmed | Pass |
+| Requirement                    | Status                                                                                                                          |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| Existing validator passes      | Pass — all 20 HTML pages, 44 JavaScript files, and local references validate after the approved metadata-only repair.           |
+| Production site is documented  | Pass                                                                                                                            |
+| Baseline screenshots are saved | Pass                                                                                                                            |
+| Rollback point is confirmed    | Pass                                                                                                                            |
 | No production code has changed | Pass — production remains on the recorded baseline; the cleanup branch contains only the approved metadata repair and evidence. |
 
 **Overall status: PASS.** Phase 1 may begin as a separate commit after this Phase 0 repair and evidence are committed.

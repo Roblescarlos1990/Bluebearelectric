@@ -1,0 +1,31 @@
+{
+  "name": "blue-bear-electric-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quality and browser-test tooling for the Blue Bear Electric static site.",
+  "type": "module",
+  "scripts": {
+    "format:check": "prettier --check package.json .prettierrc.json eslint.config.mjs stylelint.config.mjs playwright.config.mjs scripts tests .github README.md docs/baselines",
+    "lint:html": "html-validate \"*.html\"",
+    "lint:css": "stylelint \"style.css\" \"theme.css\" \"portal.css\"",
+    "lint:js": "eslint \"api/**/*.js\" \"assets/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"playwright.config.mjs\"",
+    "validate:site": "node scripts/validate-site.mjs",
+    "test:links": "node scripts/check-links.mjs",
+    "test:install": "node scripts/run-playwright.mjs install chromium",
+    "test:accessibility": "node scripts/run-playwright.mjs test tests/accessibility",
+    "test:browser": "node scripts/run-playwright.mjs test tests/browser",
+    "test:browser:headed": "node scripts/run-playwright.mjs test tests/browser --headed",
+    "test:all": "npm run format:check && npm run lint:html && npm run lint:css && npm run lint:js && npm run validate:site && npm run test:links && npm run test:accessibility && npm run test:browser"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.62.1",
+    "eslint": "10.9.1",
+    "html-validate": "11.10.0",
+    "prettier": "3.9.6",
+    "stylelint": "17.14.1"
+  }
+}
