@@ -5,7 +5,7 @@
   "description": "Quality and browser-test tooling for the Blue Bear Electric static site.",
   "type": "module",
   "scripts": {
-    "format:check": "prettier --check package.json .prettierrc.json eslint.config.mjs stylelint.config.mjs playwright.config.mjs scripts tests .github README.md docs/baselines",
+    "format:check": "prettier --check \"*.html\" \"*.css\" \"*.json\" \"*.mjs\" \"*.md\" \"api/**/*.js\" \"assets/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"docs/**/*.md\" \".github/**/*.yml\"",
     "lint:html": "html-validate \"*.html\"",
     "lint:css": "stylelint \"style.css\" \"theme.css\" \"portal.css\"",
     "lint:js": "eslint \"api/**/*.js\" \"assets/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"playwright.config.mjs\"",

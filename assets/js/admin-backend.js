@@ -1,127 +1,789 @@
-(function(){
-  if(!window.supabase) return;
-  const client = window.supabase.createClient(window.BLUE_BEAR_SUPABASE_URL, window.BLUE_BEAR_SUPABASE_KEY);
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
-  const esc = v => String(v ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  const money = n => Number(n||0).toLocaleString(undefined,{style:'currency',currency:'USD'});
-  const todayISO = () => new Date().toISOString().slice(0,10);
-  const statusProgress = st => ({'Planning':18,'New':12,'Contacted':25,'Estimate Scheduled':35,'Quote Sent':45,'Approved':55,'In Progress':72,'Completed':100,'Closed':100}[String(st||'Planning')] || 20);
-  let state = { session:null, projects:[], customers:[], leads:[], gallery:[], estimateItems:[], invoices:[], schedule:[], milestones:[], selectedProjectId:null, selectedProject:null };
-  const loginBox=$('[data-admin-login]'), dash=$('[data-admin-dashboard]'), loginForm=$('[data-login-form]'), loginStatus=$('[data-login-status]'), msg=$('[data-admin-message]');
-  function notify(text, ok=true){ if(msg){ msg.textContent=text; msg.className='form-status '+(ok?'success':'error'); } }
-  function showLogin(text=''){ if(loginBox) loginBox.style.display='block'; if(dash) dash.style.display='none'; if(loginStatus) loginStatus.textContent=text; }
-  const IDLE_LIMIT_MS=30*60*1000;
-  let idleTimer=null;
-  function resetIdleTimer(){
-    clearTimeout(idleTimer);
-    if(!state.session) return;
-    idleTimer=setTimeout(async()=>{await client.auth.signOut();state.session=null;showLogin('Your secure session expired after 30 minutes of inactivity.');},IDLE_LIMIT_MS);
+(function () {
+  if (!window.supabase) return;
+  const client = window.supabase.createClient(
+    window.BLUE_BEAR_SUPABASE_URL,
+    window.BLUE_BEAR_SUPABASE_KEY,
+  );
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+  const esc = (v) =>
+    String(v ?? '').replace(
+      /[&<>"]/g,
+      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+    );
+  const money = (n) =>
+    Number(n || 0).toLocaleString(undefined, { style: 'currency', currency: 'USD' });
+  const todayISO = () => new Date().toISOString().slice(0, 10);
+  const statusProgress = (st) =>
+    ({
+      Planning: 18,
+      New: 12,
+      Contacted: 25,
+      'Estimate Scheduled': 35,
+      'Quote Sent': 45,
+      Approved: 55,
+      'In Progress': 72,
+      Completed: 100,
+      Closed: 100,
+    })[String(st || 'Planning')] || 20;
+  let state = {
+    session: null,
+    projects: [],
+    customers: [],
+    leads: [],
+    gallery: [],
+    estimateItems: [],
+    invoices: [],
+    schedule: [],
+    milestones: [],
+    selectedProjectId: null,
+    selectedProject: null,
+  };
+  const loginBox = $('[data-admin-login]'),
+    dash = $('[data-admin-dashboard]'),
+    loginForm = $('[data-login-form]'),
+    loginStatus = $('[data-login-status]'),
+    msg = $('[data-admin-message]');
+  function notify(text, ok = true) {
+    if (msg) {
+      msg.textContent = text;
+      msg.className = 'form-status ' + (ok ? 'success' : 'error');
+    }
   }
-  ['click','keydown','pointerdown','touchstart'].forEach(eventName=>document.addEventListener(eventName,resetIdleTimer,{passive:true}));
-  async function verifyAdmin(session){
-    if(!session?.user?.id) return false;
-    const {data,error}=await client.from('admin_users').select('user_id,role').eq('user_id',session.user.id).eq('role','admin').maybeSingle();
-    if(error){console.error('Admin verification failed:',error);return false;}
+  function showLogin(text = '') {
+    if (loginBox) loginBox.style.display = 'block';
+    if (dash) dash.style.display = 'none';
+    if (loginStatus) loginStatus.textContent = text;
+  }
+  const IDLE_LIMIT_MS = 30 * 60 * 1000;
+  let idleTimer = null;
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    if (!state.session) return;
+    idleTimer = setTimeout(async () => {
+      await client.auth.signOut();
+      state.session = null;
+      showLogin('Your secure session expired after 30 minutes of inactivity.');
+    }, IDLE_LIMIT_MS);
+  }
+  ['click', 'keydown', 'pointerdown', 'touchstart'].forEach((eventName) =>
+    document.addEventListener(eventName, resetIdleTimer, { passive: true }),
+  );
+  async function verifyAdmin(session) {
+    if (!session?.user?.id) return false;
+    const { data, error } = await client
+      .from('admin_users')
+      .select('user_id,role')
+      .eq('user_id', session.user.id)
+      .eq('role', 'admin')
+      .maybeSingle();
+    if (error) {
+      console.error('Admin verification failed:', error);
+      return false;
+    }
     return Boolean(data);
   }
-  async function showDash(session){
-    const activeSession=session||state.session;
-    if(!await verifyAdmin(activeSession)){
-      await client.auth.signOut();state.session=null;showLogin('This account is not authorized for VoltFlow administration.');return;
+  async function showDash(session) {
+    const activeSession = session || state.session;
+    if (!(await verifyAdmin(activeSession))) {
+      await client.auth.signOut();
+      state.session = null;
+      showLogin('This account is not authorized for VoltFlow administration.');
+      return;
     }
-    state.session=activeSession;
-    if(loginBox) loginBox.style.display='none'; if(dash) dash.style.display='block'; notify(''); resetIdleTimer(); loadAll();
+    state.session = activeSession;
+    if (loginBox) loginBox.style.display = 'none';
+    if (dash) dash.style.display = 'block';
+    notify('');
+    resetIdleTimer();
+    loadAll();
   }
-  async function count(table){ const {count,error}=await client.from(table).select('*',{count:'exact',head:true}); return error?0:(count||0); }
-  function bindTabs(){ $$('.tab-btn').forEach(btn=>btn.onclick=()=>{ $$('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); $$('.tab-page').forEach(p=>p.classList.remove('active')); $(`[data-tab-page="${btn.dataset.tab}"]`)?.classList.add('active'); }); $$('.ws-tab').forEach(btn=>btn.onclick=()=>{ $$('.ws-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); $$('.ws-page').forEach(p=>p.classList.remove('active')); $(`[data-ws-page="${btn.dataset.wsTab}"]`)?.classList.add('active'); }); }
-  async function loadStats(){
-    const [leads,customers,projects,files,reviews,est,invoices,schedule] = await Promise.all(['leads','customers','projects','gallery','reviews','estimate_items','invoices','schedule_events'].map(count));
-    const stats=$('[data-admin-stats]'); if(stats) stats.innerHTML=[['Leads',leads],['Customers',customers],['Projects',projects],['Files',files],['Reviews',reviews]].map(([a,b])=>`<div class="stat"><b>${b}</b><span>${a}</span></div>`).join('');
-    const kpi=$('[data-kpi-grid]'); if(kpi){
-      const invoiceTotal=(state.invoices||[]).reduce((s,i)=>s+Number(i.total||0),0);
-      const active=state.projects.filter(p=>!['Completed','Closed'].includes(String(p.status||''))).length;
-      const completed=state.projects.filter(p=>['Completed','Closed'].includes(String(p.status||''))).length;
-      kpi.innerHTML=`
-      <div class="v6-card kpi-card"><div class="big">${active}</div><div class="meta">Active Projects</div><div class="kpi-line"><span style="width:${Math.min(100,active*12)}%"></span></div></div>
+  async function count(table) {
+    const { count, error } = await client.from(table).select('*', { count: 'exact', head: true });
+    return error ? 0 : count || 0;
+  }
+  function bindTabs() {
+    $$('.tab-btn').forEach(
+      (btn) =>
+        (btn.onclick = () => {
+          $$('.tab-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          $$('.tab-page').forEach((p) => p.classList.remove('active'));
+          $(`[data-tab-page="${btn.dataset.tab}"]`)?.classList.add('active');
+        }),
+    );
+    $$('.ws-tab').forEach(
+      (btn) =>
+        (btn.onclick = () => {
+          $$('.ws-tab').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          $$('.ws-page').forEach((p) => p.classList.remove('active'));
+          $(`[data-ws-page="${btn.dataset.wsTab}"]`)?.classList.add('active');
+        }),
+    );
+  }
+  async function loadStats() {
+    const [leads, customers, projects, files, reviews, est, invoices, schedule] = await Promise.all(
+      [
+        'leads',
+        'customers',
+        'projects',
+        'gallery',
+        'reviews',
+        'estimate_items',
+        'invoices',
+        'schedule_events',
+      ].map(count),
+    );
+    const stats = $('[data-admin-stats]');
+    if (stats)
+      stats.innerHTML = [
+        ['Leads', leads],
+        ['Customers', customers],
+        ['Projects', projects],
+        ['Files', files],
+        ['Reviews', reviews],
+      ]
+        .map(([a, b]) => `<div class="stat"><b>${b}</b><span>${a}</span></div>`)
+        .join('');
+    const kpi = $('[data-kpi-grid]');
+    if (kpi) {
+      const invoiceTotal = (state.invoices || []).reduce((s, i) => s + Number(i.total || 0), 0);
+      const active = state.projects.filter(
+        (p) => !['Completed', 'Closed'].includes(String(p.status || '')),
+      ).length;
+      const completed = state.projects.filter((p) =>
+        ['Completed', 'Closed'].includes(String(p.status || '')),
+      ).length;
+      kpi.innerHTML = `
+      <div class="v6-card kpi-card"><div class="big">${active}</div><div class="meta">Active Projects</div><div class="kpi-line"><span style="width:${Math.min(100, active * 12)}%"></span></div></div>
       <div class="v6-card kpi-card"><div class="big">${money(invoiceTotal)}</div><div class="meta">Invoices Generated</div><div class="kpi-line"><span style="width:65%"></span></div></div>
-      <div class="v6-card kpi-card"><div class="big">${est}</div><div class="meta">Estimate Lines</div><div class="kpi-line"><span style="width:${Math.min(100,est*12)}%"></span></div></div>
-      <div class="v6-card kpi-card"><div class="big">${schedule}</div><div class="meta">Schedule Events</div><div class="kpi-line"><span style="width:${Math.min(100,schedule*12)}%"></span></div></div>
-      <div class="v6-card kpi-card"><div class="big">${completed}</div><div class="meta">Completed Jobs</div><div class="kpi-line"><span style="width:${Math.min(100,completed*12)}%"></span></div></div>`;
+      <div class="v6-card kpi-card"><div class="big">${est}</div><div class="meta">Estimate Lines</div><div class="kpi-line"><span style="width:${Math.min(100, est * 12)}%"></span></div></div>
+      <div class="v6-card kpi-card"><div class="big">${schedule}</div><div class="meta">Schedule Events</div><div class="kpi-line"><span style="width:${Math.min(100, schedule * 12)}%"></span></div></div>
+      <div class="v6-card kpi-card"><div class="big">${completed}</div><div class="meta">Completed Jobs</div><div class="kpi-line"><span style="width:${Math.min(100, completed * 12)}%"></span></div></div>`;
     }
   }
-  async function loadData(){
-    const [leads,customers,projects,gallery,invoices,schedule] = await Promise.all([
-      client.from('leads').select('*').order('created_at',{ascending:false}).limit(20),
-      client.from('customers').select('*').order('created_at',{ascending:false}),
-      client.from('projects').select('*').order('created_at',{ascending:false}),
-      client.from('gallery').select('*').order('created_at',{ascending:false}).limit(40),
-      client.from('invoices').select('*').order('created_at',{ascending:false}),
-      client.from('schedule_events').select('*').order('start_time',{ascending:true})
+  async function loadData() {
+    const [leads, customers, projects, gallery, invoices, schedule] = await Promise.all([
+      client.from('leads').select('*').order('created_at', { ascending: false }).limit(20),
+      client.from('customers').select('*').order('created_at', { ascending: false }),
+      client.from('projects').select('*').order('created_at', { ascending: false }),
+      client.from('gallery').select('*').order('created_at', { ascending: false }).limit(40),
+      client.from('invoices').select('*').order('created_at', { ascending: false }),
+      client.from('schedule_events').select('*').order('start_time', { ascending: true }),
     ]);
-    state.leads=leads.data||[]; state.customers=customers.data||[]; state.projects=projects.data||[]; state.gallery=gallery.data||[]; state.invoices=invoices.data||[]; state.schedule=schedule.data||[];
-    [leads,customers,projects,gallery,invoices,schedule].forEach(r=>{ if(r.error) console.error(r.error); });
+    state.leads = leads.data || [];
+    state.customers = customers.data || [];
+    state.projects = projects.data || [];
+    state.gallery = gallery.data || [];
+    state.invoices = invoices.data || [];
+    state.schedule = schedule.data || [];
+    [leads, customers, projects, gallery, invoices, schedule].forEach((r) => {
+      if (r.error) console.error(r.error);
+    });
   }
-  function renderLeads(){ const wrap=$('[data-leads-list]'); if(!wrap) return; wrap.innerHTML=state.leads.length?state.leads.map(l=>`<div class="mini-row"><b>${esc(l.full_name||l.name||'Lead')}</b><span>${esc(l.service_type||l.service||'Service')} • ${esc(l.phone||'')} • ${esc(l.status||'New')}</span></div>`).join(''):'<p class="small">No leads yet.</p>'; }
-  function renderCustomers(){ const wrap=$('[data-customer-cards]'); if(!wrap) return; wrap.innerHTML=state.customers.length?state.customers.map(c=>{ const pc=state.projects.filter(p=>p.customer_id===c.id).length; return `<article class="v6-card"><h4>${esc(c.full_name)}</h4><p>${esc(c.company||'')}</p><p class="small">${esc(c.phone||'')}<br>${esc(c.email||'')}<br>${esc(c.city||'')}</p><span class="badge">${pc} projects</span></article>`; }).join(''):'<p class="small">No customers yet.</p>'; }
-  function projectCard(p){ const files=state.gallery.filter(g=>g.project_id===p.id).length; const inv=state.invoices.filter(i=>i.project_id===p.id).length; const progress=statusProgress(p.status); return `<article class="v6-card project-card polished-card" data-open-project="${p.id}"><div class="card-top"><span class="badge">${esc(p.status||'Planning')}</span><span class="mini-count">${progress}%</span></div><h4>${esc(p.project_name)}</h4><p class="small">${esc(p.service_type||'Service')} • ${esc(p.city||'City')}</p><p>${esc(p.notes||'')}</p><div class="progress-bar"><span style="width:${progress}%"></span></div><div class="card-metrics"><span>${files} files</span><span>${inv} invoices</span><span>${(state.schedule||[]).filter(e=>e.project_id===p.id).length} events</span></div><button class="btn yellow" type="button">Open Workspace</button></article>`; }
-  function renderProjects(){ const board=$('[data-project-card-grid]'); const old=$('[data-project-board]'); const select=$('[data-workspace-project]'); const q=($('[data-project-search]')?.value||'').toLowerCase(); const list=state.projects.filter(p=>!q || [p.project_name,p.city,p.service_type,p.status,p.notes].join(' ').toLowerCase().includes(q)); if(board) board.innerHTML=list.length?list.map(projectCard).join(''):'<p class="small">No matching projects.</p>'; if(old) old.innerHTML=state.projects.map(projectCard).join(''); if(select){ select.innerHTML='<option value="">Choose project</option>'+state.projects.map(p=>`<option value="${p.id}" ${p.id===state.selectedProjectId?'selected':''}>${esc(p.project_name)} - ${esc(p.city||'')}</option>`).join(''); } }
-  async function signedUrl(path){ if(!path) return ''; const {data}=await client.storage.from('project-photos').createSignedUrl(path,3600); return data?.signedUrl||''; }
-  async function renderRecentGallery(){ const wrap=$('[data-gallery-list]'); if(!wrap) return; const html=[]; for(const g of state.gallery.slice(0,12)){ const url=await signedUrl(g.file_path||g.image_url); const isImg=(g.file_type||'').startsWith('image')||String(g.file_path||g.image_url||'').match(/\.(jpg|jpeg|png|webp|gif)$/i); html.push(`<article class="media-card">${isImg&&url?`<img src="${url}" alt="${esc(g.title||'Project file')}" data-lightbox="${url}">`:`<div class="file-tile">FILE</div>`}<div><b>${esc(g.title||'Project file')}</b><small>${esc(g.photo_stage||g.category||'General')}</small>${url?`<a class="learn" target="_blank" href="${url}">Open →</a>`:''}</div></article>`); } wrap.innerHTML=html.join('')||'<p class="small">No files yet.</p>'; }
-  function renderScheduleDash(){ const wrap=$('[data-dashboard-schedule]'); if(!wrap) return; const upcoming=state.schedule.filter(e=>!e.start_time || e.start_time.slice(0,10)>=todayISO()).slice(0,8); wrap.innerHTML=upcoming.length?upcoming.map(e=>`<div class="mini-row"><b>${esc(e.title)}</b><span>${e.start_time?new Date(e.start_time).toLocaleString():'No date'} • ${esc(e.location||'')}</span></div>`).join(''):'<p class="small">No upcoming schedule events.</p>'; }
-  function renderActivity(){ const wrap=$('[data-activity-feed]'); if(!wrap) return; const events=[]; state.projects.forEach(p=>events.push({t:p.created_at,label:'Project created',title:p.project_name,meta:`${p.service_type||'Service'} • ${p.city||''}`})); state.gallery.forEach(g=>events.push({t:g.created_at,label:'File uploaded',title:g.title||'Project file',meta:g.photo_stage||g.category||'General'})); state.invoices.forEach(i=>events.push({t:i.created_at,label:'Invoice created',title:i.invoice_number||'Invoice',meta:money(i.total)})); state.schedule.forEach(e=>events.push({t:e.created_at||e.start_time,label:'Scheduled',title:e.title,meta:e.start_time?new Date(e.start_time).toLocaleString():''})); events.sort((a,b)=>new Date(b.t||0)-new Date(a.t||0)); wrap.innerHTML=events.slice(0,30).map(e=>`<div class="activity-item"><span class="activity-dot"></span><div><b>${esc(e.label)}</b><p>${esc(e.title)}</p><small>${esc(e.meta||'')} ${e.t?'• '+new Date(e.t).toLocaleDateString():''}</small></div></div>`).join('')||'<p class="small">No activity yet.</p>'; }
-  async function openProject(id){ state.selectedProjectId=id; state.selectedProject=state.projects.find(p=>p.id===id); $$('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab==='workspace')); $$('.tab-page').forEach(p=>p.classList.toggle('active',p.dataset.tabPage==='workspace')); const sel=$('[data-workspace-project]'); if(sel) sel.value=id; renderWorkspaceShell(); await loadWorkspace(); }
-  function renderWorkspaceShell(){ const empty=$('[data-workspace-empty]'), body=$('[data-workspace-body]'); if(!state.selectedProject){ if(empty) empty.style.display='block'; if(body) body.style.display='none'; return; } if(empty) empty.style.display='none'; if(body) body.style.display='block'; $('[data-ws-status]').textContent=state.selectedProject.status||'Planning'; $('[data-ws-title]').textContent=state.selectedProject.project_name||'Project'; $('[data-ws-meta]').textContent=`${state.selectedProject.service_type||'Service'} • ${state.selectedProject.city||'City'} • Created ${state.selectedProject.created_at?new Date(state.selectedProject.created_at).toLocaleDateString():''}`; $('[data-ws-notes]').textContent=state.selectedProject.notes||''; }
-  async function loadWorkspace(){ if(!state.selectedProjectId) return; const [gal,items,inv,sch,ms]=await Promise.all([client.from('gallery').select('*').eq('project_id',state.selectedProjectId).order('created_at',{ascending:false}),client.from('estimate_items').select('*').eq('project_id',state.selectedProjectId).order('created_at',{ascending:true}),client.from('invoices').select('*').eq('project_id',state.selectedProjectId).order('created_at',{ascending:false}),client.from('schedule_events').select('*').eq('project_id',state.selectedProjectId).order('start_time',{ascending:true}),client.from('project_milestones').select('*').eq('project_id',state.selectedProjectId).order('created_at',{ascending:true})]); state.projectGallery=gal.data||[]; state.estimateItems=items.data||[]; state.projectInvoices=inv.data||[]; state.projectSchedule=sch.data||[]; state.milestones=ms.data||[]; [gal,items,inv,sch,ms].forEach(r=>{if(r.error) console.error(r.error)}); await renderProjectGallery(); renderEstimate(); renderInvoices(); renderSchedule(); renderTimeline(); }
-  async function renderProjectGallery(){ const wrap=$('[data-project-gallery]'); if(!wrap) return; const stages=['Before','During','After','Thermal','Drone','Reports','Warranty','General']; let html=''; for(const s of stages){ const items=(state.projectGallery||[]).filter(i=>(i.photo_stage||i.category||'General').toLowerCase()===s.toLowerCase()); if(items.length){ html+=`<div class="stage-block"><h4>${s}</h4><div class="media-grid">`; for(const g of items){ const url=await signedUrl(g.file_path||g.image_url); const isImg=(g.file_type||'').startsWith('image')||String(g.file_path||g.image_url||'').match(/\.(jpg|jpeg|png|webp|gif)$/i); html+=`<article class="media-card">${isImg&&url?`<img src="${url}" alt="${esc(g.title||'Project file')}" data-lightbox="${url}">`:`<div class="file-tile">FILE</div>`}<div><b>${esc(g.title||'Project file')}</b><p class="small">${esc(g.description||'')}</p>${url?`<a class="learn" href="${url}" target="_blank">Open file →</a>`:''}</div></article>`; } html+='</div></div>'; } } wrap.innerHTML=html||'<p class="small">No project files yet.</p>'; }
-  function renderEstimate(){ const list=$('[data-estimate-list]'), total=$('[data-estimate-total]'); if(!list) return; const rows=state.estimateItems||[]; list.innerHTML=rows.length?`<div class="line-table">${rows.map(r=>`<div><span>${esc(r.description)}</span><span>${r.quantity}</span><span>${money(r.unit_price)}</span><b>${money(r.total)}</b></div>`).join('')}</div>`:'<p class="small">No estimate items yet.</p>'; const sub=rows.reduce((s,r)=>s+Number(r.total||0),0); total.innerHTML=`<b>Subtotal: ${money(sub)}</b><br><span class="small">Tax and markup modules can be added next.</span>`; }
-  function renderInvoices(){ const wrap=$('[data-invoice-list]'); if(!wrap) return; wrap.innerHTML=(state.projectInvoices||[]).length?state.projectInvoices.map(i=>`<div class="mini-row"><b>${esc(i.invoice_number||'Invoice')}</b><span>${esc(i.status||'Unpaid')} • ${money(i.total)} • Due ${i.due_date||'Not set'}</span></div>`).join(''):'<p class="small">No invoices yet.</p>'; }
-  function renderSchedule(){ const wrap=$('[data-schedule-list]'); if(!wrap) return; wrap.innerHTML=(state.projectSchedule||[]).length?state.projectSchedule.map(e=>`<div class="mini-row"><b>${esc(e.title)}</b><span>${esc(e.event_type||'Event')} • ${e.start_time?new Date(e.start_time).toLocaleString():'No time'} • ${esc(e.location||'')}</span></div>`).join(''):'<p class="small">No schedule events yet.</p>'; }
-  function renderTimeline(){ const wrap=$('[data-timeline-list]'); if(!wrap) return; const defaults=['Lead Received','Site Visit','Estimate Sent','Approved','Materials Ordered','Work Started','Inspection','Invoice Sent','Paid','Closed']; const rows=(state.milestones&&state.milestones.length)?state.milestones:defaults.map((label,i)=>({label,status:i<1?'Done':'Pending'})); wrap.innerHTML=rows.map(m=>`<div class="timeline-item"><span class="dot ${String(m.status).toLowerCase()}"></span><div><b>${esc(m.label||m.title)}</b><p class="small">${esc(m.notes||'')}</p></div><span class="badge">${esc(m.status||'Pending')}</span></div>`).join(''); }
-  async function loadAll(){ await loadData(); renderLeads(); renderCustomers(); renderProjects(); await renderRecentGallery(); renderScheduleDash(); renderActivity(); await loadStats(); if(state.selectedProjectId){ state.selectedProject=state.projects.find(p=>p.id===state.selectedProjectId); renderWorkspaceShell(); await loadWorkspace(); } }
-  async function insertFromForm(form, table, fields){ const fd=new FormData(form); const row={}; fields.forEach(f=>row[f]=String(fd.get(f)||'').trim()); const {error}=await client.from(table).insert(row); if(error){console.error(error); notify(`Could not add ${table}.`,false);} else {form.reset(); notify(`${table} added.`); await loadAll();} }
-  loginForm?.addEventListener('submit',async e=>{
-    e.preventDefault();const fd=new FormData(loginForm);loginStatus.textContent='Signing in securely...';
-    const {data,error}=await client.auth.signInWithPassword({email:fd.get('email'),password:fd.get('password')});
-    if(error){loginStatus.textContent='Login failed. Check your credentials and try again.';return;}
-    if(!await verifyAdmin(data.session)){await client.auth.signOut();loginStatus.textContent='This account is not authorized for administration.';return;}
+  function renderLeads() {
+    const wrap = $('[data-leads-list]');
+    if (!wrap) return;
+    wrap.innerHTML = state.leads.length
+      ? state.leads
+          .map(
+            (l) =>
+              `<div class="mini-row"><b>${esc(l.full_name || l.name || 'Lead')}</b><span>${esc(l.service_type || l.service || 'Service')} • ${esc(l.phone || '')} • ${esc(l.status || 'New')}</span></div>`,
+          )
+          .join('')
+      : '<p class="small">No leads yet.</p>';
+  }
+  function renderCustomers() {
+    const wrap = $('[data-customer-cards]');
+    if (!wrap) return;
+    wrap.innerHTML = state.customers.length
+      ? state.customers
+          .map((c) => {
+            const pc = state.projects.filter((p) => p.customer_id === c.id).length;
+            return `<article class="v6-card"><h4>${esc(c.full_name)}</h4><p>${esc(c.company || '')}</p><p class="small">${esc(c.phone || '')}<br>${esc(c.email || '')}<br>${esc(c.city || '')}</p><span class="badge">${pc} projects</span></article>`;
+          })
+          .join('')
+      : '<p class="small">No customers yet.</p>';
+  }
+  function projectCard(p) {
+    const files = state.gallery.filter((g) => g.project_id === p.id).length;
+    const inv = state.invoices.filter((i) => i.project_id === p.id).length;
+    const progress = statusProgress(p.status);
+    return `<article class="v6-card project-card polished-card" data-open-project="${p.id}"><div class="card-top"><span class="badge">${esc(p.status || 'Planning')}</span><span class="mini-count">${progress}%</span></div><h4>${esc(p.project_name)}</h4><p class="small">${esc(p.service_type || 'Service')} • ${esc(p.city || 'City')}</p><p>${esc(p.notes || '')}</p><div class="progress-bar"><span style="width:${progress}%"></span></div><div class="card-metrics"><span>${files} files</span><span>${inv} invoices</span><span>${(state.schedule || []).filter((e) => e.project_id === p.id).length} events</span></div><button class="btn yellow" type="button">Open Workspace</button></article>`;
+  }
+  function renderProjects() {
+    const board = $('[data-project-card-grid]');
+    const old = $('[data-project-board]');
+    const select = $('[data-workspace-project]');
+    const q = ($('[data-project-search]')?.value || '').toLowerCase();
+    const list = state.projects.filter(
+      (p) =>
+        !q ||
+        [p.project_name, p.city, p.service_type, p.status, p.notes]
+          .join(' ')
+          .toLowerCase()
+          .includes(q),
+    );
+    if (board)
+      board.innerHTML = list.length
+        ? list.map(projectCard).join('')
+        : '<p class="small">No matching projects.</p>';
+    if (old) old.innerHTML = state.projects.map(projectCard).join('');
+    if (select) {
+      select.innerHTML =
+        '<option value="">Choose project</option>' +
+        state.projects
+          .map(
+            (p) =>
+              `<option value="${p.id}" ${p.id === state.selectedProjectId ? 'selected' : ''}>${esc(p.project_name)} - ${esc(p.city || '')}</option>`,
+          )
+          .join('');
+    }
+  }
+  async function signedUrl(path) {
+    if (!path) return '';
+    const { data } = await client.storage.from('project-photos').createSignedUrl(path, 3600);
+    return data?.signedUrl || '';
+  }
+  async function renderRecentGallery() {
+    const wrap = $('[data-gallery-list]');
+    if (!wrap) return;
+    const html = [];
+    for (const g of state.gallery.slice(0, 12)) {
+      const url = await signedUrl(g.file_path || g.image_url);
+      const isImg =
+        (g.file_type || '').startsWith('image') ||
+        String(g.file_path || g.image_url || '').match(/\.(jpg|jpeg|png|webp|gif)$/i);
+      html.push(
+        `<article class="media-card">${isImg && url ? `<img src="${url}" alt="${esc(g.title || 'Project file')}" data-lightbox="${url}">` : `<div class="file-tile">FILE</div>`}<div><b>${esc(g.title || 'Project file')}</b><small>${esc(g.photo_stage || g.category || 'General')}</small>${url ? `<a class="learn" target="_blank" href="${url}">Open →</a>` : ''}</div></article>`,
+      );
+    }
+    wrap.innerHTML = html.join('') || '<p class="small">No files yet.</p>';
+  }
+  function renderScheduleDash() {
+    const wrap = $('[data-dashboard-schedule]');
+    if (!wrap) return;
+    const upcoming = state.schedule
+      .filter((e) => !e.start_time || e.start_time.slice(0, 10) >= todayISO())
+      .slice(0, 8);
+    wrap.innerHTML = upcoming.length
+      ? upcoming
+          .map(
+            (e) =>
+              `<div class="mini-row"><b>${esc(e.title)}</b><span>${e.start_time ? new Date(e.start_time).toLocaleString() : 'No date'} • ${esc(e.location || '')}</span></div>`,
+          )
+          .join('')
+      : '<p class="small">No upcoming schedule events.</p>';
+  }
+  function renderActivity() {
+    const wrap = $('[data-activity-feed]');
+    if (!wrap) return;
+    const events = [];
+    state.projects.forEach((p) =>
+      events.push({
+        t: p.created_at,
+        label: 'Project created',
+        title: p.project_name,
+        meta: `${p.service_type || 'Service'} • ${p.city || ''}`,
+      }),
+    );
+    state.gallery.forEach((g) =>
+      events.push({
+        t: g.created_at,
+        label: 'File uploaded',
+        title: g.title || 'Project file',
+        meta: g.photo_stage || g.category || 'General',
+      }),
+    );
+    state.invoices.forEach((i) =>
+      events.push({
+        t: i.created_at,
+        label: 'Invoice created',
+        title: i.invoice_number || 'Invoice',
+        meta: money(i.total),
+      }),
+    );
+    state.schedule.forEach((e) =>
+      events.push({
+        t: e.created_at || e.start_time,
+        label: 'Scheduled',
+        title: e.title,
+        meta: e.start_time ? new Date(e.start_time).toLocaleString() : '',
+      }),
+    );
+    events.sort((a, b) => new Date(b.t || 0) - new Date(a.t || 0));
+    wrap.innerHTML =
+      events
+        .slice(0, 30)
+        .map(
+          (e) =>
+            `<div class="activity-item"><span class="activity-dot"></span><div><b>${esc(e.label)}</b><p>${esc(e.title)}</p><small>${esc(e.meta || '')} ${e.t ? '• ' + new Date(e.t).toLocaleDateString() : ''}</small></div></div>`,
+        )
+        .join('') || '<p class="small">No activity yet.</p>';
+  }
+  async function openProject(id) {
+    state.selectedProjectId = id;
+    state.selectedProject = state.projects.find((p) => p.id === id);
+    $$('.tab-btn').forEach((b) => b.classList.toggle('active', b.dataset.tab === 'workspace'));
+    $$('.tab-page').forEach((p) => p.classList.toggle('active', p.dataset.tabPage === 'workspace'));
+    const sel = $('[data-workspace-project]');
+    if (sel) sel.value = id;
+    renderWorkspaceShell();
+    await loadWorkspace();
+  }
+  function renderWorkspaceShell() {
+    const empty = $('[data-workspace-empty]'),
+      body = $('[data-workspace-body]');
+    if (!state.selectedProject) {
+      if (empty) empty.style.display = 'block';
+      if (body) body.style.display = 'none';
+      return;
+    }
+    if (empty) empty.style.display = 'none';
+    if (body) body.style.display = 'block';
+    $('[data-ws-status]').textContent = state.selectedProject.status || 'Planning';
+    $('[data-ws-title]').textContent = state.selectedProject.project_name || 'Project';
+    $('[data-ws-meta]').textContent =
+      `${state.selectedProject.service_type || 'Service'} • ${state.selectedProject.city || 'City'} • Created ${state.selectedProject.created_at ? new Date(state.selectedProject.created_at).toLocaleDateString() : ''}`;
+    $('[data-ws-notes]').textContent = state.selectedProject.notes || '';
+  }
+  async function loadWorkspace() {
+    if (!state.selectedProjectId) return;
+    const [gal, items, inv, sch, ms] = await Promise.all([
+      client
+        .from('gallery')
+        .select('*')
+        .eq('project_id', state.selectedProjectId)
+        .order('created_at', { ascending: false }),
+      client
+        .from('estimate_items')
+        .select('*')
+        .eq('project_id', state.selectedProjectId)
+        .order('created_at', { ascending: true }),
+      client
+        .from('invoices')
+        .select('*')
+        .eq('project_id', state.selectedProjectId)
+        .order('created_at', { ascending: false }),
+      client
+        .from('schedule_events')
+        .select('*')
+        .eq('project_id', state.selectedProjectId)
+        .order('start_time', { ascending: true }),
+      client
+        .from('project_milestones')
+        .select('*')
+        .eq('project_id', state.selectedProjectId)
+        .order('created_at', { ascending: true }),
+    ]);
+    state.projectGallery = gal.data || [];
+    state.estimateItems = items.data || [];
+    state.projectInvoices = inv.data || [];
+    state.projectSchedule = sch.data || [];
+    state.milestones = ms.data || [];
+    [gal, items, inv, sch, ms].forEach((r) => {
+      if (r.error) console.error(r.error);
+    });
+    await renderProjectGallery();
+    renderEstimate();
+    renderInvoices();
+    renderSchedule();
+    renderTimeline();
+  }
+  async function renderProjectGallery() {
+    const wrap = $('[data-project-gallery]');
+    if (!wrap) return;
+    const stages = [
+      'Before',
+      'During',
+      'After',
+      'Thermal',
+      'Drone',
+      'Reports',
+      'Warranty',
+      'General',
+    ];
+    let html = '';
+    for (const s of stages) {
+      const items = (state.projectGallery || []).filter(
+        (i) => (i.photo_stage || i.category || 'General').toLowerCase() === s.toLowerCase(),
+      );
+      if (items.length) {
+        html += `<div class="stage-block"><h4>${s}</h4><div class="media-grid">`;
+        for (const g of items) {
+          const url = await signedUrl(g.file_path || g.image_url);
+          const isImg =
+            (g.file_type || '').startsWith('image') ||
+            String(g.file_path || g.image_url || '').match(/\.(jpg|jpeg|png|webp|gif)$/i);
+          html += `<article class="media-card">${isImg && url ? `<img src="${url}" alt="${esc(g.title || 'Project file')}" data-lightbox="${url}">` : `<div class="file-tile">FILE</div>`}<div><b>${esc(g.title || 'Project file')}</b><p class="small">${esc(g.description || '')}</p>${url ? `<a class="learn" href="${url}" target="_blank">Open file →</a>` : ''}</div></article>`;
+        }
+        html += '</div></div>';
+      }
+    }
+    wrap.innerHTML = html || '<p class="small">No project files yet.</p>';
+  }
+  function renderEstimate() {
+    const list = $('[data-estimate-list]'),
+      total = $('[data-estimate-total]');
+    if (!list) return;
+    const rows = state.estimateItems || [];
+    list.innerHTML = rows.length
+      ? `<div class="line-table">${rows.map((r) => `<div><span>${esc(r.description)}</span><span>${r.quantity}</span><span>${money(r.unit_price)}</span><b>${money(r.total)}</b></div>`).join('')}</div>`
+      : '<p class="small">No estimate items yet.</p>';
+    const sub = rows.reduce((s, r) => s + Number(r.total || 0), 0);
+    total.innerHTML = `<b>Subtotal: ${money(sub)}</b><br><span class="small">Tax and markup modules can be added next.</span>`;
+  }
+  function renderInvoices() {
+    const wrap = $('[data-invoice-list]');
+    if (!wrap) return;
+    wrap.innerHTML = (state.projectInvoices || []).length
+      ? state.projectInvoices
+          .map(
+            (i) =>
+              `<div class="mini-row"><b>${esc(i.invoice_number || 'Invoice')}</b><span>${esc(i.status || 'Unpaid')} • ${money(i.total)} • Due ${i.due_date || 'Not set'}</span></div>`,
+          )
+          .join('')
+      : '<p class="small">No invoices yet.</p>';
+  }
+  function renderSchedule() {
+    const wrap = $('[data-schedule-list]');
+    if (!wrap) return;
+    wrap.innerHTML = (state.projectSchedule || []).length
+      ? state.projectSchedule
+          .map(
+            (e) =>
+              `<div class="mini-row"><b>${esc(e.title)}</b><span>${esc(e.event_type || 'Event')} • ${e.start_time ? new Date(e.start_time).toLocaleString() : 'No time'} • ${esc(e.location || '')}</span></div>`,
+          )
+          .join('')
+      : '<p class="small">No schedule events yet.</p>';
+  }
+  function renderTimeline() {
+    const wrap = $('[data-timeline-list]');
+    if (!wrap) return;
+    const defaults = [
+      'Lead Received',
+      'Site Visit',
+      'Estimate Sent',
+      'Approved',
+      'Materials Ordered',
+      'Work Started',
+      'Inspection',
+      'Invoice Sent',
+      'Paid',
+      'Closed',
+    ];
+    const rows =
+      state.milestones && state.milestones.length
+        ? state.milestones
+        : defaults.map((label, i) => ({ label, status: i < 1 ? 'Done' : 'Pending' }));
+    wrap.innerHTML = rows
+      .map(
+        (m) =>
+          `<div class="timeline-item"><span class="dot ${String(m.status).toLowerCase()}"></span><div><b>${esc(m.label || m.title)}</b><p class="small">${esc(m.notes || '')}</p></div><span class="badge">${esc(m.status || 'Pending')}</span></div>`,
+      )
+      .join('');
+  }
+  async function loadAll() {
+    await loadData();
+    renderLeads();
+    renderCustomers();
+    renderProjects();
+    await renderRecentGallery();
+    renderScheduleDash();
+    renderActivity();
+    await loadStats();
+    if (state.selectedProjectId) {
+      state.selectedProject = state.projects.find((p) => p.id === state.selectedProjectId);
+      renderWorkspaceShell();
+      await loadWorkspace();
+    }
+  }
+  async function insertFromForm(form, table, fields) {
+    const fd = new FormData(form);
+    const row = {};
+    fields.forEach((f) => (row[f] = String(fd.get(f) || '').trim()));
+    const { error } = await client.from(table).insert(row);
+    if (error) {
+      console.error(error);
+      notify(`Could not add ${table}.`, false);
+    } else {
+      form.reset();
+      notify(`${table} added.`);
+      await loadAll();
+    }
+  }
+  loginForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(loginForm);
+    loginStatus.textContent = 'Signing in securely...';
+    const { data, error } = await client.auth.signInWithPassword({
+      email: fd.get('email'),
+      password: fd.get('password'),
+    });
+    if (error) {
+      loginStatus.textContent = 'Login failed. Check your credentials and try again.';
+      return;
+    }
+    if (!(await verifyAdmin(data.session))) {
+      await client.auth.signOut();
+      loginStatus.textContent = 'This account is not authorized for administration.';
+      return;
+    }
     showDash(data.session);
   });
-  $('[data-logout]')?.addEventListener('click',async()=>{clearTimeout(idleTimer);await client.auth.signOut();state.session=null;showLogin('Signed out securely.');});
-  $('[data-new-customer]')?.addEventListener('submit',e=>{e.preventDefault(); insertFromForm(e.currentTarget,'customers',['full_name','company','phone','email','city','notes']);});
-  $('[data-new-project]')?.addEventListener('submit',e=>{e.preventDefault(); insertFromForm(e.currentTarget,'projects',['project_name','service_type','status','city','notes']);});
-  document.addEventListener('click',e=>{ const card=e.target.closest('[data-open-project]'); if(card) openProject(card.dataset.openProject); const img=e.target.closest('[data-lightbox]'); if(img){ const overlay=document.createElement('div'); overlay.className='bb-lightbox'; overlay.innerHTML=`<button aria-label="Close">×</button><img src="${img.dataset.lightbox}" alt="Project photo">`; overlay.onclick=()=>overlay.remove(); document.body.appendChild(overlay); } });
-  $('[data-refresh-activity]')?.addEventListener('click',renderActivity);
-  $('[data-project-search]')?.addEventListener('input',renderProjects);
-  $('[data-workspace-project]')?.addEventListener('change',e=>{ if(e.target.value) openProject(e.target.value); });
-  $('[data-ws-refresh]')?.addEventListener('click',loadWorkspace);
-  $('[data-photo-upload]')?.addEventListener('submit',async e=>{ e.preventDefault(); if(!state.selectedProjectId){notify('Select a project first.',false);return;} const fd=new FormData(e.currentTarget); const file=fd.get('file'); if(!file||!file.name){notify('Choose a file first.',false);return;} const category=String(fd.get('category')||'General'); const safe=file.name.toLowerCase().replace(/[^a-z0-9.]+/g,'-').replace(/^-+|-+$/g,''); const path=`${state.selectedProjectId}/${category.toLowerCase()}/${Date.now()}-${safe}`; notify('Uploading...'); const up=await client.storage.from('project-photos').upload(path,file,{cacheControl:'3600',upsert:false}); if(up.error){console.error(up.error);notify('Upload failed. Check storage policies.',false);return;} const row={project_id:state.selectedProjectId,title:String(fd.get('title')||file.name).trim(),category,photo_stage:category,image_url:path,file_path:path,file_type:file.type||'file',description:String(fd.get('description')||'').trim()}; const db=await client.from('gallery').insert(row); if(db.error){console.error(db.error);notify('File uploaded, but gallery record failed.',false);return;} e.currentTarget.reset(); notify('Project file uploaded.'); await loadAll(); });
-  $('[data-estimate-item]')?.addEventListener('submit',async e=>{ e.preventDefault(); if(!state.selectedProjectId){notify('Select a project first.',false);return;} const fd=new FormData(e.currentTarget); const row={project_id:state.selectedProjectId,description:String(fd.get('description')||'').trim(),quantity:Number(fd.get('quantity')||1),unit_price:Number(fd.get('unit_price')||0)}; const {error}=await client.from('estimate_items').insert(row); if(error){console.error(error);notify('Could not add estimate item.',false);} else {e.currentTarget.reset();notify('Estimate item added.');await loadWorkspace();} });
-  $('[data-create-invoice]')?.addEventListener('submit',async e=>{ e.preventDefault(); if(!state.selectedProjectId){notify('Select a project first.',false);return;} const subtotal=(state.estimateItems||[]).reduce((s,r)=>s+Number(r.total||0),0); const fd=new FormData(e.currentTarget); const row={project_id:state.selectedProjectId,invoice_number:String(fd.get('invoice_number')||`BB-INV-${Date.now()}`).trim(),due_date:fd.get('due_date')||null,subtotal,tax:0,total:subtotal,status:'Unpaid'}; const {error}=await client.from('invoices').insert(row); if(error){console.error(error);notify('Could not create invoice.',false);} else {e.currentTarget.reset();notify('Invoice created.');await loadAll();} });
-  $('[data-schedule-event]')?.addEventListener('submit',async e=>{ e.preventDefault(); if(!state.selectedProjectId){notify('Select a project first.',false);return;} const fd=new FormData(e.currentTarget); const row={project_id:state.selectedProjectId,title:String(fd.get('title')||'').trim(),event_type:String(fd.get('event_type')||'').trim(),start_time:fd.get('start_time')?new Date(fd.get('start_time')).toISOString():null,end_time:fd.get('end_time')?new Date(fd.get('end_time')).toISOString():null,location:String(fd.get('location')||'').trim(),notes:String(fd.get('notes')||'').trim()}; const {error}=await client.from('schedule_events').insert(row); if(error){console.error(error);notify('Could not add schedule event.',false);} else {e.currentTarget.reset();notify('Schedule event added.');await loadAll();} });
-  $('[data-milestone-form]')?.addEventListener('submit',async e=>{ e.preventDefault(); if(!state.selectedProjectId){notify('Select a project first.',false);return;} const fd=new FormData(e.currentTarget); const row={project_id:state.selectedProjectId,label:String(fd.get('label')||'').trim(),status:String(fd.get('status')||'Pending')}; const {error}=await client.from('project_milestones').insert(row); if(error){console.error(error);notify('Could not add milestone. Check database setup and permissions.',false);} else {e.currentTarget.reset();notify('Milestone added.');await loadWorkspace();} });
-  function proposalText(){ const p=state.selectedProject||{}; const items=state.estimateItems||[]; const total=items.reduce((s,r)=>s+Number(r.total||0),0); return `BLUE BEAR ELECTRIC\nCA License #1141313 | OSHA Certified | Bonded & Insured | Union Contractor\n\nPROJECT PROPOSAL\n\nProject: ${p.project_name||''}\nService Type: ${p.service_type||''}\nLocation: ${p.city||''}\nStatus: ${p.status||'Planning'}\n\nScope of Work:\nBlue Bear Electric will provide professional electrical services for the project listed above. Work may include troubleshooting, new installation, maintenance, equipment support, wiring, panels, service repair, testing, and documentation as required by the site conditions.\n\nProject Notes:\n${p.notes||''}\n\nEstimate Items:\n${items.map(i=>`- ${i.description}: ${i.quantity} x ${money(i.unit_price)} = ${money(i.total)}`).join('\n') || '- Estimate items not added yet.'}\n\nEstimated Subtotal: ${money(total)}\n\nSafety and Compliance:\nWork will be planned with safe electrical practices, site coordination, proper PPE, and applicable customer requirements. Licensing and certificates available upon request.\n\nNext Steps:\n1. Confirm project scope.\n2. Schedule site visit or work date.\n3. Finalize estimate/invoice.\n4. Complete installation or service work.\n5. Provide closeout photos and documentation.`; }
-  $('[data-generate-proposal]')?.addEventListener('click',()=>{ const out=$('[data-proposal-output]'); if(out) out.value=proposalText(); });
-  function printDoc(title, body){
-    const w=window.BlueBearDocuments?.open(title,body,{status:'CUSTOMER COPY'});
-    if(w) setTimeout(()=>w.print(),250);
+  $('[data-logout]')?.addEventListener('click', async () => {
+    clearTimeout(idleTimer);
+    await client.auth.signOut();
+    state.session = null;
+    showLogin('Signed out securely.');
+  });
+  $('[data-new-customer]')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    insertFromForm(e.currentTarget, 'customers', [
+      'full_name',
+      'company',
+      'phone',
+      'email',
+      'city',
+      'notes',
+    ]);
+  });
+  $('[data-new-project]')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    insertFromForm(e.currentTarget, 'projects', [
+      'project_name',
+      'service_type',
+      'status',
+      'city',
+      'notes',
+    ]);
+  });
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('[data-open-project]');
+    if (card) openProject(card.dataset.openProject);
+    const img = e.target.closest('[data-lightbox]');
+    if (img) {
+      const overlay = document.createElement('div');
+      overlay.className = 'bb-lightbox';
+      overlay.innerHTML = `<button aria-label="Close">×</button><img src="${img.dataset.lightbox}" alt="Project photo">`;
+      overlay.onclick = () => overlay.remove();
+      document.body.appendChild(overlay);
+    }
+  });
+  $('[data-refresh-activity]')?.addEventListener('click', renderActivity);
+  $('[data-project-search]')?.addEventListener('input', renderProjects);
+  $('[data-workspace-project]')?.addEventListener('change', (e) => {
+    if (e.target.value) openProject(e.target.value);
+  });
+  $('[data-ws-refresh]')?.addEventListener('click', loadWorkspace);
+  $('[data-photo-upload]')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!state.selectedProjectId) {
+      notify('Select a project first.', false);
+      return;
+    }
+    const fd = new FormData(e.currentTarget);
+    const file = fd.get('file');
+    if (!file || !file.name) {
+      notify('Choose a file first.', false);
+      return;
+    }
+    const category = String(fd.get('category') || 'General');
+    const safe = file.name
+      .toLowerCase()
+      .replace(/[^a-z0-9.]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    const path = `${state.selectedProjectId}/${category.toLowerCase()}/${Date.now()}-${safe}`;
+    notify('Uploading...');
+    const up = await client.storage
+      .from('project-photos')
+      .upload(path, file, { cacheControl: '3600', upsert: false });
+    if (up.error) {
+      console.error(up.error);
+      notify('Upload failed. Check storage policies.', false);
+      return;
+    }
+    const row = {
+      project_id: state.selectedProjectId,
+      title: String(fd.get('title') || file.name).trim(),
+      category,
+      photo_stage: category,
+      image_url: path,
+      file_path: path,
+      file_type: file.type || 'file',
+      description: String(fd.get('description') || '').trim(),
+    };
+    const db = await client.from('gallery').insert(row);
+    if (db.error) {
+      console.error(db.error);
+      notify('File uploaded, but gallery record failed.', false);
+      return;
+    }
+    e.currentTarget.reset();
+    notify('Project file uploaded.');
+    await loadAll();
+  });
+  $('[data-estimate-item]')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!state.selectedProjectId) {
+      notify('Select a project first.', false);
+      return;
+    }
+    const fd = new FormData(e.currentTarget);
+    const row = {
+      project_id: state.selectedProjectId,
+      description: String(fd.get('description') || '').trim(),
+      quantity: Number(fd.get('quantity') || 1),
+      unit_price: Number(fd.get('unit_price') || 0),
+    };
+    const { error } = await client.from('estimate_items').insert(row);
+    if (error) {
+      console.error(error);
+      notify('Could not add estimate item.', false);
+    } else {
+      e.currentTarget.reset();
+      notify('Estimate item added.');
+      await loadWorkspace();
+    }
+  });
+  $('[data-create-invoice]')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!state.selectedProjectId) {
+      notify('Select a project first.', false);
+      return;
+    }
+    const subtotal = (state.estimateItems || []).reduce((s, r) => s + Number(r.total || 0), 0);
+    const fd = new FormData(e.currentTarget);
+    const row = {
+      project_id: state.selectedProjectId,
+      invoice_number: String(fd.get('invoice_number') || `BB-INV-${Date.now()}`).trim(),
+      due_date: fd.get('due_date') || null,
+      subtotal,
+      tax: 0,
+      total: subtotal,
+      status: 'Unpaid',
+    };
+    const { error } = await client.from('invoices').insert(row);
+    if (error) {
+      console.error(error);
+      notify('Could not create invoice.', false);
+    } else {
+      e.currentTarget.reset();
+      notify('Invoice created.');
+      await loadAll();
+    }
+  });
+  $('[data-schedule-event]')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!state.selectedProjectId) {
+      notify('Select a project first.', false);
+      return;
+    }
+    const fd = new FormData(e.currentTarget);
+    const row = {
+      project_id: state.selectedProjectId,
+      title: String(fd.get('title') || '').trim(),
+      event_type: String(fd.get('event_type') || '').trim(),
+      start_time: fd.get('start_time') ? new Date(fd.get('start_time')).toISOString() : null,
+      end_time: fd.get('end_time') ? new Date(fd.get('end_time')).toISOString() : null,
+      location: String(fd.get('location') || '').trim(),
+      notes: String(fd.get('notes') || '').trim(),
+    };
+    const { error } = await client.from('schedule_events').insert(row);
+    if (error) {
+      console.error(error);
+      notify('Could not add schedule event.', false);
+    } else {
+      e.currentTarget.reset();
+      notify('Schedule event added.');
+      await loadAll();
+    }
+  });
+  $('[data-milestone-form]')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!state.selectedProjectId) {
+      notify('Select a project first.', false);
+      return;
+    }
+    const fd = new FormData(e.currentTarget);
+    const row = {
+      project_id: state.selectedProjectId,
+      label: String(fd.get('label') || '').trim(),
+      status: String(fd.get('status') || 'Pending'),
+    };
+    const { error } = await client.from('project_milestones').insert(row);
+    if (error) {
+      console.error(error);
+      notify('Could not add milestone. Check database setup and permissions.', false);
+    } else {
+      e.currentTarget.reset();
+      notify('Milestone added.');
+      await loadWorkspace();
+    }
+  });
+  function proposalText() {
+    const p = state.selectedProject || {};
+    const items = state.estimateItems || [];
+    const total = items.reduce((s, r) => s + Number(r.total || 0), 0);
+    return `BLUE BEAR ELECTRIC\nCA License #1141313 | OSHA Certified | Bonded & Insured | Union Contractor\n\nPROJECT PROPOSAL\n\nProject: ${p.project_name || ''}\nService Type: ${p.service_type || ''}\nLocation: ${p.city || ''}\nStatus: ${p.status || 'Planning'}\n\nScope of Work:\nBlue Bear Electric will provide professional electrical services for the project listed above. Work may include troubleshooting, new installation, maintenance, equipment support, wiring, panels, service repair, testing, and documentation as required by the site conditions.\n\nProject Notes:\n${p.notes || ''}\n\nEstimate Items:\n${items.map((i) => `- ${i.description}: ${i.quantity} x ${money(i.unit_price)} = ${money(i.total)}`).join('\n') || '- Estimate items not added yet.'}\n\nEstimated Subtotal: ${money(total)}\n\nSafety and Compliance:\nWork will be planned with safe electrical practices, site coordination, proper PPE, and applicable customer requirements. Licensing and certificates available upon request.\n\nNext Steps:\n1. Confirm project scope.\n2. Schedule site visit or work date.\n3. Finalize estimate/invoice.\n4. Complete installation or service work.\n5. Provide closeout photos and documentation.`;
   }
-  $('[data-print-estimate]')?.addEventListener('click',()=>{ const p=state.selectedProject||{}; const rows=(state.estimateItems||[]).map(i=>`<div class="line"><span>${esc(i.description)} (${i.quantity} x ${money(i.unit_price)})</span><b>${money(i.total)}</b></div>`).join(''); const total=(state.estimateItems||[]).reduce((s,r)=>s+Number(r.total||0),0); printDoc('Estimate',`<h1>Estimate</h1><h2>${esc(p.project_name||'Project')}</h2>${rows}<h2>Total: ${money(total)}</h2>`); });
-  $('[data-print-proposal]')?.addEventListener('click',()=>{ printDoc('Proposal',`<pre style="white-space:pre-wrap;font-family:Arial">${esc(proposalText())}</pre>`); });
-  $('[data-export-ai]')?.addEventListener('click',()=>{
-    const output=$('[data-ai-output]');
-    const title=$('[data-ai-output-title]')?.textContent?.trim() || 'AI Draft';
-    const text=(output?.value || output?.textContent || '').trim();
-    if(!text){ alert('Generate or enter an AI draft before exporting.'); return; }
-    const p=state.selectedProject||{};
-    printDoc(title,`<h1>${esc(title)}</h1><p><b>Project:</b> ${esc(p.project_name||'Unassigned')}</p><pre style="white-space:pre-wrap;font-family:Arial;line-height:1.55">${esc(text)}</pre><p style="margin-top:36px;font-size:12px;color:#666">Draft prepared in VoltFlow. Review technical details, pricing, code requirements, and site conditions before customer release.</p>`);
+  $('[data-generate-proposal]')?.addEventListener('click', () => {
+    const out = $('[data-proposal-output]');
+    if (out) out.value = proposalText();
+  });
+  function printDoc(title, body) {
+    const w = window.BlueBearDocuments?.open(title, body, { status: 'CUSTOMER COPY' });
+    if (w) setTimeout(() => w.print(), 250);
+  }
+  $('[data-print-estimate]')?.addEventListener('click', () => {
+    const p = state.selectedProject || {};
+    const rows = (state.estimateItems || [])
+      .map(
+        (i) =>
+          `<div class="line"><span>${esc(i.description)} (${i.quantity} x ${money(i.unit_price)})</span><b>${money(i.total)}</b></div>`,
+      )
+      .join('');
+    const total = (state.estimateItems || []).reduce((s, r) => s + Number(r.total || 0), 0);
+    printDoc(
+      'Estimate',
+      `<h1>Estimate</h1><h2>${esc(p.project_name || 'Project')}</h2>${rows}<h2>Total: ${money(total)}</h2>`,
+    );
+  });
+  $('[data-print-proposal]')?.addEventListener('click', () => {
+    printDoc(
+      'Proposal',
+      `<pre style="white-space:pre-wrap;font-family:Arial">${esc(proposalText())}</pre>`,
+    );
+  });
+  $('[data-export-ai]')?.addEventListener('click', () => {
+    const output = $('[data-ai-output]');
+    const title = $('[data-ai-output-title]')?.textContent?.trim() || 'AI Draft';
+    const text = (output?.value || output?.textContent || '').trim();
+    if (!text) {
+      alert('Generate or enter an AI draft before exporting.');
+      return;
+    }
+    const p = state.selectedProject || {};
+    printDoc(
+      title,
+      `<h1>${esc(title)}</h1><p><b>Project:</b> ${esc(p.project_name || 'Unassigned')}</p><pre style="white-space:pre-wrap;font-family:Arial;line-height:1.55">${esc(text)}</pre><p style="margin-top:36px;font-size:12px;color:#666">Draft prepared in VoltFlow. Review technical details, pricing, code requirements, and site conditions before customer release.</p>`,
+    );
   });
   bindTabs();
-  client.auth.getSession().then(async({data})=>{
-    if(data.session&&await verifyAdmin(data.session)) showDash(data.session); else showLogin();
+  client.auth.getSession().then(async ({ data }) => {
+    if (data.session && (await verifyAdmin(data.session))) showDash(data.session);
+    else showLogin();
   });
-  client.auth.onAuthStateChange(async(event,session)=>{
-    if(event==='SIGNED_OUT'){state.session=null;clearTimeout(idleTimer);showLogin('Signed out.');}
-    if(event==='TOKEN_REFRESHED'&&session){state.session=session;resetIdleTimer();}
+  client.auth.onAuthStateChange(async (event, session) => {
+    if (event === 'SIGNED_OUT') {
+      state.session = null;
+      clearTimeout(idleTimer);
+      showLogin('Signed out.');
+    }
+    if (event === 'TOKEN_REFRESHED' && session) {
+      state.session = session;
+      resetIdleTimer();
+    }
   });
 })();

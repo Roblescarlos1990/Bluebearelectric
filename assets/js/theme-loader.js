@@ -3,7 +3,7 @@
   if (!saved) return;
   try {
     const theme = JSON.parse(saved);
-    Object.entries(theme).forEach(([key,value]) => {
+    Object.entries(theme).forEach(([key, value]) => {
       if (value) document.documentElement.style.setProperty(`--${key}`, value);
     });
   } catch (error) {

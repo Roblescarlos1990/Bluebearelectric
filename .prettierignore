@@ -1,10 +1,4 @@
-# Runtime source formatting is intentionally deferred to Phase 2.
-*.html
-style.css
-theme.css
-portal.css
-api/
-assets/
+# Historical reference material is intentionally preserved verbatim.
 docs/archive/
 docs/releases/
 

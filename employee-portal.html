@@ -1,23 +1,251 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>Employee Portal | Blue Bear Electric</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="stylesheet" href="portal.css"><link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png"><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#030a13"></head>
-<body class="blue-bear-site portal-body"><header class="portal-top"><a href="index.html" class="portal-brand"><img src="assets/branding/blue-bear/logo-mark-solid.png" alt="Blue Bear Electric"><span>BLUE BEAR ELECTRIC</span></a><a href="index.html" class="portal-home">Public Website</a></header>
-<main class="portal-wrap">
-<section class="portal-auth" data-auth-shell>
-<div class="portal-hero"><span class="portal-kicker">EMPLOYEE ACCESS</span><h1>Blue Bear Employee Portal</h1><p>Secure company access for approved Blue Bear Electric employees and administrators.</p><div class="portal-security"><span>Email verified</span><span>Admin approved</span><span>Private records</span></div></div>
-<div class="portal-card">
-<div class="portal-tabs"><button class="active" data-auth-tab="login">Sign In</button><button data-auth-tab="register">Create Account</button></div>
-<form data-login-form class="portal-form"><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="btn yellow" type="submit">Sign In</button><button class="portal-link" type="button" data-forgot-password>Forgot password?</button><p class="form-status" data-login-status></p></form>
-<form data-register-form class="portal-form" hidden><label>Full name<input name="full_name" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Phone<input name="phone" type="tel" autocomplete="tel"></label><label>Password<input name="password" type="password" minlength="8" autocomplete="new-password" required></label><label>Confirm password<input name="confirm_password" type="password" minlength="8" autocomplete="new-password" required></label><button class="btn yellow" type="submit">Create Employee Account</button><p class="portal-note">You will verify your email first. An administrator must approve your account before portal access is activated.</p><p class="form-status" data-register-status></p></form>
-</div></section>
-<section class="portal-pending" data-pending-shell hidden><div class="portal-card pending-card"><img src="assets/branding/blue-bear/logo-mark-solid.png" alt=""><span class="portal-kicker">ACCOUNT RECEIVED</span><h2>Pending Administrator Approval</h2><p>Your email is verified. A Blue Bear administrator must approve your employee profile before you can enter the portal.</p><div class="pending-meta"><span data-pending-email></span><span>Status: Pending</span></div><button class="btn dark" data-pending-signout>Sign Out</button></div></section>
-<section class="employee-app" data-employee-app hidden>
-<aside class="employee-sidebar"><div class="employee-brand"><img src="assets/branding/blue-bear/logo-mark-solid.png" alt=""><div><b>BLUE BEAR</b><small>Employee Portal</small></div></div><nav><button class="active" data-page-button="home">Home</button><button data-page-button="time">Time Clock</button><button data-page-button="forms">Forms</button><button data-page-button="documents">Documents</button><button data-page-button="announcements">Announcements</button><button data-page-button="account">Account</button></nav><button class="employee-signout" data-signout>Sign Out</button></aside>
-<div class="employee-main"><header class="employee-header"><div><span class="portal-kicker">SECURE WORKSPACE</span><h2 data-welcome>Welcome</h2></div><div class="employee-role">EMPLOYEE</div></header><p class="form-status" data-app-status></p>
-<section class="employee-page active" data-page="home"><div class="portal-stat-grid"><article><small>Current Status</small><strong data-clock-status>Clocked Out</strong></article><article><small>Today's Hours</small><strong data-today-hours>0.00</strong></article><article><small>This Week</small><strong data-week-hours>0.00</strong></article></div><div class="portal-grid"><article class="portal-panel"><h3>Quick Clock</h3><p>Record your workday with one tap.</p><button class="btn yellow" data-quick-clock>Clock In</button></article><article class="portal-panel"><h3>Latest Announcement</h3><div data-latest-announcement><p>No announcements yet.</p></div></article><article class="portal-panel wide"><h3>Recent Activity</h3><div data-recent-activity><p>No activity yet.</p></div></article></div></section>
-<section class="employee-page" data-page="time"><div class="portal-panel"><div class="panel-heading"><div><h3>Time Clock</h3><p>Your personal time entries.</p></div><button class="btn yellow" data-clock-action>Clock In</button></div><div class="time-summary"><span data-live-shift>No active shift</span><strong data-live-duration>00:00:00</strong></div><div data-time-list></div></div></section>
-<section class="employee-page" data-page="forms"><div class="portal-grid"><article class="portal-panel"><h3>Submit a Form</h3><form class="portal-form" data-form-submit><label>Form type<select name="form_type"><option value="time_off">Time-Off Request</option><option value="incident">Incident Report</option><option value="equipment_damage">Equipment Damage</option><option value="material_request">Material Request</option><option value="general">General Request</option></select></label><label>Subject<input name="subject" required></label><label>Details<textarea name="details" rows="6" required></textarea></label><button class="btn yellow" type="submit">Submit Form</button></form></article><article class="portal-panel"><h3>My Submissions</h3><div data-form-list></div></article></div></section>
-<section class="employee-page" data-page="documents"><div class="portal-grid"><article class="portal-panel"><h3>Upload Document</h3><form class="portal-form" data-document-upload><label>Document type<select name="document_type"><option>Driver License</option><option>Electrical Certification</option><option>OSHA Card</option><option>CPR / First Aid</option><option>Other</option></select></label><label>Expiration date<input name="expires_on" type="date"></label><label>File<input name="file" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp" required></label><button class="btn yellow" type="submit">Upload Securely</button><p class="portal-note">PDF or image, maximum 10 MB.</p></form></article><article class="portal-panel"><h3>My Documents</h3><div data-document-list></div></article></div></section>
-<section class="employee-page" data-page="announcements"><div class="portal-panel"><h3>Company Announcements</h3><div data-announcement-list></div></div></section>
-<section class="employee-page" data-page="account"><div class="portal-grid"><article class="portal-panel"><h3>Employee Profile</h3><dl class="account-details"><dt>Name</dt><dd data-account-name></dd><dt>Email</dt><dd data-account-email></dd><dt>Phone</dt><dd data-account-phone></dd><dt>Status</dt><dd>Approved</dd></dl></article><article class="portal-panel"><h3>Security</h3><p>Send a secure password-reset link to your verified email.</p><button class="btn dark" data-account-reset>Reset Password</button></article></div></section>
-</div></section>
-</main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/supabase-config.js"></script><script src="assets/js/employee-portal-v1.js"></script></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>Employee Portal | Blue Bear Electric</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="portal.css" />
+    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#030a13" />
+  </head>
+  <body class="blue-bear-site portal-body">
+    <header class="portal-top">
+      <a href="index.html" class="portal-brand"
+        ><img src="assets/branding/blue-bear/logo-mark-solid.png" alt="Blue Bear Electric" /><span
+          >BLUE BEAR ELECTRIC</span
+        ></a
+      ><a href="index.html" class="portal-home">Public Website</a>
+    </header>
+    <main class="portal-wrap">
+      <section class="portal-auth" data-auth-shell>
+        <div class="portal-hero">
+          <span class="portal-kicker">EMPLOYEE ACCESS</span>
+          <h1>Blue Bear Employee Portal</h1>
+          <p>Secure company access for approved Blue Bear Electric employees and administrators.</p>
+          <div class="portal-security">
+            <span>Email verified</span><span>Admin approved</span><span>Private records</span>
+          </div>
+        </div>
+        <div class="portal-card">
+          <div class="portal-tabs">
+            <button class="active" data-auth-tab="login">Sign In</button
+            ><button data-auth-tab="register">Create Account</button>
+          </div>
+          <form data-login-form class="portal-form">
+            <label>Email<input name="email" type="email" autocomplete="email" required /></label
+            ><label
+              >Password<input
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required /></label
+            ><button class="btn yellow" type="submit">Sign In</button
+            ><button class="portal-link" type="button" data-forgot-password>
+              Forgot password?
+            </button>
+            <p class="form-status" data-login-status></p>
+          </form>
+          <form data-register-form class="portal-form" hidden>
+            <label>Full name<input name="full_name" autocomplete="name" required /></label
+            ><label>Email<input name="email" type="email" autocomplete="email" required /></label
+            ><label>Phone<input name="phone" type="tel" autocomplete="tel" /></label
+            ><label
+              >Password<input
+                name="password"
+                type="password"
+                minlength="8"
+                autocomplete="new-password"
+                required /></label
+            ><label
+              >Confirm password<input
+                name="confirm_password"
+                type="password"
+                minlength="8"
+                autocomplete="new-password"
+                required /></label
+            ><button class="btn yellow" type="submit">Create Employee Account</button>
+            <p class="portal-note">
+              You will verify your email first. An administrator must approve your account before
+              portal access is activated.
+            </p>
+            <p class="form-status" data-register-status></p>
+          </form>
+        </div>
+      </section>
+      <section class="portal-pending" data-pending-shell hidden>
+        <div class="portal-card pending-card">
+          <img src="assets/branding/blue-bear/logo-mark-solid.png" alt="" /><span
+            class="portal-kicker"
+            >ACCOUNT RECEIVED</span
+          >
+          <h2>Pending Administrator Approval</h2>
+          <p>
+            Your email is verified. A Blue Bear administrator must approve your employee profile
+            before you can enter the portal.
+          </p>
+          <div class="pending-meta">
+            <span data-pending-email></span><span>Status: Pending</span>
+          </div>
+          <button class="btn dark" data-pending-signout>Sign Out</button>
+        </div>
+      </section>
+      <section class="employee-app" data-employee-app hidden>
+        <aside class="employee-sidebar">
+          <div class="employee-brand">
+            <img src="assets/branding/blue-bear/logo-mark-solid.png" alt="" />
+            <div><b>BLUE BEAR</b><small>Employee Portal</small></div>
+          </div>
+          <nav>
+            <button class="active" data-page-button="home">Home</button
+            ><button data-page-button="time">Time Clock</button
+            ><button data-page-button="forms">Forms</button
+            ><button data-page-button="documents">Documents</button
+            ><button data-page-button="announcements">Announcements</button
+            ><button data-page-button="account">Account</button>
+          </nav>
+          <button class="employee-signout" data-signout>Sign Out</button>
+        </aside>
+        <div class="employee-main">
+          <header class="employee-header">
+            <div>
+              <span class="portal-kicker">SECURE WORKSPACE</span>
+              <h2 data-welcome>Welcome</h2>
+            </div>
+            <div class="employee-role">EMPLOYEE</div>
+          </header>
+          <p class="form-status" data-app-status></p>
+          <section class="employee-page active" data-page="home">
+            <div class="portal-stat-grid">
+              <article>
+                <small>Current Status</small><strong data-clock-status>Clocked Out</strong>
+              </article>
+              <article><small>Today's Hours</small><strong data-today-hours>0.00</strong></article>
+              <article><small>This Week</small><strong data-week-hours>0.00</strong></article>
+            </div>
+            <div class="portal-grid">
+              <article class="portal-panel">
+                <h3>Quick Clock</h3>
+                <p>Record your workday with one tap.</p>
+                <button class="btn yellow" data-quick-clock>Clock In</button>
+              </article>
+              <article class="portal-panel">
+                <h3>Latest Announcement</h3>
+                <div data-latest-announcement><p>No announcements yet.</p></div>
+              </article>
+              <article class="portal-panel wide">
+                <h3>Recent Activity</h3>
+                <div data-recent-activity><p>No activity yet.</p></div>
+              </article>
+            </div>
+          </section>
+          <section class="employee-page" data-page="time">
+            <div class="portal-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Time Clock</h3>
+                  <p>Your personal time entries.</p>
+                </div>
+                <button class="btn yellow" data-clock-action>Clock In</button>
+              </div>
+              <div class="time-summary">
+                <span data-live-shift>No active shift</span
+                ><strong data-live-duration>00:00:00</strong>
+              </div>
+              <div data-time-list></div>
+            </div>
+          </section>
+          <section class="employee-page" data-page="forms">
+            <div class="portal-grid">
+              <article class="portal-panel">
+                <h3>Submit a Form</h3>
+                <form class="portal-form" data-form-submit>
+                  <label
+                    >Form type<select name="form_type">
+                      <option value="time_off">Time-Off Request</option>
+                      <option value="incident">Incident Report</option>
+                      <option value="equipment_damage">Equipment Damage</option>
+                      <option value="material_request">Material Request</option>
+                      <option value="general">General Request</option>
+                    </select></label
+                  ><label>Subject<input name="subject" required /></label
+                  ><label>Details<textarea name="details" rows="6" required></textarea></label
+                  ><button class="btn yellow" type="submit">Submit Form</button>
+                </form>
+              </article>
+              <article class="portal-panel">
+                <h3>My Submissions</h3>
+                <div data-form-list></div>
+              </article>
+            </div>
+          </section>
+          <section class="employee-page" data-page="documents">
+            <div class="portal-grid">
+              <article class="portal-panel">
+                <h3>Upload Document</h3>
+                <form class="portal-form" data-document-upload>
+                  <label
+                    >Document type<select name="document_type">
+                      <option>Driver License</option>
+                      <option>Electrical Certification</option>
+                      <option>OSHA Card</option>
+                      <option>CPR / First Aid</option>
+                      <option>Other</option>
+                    </select></label
+                  ><label>Expiration date<input name="expires_on" type="date" /></label
+                  ><label
+                    >File<input
+                      name="file"
+                      type="file"
+                      accept=".pdf,.png,.jpg,.jpeg,.webp"
+                      required /></label
+                  ><button class="btn yellow" type="submit">Upload Securely</button>
+                  <p class="portal-note">PDF or image, maximum 10 MB.</p>
+                </form>
+              </article>
+              <article class="portal-panel">
+                <h3>My Documents</h3>
+                <div data-document-list></div>
+              </article>
+            </div>
+          </section>
+          <section class="employee-page" data-page="announcements">
+            <div class="portal-panel">
+              <h3>Company Announcements</h3>
+              <div data-announcement-list></div>
+            </div>
+          </section>
+          <section class="employee-page" data-page="account">
+            <div class="portal-grid">
+              <article class="portal-panel">
+                <h3>Employee Profile</h3>
+                <dl class="account-details">
+                  <dt>Name</dt>
+                  <dd data-account-name></dd>
+                  <dt>Email</dt>
+                  <dd data-account-email></dd>
+                  <dt>Phone</dt>
+                  <dd data-account-phone></dd>
+                  <dt>Status</dt>
+                  <dd>Approved</dd>
+                </dl>
+              </article>
+              <article class="portal-panel">
+                <h3>Security</h3>
+                <p>Send a secure password-reset link to your verified email.</p>
+                <button class="btn dark" data-account-reset>Reset Password</button>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/employee-portal-v1.js"></script>
+  </body>
+</html>

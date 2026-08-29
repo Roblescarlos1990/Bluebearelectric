@@ -31,7 +31,7 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 ├── docs/
 │   ├── guides/           Active operating guides
 │   ├── releases/         Historical release notes
-│   ├── sql/              Supabase migrations
+│   ├── sql/              Historical Supabase bootstrap and release SQL
 │   └── archive/          Legacy reference material only
 ├── scripts/              Local validation and deployed security checks
 ├── supabase/migrations/  Incremental production database migrations
@@ -43,6 +43,9 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 ```
 
 Root HTML and CSS files are intentional. Existing production URLs and root-relative image behavior depend on this static deployment structure; feature JavaScript and media belong under `assets/`.
+
+See [`docs/CODE-MAP.md`](docs/CODE-MAP.md) before changing runtime code. It identifies public,
+portal, admin, API, database, deployment, and historical ownership boundaries.
 
 ## Local preview
 
@@ -66,18 +69,18 @@ npm run test:all
 
 The first browser installation downloads an isolated Chromium runtime. Individual checks are available when working on a focused change:
 
-| Command                       | Purpose                                                                                                                                                                      |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run format:check`        | Check tooling, tests, workflow files, JSON, and Markdown with Prettier. Runtime HTML, CSS, and browser modules remain excluded until the mechanical Phase 2 formatting pass. |
-| `npm run lint:html`           | Validate all runtime HTML with `html-validate`.                                                                                                                              |
-| `npm run lint:css`            | Check active root stylesheets with Stylelint.                                                                                                                                |
-| `npm run lint:js`             | Check active API, browser, test, and script JavaScript with ESLint.                                                                                                          |
-| `npm run validate:site`       | Run the repository metadata, asset-reference, and JavaScript syntax validator.                                                                                               |
-| `npm run test:links`          | Verify local runtime links, assets, and URL fragments.                                                                                                                       |
-| `npm run test:accessibility`  | Scan the primary public conversion pages with axe and fail on accessibility regressions beyond the recorded baseline.                                                        |
-| `npm run test:browser`        | Run Chromium smoke tests for navigation, mobile behavior, services, gallery, form validation, portals, and horizontal overflow.                                              |
-| `npm run test:browser:headed` | Run the browser smoke suite with a visible Chromium window for debugging.                                                                                                    |
-| `npm run test:all`            | Run the complete Phase 1 quality gate in CI order.                                                                                                                           |
+| Command                       | Purpose                                                                                                                         |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run format:check`        | Check runtime HTML, CSS, API and browser JavaScript, tooling, tests, workflow files, JSON, and active Markdown with Prettier.   |
+| `npm run lint:html`           | Validate all runtime HTML with `html-validate`.                                                                                 |
+| `npm run lint:css`            | Check active root stylesheets with Stylelint.                                                                                   |
+| `npm run lint:js`             | Check active API, browser, test, and script JavaScript with ESLint.                                                             |
+| `npm run validate:site`       | Run the repository metadata, asset-reference, and JavaScript syntax validator.                                                  |
+| `npm run test:links`          | Verify local runtime links, assets, and URL fragments.                                                                          |
+| `npm run test:accessibility`  | Scan the primary public conversion pages with axe and fail on accessibility regressions beyond the recorded baseline.           |
+| `npm run test:browser`        | Run Chromium smoke tests for navigation, mobile behavior, services, gallery, form validation, portals, and horizontal overflow. |
+| `npm run test:browser:headed` | Run the browser smoke suite with a visible Chromium window for debugging.                                                       |
+| `npm run test:all`            | Run the complete Phase 1 quality gate in CI order.                                                                              |
 
 Playwright records screenshots, traces, and video only when a browser test fails. GitHub Actions uploads `playwright-report/` and `test-results/` on failure. Configure the `Phase 1 quality gate / Formatting, lint, accessibility, and browser tests` check as required in the `main` branch ruleset before merging cleanup pull requests.
 

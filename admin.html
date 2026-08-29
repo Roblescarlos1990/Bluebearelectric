@@ -1,386 +1,1558 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>VoltFlow V8.9 | Company Brand & Document Experience</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png"><link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png"><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#030a13"></head><body><div class="vf-boot" data-vf-boot aria-live="polite">
-  <div class="vf-boot-grid"></div>
-  <div class="vf-boot-core">
-    <svg class="vf-boot-logo" viewBox="0 0 120 120" role="img" aria-label="VoltFlow">
-      <defs><linearGradient id="vfBolt" x1="0" x2="1"><stop stop-color="#54b4ff"/><stop offset="1" stop-color="#ffc400"/></linearGradient></defs>
-      <path class="vf-v" d="M18 22 L48 96 L60 73 L72 96 L103 22 L82 22 L60 68 L38 22 Z" fill="none" stroke="url(#vfBolt)" stroke-width="9" stroke-linejoin="round"/>
-      <path class="vf-bolt" d="M66 13 L43 58 H59 L52 106 L82 51 H65 Z" fill="url(#vfBolt)"/>
-    </svg>
-    <div class="vf-boot-word">VOLTFLOW</div>
-    <div class="vf-boot-tag">Contractor Operating System</div>
-    <div class="vf-boot-status" data-vf-boot-status>Initializing secure workspace</div>
-    <div class="vf-boot-progress"><span data-vf-boot-progress></span></div>
-  </div>
-</div>
-<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html">Get Free Estimate</a><button class="hamb" type="button" aria-expanded="false" aria-controls="mobile-navigation"><span>Menu</span></button><div class="mobile" id="mobile-navigation"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
-<section class="page-hero admin-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.96),rgba(4,9,16,.58)),url('assets/images/site/switchgear.jpg')"><div><div class="eyebrow">VoltFlow</div><h1>Command Center</h1><p class="lead">Lead operations, customer follow-up, conversion tracking, projects, documents, website publishing, and field workflows in one secure command center.</p></div></section>
-<section class="section admin-shell v6-shell">
-  <div class="admin-login" data-admin-login>
-    <div class="vf-login-brand">
-<svg viewBox="0 0 90 90" class="vf-login-mark" aria-hidden="true"><path d="M12 16 L35 73 L45 55 L55 73 L78 16 L62 16 L45 51 L28 16 Z" fill="none" stroke="currentColor" stroke-width="7"/><path d="M51 8 L34 43 H47 L41 82 L65 39 H52 Z" fill="currentColor"/></svg>
-<div><div class="eyebrow">Secure Workspace</div><h2>Sign in to VoltFlow</h2><p>Blue Bear Electric enterprise workspace</p></div>
-</div>
-    <form class="form admin-form" data-login-form><input name="email" type="email" placeholder="Admin email" required><input name="password" type="password" placeholder="Password" required><button class="btn yellow" type="submit">Sign In</button><p class="form-status" data-login-status></p></form>
-  </div>
-  <div class="admin-dashboard" data-admin-dashboard style="display:none">
-    <div class="admin-top"><div><div class="eyebrow">VoltFlow V8.9</div><h2>Company Brand & Document Experience</h2><p class="small green">Executive visibility, universal search, proactive operational insights, live notifications, project health, and financial awareness.</p></div><button class="btn dark" data-logout>Sign Out</button></div>
-    <p class="form-status" data-admin-message></p>
-    <div class="admin-stats v6-stats" data-admin-stats></div>
-    <div class="os-layout">
-      <aside class="os-sidebar">
-        <div class="os-brand-block"><div class="os-logo">VOLTFLOW</div><div class="os-subtitle">Operations Intelligence</div></div>
-        <div class="os-nav-group"><div class="os-nav-label">Overview</div>
-          <button class="tab-btn active" data-tab="dashboard"><span>Operations Center</span></button>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>VoltFlow V8.9 | Company Brand & Document Experience</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#030a13" />
+  </head>
+  <body>
+    <div class="vf-boot" data-vf-boot aria-live="polite">
+      <div class="vf-boot-grid"></div>
+      <div class="vf-boot-core">
+        <svg class="vf-boot-logo" viewBox="0 0 120 120" role="img" aria-label="VoltFlow">
+          <defs>
+            <linearGradient id="vfBolt" x1="0" x2="1">
+              <stop stop-color="#54b4ff" />
+              <stop offset="1" stop-color="#ffc400" />
+            </linearGradient>
+          </defs>
+          <path
+            class="vf-v"
+            d="M18 22 L48 96 L60 73 L72 96 L103 22 L82 22 L60 68 L38 22 Z"
+            fill="none"
+            stroke="url(#vfBolt)"
+            stroke-width="9"
+            stroke-linejoin="round"
+          />
+          <path class="vf-bolt" d="M66 13 L43 58 H59 L52 106 L82 51 H65 Z" fill="url(#vfBolt)" />
+        </svg>
+        <div class="vf-boot-word">VOLTFLOW</div>
+        <div class="vf-boot-tag">Contractor Operating System</div>
+        <div class="vf-boot-status" data-vf-boot-status>Initializing secure workspace</div>
+        <div class="vf-boot-progress"><span data-vf-boot-progress></span></div>
+      </div>
+    </div>
+    <header class="topbar">
+      <nav class="nav">
+        <a class="brand" href="index.html"
+          ><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"
+        /></a>
+        <div class="links">
+          <a href="index.html">Home</a><a href="services.html">Services</a
+          ><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a
+          ><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a
+          ><a href="projects.html">Projects</a><a href="about.html">About</a
+          ><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a>
         </div>
-        <div class="os-nav-group"><div class="os-nav-label">Customers</div>
-          <button class="tab-btn" data-tab="crm"><span>CRM</span></button>
-          <button class="tab-btn" data-tab="portals"><span>Customer Portals</span></button>
+        <a class="btn yellow" href="contact.html">Get Free Estimate</a
+        ><button class="hamb" type="button" aria-expanded="false" aria-controls="mobile-navigation">
+          <span>Menu</span>
+        </button>
+        <div class="mobile" id="mobile-navigation">
+          <a href="services.html">Services</a><a href="industrial.html">Industrial</a
+          ><a href="projects.html">Projects</a><a href="contact.html">Contact</a
+          ><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a>
         </div>
-        <div class="os-nav-group"><div class="os-nav-label">Operations</div>
-          <button class="tab-btn" data-tab="projects"><span>Project Command Center</span></button>
-          <button class="tab-btn" data-tab="workspace"><span>Project Workspace</span></button>
-          <button class="tab-btn" data-tab="fieldops"><span>Field Operations</span></button>
-          <button class="tab-btn" data-tab="activity"><span>Activity Timeline</span></button>
-        </div>
-        <div class="os-nav-group"><div class="os-nav-label">Business</div>
-          <button class="tab-btn" data-tab="billing"><span>Estimates & Billing</span></button>
-          <button class="tab-btn" data-tab="reports"><span>Reports & Analytics</span></button>
-          <button class="tab-btn" data-tab="docs"><span>Documents</span></button>
-        </div>
-        <div class="os-nav-group"><div class="os-nav-label">Intelligence</div>
-          <button class="tab-btn" data-tab="ai"><span>Operations Intelligence</span></button>
-        </div>
-        <div class="os-nav-group"><div class="os-nav-label">Administration</div>
-          <button class="tab-btn" data-tab="security"><span>Security</span></button>
-          <button class="tab-btn" data-tab="quickadd"><span>Quick Add</span></button>
-          <button class="tab-btn" data-tab="website"><span>Branding & Website</span></button>
-          <a class="tab-btn" href="customize.html"><span>Theme Settings</span></a>
-        </div>
-      </aside>
-      <div class="os-main">
-    <div class="tab-page active" data-tab-page="dashboard">
-      <section class="vf88-command">
-        <header class="vf88-command-header">
+      </nav>
+    </header>
+    <section
+      class="page-hero admin-hero"
+      style="
+        background-image:
+          linear-gradient(90deg, rgba(4, 9, 16, 0.96), rgba(4, 9, 16, 0.58)),
+          url('assets/images/site/switchgear.jpg');
+      "
+    >
+      <div>
+        <div class="eyebrow">VoltFlow</div>
+        <h1>Command Center</h1>
+        <p class="lead">
+          Lead operations, customer follow-up, conversion tracking, projects, documents, website
+          publishing, and field workflows in one secure command center.
+        </p>
+      </div>
+    </section>
+    <section class="section admin-shell v6-shell">
+      <div class="admin-login" data-admin-login>
+        <div class="vf-login-brand">
+          <svg viewBox="0 0 90 90" class="vf-login-mark" aria-hidden="true">
+            <path
+              d="M12 16 L35 73 L45 55 L55 73 L78 16 L62 16 L45 51 L28 16 Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="7"
+            />
+            <path d="M51 8 L34 43 H47 L41 82 L65 39 H52 Z" fill="currentColor" />
+          </svg>
           <div>
-            <div class="eyebrow">Company Operations</div>
-            <h2 data-vf88-greeting>Operations Center</h2>
-            <p class="small">A prioritized view of revenue, projects, customers, field activity, and the actions requiring attention now.</p>
+            <div class="eyebrow">Secure Workspace</div>
+            <h2>Sign in to VoltFlow</h2>
+            <p>Blue Bear Electric enterprise workspace</p>
           </div>
-          <div class="vf88-command-actions">
-            <button class="btn dark" type="button" data-vf88-open-search>Search Everything</button>
-            <button class="btn blue" type="button" data-vf88-refresh>Refresh Intelligence</button>
+        </div>
+        <form class="form admin-form" data-login-form>
+          <input name="email" type="email" placeholder="Admin email" required /><input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          /><button class="btn yellow" type="submit">Sign In</button>
+          <p class="form-status" data-login-status></p>
+        </form>
+      </div>
+      <div class="admin-dashboard" data-admin-dashboard style="display: none">
+        <div class="admin-top">
+          <div>
+            <div class="eyebrow">VoltFlow V8.9</div>
+            <h2>Company Brand & Document Experience</h2>
+            <p class="small green">
+              Executive visibility, universal search, proactive operational insights, live
+              notifications, project health, and financial awareness.
+            </p>
           </div>
-        </header>
-
-        <section class="vf88-search-strip">
-          <label class="vf88-global-search">
-            <span>Universal Search</span>
-            <input type="search" data-vf88-search placeholder="Search customers, projects, leads, invoices, files, schedule, cities, phone numbers...">
-          </label>
-          <div class="vf88-search-results" data-vf88-search-results hidden></div>
-        </section>
-
-        <div class="vf88-kpi-grid" data-vf88-kpis></div>
-
-        <div class="vf88-dashboard-grid">
-          <section class="admin-panel vf88-priority-panel">
-            <div class="panel-head"><div><h3>Needs Attention</h3><p class="small">Rule-based operational findings generated from live company data.</p></div><span class="badge" data-vf88-alert-count>0 alerts</span></div>
-            <div class="vf88-insight-list" data-vf88-insights></div>
-          </section>
-
-          <section class="admin-panel">
-            <div class="panel-head"><div><h3>Today's Operations</h3><p class="small">Upcoming site visits, work windows, and inspections.</p></div></div>
-            <div data-dashboard-schedule></div>
-          </section>
-
-          <section class="admin-panel">
-            <div class="panel-head"><div><h3>Opportunity Pipeline</h3><p class="small">Newest website leads and follow-up status.</p></div><button class="text-action" type="button" data-vf88-jump="crm">Open CRM</button></div>
-            <div data-leads-list></div>
-          </section>
-
-          <section class="admin-panel">
-            <div class="panel-head"><div><h3>Project Health</h3><p class="small">Active work grouped by health and status.</p></div><button class="text-action" type="button" data-vf88-jump="projects">Open Projects</button></div>
-            <div class="vf88-health-list" data-vf88-project-health></div>
-          </section>
-
-          <section class="admin-panel wide">
-            <div class="panel-head"><div><h3>Live Activity</h3><p class="small">Recent operational changes across projects, media, billing, and scheduling.</p></div><button class="text-action" type="button" data-vf88-refresh-activity>Refresh</button></div>
-            <div class="vf88-activity-stream" data-vf88-activity></div>
-          </section>
-
-          <section class="admin-panel wide">
-            <div class="panel-head"><div><h3>Recent Project Media</h3><p class="small">Latest project evidence and documentation.</p></div><button class="text-action" type="button" data-vf88-jump="workspace">Open Media Center</button></div>
-            <div class="media-grid" data-gallery-list></div>
-          </section>
+          <button class="btn dark" data-logout>Sign Out</button>
         </div>
-      </section>
-    </div>
-    <div class="tab-page" data-tab-page="crm">
-      <section class="crm-command" data-crm-command>
-        <div class="crm-header admin-panel wide">
-          <div><div class="eyebrow">Lead Operations</div><h3>CRM Pipeline</h3><p class="small">Review new estimate requests, document follow-ups, assign ownership, and convert approved work without re-entering customer information.</p></div>
-          <div class="crm-header-actions"><button class="btn blue" type="button" data-crm-refresh>Refresh Leads</button><button class="btn yellow" type="button" data-crm-new-customer>New Customer</button></div>
-        </div>
-        <div class="crm-kpis" data-crm-kpis></div>
-        <div class="crm-toolbar admin-panel wide">
-          <input type="search" data-lead-search placeholder="Search customer, phone, city, service or message">
-          <select data-lead-status-filter><option value="">All statuses</option><option>New</option><option>Contacted</option><option>Estimate Scheduled</option><option>Quote Sent</option><option>Approved</option><option>In Progress</option><option>Completed</option><option>Closed</option></select>
-          <select data-lead-priority-filter><option value="">All priorities</option><option>Hot</option><option>High</option><option>Normal</option><option>Low</option></select>
-          <select data-lead-followup-filter><option value="">All follow-ups</option><option value="due">Due / overdue</option><option value="scheduled">Scheduled</option><option value="none">Not scheduled</option></select>
-        </div>
-        <div class="crm-workspace">
-          <section class="admin-panel crm-lead-column"><div class="panel-head"><div><h3>Opportunities</h3><p class="small" data-lead-result-count>Loading leads…</p></div></div><div class="crm-lead-list" data-crm-lead-list></div></section>
-          <section class="admin-panel crm-detail-column" data-crm-detail>
-            <div class="crm-empty"><div class="crm-empty-icon"></div><h3>Select a lead</h3><p class="small">Choose an opportunity to review contact information, set the next action, add notes, or convert it into a project.</p></div>
-          </section>
-        </div>
-        <section class="admin-panel wide crm-customers"><div class="panel-head"><div><h3>Customer Directory</h3><p class="small">Existing customers and linked project counts.</p></div><input type="search" data-customer-search placeholder="Search customers"></div><div class="customer-cards" data-customer-cards></div></section>
-      </section>
-    </div>
-    <div class="tab-page" data-tab-page="projects">
-      <div class="pcc-shell" data-pcc-root>
-        <header class="pcc-header">
-          <div><div class="eyebrow">Project Operations</div><h2>Project Command Center</h2><p class="small">One workspace for project health, schedule, financial status, tasks, milestones, photos, documents, and activity.</p></div>
-          <div class="pcc-header-actions"><input type="search" data-pcc-search placeholder="Search projects, customers, cities, or status"><button class="btn blue" type="button" data-pcc-refresh>Refresh</button><button class="btn yellow" type="button" data-tab-jump="quickadd">New Project</button></div>
-        </header>
-        <section class="pcc-kpi-grid" data-pcc-kpis></section>
-        <div class="pcc-layout">
-          <aside class="pcc-project-rail">
-            <div class="pcc-rail-head"><div><h3>Projects</h3><p class="small" data-pcc-count>Loading…</p></div><select data-pcc-status><option value="">All statuses</option><option>Planning</option><option>Scheduled</option><option>In Progress</option><option>Testing</option><option>Inspection</option><option>Completed</option><option>On Hold</option></select></div>
-            <div class="pcc-project-list" data-pcc-project-list></div>
+        <p class="form-status" data-admin-message></p>
+        <div class="admin-stats v6-stats" data-admin-stats></div>
+        <div class="os-layout">
+          <aside class="os-sidebar">
+            <div class="os-brand-block">
+              <div class="os-logo">VOLTFLOW</div>
+              <div class="os-subtitle">Operations Intelligence</div>
+            </div>
+            <div class="os-nav-group">
+              <div class="os-nav-label">Overview</div>
+              <button class="tab-btn active" data-tab="dashboard">
+                <span>Operations Center</span>
+              </button>
+            </div>
+            <div class="os-nav-group">
+              <div class="os-nav-label">Customers</div>
+              <button class="tab-btn" data-tab="crm"><span>CRM</span></button>
+              <button class="tab-btn" data-tab="portals"><span>Customer Portals</span></button>
+            </div>
+            <div class="os-nav-group">
+              <div class="os-nav-label">Operations</div>
+              <button class="tab-btn" data-tab="projects">
+                <span>Project Command Center</span>
+              </button>
+              <button class="tab-btn" data-tab="workspace"><span>Project Workspace</span></button>
+              <button class="tab-btn" data-tab="fieldops"><span>Field Operations</span></button>
+              <button class="tab-btn" data-tab="activity"><span>Activity Timeline</span></button>
+            </div>
+            <div class="os-nav-group">
+              <div class="os-nav-label">Business</div>
+              <button class="tab-btn" data-tab="billing"><span>Estimates & Billing</span></button>
+              <button class="tab-btn" data-tab="reports"><span>Reports & Analytics</span></button>
+              <button class="tab-btn" data-tab="docs"><span>Documents</span></button>
+            </div>
+            <div class="os-nav-group">
+              <div class="os-nav-label">Intelligence</div>
+              <button class="tab-btn" data-tab="ai"><span>Operations Intelligence</span></button>
+            </div>
+            <div class="os-nav-group">
+              <div class="os-nav-label">Administration</div>
+              <button class="tab-btn" data-tab="security"><span>Security</span></button>
+              <button class="tab-btn" data-tab="quickadd"><span>Quick Add</span></button>
+              <button class="tab-btn" data-tab="website"><span>Branding & Website</span></button>
+              <a class="tab-btn" href="customize.html"><span>Theme Settings</span></a>
+            </div>
           </aside>
-          <main class="pcc-command" data-pcc-command>
-            <div class="pcc-empty-state"><div class="pcc-empty-mark"></div><h3>Select a project</h3><p>Open a project to review its operational status and manage the next actions.</p></div>
-          </main>
-        </div>
-      </div>
-    </div>
-    <div class="tab-page" data-tab-page="billing">
-      <section class="billing-command">
-        <div class="admin-panel wide billing-hero-panel"><div><div class="eyebrow">Revenue Operations</div><h3>Estimates & Billing</h3><p class="small">Create consistent proposals, track approvals, convert accepted estimates into invoices, and record payments from one workspace.</p></div><div class="billing-actions"><button class="btn blue" type="button" data-v86-refresh>Refresh Financials</button><button class="btn yellow" type="button" data-v86-open-project>Open Project Estimator</button></div></div>
-        <div class="billing-kpis" data-v86-billing-kpis></div>
-        <div class="billing-grid">
-          <section class="admin-panel wide"><div class="panel-head"><div><h3>Estimate Pipeline</h3><p class="small">Draft, sent, accepted, declined, and expired estimates.</p></div><select data-v86-estimate-filter><option value="">All statuses</option><option>Draft</option><option>Review</option><option>Sent</option><option>Accepted</option><option>Declined</option><option>Expired</option></select></div><div class="billing-list" data-v86-estimate-pipeline></div></section>
-          <section class="admin-panel"><div class="panel-head"><div><h3>Open Invoices</h3><p class="small">Balances and due dates.</p></div></div><div class="billing-list" data-v86-invoice-pipeline></div></section>
-          <section class="admin-panel"><div class="panel-head"><div><h3>Recent Payments</h3><p class="small">Latest recorded customer payments.</p></div></div><div class="billing-list" data-v86-payment-list></div></section>
-          <section class="admin-panel wide"><div class="panel-head"><div><h3>Estimate Templates</h3><p class="small">Reusable starting points for common electrical work.</p></div></div><div class="template-grid" data-v86-template-grid></div></section>
-        </div>
-      </section>
-    </div>
-    <div class="tab-page" data-tab-page="activity">
-      <section class="admin-panel wide"><div class="panel-head"><div><h3>Activity Timeline</h3><p class="small">Recent project events, uploads, invoices, and schedule items.</p></div><button class="btn dark" data-refresh-activity>Refresh</button></div><div class="activity-feed" data-activity-feed></div></section>
-    </div>
-    <div class="tab-page" data-tab-page="workspace">
-      <div class="workspace-head admin-panel"><div><h3>Project Workspace</h3><p class="small">Photos, timeline, estimate, invoice, schedule, and proposal draft.</p></div><select data-workspace-project><option value="">Choose project</option></select></div>
-      <div data-workspace-empty class="admin-panel"><h3>No project selected</h3><p class="small">Choose a project from the dropdown or the project cards.</p></div>
-      <div data-workspace-body style="display:none">
-        <section class="admin-panel workspace-summary"><div><div class="eyebrow" data-ws-status>Planning</div><h2 data-ws-title>Project</h2><p class="small" data-ws-meta></p><p data-ws-notes></p></div><div class="ws-actions"><button class="btn dark" data-ws-refresh>Refresh</button><button class="btn yellow" data-print-proposal>Print Proposal</button></div></section>
-        <div class="workspace-tabs"><button class="ws-tab active" data-ws-tab="overview">Overview</button><button class="ws-tab" data-ws-tab="photos">Photos</button><button class="ws-tab" data-ws-tab="estimate">Estimate</button><button class="ws-tab" data-ws-tab="invoice">Invoice</button><button class="ws-tab" data-ws-tab="schedule">Schedule</button><button class="ws-tab" data-ws-tab="proposal">AI Draft</button><button class="ws-tab" data-ws-tab="closeout">Closeout</button></div>
-        <div class="ws-page active" data-ws-page="overview"><section class="admin-panel wide"><h3>Project Timeline</h3><form data-milestone-form class="line-form"><input name="label" placeholder="Milestone: Site Visit, Estimate Sent, Inspection"><select name="status"><option>Pending</option><option>Done</option><option>Blocked</option></select><button class="btn yellow" type="submit">Add Milestone</button></form><div class="timeline-list" data-timeline-list></div></section></div>
-        <div class="ws-page" data-ws-page="photos"><section class="admin-panel wide media-center-v872">
-<div class="panel-head"><div><div class="eyebrow">Live Media Center</div><h3>Project Photos & Documents</h3><p class="small">Upload multiple files, control customer visibility, and see updates without refreshing the page.</p></div><span class="badge" data-live-media-status>Ready</span></div>
-<form data-photo-upload class="photo-form media-upload-v872"><select name="category"><option>Before</option><option>During</option><option>After</option><option>Thermal</option><option>Drone</option><option>Reports</option><option>Warranty</option><option>General</option></select><input name="title" placeholder="Optional shared title"><input name="file" type="file" accept="image/*,.pdf,.doc,.docx" multiple required><select name="visibility"><option value="internal">Internal only</option><option value="customer">Customer visible</option></select><textarea name="description" placeholder="Notes about this upload"></textarea><button class="btn yellow" type="submit">Upload Files</button></form>
-<div class="media-upload-progress" data-media-upload-progress hidden><div><span data-media-progress-label>Preparing upload...</span><b data-media-progress-count>0 / 0</b></div><progress max="100" value="0" data-media-progress-bar></progress></div>
-<div class="media-toolbar-v872"><input type="search" placeholder="Search project media" data-media-search><select data-media-filter><option value="all">All categories</option><option>Before</option><option>During</option><option>After</option><option>Thermal</option><option>Drone</option><option>Reports</option><option>Warranty</option><option>General</option></select><span class="small" data-media-count>0 files</span></div>
-<div class="stage-galleries" data-project-gallery></div></section></div>
-        <div class="ws-page" data-ws-page="estimate"><section class="admin-panel wide estimate-pro-workspace">
-          <div class="panel-head"><div><div class="eyebrow">Professional Estimating</div><h3>Estimate Builder</h3><p class="small">Set proposal terms, add categorized line items, review margins, and export a branded customer estimate.</p></div><span class="badge" data-v86-estimate-status-badge>Draft</span></div>
-          <form class="estimate-header-form" data-v86-estimate-header>
-            <label>Estimate Number<input name="estimate_number" placeholder="VF-EST-0001"></label><label>Status<select name="status"><option>Draft</option><option>Review</option><option>Sent</option><option>Accepted</option><option>Declined</option><option>Expired</option></select></label><label>Valid Until<input name="valid_until" type="date"></label><label>Template<select name="template_id" data-v86-template-select><option value="">Start blank</option></select></label>
-            <label>Markup %<input name="markup_percent" type="number" min="0" step="0.01" value="0"></label><label>Tax %<input name="tax_percent" type="number" min="0" step="0.01" value="0"></label><label>Discount<input name="discount_amount" type="number" min="0" step="0.01" value="0"></label><label>Deposit %<input name="deposit_percent" type="number" min="0" max="100" step="0.01" value="0"></label>
-            <label class="span-2">Scope of Work<textarea name="scope_of_work" placeholder="Detailed customer-facing scope"></textarea></label><label class="span-2">Exclusions<textarea name="exclusions" placeholder="Items specifically excluded"></textarea></label><label class="span-2">Warranty<textarea name="warranty_text" placeholder="Warranty language"></textarea></label><label class="span-2">Terms<textarea name="terms_text" placeholder="Payment and proposal terms"></textarea></label>
-            <div class="estimate-header-actions span-4"><button class="btn blue" type="button" data-v86-apply-template>Apply Template</button><button class="btn yellow" type="submit">Save Estimate</button><button class="btn dark" type="button" data-v86-mark-sent>Mark Sent</button><button class="btn dark" type="button" data-v86-print-estimate>Export Estimate / PDF</button></div>
-          </form>
-          <form data-v86-estimate-item class="estimate-item-form"><select name="category"><option>Material</option><option>Labor</option><option>Equipment</option><option>Permit</option><option>Travel</option><option>Subcontractor</option><option>Other</option></select><input name="description" placeholder="Line item description" required><input name="quantity" type="number" step="0.01" min="0" value="1"><input name="unit" placeholder="ea / hr / ft"><input name="unit_price" type="number" step="0.01" min="0" placeholder="Sell price"><input name="cost" type="number" step="0.01" min="0" placeholder="Internal cost"><button class="btn yellow" type="submit">Add Line Item</button></form>
-          <div class="estimate-ledger" data-v86-estimate-list></div><div class="estimate-summary" data-v86-estimate-summary></div>
-        </section></div>
-        <div class="ws-page" data-ws-page="invoice"><section class="admin-panel wide invoice-pro-workspace">
-          <div class="panel-head"><div><div class="eyebrow">Billing & Collections</div><h3>Invoice Workspace</h3><p class="small">Convert an accepted estimate, track balances, record deposits and progress payments, and export a customer invoice.</p></div><button class="btn yellow" type="button" data-v86-create-invoice>Create Invoice From Estimate</button></div>
-          <form class="invoice-settings-form" data-v86-invoice-settings><label>Invoice Number<input name="invoice_number" placeholder="VF-INV-0001"></label><label>Due Date<input name="due_date" type="date"></label><label>Status<select name="status"><option>Draft</option><option>Sent</option><option>Partially Paid</option><option>Paid</option><option>Overdue</option><option>Void</option></select></label><label>Customer PO<input name="customer_po" placeholder="Optional PO number"></label><label class="span-2">Invoice Notes<textarea name="notes" placeholder="Payment instructions or notes"></textarea></label><button class="btn blue" type="submit">Save Invoice</button><button class="btn dark" type="button" data-v86-print-invoice>Export Invoice / PDF</button></form>
-          <div class="invoice-ledger" data-v86-invoice-detail></div>
-          <form class="payment-form" data-v86-payment-form><input name="amount" type="number" step="0.01" min="0.01" placeholder="Payment amount" required><input name="payment_date" type="date"><select name="method"><option>Check</option><option>ACH</option><option>Card</option><option>Cash</option><option>Wire</option><option>Other</option></select><input name="reference" placeholder="Check / transaction reference"><input name="notes" placeholder="Payment note"><button class="btn yellow" type="submit">Record Payment</button></form>
-          <div class="payment-history" data-v86-project-payments></div>
-        </section></div>
-        <div class="ws-page" data-ws-page="schedule"><section class="admin-panel wide"><h3>Scheduling Calendar</h3><form data-schedule-event class="line-form"><input name="title" placeholder="Event title" required><input name="event_type" placeholder="Type: site visit, install, inspection"><input name="start_time" type="datetime-local"><input name="end_time" type="datetime-local"><input name="location" placeholder="Location / address"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Add Schedule Event</button></form><div data-schedule-list></div></section></div>
-        <div class="ws-page" data-ws-page="proposal"><section class="admin-panel wide"><h3>AI-style Proposal Draft</h3><p class="small">This drafts a professional scope from project info and estimate line items. Later we can connect a real AI API.</p><button class="btn yellow" data-generate-proposal>Generate Draft</button><textarea class="proposal-box" data-proposal-output placeholder="Proposal draft will appear here..."></textarea></section></div>
-        <div class="ws-page" data-ws-page="closeout"><section class="admin-panel wide"><h3>Project Closeout Checklist</h3><div class="closeout-grid"><label><input type="checkbox"> Before photos saved</label><label><input type="checkbox"> After photos saved</label><label><input type="checkbox"> Estimate/invoice complete</label><label><input type="checkbox"> Customer approval documented</label><label><input type="checkbox"> Warranty notes added</label><label><input type="checkbox"> Final inspection complete</label></div><p class="small">Use this checklist to confirm financial, documentation, safety, and customer-closeout requirements before completing the project.</p></section></div>
-      </div>
-    </div>
-    <div class="tab-page" data-tab-page="reports">
-      <div class="admin-grid">
-        <section class="admin-panel wide"><h3>Business Reports</h3><p class="small">Live summary using your current Supabase data.</p><div class="report-grid" data-report-grid></div></section>
-        <section class="admin-panel"><h3>Project Status Breakdown</h3><div class="mini-chart" data-status-chart></div></section>
-        <section class="admin-panel"><h3>Service Mix</h3><div class="mini-chart" data-service-chart></div></section>
-      </div>
-    </div>
-    <div class="tab-page" data-tab-page="ai">
-      <section class="admin-panel wide ai-ops-panel">
-        <div class="panel-head"><div><h3>AI Operations Center</h3><p class="small">Manual AI workspace inside the admin. No API key required yet. Use these tools to draft proposals, scopes, estimates, customer emails, safety notes, and troubleshooting plans.</p></div><span class="badge">Operations Intelligence Workspace</span></div>
-        <div class="ai-mode-grid">
-          <button class="ai-mode active" data-ai-mode="proposal">Proposal</button>
-          <button class="ai-mode" data-ai-mode="scope">Scope of Work</button>
-          <button class="ai-mode" data-ai-mode="estimate">Estimate Plan</button>
-          <button class="ai-mode" data-ai-mode="email">Customer Email</button>
-          <button class="ai-mode" data-ai-mode="safety">Safety / JSA</button>
-          <button class="ai-mode" data-ai-mode="troubleshoot">Troubleshooting</button>
-          <button class="ai-mode" data-ai-mode="maintenance">Maintenance PM</button>
-          <button class="ai-mode" data-ai-mode="inspection">Inspection Report</button>
-        </div>
-        <div class="ai-workspace-grid">
-          <form class="ai-form" data-ai-form>
-            <label>Customer / Company<input name="customer" placeholder="ABC Warehouse"></label>
-            <label>Project / Equipment<input name="project" placeholder="Replace 400A service / troubleshoot VFD / BESS PM"></label>
-            <label>Service Type<select name="service"><option>Industrial</option><option>Commercial</option><option>Residential</option><option>Solar</option><option>BESS</option><option>Emergency Service</option><option>Maintenance</option><option>Inspection</option></select></label>
-            <label>Location<input name="location" placeholder="Imperial, CA"></label>
-            <label>Important Notes<textarea name="notes" placeholder="Existing condition, customer concern, shutdown window, known equipment, photos, safety notes..."></textarea></label>
-            <div class="ai-actions"><button class="btn yellow" type="submit">Generate Draft</button><button class="btn dark" type="button" data-ai-use-project>Use Open Project</button><button class="btn dark" type="button" data-ai-save-draft>Save Draft</button><button class="btn dark" type="button" data-ai-copy>Copy</button></div>
-          </form>
-          <div class="ai-output-wrap">
-            <div class="panel-head"><h4 data-ai-output-title>Proposal Draft</h4><button class="btn yellow" type="button" data-export-ai>Export AI Draft / Save PDF</button></div>
-            <textarea class="proposal-box ai-output" data-ai-global-output placeholder="Generated draft will appear here..."></textarea>
+          <div class="os-main">
+            <div class="tab-page active" data-tab-page="dashboard">
+              <section class="vf88-command">
+                <header class="vf88-command-header">
+                  <div>
+                    <div class="eyebrow">Company Operations</div>
+                    <h2 data-vf88-greeting>Operations Center</h2>
+                    <p class="small">
+                      A prioritized view of revenue, projects, customers, field activity, and the
+                      actions requiring attention now.
+                    </p>
+                  </div>
+                  <div class="vf88-command-actions">
+                    <button class="btn dark" type="button" data-vf88-open-search>
+                      Search Everything
+                    </button>
+                    <button class="btn blue" type="button" data-vf88-refresh>
+                      Refresh Intelligence
+                    </button>
+                  </div>
+                </header>
+
+                <section class="vf88-search-strip">
+                  <label class="vf88-global-search">
+                    <span>Universal Search</span>
+                    <input
+                      type="search"
+                      data-vf88-search
+                      placeholder="Search customers, projects, leads, invoices, files, schedule, cities, phone numbers..."
+                    />
+                  </label>
+                  <div class="vf88-search-results" data-vf88-search-results hidden></div>
+                </section>
+
+                <div class="vf88-kpi-grid" data-vf88-kpis></div>
+
+                <div class="vf88-dashboard-grid">
+                  <section class="admin-panel vf88-priority-panel">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Needs Attention</h3>
+                        <p class="small">
+                          Rule-based operational findings generated from live company data.
+                        </p>
+                      </div>
+                      <span class="badge" data-vf88-alert-count>0 alerts</span>
+                    </div>
+                    <div class="vf88-insight-list" data-vf88-insights></div>
+                  </section>
+
+                  <section class="admin-panel">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Today's Operations</h3>
+                        <p class="small">Upcoming site visits, work windows, and inspections.</p>
+                      </div>
+                    </div>
+                    <div data-dashboard-schedule></div>
+                  </section>
+
+                  <section class="admin-panel">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Opportunity Pipeline</h3>
+                        <p class="small">Newest website leads and follow-up status.</p>
+                      </div>
+                      <button class="text-action" type="button" data-vf88-jump="crm">
+                        Open CRM
+                      </button>
+                    </div>
+                    <div data-leads-list></div>
+                  </section>
+
+                  <section class="admin-panel">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Project Health</h3>
+                        <p class="small">Active work grouped by health and status.</p>
+                      </div>
+                      <button class="text-action" type="button" data-vf88-jump="projects">
+                        Open Projects
+                      </button>
+                    </div>
+                    <div class="vf88-health-list" data-vf88-project-health></div>
+                  </section>
+
+                  <section class="admin-panel wide">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Live Activity</h3>
+                        <p class="small">
+                          Recent operational changes across projects, media, billing, and
+                          scheduling.
+                        </p>
+                      </div>
+                      <button class="text-action" type="button" data-vf88-refresh-activity>
+                        Refresh
+                      </button>
+                    </div>
+                    <div class="vf88-activity-stream" data-vf88-activity></div>
+                  </section>
+
+                  <section class="admin-panel wide">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Recent Project Media</h3>
+                        <p class="small">Latest project evidence and documentation.</p>
+                      </div>
+                      <button class="text-action" type="button" data-vf88-jump="workspace">
+                        Open Media Center
+                      </button>
+                    </div>
+                    <div class="media-grid" data-gallery-list></div>
+                  </section>
+                </div>
+              </section>
+            </div>
+            <div class="tab-page" data-tab-page="crm">
+              <section class="crm-command" data-crm-command>
+                <div class="crm-header admin-panel wide">
+                  <div>
+                    <div class="eyebrow">Lead Operations</div>
+                    <h3>CRM Pipeline</h3>
+                    <p class="small">
+                      Review new estimate requests, document follow-ups, assign ownership, and
+                      convert approved work without re-entering customer information.
+                    </p>
+                  </div>
+                  <div class="crm-header-actions">
+                    <button class="btn blue" type="button" data-crm-refresh>Refresh Leads</button
+                    ><button class="btn yellow" type="button" data-crm-new-customer>
+                      New Customer
+                    </button>
+                  </div>
+                </div>
+                <div class="crm-kpis" data-crm-kpis></div>
+                <div class="crm-toolbar admin-panel wide">
+                  <input
+                    type="search"
+                    data-lead-search
+                    placeholder="Search customer, phone, city, service or message"
+                  />
+                  <select data-lead-status-filter>
+                    <option value="">All statuses</option>
+                    <option>New</option>
+                    <option>Contacted</option>
+                    <option>Estimate Scheduled</option>
+                    <option>Quote Sent</option>
+                    <option>Approved</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                    <option>Closed</option>
+                  </select>
+                  <select data-lead-priority-filter>
+                    <option value="">All priorities</option>
+                    <option>Hot</option>
+                    <option>High</option>
+                    <option>Normal</option>
+                    <option>Low</option>
+                  </select>
+                  <select data-lead-followup-filter>
+                    <option value="">All follow-ups</option>
+                    <option value="due">Due / overdue</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="none">Not scheduled</option>
+                  </select>
+                </div>
+                <div class="crm-workspace">
+                  <section class="admin-panel crm-lead-column">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Opportunities</h3>
+                        <p class="small" data-lead-result-count>Loading leads…</p>
+                      </div>
+                    </div>
+                    <div class="crm-lead-list" data-crm-lead-list></div>
+                  </section>
+                  <section class="admin-panel crm-detail-column" data-crm-detail>
+                    <div class="crm-empty">
+                      <div class="crm-empty-icon"></div>
+                      <h3>Select a lead</h3>
+                      <p class="small">
+                        Choose an opportunity to review contact information, set the next action,
+                        add notes, or convert it into a project.
+                      </p>
+                    </div>
+                  </section>
+                </div>
+                <section class="admin-panel wide crm-customers">
+                  <div class="panel-head">
+                    <div>
+                      <h3>Customer Directory</h3>
+                      <p class="small">Existing customers and linked project counts.</p>
+                    </div>
+                    <input type="search" data-customer-search placeholder="Search customers" />
+                  </div>
+                  <div class="customer-cards" data-customer-cards></div>
+                </section>
+              </section>
+            </div>
+            <div class="tab-page" data-tab-page="projects">
+              <div class="pcc-shell" data-pcc-root>
+                <header class="pcc-header">
+                  <div>
+                    <div class="eyebrow">Project Operations</div>
+                    <h2>Project Command Center</h2>
+                    <p class="small">
+                      One workspace for project health, schedule, financial status, tasks,
+                      milestones, photos, documents, and activity.
+                    </p>
+                  </div>
+                  <div class="pcc-header-actions">
+                    <input
+                      type="search"
+                      data-pcc-search
+                      placeholder="Search projects, customers, cities, or status"
+                    /><button class="btn blue" type="button" data-pcc-refresh>Refresh</button
+                    ><button class="btn yellow" type="button" data-tab-jump="quickadd">
+                      New Project
+                    </button>
+                  </div>
+                </header>
+                <section class="pcc-kpi-grid" data-pcc-kpis></section>
+                <div class="pcc-layout">
+                  <aside class="pcc-project-rail">
+                    <div class="pcc-rail-head">
+                      <div>
+                        <h3>Projects</h3>
+                        <p class="small" data-pcc-count>Loading…</p>
+                      </div>
+                      <select data-pcc-status>
+                        <option value="">All statuses</option>
+                        <option>Planning</option>
+                        <option>Scheduled</option>
+                        <option>In Progress</option>
+                        <option>Testing</option>
+                        <option>Inspection</option>
+                        <option>Completed</option>
+                        <option>On Hold</option>
+                      </select>
+                    </div>
+                    <div class="pcc-project-list" data-pcc-project-list></div>
+                  </aside>
+                  <main class="pcc-command" data-pcc-command>
+                    <div class="pcc-empty-state">
+                      <div class="pcc-empty-mark"></div>
+                      <h3>Select a project</h3>
+                      <p>
+                        Open a project to review its operational status and manage the next actions.
+                      </p>
+                    </div>
+                  </main>
+                </div>
+              </div>
+            </div>
+            <div class="tab-page" data-tab-page="billing">
+              <section class="billing-command">
+                <div class="admin-panel wide billing-hero-panel">
+                  <div>
+                    <div class="eyebrow">Revenue Operations</div>
+                    <h3>Estimates & Billing</h3>
+                    <p class="small">
+                      Create consistent proposals, track approvals, convert accepted estimates into
+                      invoices, and record payments from one workspace.
+                    </p>
+                  </div>
+                  <div class="billing-actions">
+                    <button class="btn blue" type="button" data-v86-refresh>
+                      Refresh Financials</button
+                    ><button class="btn yellow" type="button" data-v86-open-project>
+                      Open Project Estimator
+                    </button>
+                  </div>
+                </div>
+                <div class="billing-kpis" data-v86-billing-kpis></div>
+                <div class="billing-grid">
+                  <section class="admin-panel wide">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Estimate Pipeline</h3>
+                        <p class="small">Draft, sent, accepted, declined, and expired estimates.</p>
+                      </div>
+                      <select data-v86-estimate-filter>
+                        <option value="">All statuses</option>
+                        <option>Draft</option>
+                        <option>Review</option>
+                        <option>Sent</option>
+                        <option>Accepted</option>
+                        <option>Declined</option>
+                        <option>Expired</option>
+                      </select>
+                    </div>
+                    <div class="billing-list" data-v86-estimate-pipeline></div>
+                  </section>
+                  <section class="admin-panel">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Open Invoices</h3>
+                        <p class="small">Balances and due dates.</p>
+                      </div>
+                    </div>
+                    <div class="billing-list" data-v86-invoice-pipeline></div>
+                  </section>
+                  <section class="admin-panel">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Recent Payments</h3>
+                        <p class="small">Latest recorded customer payments.</p>
+                      </div>
+                    </div>
+                    <div class="billing-list" data-v86-payment-list></div>
+                  </section>
+                  <section class="admin-panel wide">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Estimate Templates</h3>
+                        <p class="small">Reusable starting points for common electrical work.</p>
+                      </div>
+                    </div>
+                    <div class="template-grid" data-v86-template-grid></div>
+                  </section>
+                </div>
+              </section>
+            </div>
+            <div class="tab-page" data-tab-page="activity">
+              <section class="admin-panel wide">
+                <div class="panel-head">
+                  <div>
+                    <h3>Activity Timeline</h3>
+                    <p class="small">
+                      Recent project events, uploads, invoices, and schedule items.
+                    </p>
+                  </div>
+                  <button class="btn dark" data-refresh-activity>Refresh</button>
+                </div>
+                <div class="activity-feed" data-activity-feed></div>
+              </section>
+            </div>
+            <div class="tab-page" data-tab-page="workspace">
+              <div class="workspace-head admin-panel">
+                <div>
+                  <h3>Project Workspace</h3>
+                  <p class="small">
+                    Photos, timeline, estimate, invoice, schedule, and proposal draft.
+                  </p>
+                </div>
+                <select data-workspace-project>
+                  <option value="">Choose project</option>
+                </select>
+              </div>
+              <div data-workspace-empty class="admin-panel">
+                <h3>No project selected</h3>
+                <p class="small">Choose a project from the dropdown or the project cards.</p>
+              </div>
+              <div data-workspace-body style="display: none">
+                <section class="admin-panel workspace-summary">
+                  <div>
+                    <div class="eyebrow" data-ws-status>Planning</div>
+                    <h2 data-ws-title>Project</h2>
+                    <p class="small" data-ws-meta></p>
+                    <p data-ws-notes></p>
+                  </div>
+                  <div class="ws-actions">
+                    <button class="btn dark" data-ws-refresh>Refresh</button
+                    ><button class="btn yellow" data-print-proposal>Print Proposal</button>
+                  </div>
+                </section>
+                <div class="workspace-tabs">
+                  <button class="ws-tab active" data-ws-tab="overview">Overview</button
+                  ><button class="ws-tab" data-ws-tab="photos">Photos</button
+                  ><button class="ws-tab" data-ws-tab="estimate">Estimate</button
+                  ><button class="ws-tab" data-ws-tab="invoice">Invoice</button
+                  ><button class="ws-tab" data-ws-tab="schedule">Schedule</button
+                  ><button class="ws-tab" data-ws-tab="proposal">AI Draft</button
+                  ><button class="ws-tab" data-ws-tab="closeout">Closeout</button>
+                </div>
+                <div class="ws-page active" data-ws-page="overview">
+                  <section class="admin-panel wide">
+                    <h3>Project Timeline</h3>
+                    <form data-milestone-form class="line-form">
+                      <input
+                        name="label"
+                        placeholder="Milestone: Site Visit, Estimate Sent, Inspection"
+                      /><select name="status">
+                        <option>Pending</option>
+                        <option>Done</option>
+                        <option>Blocked</option></select
+                      ><button class="btn yellow" type="submit">Add Milestone</button>
+                    </form>
+                    <div class="timeline-list" data-timeline-list></div>
+                  </section>
+                </div>
+                <div class="ws-page" data-ws-page="photos">
+                  <section class="admin-panel wide media-center-v872">
+                    <div class="panel-head">
+                      <div>
+                        <div class="eyebrow">Live Media Center</div>
+                        <h3>Project Photos & Documents</h3>
+                        <p class="small">
+                          Upload multiple files, control customer visibility, and see updates
+                          without refreshing the page.
+                        </p>
+                      </div>
+                      <span class="badge" data-live-media-status>Ready</span>
+                    </div>
+                    <form data-photo-upload class="photo-form media-upload-v872">
+                      <select name="category">
+                        <option>Before</option>
+                        <option>During</option>
+                        <option>After</option>
+                        <option>Thermal</option>
+                        <option>Drone</option>
+                        <option>Reports</option>
+                        <option>Warranty</option>
+                        <option>General</option></select
+                      ><input name="title" placeholder="Optional shared title" /><input
+                        name="file"
+                        type="file"
+                        accept="image/*,.pdf,.doc,.docx"
+                        multiple
+                        required
+                      /><select name="visibility">
+                        <option value="internal">Internal only</option>
+                        <option value="customer">Customer visible</option></select
+                      ><textarea name="description" placeholder="Notes about this upload"></textarea
+                      ><button class="btn yellow" type="submit">Upload Files</button>
+                    </form>
+                    <div class="media-upload-progress" data-media-upload-progress hidden>
+                      <div>
+                        <span data-media-progress-label>Preparing upload...</span
+                        ><b data-media-progress-count>0 / 0</b>
+                      </div>
+                      <progress max="100" value="0" data-media-progress-bar></progress>
+                    </div>
+                    <div class="media-toolbar-v872">
+                      <input
+                        type="search"
+                        placeholder="Search project media"
+                        data-media-search
+                      /><select data-media-filter>
+                        <option value="all">All categories</option>
+                        <option>Before</option>
+                        <option>During</option>
+                        <option>After</option>
+                        <option>Thermal</option>
+                        <option>Drone</option>
+                        <option>Reports</option>
+                        <option>Warranty</option>
+                        <option>General</option></select
+                      ><span class="small" data-media-count>0 files</span>
+                    </div>
+                    <div class="stage-galleries" data-project-gallery></div>
+                  </section>
+                </div>
+                <div class="ws-page" data-ws-page="estimate">
+                  <section class="admin-panel wide estimate-pro-workspace">
+                    <div class="panel-head">
+                      <div>
+                        <div class="eyebrow">Professional Estimating</div>
+                        <h3>Estimate Builder</h3>
+                        <p class="small">
+                          Set proposal terms, add categorized line items, review margins, and export
+                          a branded customer estimate.
+                        </p>
+                      </div>
+                      <span class="badge" data-v86-estimate-status-badge>Draft</span>
+                    </div>
+                    <form class="estimate-header-form" data-v86-estimate-header>
+                      <label
+                        >Estimate Number<input
+                          name="estimate_number"
+                          placeholder="VF-EST-0001" /></label
+                      ><label
+                        >Status<select name="status">
+                          <option>Draft</option>
+                          <option>Review</option>
+                          <option>Sent</option>
+                          <option>Accepted</option>
+                          <option>Declined</option>
+                          <option>Expired</option>
+                        </select></label
+                      ><label>Valid Until<input name="valid_until" type="date" /></label
+                      ><label
+                        >Template<select name="template_id" data-v86-template-select>
+                          <option value="">Start blank</option>
+                        </select></label
+                      >
+                      <label
+                        >Markup %<input
+                          name="markup_percent"
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          value="0" /></label
+                      ><label
+                        >Tax %<input
+                          name="tax_percent"
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          value="0" /></label
+                      ><label
+                        >Discount<input
+                          name="discount_amount"
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          value="0" /></label
+                      ><label
+                        >Deposit %<input
+                          name="deposit_percent"
+                          type="number"
+                          min="0"
+                          max="100"
+                          step="0.01"
+                          value="0"
+                      /></label>
+                      <label class="span-2"
+                        >Scope of Work<textarea
+                          name="scope_of_work"
+                          placeholder="Detailed customer-facing scope"
+                        ></textarea></label
+                      ><label class="span-2"
+                        >Exclusions<textarea
+                          name="exclusions"
+                          placeholder="Items specifically excluded"
+                        ></textarea></label
+                      ><label class="span-2"
+                        >Warranty<textarea
+                          name="warranty_text"
+                          placeholder="Warranty language"
+                        ></textarea></label
+                      ><label class="span-2"
+                        >Terms<textarea
+                          name="terms_text"
+                          placeholder="Payment and proposal terms"
+                        ></textarea>
+                      </label>
+                      <div class="estimate-header-actions span-4">
+                        <button class="btn blue" type="button" data-v86-apply-template>
+                          Apply Template</button
+                        ><button class="btn yellow" type="submit">Save Estimate</button
+                        ><button class="btn dark" type="button" data-v86-mark-sent>Mark Sent</button
+                        ><button class="btn dark" type="button" data-v86-print-estimate>
+                          Export Estimate / PDF
+                        </button>
+                      </div>
+                    </form>
+                    <form data-v86-estimate-item class="estimate-item-form">
+                      <select name="category">
+                        <option>Material</option>
+                        <option>Labor</option>
+                        <option>Equipment</option>
+                        <option>Permit</option>
+                        <option>Travel</option>
+                        <option>Subcontractor</option>
+                        <option>Other</option></select
+                      ><input
+                        name="description"
+                        placeholder="Line item description"
+                        required
+                      /><input name="quantity" type="number" step="0.01" min="0" value="1" /><input
+                        name="unit"
+                        placeholder="ea / hr / ft"
+                      /><input
+                        name="unit_price"
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        placeholder="Sell price"
+                      /><input
+                        name="cost"
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        placeholder="Internal cost"
+                      /><button class="btn yellow" type="submit">Add Line Item</button>
+                    </form>
+                    <div class="estimate-ledger" data-v86-estimate-list></div>
+                    <div class="estimate-summary" data-v86-estimate-summary></div>
+                  </section>
+                </div>
+                <div class="ws-page" data-ws-page="invoice">
+                  <section class="admin-panel wide invoice-pro-workspace">
+                    <div class="panel-head">
+                      <div>
+                        <div class="eyebrow">Billing & Collections</div>
+                        <h3>Invoice Workspace</h3>
+                        <p class="small">
+                          Convert an accepted estimate, track balances, record deposits and progress
+                          payments, and export a customer invoice.
+                        </p>
+                      </div>
+                      <button class="btn yellow" type="button" data-v86-create-invoice>
+                        Create Invoice From Estimate
+                      </button>
+                    </div>
+                    <form class="invoice-settings-form" data-v86-invoice-settings>
+                      <label
+                        >Invoice Number<input
+                          name="invoice_number"
+                          placeholder="VF-INV-0001" /></label
+                      ><label>Due Date<input name="due_date" type="date" /></label
+                      ><label
+                        >Status<select name="status">
+                          <option>Draft</option>
+                          <option>Sent</option>
+                          <option>Partially Paid</option>
+                          <option>Paid</option>
+                          <option>Overdue</option>
+                          <option>Void</option>
+                        </select></label
+                      ><label
+                        >Customer PO<input
+                          name="customer_po"
+                          placeholder="Optional PO number" /></label
+                      ><label class="span-2"
+                        >Invoice Notes<textarea
+                          name="notes"
+                          placeholder="Payment instructions or notes"
+                        ></textarea></label
+                      ><button class="btn blue" type="submit">Save Invoice</button
+                      ><button class="btn dark" type="button" data-v86-print-invoice>
+                        Export Invoice / PDF
+                      </button>
+                    </form>
+                    <div class="invoice-ledger" data-v86-invoice-detail></div>
+                    <form class="payment-form" data-v86-payment-form>
+                      <input
+                        name="amount"
+                        type="number"
+                        step="0.01"
+                        min="0.01"
+                        placeholder="Payment amount"
+                        required
+                      /><input name="payment_date" type="date" /><select name="method">
+                        <option>Check</option>
+                        <option>ACH</option>
+                        <option>Card</option>
+                        <option>Cash</option>
+                        <option>Wire</option>
+                        <option>Other</option></select
+                      ><input name="reference" placeholder="Check / transaction reference" /><input
+                        name="notes"
+                        placeholder="Payment note"
+                      /><button class="btn yellow" type="submit">Record Payment</button>
+                    </form>
+                    <div class="payment-history" data-v86-project-payments></div>
+                  </section>
+                </div>
+                <div class="ws-page" data-ws-page="schedule">
+                  <section class="admin-panel wide">
+                    <h3>Scheduling Calendar</h3>
+                    <form data-schedule-event class="line-form">
+                      <input name="title" placeholder="Event title" required /><input
+                        name="event_type"
+                        placeholder="Type: site visit, install, inspection"
+                      /><input name="start_time" type="datetime-local" /><input
+                        name="end_time"
+                        type="datetime-local"
+                      /><input name="location" placeholder="Location / address" /><textarea
+                        name="notes"
+                        placeholder="Notes"
+                      ></textarea
+                      ><button class="btn yellow" type="submit">Add Schedule Event</button>
+                    </form>
+                    <div data-schedule-list></div>
+                  </section>
+                </div>
+                <div class="ws-page" data-ws-page="proposal">
+                  <section class="admin-panel wide">
+                    <h3>AI-style Proposal Draft</h3>
+                    <p class="small">
+                      This drafts a professional scope from project info and estimate line items.
+                      Later we can connect a real AI API.
+                    </p>
+                    <button class="btn yellow" data-generate-proposal>Generate Draft</button
+                    ><textarea
+                      class="proposal-box"
+                      data-proposal-output
+                      placeholder="Proposal draft will appear here..."
+                    ></textarea>
+                  </section>
+                </div>
+                <div class="ws-page" data-ws-page="closeout">
+                  <section class="admin-panel wide">
+                    <h3>Project Closeout Checklist</h3>
+                    <div class="closeout-grid">
+                      <label><input type="checkbox" /> Before photos saved</label
+                      ><label><input type="checkbox" /> After photos saved</label
+                      ><label><input type="checkbox" /> Estimate/invoice complete</label
+                      ><label><input type="checkbox" /> Customer approval documented</label
+                      ><label><input type="checkbox" /> Warranty notes added</label
+                      ><label><input type="checkbox" /> Final inspection complete</label>
+                    </div>
+                    <p class="small">
+                      Use this checklist to confirm financial, documentation, safety, and
+                      customer-closeout requirements before completing the project.
+                    </p>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="tab-page" data-tab-page="reports">
+              <div class="admin-grid">
+                <section class="admin-panel wide">
+                  <h3>Business Reports</h3>
+                  <p class="small">Live summary using your current Supabase data.</p>
+                  <div class="report-grid" data-report-grid></div>
+                </section>
+                <section class="admin-panel">
+                  <h3>Project Status Breakdown</h3>
+                  <div class="mini-chart" data-status-chart></div>
+                </section>
+                <section class="admin-panel">
+                  <h3>Service Mix</h3>
+                  <div class="mini-chart" data-service-chart></div>
+                </section>
+              </div>
+            </div>
+            <div class="tab-page" data-tab-page="ai">
+              <section class="admin-panel wide ai-ops-panel">
+                <div class="panel-head">
+                  <div>
+                    <h3>AI Operations Center</h3>
+                    <p class="small">
+                      Manual AI workspace inside the admin. No API key required yet. Use these tools
+                      to draft proposals, scopes, estimates, customer emails, safety notes, and
+                      troubleshooting plans.
+                    </p>
+                  </div>
+                  <span class="badge">Operations Intelligence Workspace</span>
+                </div>
+                <div class="ai-mode-grid">
+                  <button class="ai-mode active" data-ai-mode="proposal">Proposal</button>
+                  <button class="ai-mode" data-ai-mode="scope">Scope of Work</button>
+                  <button class="ai-mode" data-ai-mode="estimate">Estimate Plan</button>
+                  <button class="ai-mode" data-ai-mode="email">Customer Email</button>
+                  <button class="ai-mode" data-ai-mode="safety">Safety / JSA</button>
+                  <button class="ai-mode" data-ai-mode="troubleshoot">Troubleshooting</button>
+                  <button class="ai-mode" data-ai-mode="maintenance">Maintenance PM</button>
+                  <button class="ai-mode" data-ai-mode="inspection">Inspection Report</button>
+                </div>
+                <div class="ai-workspace-grid">
+                  <form class="ai-form" data-ai-form>
+                    <label
+                      >Customer / Company<input name="customer" placeholder="ABC Warehouse"
+                    /></label>
+                    <label
+                      >Project / Equipment<input
+                        name="project"
+                        placeholder="Replace 400A service / troubleshoot VFD / BESS PM"
+                    /></label>
+                    <label
+                      >Service Type<select name="service">
+                        <option>Industrial</option>
+                        <option>Commercial</option>
+                        <option>Residential</option>
+                        <option>Solar</option>
+                        <option>BESS</option>
+                        <option>Emergency Service</option>
+                        <option>Maintenance</option>
+                        <option>Inspection</option>
+                      </select></label
+                    >
+                    <label>Location<input name="location" placeholder="Imperial, CA" /></label>
+                    <label
+                      >Important Notes<textarea
+                        name="notes"
+                        placeholder="Existing condition, customer concern, shutdown window, known equipment, photos, safety notes..."
+                      ></textarea>
+                    </label>
+                    <div class="ai-actions">
+                      <button class="btn yellow" type="submit">Generate Draft</button
+                      ><button class="btn dark" type="button" data-ai-use-project>
+                        Use Open Project</button
+                      ><button class="btn dark" type="button" data-ai-save-draft>Save Draft</button
+                      ><button class="btn dark" type="button" data-ai-copy>Copy</button>
+                    </div>
+                  </form>
+                  <div class="ai-output-wrap">
+                    <div class="panel-head">
+                      <h4 data-ai-output-title>Proposal Draft</h4>
+                      <button class="btn yellow" type="button" data-export-ai>
+                        Export AI Draft / Save PDF
+                      </button>
+                    </div>
+                    <textarea
+                      class="proposal-box ai-output"
+                      data-ai-global-output
+                      placeholder="Generated draft will appear here..."
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="ai-drafts-box">
+                  <div class="panel-head">
+                    <h4>Saved Drafts</h4>
+                    <button class="btn dark" data-ai-clear-drafts>Clear Local Drafts</button>
+                  </div>
+                  <div class="activity-feed" data-ai-drafts></div>
+                </div>
+              </section>
+            </div>
+
+            <div class="tab-page" data-tab-page="docs">
+              <section class="admin-panel wide doc-center-panel">
+                <div class="panel-head">
+                  <div>
+                    <h3>Document Center</h3>
+                    <p class="small">
+                      Generate printable customer proposals, estimates, invoices, closeout packages,
+                      and customer email templates from the open project workspace.
+                    </p>
+                  </div>
+                  <span class="badge">Document & PDF Tools</span>
+                </div>
+                <div class="ai-mode-grid doc-mode-grid">
+                  <button class="ai-mode active" data-doc-type="proposal">Proposal</button>
+                  <button class="ai-mode" data-doc-type="estimate">Estimate</button>
+                  <button class="ai-mode" data-doc-type="invoice">Invoice</button>
+                  <button class="ai-mode" data-doc-type="closeout">Closeout</button>
+                  <button class="ai-mode" data-doc-type="email">Customer Email</button>
+                </div>
+                <div class="doc-actions">
+                  <button class="btn yellow" data-open-doc="proposal">
+                    Print Proposal / Save PDF
+                  </button>
+                  <button class="btn dark" data-open-doc="estimate">Print Estimate</button>
+                  <button class="btn dark" data-open-doc="invoice">Print Invoice</button>
+                  <button class="btn dark" data-open-doc="closeout">Print Closeout</button>
+                  <button class="btn dark" data-copy-customer-email>Copy Customer Email</button>
+                </div>
+                <div class="doc-actions">
+                  <button class="btn dark" data-download-doc="proposal">
+                    Download Proposal HTML
+                  </button>
+                  <button class="btn dark" data-download-doc="estimate">
+                    Download Estimate HTML
+                  </button>
+                  <button class="btn dark" data-download-doc="invoice">
+                    Download Invoice HTML
+                  </button>
+                  <button class="btn dark" data-download-doc="closeout">
+                    Download Closeout HTML
+                  </button>
+                </div>
+                <div class="document-studio">
+                  <div class="panel-head">
+                    <div>
+                      <h3>Document Studio</h3>
+                      <p class="small">
+                        Edit the current document directly, save versions, restore a prior version,
+                        and export the approved content.
+                      </p>
+                    </div>
+                    <span class="badge" data-doc-save-state>Not saved</span>
+                  </div>
+                  <div class="document-studio-toolbar">
+                    <input data-doc-title placeholder="Document title" />
+                    <select data-doc-project>
+                      <option value="">No project selected</option>
+                    </select>
+                    <button class="btn blue" type="button" data-doc-load-preview>
+                      Load Current Preview
+                    </button>
+                    <button class="btn yellow" type="button" data-doc-save-version>
+                      Save Version
+                    </button>
+                    <button class="btn dark" type="button" data-doc-export-editable>
+                      Print / Save PDF
+                    </button>
+                  </div>
+                  <div class="document-studio-grid">
+                    <div
+                      class="document-editor"
+                      contenteditable="true"
+                      data-document-editor
+                      aria-label="Editable document"
+                    ></div>
+                    <aside class="document-version-panel">
+                      <h4>Version History</h4>
+                      <div data-document-versions>
+                        <p class="small">Select a project and save a version.</p>
+                      </div>
+                    </aside>
+                  </div>
+                </div>
+                <div class="doc-preview-shell">
+                  <div class="doc-preview" data-doc-preview></div>
+                </div>
+              </section>
+            </div>
+            <div class="tab-page" data-tab-page="portals">
+              <div class="admin-grid">
+                <section class="admin-panel">
+                  <h3>Customer Portal</h3>
+                  <p class="small">
+                    Customers can view approved project photos, invoices, notes, and project status
+                    after they are mapped to a customer account.
+                  </p>
+                  <a class="btn yellow" href="customer-portal.html">Open Customer Portal</a>
+                </section>
+                <section class="admin-panel">
+                  <h3>Employee Portal</h3>
+                  <p class="small">
+                    Technicians can view assigned work, log time entries, and upload job notes as
+                    this module expands.
+                  </p>
+                  <a class="btn yellow" href="employee-portal.html">Open Employee Portal</a>
+                </section>
+              </div>
+            </div>
+
+            <div class="tab-page" data-tab-page="fieldops">
+              <section class="admin-panel wide">
+                <div class="panel-head">
+                  <div>
+                    <h3>Field Operations Review</h3>
+                    <p class="small">
+                      Review technician daily reports, safety/JSA forms, vehicle inspections,
+                      material requests, and completion checklists.
+                    </p>
+                  </div>
+                  <button class="btn dark" data-refresh-fieldops>Refresh</button>
+                </div>
+                <div class="field-review-grid">
+                  <div>
+                    <h4>Daily Reports</h4>
+                    <div data-admin-daily-reports></div>
+                  </div>
+                  <div>
+                    <h4>Safety / JSA</h4>
+                    <div data-admin-jsa-forms></div>
+                  </div>
+                  <div>
+                    <h4>Vehicle Inspections</h4>
+                    <div data-admin-vehicle-inspections></div>
+                  </div>
+                  <div>
+                    <h4>Material Requests</h4>
+                    <div data-admin-material-requests></div>
+                  </div>
+                  <div>
+                    <h4>Completion Checklists</h4>
+                    <div data-admin-completion-checklists></div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="tab-page" data-tab-page="security">
+              <section class="security-command">
+                <div class="admin-panel wide security-hero-panel">
+                  <div>
+                    <div class="eyebrow">VoltFlow Protection</div>
+                    <h3>Security Monitoring</h3>
+                    <p class="small">
+                      Monitor secure quote submissions, bot challenges, spam blocks, rate limits,
+                      countries, and high-severity application events.
+                    </p>
+                  </div>
+                  <button class="btn blue" type="button" data-refresh-security>
+                    Refresh Security Data
+                  </button>
+                </div>
+                <p class="form-status" data-security-status></p>
+                <div class="security-kpi-grid" data-security-kpis></div>
+                <div class="security-layout">
+                  <section class="admin-panel wide">
+                    <div class="panel-head">
+                      <div>
+                        <h3>Recent Security Events</h3>
+                        <p class="small">
+                          Identifiers are hashed; raw visitor IP addresses are not stored in the
+                          application database.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="security-event-list" data-security-events></div>
+                  </section>
+                  <section class="admin-panel">
+                    <h3>Traffic by Country</h3>
+                    <div class="security-country-list" data-security-countries></div>
+                    <div class="security-posture">
+                      <h4>Security Posture</h4>
+                      <p>✓ Server-side quote API</p>
+                      <p>✓ Bot and spam verification</p>
+                      <p>✓ Layered rate limiting</p>
+                      <p>✓ Admin membership validation</p>
+                      <p>✓ 30-minute idle timeout</p>
+                      <p>✓ AI crawler rules</p>
+                    </div>
+                  </section>
+                </div>
+              </section>
+            </div>
+            <div class="tab-page" data-tab-page="quickadd">
+              <div class="admin-grid">
+                <section class="admin-panel">
+                  <h3>Add Customer</h3>
+                  <form data-new-customer class="mini-form">
+                    <input name="full_name" placeholder="Full name" required /><input
+                      name="company"
+                      placeholder="Company"
+                    /><input name="phone" placeholder="Phone" /><input
+                      name="email"
+                      placeholder="Email"
+                    /><input name="city" placeholder="City" /><textarea
+                      name="notes"
+                      placeholder="Notes"
+                    ></textarea
+                    ><button class="btn yellow" type="submit">Save Customer</button>
+                  </form>
+                </section>
+                <section class="admin-panel">
+                  <h3>Add Project</h3>
+                  <form data-new-project class="mini-form">
+                    <input name="project_name" placeholder="Project name" required /><input
+                      name="service_type"
+                      placeholder="Service type"
+                    /><input name="status" placeholder="Status" value="Planning" /><input
+                      name="city"
+                      placeholder="City"
+                    /><textarea name="notes" placeholder="Notes"></textarea
+                    ><button class="btn yellow" type="submit">Save Project</button>
+                  </form>
+                </section>
+              </div>
+            </div>
+            <div class="tab-page" data-tab-page="website">
+              <p class="form-status" data-site-manager-status></p>
+              <section class="admin-panel wide website-manager-intro">
+                <div>
+                  <div class="eyebrow">VoltFlow V8.6</div>
+                  <h3>Website Content Manager</h3>
+                  <p class="small">
+                    Update customer-facing content, upload public media, manage services, and
+                    publish portfolio work without editing HTML. Static content remains as a safe
+                    fallback.
+                  </p>
+                </div>
+                <span class="badge">Draft → Preview → Publish</span>
+              </section>
+              <div class="admin-grid content-manager-grid">
+                <section class="admin-panel wide">
+                  <div class="panel-head">
+                    <div>
+                      <h3>Company & Homepage Content</h3>
+                      <p class="small">
+                        Use Draft while reviewing. Choose Published when the wording is ready for
+                        customers.
+                      </p>
+                    </div>
+                  </div>
+                  <form class="content-editor-form" data-site-content-form>
+                    <label>Company Name<input name="company_name" required /></label
+                    ><label>Phone<input name="phone" required /></label
+                    ><label>License Number<input name="license" /></label
+                    ><label>Service Area<input name="service_area" /></label>
+                    <label class="span-2"
+                      >Mission Statement<textarea name="mission"></textarea></label
+                    ><label>Hero Eyebrow<input name="hero_eyebrow" /></label
+                    ><label>Hero Headline<input name="hero_headline" required /></label>
+                    <label class="span-2"
+                      >Hero Description<textarea name="hero_description"></textarea></label
+                    ><label>Primary Button Label<input name="primary_button" /></label
+                    ><label>Secondary Button Label<input name="secondary_button" /></label>
+                    <label
+                      >Content Status<select name="publish_status">
+                        <option value="draft">Draft</option>
+                        <option value="published">Published</option>
+                      </select></label
+                    ><button class="btn yellow" type="submit">Save Website Content</button>
+                  </form>
+                  <div class="site-preview" data-site-preview></div>
+                </section>
+                <section class="admin-panel wide">
+                  <div class="panel-head">
+                    <div>
+                      <h3>Media Library</h3>
+                      <p class="small">
+                        Public website media is stored separately from private project files.
+                      </p>
+                    </div>
+                  </div>
+                  <form class="content-editor-form" data-media-upload-form>
+                    <label>Title<input name="title" required /></label
+                    ><label
+                      >Category<select name="category">
+                        <option>Hero</option>
+                        <option>Industrial</option>
+                        <option>Commercial</option>
+                        <option>Residential</option>
+                        <option>Solar & BESS</option>
+                        <option>Service & Repair</option>
+                        <option>Projects</option>
+                        <option>Trucks</option>
+                        <option>Logo</option>
+                        <option>Team</option>
+                        <option>Territory</option>
+                        <option>General</option>
+                      </select></label
+                    ><label class="span-2"
+                      >Alt Text<input
+                        name="alt_text"
+                        placeholder="Describe the image for accessibility and SEO" /></label
+                    ><label class="span-2"
+                      >File<input name="file" type="file" accept="image/*" required /></label
+                    ><button class="btn yellow" type="submit">Upload Website Media</button>
+                  </form>
+                  <div class="media-grid site-media-grid" data-site-media-grid></div>
+                </section>
+                <section class="admin-panel wide photo-slot-manager-v912">
+                  <div class="panel-head">
+                    <div>
+                      <div class="eyebrow">Website Media Control</div>
+                      <h3>Individual Photo Location Manager</h3>
+                      <p class="small">
+                        Select any exact photo location on the website, upload a replacement,
+                        publish or restore the original file without editing HTML.
+                      </p>
+                    </div>
+                    <span class="badge" data-photo-slot-status>Ready</span>
+                  </div>
+                  <div class="photo-slot-manager-grid">
+                    <aside class="photo-slot-filters">
+                      <label
+                        >Page<select data-photo-slot-page>
+                          <option value="">All pages</option>
+                        </select></label
+                      >
+                      <label
+                        >Search<input
+                          data-photo-slot-search
+                          placeholder="Search slot, page or image"
+                      /></label>
+                      <div class="photo-slot-help">
+                        <b>How this works</b>
+                        <p>
+                          Each website image has a permanent slot ID. Replacing one slot changes
+                          only that exact image location.
+                        </p>
+                      </div>
+                    </aside>
+                    <div class="photo-slot-workspace">
+                      <div class="photo-slot-list" data-photo-slot-list></div>
+                    </div>
+                  </div>
+                </section>
+                <section class="admin-panel wide carousel-manager-v892">
+                  <div class="panel-head">
+                    <div>
+                      <div class="eyebrow">Residential Website</div>
+                      <h3>Website Carousel Manager</h3>
+                      <p class="small">
+                        Add, remove, publish and reorder public images across every service page and
+                        Residential Home Systems.
+                      </p>
+                    </div>
+                    <span class="badge" data-carousel-manager-status>Ready</span>
+                  </div>
+                  <div class="carousel-manager-grid">
+                    <aside class="carousel-manager-settings">
+                      <label
+                        >Page<select data-carousel-page>
+                          <option value="residential">Residential</option>
+                          <option value="industrial">Industrial</option>
+                          <option value="commercial">Commercial</option>
+                          <option value="solar-bess">Solar & BESS</option>
+                          <option value="service-repair">Service & Repair</option>
+                          <option value="engineering-inspection">Drone & Thermal</option>
+                        </select></label
+                      >
+                      <label
+                        >Carousel<select data-carousel-system>
+                          <option value="hero">Main Service Gallery</option>
+                          <option value="panel">Residential — Main Panel</option>
+                          <option value="ev">Residential — EV Charging</option>
+                          <option value="lighting">Residential — Lighting</option>
+                          <option value="garage">Residential — Garage</option>
+                        </select></label
+                      >
+                      <form data-carousel-upload-form>
+                        <label
+                          >Photo title<input
+                            name="title"
+                            required
+                            placeholder="Main panel front view"
+                        /></label>
+                        <label
+                          >Accessible description<input
+                            name="alt_text"
+                            required
+                            placeholder="Open residential electrical panel with labeled breakers"
+                        /></label>
+                        <label
+                          >Photo<input
+                            name="file"
+                            type="file"
+                            accept="image/jpeg,image/png,image/webp"
+                            required
+                        /></label>
+                        <button class="btn yellow" type="submit">Upload & Add Photo</button>
+                      </form>
+                      <p class="small">
+                        Recommended: 1600 × 1000 or larger, landscape, under 1 MB. Published changes
+                        appear on the residential page without editing HTML.
+                      </p>
+                    </aside>
+                    <div>
+                      <div class="carousel-manager-list" data-carousel-manager-list></div>
+                      <div class="carousel-manager-preview">
+                        <h4>Live 3D Preview</h4>
+                        <div data-carousel-admin-preview></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="admin-panel wide inspection-admin-v9">
+                  <div class="panel-head">
+                    <div>
+                      <div class="eyebrow">Engineering Inspection Division</div>
+                      <h3>Inspection Case Study Manager</h3>
+                      <p class="small">
+                        Publish anonymized aerial visual and thermal case studies without exposing
+                        customer, site, asset-designation or personnel information.
+                      </p>
+                    </div>
+                    <span class="badge">Privacy First</span>
+                  </div>
+                  <div class="inspection-admin-grid">
+                    <div class="inspection-admin-rules">
+                      <h4>Required before publishing</h4>
+                      <ul>
+                        <li>Remove customer and facility names</li>
+                        <li>Remove exact equipment designations</li>
+                        <li>Remove employee and inspector names</li>
+                        <li>Remove GPS or precise location references</li>
+                        <li>Confirm the imagery does not expose access or security details</li>
+                      </ul>
+                    </div>
+                    <form data-inspection-case-form>
+                      <label
+                        >Public case-study title<input
+                          name="title"
+                          required
+                          placeholder="High-Voltage Breaker Thermal Assessment"
+                      /></label>
+                      <label
+                        >Asset category<select name="asset_category">
+                          <option>Breaker</option>
+                          <option>Transformer</option>
+                          <option>Switchgear</option>
+                          <option>Solar Array</option>
+                          <option>Commercial Roof</option>
+                          <option>Construction Progress</option>
+                          <option>Other</option>
+                        </select></label
+                      >
+                      <label
+                        >Public summary<textarea
+                          name="summary"
+                          required
+                          placeholder="Describe the inspection method and outcome without identifying the customer or location."
+                        ></textarea>
+                      </label>
+                      <label
+                        >Classification<select name="classification">
+                          <option>Normal</option>
+                          <option>Monitor</option>
+                          <option>Corrective Action Recommended</option>
+                          <option>Urgent</option>
+                        </select></label
+                      >
+                      <button class="btn yellow" type="submit">Save Case Study</button>
+                    </form>
+                  </div>
+                  <div data-inspection-case-list></div>
+                </section>
+                <section class="admin-panel">
+                  <h3>Services Manager</h3>
+                  <form class="mini-form" data-service-editor-form>
+                    <input type="hidden" name="service_id" /><input
+                      name="title"
+                      placeholder="Service title"
+                      required
+                    /><input name="slug" placeholder="service-slug" required /><input
+                      name="category"
+                      placeholder="Category"
+                    /><textarea
+                      name="short_description"
+                      placeholder="Short customer-facing description"
+                    ></textarea
+                    ><input name="image_path" placeholder="Image URL or assets path" /><input
+                      name="page_url"
+                      placeholder="industrial.html"
+                    /><input name="display_order" type="number" value="0" /><label
+                      class="toggle-label"
+                      ><input name="is_active" type="checkbox" checked /> Visible on website</label
+                    ><button class="btn yellow" type="submit">Save Service</button>
+                  </form>
+                  <div data-site-services-list></div>
+                </section>
+                <section class="admin-panel">
+                  <h3>Portfolio Publisher</h3>
+                  <form class="mini-form" data-portfolio-editor-form>
+                    <input type="hidden" name="portfolio_id" /><input
+                      name="title"
+                      placeholder="Project title"
+                      required
+                    /><input
+                      name="category"
+                      placeholder="Industrial / Solar / Residential"
+                      required
+                    /><input name="location" placeholder="Location" /><input
+                      name="service_type"
+                      placeholder="Service type"
+                    /><textarea name="description" placeholder="Project summary"></textarea
+                    ><input
+                      name="capabilities"
+                      placeholder="Testing, commissioning, maintenance"
+                    /><input name="cover_image_path" placeholder="Cover image URL" /><input
+                      name="display_order"
+                      type="number"
+                      value="0"
+                    /><select name="status">
+                      <option value="draft">Draft</option>
+                      <option value="published">Published</option>
+                      <option value="archived">Archived</option></select
+                    ><button class="btn yellow" type="submit">Save Portfolio Item</button>
+                  </form>
+                  <div data-site-portfolio-list></div>
+                </section>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="ai-drafts-box"><div class="panel-head"><h4>Saved Drafts</h4><button class="btn dark" data-ai-clear-drafts>Clear Local Drafts</button></div><div class="activity-feed" data-ai-drafts></div></div>
-      </section>
-    </div>
-
-    <div class="tab-page" data-tab-page="docs">
-      <section class="admin-panel wide doc-center-panel">
-        <div class="panel-head"><div><h3>Document Center</h3><p class="small">Generate printable customer proposals, estimates, invoices, closeout packages, and customer email templates from the open project workspace.</p></div><span class="badge">Document & PDF Tools</span></div>
-        <div class="ai-mode-grid doc-mode-grid">
-          <button class="ai-mode active" data-doc-type="proposal">Proposal</button>
-          <button class="ai-mode" data-doc-type="estimate">Estimate</button>
-          <button class="ai-mode" data-doc-type="invoice">Invoice</button>
-          <button class="ai-mode" data-doc-type="closeout">Closeout</button>
-          <button class="ai-mode" data-doc-type="email">Customer Email</button>
-        </div>
-        <div class="doc-actions">
-          <button class="btn yellow" data-open-doc="proposal">Print Proposal / Save PDF</button>
-          <button class="btn dark" data-open-doc="estimate">Print Estimate</button>
-          <button class="btn dark" data-open-doc="invoice">Print Invoice</button>
-          <button class="btn dark" data-open-doc="closeout">Print Closeout</button>
-          <button class="btn dark" data-copy-customer-email>Copy Customer Email</button>
-        </div>
-        <div class="doc-actions">
-          <button class="btn dark" data-download-doc="proposal">Download Proposal HTML</button>
-          <button class="btn dark" data-download-doc="estimate">Download Estimate HTML</button>
-          <button class="btn dark" data-download-doc="invoice">Download Invoice HTML</button>
-          <button class="btn dark" data-download-doc="closeout">Download Closeout HTML</button>
-        </div>
-        <div class="document-studio">
-<div class="panel-head"><div><h3>Document Studio</h3><p class="small">Edit the current document directly, save versions, restore a prior version, and export the approved content.</p></div><span class="badge" data-doc-save-state>Not saved</span></div>
-<div class="document-studio-toolbar">
-<input data-doc-title placeholder="Document title">
-<select data-doc-project><option value="">No project selected</option></select>
-<button class="btn blue" type="button" data-doc-load-preview>Load Current Preview</button>
-<button class="btn yellow" type="button" data-doc-save-version>Save Version</button>
-<button class="btn dark" type="button" data-doc-export-editable>Print / Save PDF</button>
-</div>
-<div class="document-studio-grid">
-<div class="document-editor" contenteditable="true" data-document-editor aria-label="Editable document"></div>
-<aside class="document-version-panel"><h4>Version History</h4><div data-document-versions><p class="small">Select a project and save a version.</p></div></aside>
-</div>
-</div><div class="doc-preview-shell"><div class="doc-preview" data-doc-preview></div></div>
-      </section>
-    </div>
-    <div class="tab-page" data-tab-page="portals">
-      <div class="admin-grid"><section class="admin-panel"><h3>Customer Portal</h3><p class="small">Customers can view approved project photos, invoices, notes, and project status after they are mapped to a customer account.</p><a class="btn yellow" href="customer-portal.html">Open Customer Portal</a></section><section class="admin-panel"><h3>Employee Portal</h3><p class="small">Technicians can view assigned work, log time entries, and upload job notes as this module expands.</p><a class="btn yellow" href="employee-portal.html">Open Employee Portal</a></section></div>
-    </div>
-
-    <div class="tab-page" data-tab-page="fieldops">
-      <section class="admin-panel wide">
-        <div class="panel-head"><div><h3>Field Operations Review</h3><p class="small">Review technician daily reports, safety/JSA forms, vehicle inspections, material requests, and completion checklists.</p></div><button class="btn dark" data-refresh-fieldops>Refresh</button></div>
-        <div class="field-review-grid">
-          <div><h4>Daily Reports</h4><div data-admin-daily-reports></div></div>
-          <div><h4>Safety / JSA</h4><div data-admin-jsa-forms></div></div>
-          <div><h4>Vehicle Inspections</h4><div data-admin-vehicle-inspections></div></div>
-          <div><h4>Material Requests</h4><div data-admin-material-requests></div></div>
-          <div><h4>Completion Checklists</h4><div data-admin-completion-checklists></div></div>
-        </div>
-      </section>
-    </div>
-
-    <div class="tab-page" data-tab-page="security">
-      <section class="security-command">
-        <div class="admin-panel wide security-hero-panel"><div><div class="eyebrow">VoltFlow Protection</div><h3>Security Monitoring</h3><p class="small">Monitor secure quote submissions, bot challenges, spam blocks, rate limits, countries, and high-severity application events.</p></div><button class="btn blue" type="button" data-refresh-security>Refresh Security Data</button></div>
-        <p class="form-status" data-security-status></p>
-        <div class="security-kpi-grid" data-security-kpis></div>
-        <div class="security-layout"><section class="admin-panel wide"><div class="panel-head"><div><h3>Recent Security Events</h3><p class="small">Identifiers are hashed; raw visitor IP addresses are not stored in the application database.</p></div></div><div class="security-event-list" data-security-events></div></section><section class="admin-panel"><h3>Traffic by Country</h3><div class="security-country-list" data-security-countries></div><div class="security-posture"><h4>Security Posture</h4><p>✓ Server-side quote API</p><p>✓ Bot and spam verification</p><p>✓ Layered rate limiting</p><p>✓ Admin membership validation</p><p>✓ 30-minute idle timeout</p><p>✓ AI crawler rules</p></div></section></div>
-      </section>
-    </div>
-    <div class="tab-page" data-tab-page="quickadd"><div class="admin-grid"><section class="admin-panel"><h3>Add Customer</h3><form data-new-customer class="mini-form"><input name="full_name" placeholder="Full name" required><input name="company" placeholder="Company"><input name="phone" placeholder="Phone"><input name="email" placeholder="Email"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Customer</button></form></section><section class="admin-panel"><h3>Add Project</h3><form data-new-project class="mini-form"><input name="project_name" placeholder="Project name" required><input name="service_type" placeholder="Service type"><input name="status" placeholder="Status" value="Planning"><input name="city" placeholder="City"><textarea name="notes" placeholder="Notes"></textarea><button class="btn yellow" type="submit">Save Project</button></form></section></div></div>
-    <div class="tab-page" data-tab-page="website">
-      <p class="form-status" data-site-manager-status></p>
-      <section class="admin-panel wide website-manager-intro"><div><div class="eyebrow">VoltFlow V8.6</div><h3>Website Content Manager</h3><p class="small">Update customer-facing content, upload public media, manage services, and publish portfolio work without editing HTML. Static content remains as a safe fallback.</p></div><span class="badge">Draft → Preview → Publish</span></section>
-      <div class="admin-grid content-manager-grid">
-        <section class="admin-panel wide"><div class="panel-head"><div><h3>Company & Homepage Content</h3><p class="small">Use Draft while reviewing. Choose Published when the wording is ready for customers.</p></div></div><form class="content-editor-form" data-site-content-form>
-          <label>Company Name<input name="company_name" required></label><label>Phone<input name="phone" required></label><label>License Number<input name="license"></label><label>Service Area<input name="service_area"></label>
-          <label class="span-2">Mission Statement<textarea name="mission"></textarea></label><label>Hero Eyebrow<input name="hero_eyebrow"></label><label>Hero Headline<input name="hero_headline" required></label>
-          <label class="span-2">Hero Description<textarea name="hero_description"></textarea></label><label>Primary Button Label<input name="primary_button"></label><label>Secondary Button Label<input name="secondary_button"></label>
-          <label>Content Status<select name="publish_status"><option value="draft">Draft</option><option value="published">Published</option></select></label><button class="btn yellow" type="submit">Save Website Content</button>
-        </form><div class="site-preview" data-site-preview></div></section>
-        <section class="admin-panel wide"><div class="panel-head"><div><h3>Media Library</h3><p class="small">Public website media is stored separately from private project files.</p></div></div><form class="content-editor-form" data-media-upload-form><label>Title<input name="title" required></label><label>Category<select name="category"><option>Hero</option><option>Industrial</option><option>Commercial</option><option>Residential</option><option>Solar & BESS</option><option>Service & Repair</option><option>Projects</option><option>Trucks</option><option>Logo</option><option>Team</option><option>Territory</option><option>General</option></select></label><label class="span-2">Alt Text<input name="alt_text" placeholder="Describe the image for accessibility and SEO"></label><label class="span-2">File<input name="file" type="file" accept="image/*" required></label><button class="btn yellow" type="submit">Upload Website Media</button></form><div class="media-grid site-media-grid" data-site-media-grid></div></section>
-        <section class="admin-panel wide photo-slot-manager-v912">
-<div class="panel-head">
-  <div>
-    <div class="eyebrow">Website Media Control</div>
-    <h3>Individual Photo Location Manager</h3>
-    <p class="small">Select any exact photo location on the website, upload a replacement, publish or restore the original file without editing HTML.</p>
-  </div>
-  <span class="badge" data-photo-slot-status>Ready</span>
-</div>
-<div class="photo-slot-manager-grid">
-  <aside class="photo-slot-filters">
-    <label>Page<select data-photo-slot-page><option value="">All pages</option></select></label>
-    <label>Search<input data-photo-slot-search placeholder="Search slot, page or image"></label>
-    <div class="photo-slot-help">
-      <b>How this works</b>
-      <p>Each website image has a permanent slot ID. Replacing one slot changes only that exact image location.</p>
-    </div>
-  </aside>
-  <div class="photo-slot-workspace">
-    <div class="photo-slot-list" data-photo-slot-list></div>
-  </div>
-</div>
-</section><section class="admin-panel wide carousel-manager-v892">
-<div class="panel-head"><div><div class="eyebrow">Residential Website</div><h3>Website Carousel Manager</h3><p class="small">Add, remove, publish and reorder public images across every service page and Residential Home Systems.</p></div><span class="badge" data-carousel-manager-status>Ready</span></div>
-<div class="carousel-manager-grid">
-  <aside class="carousel-manager-settings">
-    <label>Page<select data-carousel-page><option value="residential">Residential</option><option value="industrial">Industrial</option><option value="commercial">Commercial</option><option value="solar-bess">Solar & BESS</option><option value="service-repair">Service & Repair</option><option value="engineering-inspection">Drone & Thermal</option></select></label>
-<label>Carousel<select data-carousel-system><option value="hero">Main Service Gallery</option><option value="panel">Residential — Main Panel</option><option value="ev">Residential — EV Charging</option><option value="lighting">Residential — Lighting</option><option value="garage">Residential — Garage</option></select></label>
-    <form data-carousel-upload-form>
-      <label>Photo title<input name="title" required placeholder="Main panel front view"></label>
-      <label>Accessible description<input name="alt_text" required placeholder="Open residential electrical panel with labeled breakers"></label>
-      <label>Photo<input name="file" type="file" accept="image/jpeg,image/png,image/webp" required></label>
-      <button class="btn yellow" type="submit">Upload & Add Photo</button>
-    </form>
-    <p class="small">Recommended: 1600 × 1000 or larger, landscape, under 1 MB. Published changes appear on the residential page without editing HTML.</p>
-  </aside>
-  <div>
-    <div class="carousel-manager-list" data-carousel-manager-list></div>
-    <div class="carousel-manager-preview"><h4>Live 3D Preview</h4><div data-carousel-admin-preview></div></div>
-  </div>
-</div>
-</section><section class="admin-panel wide inspection-admin-v9">
-<div class="panel-head"><div><div class="eyebrow">Engineering Inspection Division</div><h3>Inspection Case Study Manager</h3><p class="small">Publish anonymized aerial visual and thermal case studies without exposing customer, site, asset-designation or personnel information.</p></div><span class="badge">Privacy First</span></div>
-<div class="inspection-admin-grid">
-  <div class="inspection-admin-rules"><h4>Required before publishing</h4><ul><li>Remove customer and facility names</li><li>Remove exact equipment designations</li><li>Remove employee and inspector names</li><li>Remove GPS or precise location references</li><li>Confirm the imagery does not expose access or security details</li></ul></div>
-  <form data-inspection-case-form>
-    <label>Public case-study title<input name="title" required placeholder="High-Voltage Breaker Thermal Assessment"></label>
-    <label>Asset category<select name="asset_category"><option>Breaker</option><option>Transformer</option><option>Switchgear</option><option>Solar Array</option><option>Commercial Roof</option><option>Construction Progress</option><option>Other</option></select></label>
-    <label>Public summary<textarea name="summary" required placeholder="Describe the inspection method and outcome without identifying the customer or location."></textarea></label>
-    <label>Classification<select name="classification"><option>Normal</option><option>Monitor</option><option>Corrective Action Recommended</option><option>Urgent</option></select></label>
-    <button class="btn yellow" type="submit">Save Case Study</button>
-  </form>
-</div>
-<div data-inspection-case-list></div>
-</section><section class="admin-panel"><h3>Services Manager</h3><form class="mini-form" data-service-editor-form><input type="hidden" name="service_id"><input name="title" placeholder="Service title" required><input name="slug" placeholder="service-slug" required><input name="category" placeholder="Category"><textarea name="short_description" placeholder="Short customer-facing description"></textarea><input name="image_path" placeholder="Image URL or assets path"><input name="page_url" placeholder="industrial.html"><input name="display_order" type="number" value="0"><label class="toggle-label"><input name="is_active" type="checkbox" checked> Visible on website</label><button class="btn yellow" type="submit">Save Service</button></form><div data-site-services-list></div></section>
-        <section class="admin-panel"><h3>Portfolio Publisher</h3><form class="mini-form" data-portfolio-editor-form><input type="hidden" name="portfolio_id"><input name="title" placeholder="Project title" required><input name="category" placeholder="Industrial / Solar / Residential" required><input name="location" placeholder="Location"><input name="service_type" placeholder="Service type"><textarea name="description" placeholder="Project summary"></textarea><input name="capabilities" placeholder="Testing, commissioning, maintenance"><input name="cover_image_path" placeholder="Cover image URL"><input name="display_order" type="number" value="0"><select name="status"><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select><button class="btn yellow" type="submit">Save Portfolio Item</button></form><div data-site-portfolio-list></div></section>
       </div>
-    </div>
+    </section>
+    <footer class="footer">
+      <div class="foot-grid">
+        <div>
+          <img src="assets/images/site/logo.jpg" alt="Blue Bear Electric" />
+          <p class="small">
+            CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor
+          </p>
+        </div>
+        <div>
+          <h4>VoltFlow</h4>
+          <p class="small">Contractor Operations Platform</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">760-234-8306<br />Imperial County, CA</p>
+        </div>
+        <div>
+          <h4>Mission</h4>
+          <p class="small">
+            Innovate and help companies and communities with the professional help they deserve.
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-<footer class="footer"><div class="foot-grid"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>VoltFlow</h4><p class="small">Contractor Operations Platform</p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/supabase-config.js"></script><script src="assets/js/site-shell.js"></script><script src="assets/js/company-profile.js"></script><script src="assets/js/blue-bear-documents-v8-9.js"></script><script src="assets/js/admin-backend.js"></script><script src="assets/js/v6-3-command-center.js"></script><script src="assets/js/v6-4-ai-ops.js"></script><script src="assets/js/v6-5-doc-center.js"></script><script src="assets/js/v6-7-field-ops-admin.js"></script><script src="assets/js/theme-loader.js"></script><script src="assets/js/content-manager.js"></script><script src="assets/js/crm-v8-5.js"></script><script src="assets/js/billing-v8-6.js"></script><script src="assets/js/security-dashboard.js"></script><script src="assets/js/project-command-center-v8-7.js"></script><script src="assets/js/media-v8-7-2.js"></script><script src="assets/js/operations-intelligence-v8-8.js"></script><script src="assets/js/experience-v8-8-1.js"></script><script src="assets/js/document-studio-v8-8-1.js"></script><script src="assets/js/company-profile.js"></script><script src="assets/js/brand-experience.js"></script><script src="assets/js/carousel-manager-v8-9-2.js"></script><script src="assets/js/engineering-inspection-admin-v9.js"></script><script src="assets/js/photo-slot-admin-v9-1-2.js"></script></body></html>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/site-shell.js"></script>
+    <script src="assets/js/company-profile.js"></script>
+    <script src="assets/js/blue-bear-documents-v8-9.js"></script>
+    <script src="assets/js/admin-backend.js"></script>
+    <script src="assets/js/v6-3-command-center.js"></script>
+    <script src="assets/js/v6-4-ai-ops.js"></script>
+    <script src="assets/js/v6-5-doc-center.js"></script>
+    <script src="assets/js/v6-7-field-ops-admin.js"></script>
+    <script src="assets/js/theme-loader.js"></script>
+    <script src="assets/js/content-manager.js"></script>
+    <script src="assets/js/crm-v8-5.js"></script>
+    <script src="assets/js/billing-v8-6.js"></script>
+    <script src="assets/js/security-dashboard.js"></script>
+    <script src="assets/js/project-command-center-v8-7.js"></script>
+    <script src="assets/js/media-v8-7-2.js"></script>
+    <script src="assets/js/operations-intelligence-v8-8.js"></script>
+    <script src="assets/js/experience-v8-8-1.js"></script>
+    <script src="assets/js/document-studio-v8-8-1.js"></script>
+    <script src="assets/js/company-profile.js"></script>
+    <script src="assets/js/brand-experience.js"></script>
+    <script src="assets/js/carousel-manager-v8-9-2.js"></script>
+    <script src="assets/js/engineering-inspection-admin-v9.js"></script>
+    <script src="assets/js/photo-slot-admin-v9-1-2.js"></script>
+  </body>
+</html>

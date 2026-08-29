@@ -19,4 +19,3 @@ created with `supabase migration new <name>`. The historical SQL under
 `docs/sql/` remains the bootstrap record for earlier releases.
 
 Never rerun a destructive statement without reviewing it first.
-

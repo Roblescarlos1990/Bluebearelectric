@@ -5,12 +5,8 @@
   "runtime": {
     "public_pages": [
       "about.html",
-      "admin.html",
       "commercial.html",
       "contact.html",
-      "customer-portal.html",
-      "customize.html",
-      "employee-portal.html",
       "engineering-inspection.html",
       "index.html",
       "industrial.html",
@@ -19,22 +15,25 @@
       "security-policy.html",
       "service-repair.html",
       "services.html",
-      "solar-bess.html",
-      "system-check.html"
+      "solar-bess.html"
     ],
+    "portal_pages": ["customer-portal.html", "employee-portal.html", "reset-password.html"],
+    "admin_pages": ["admin-portal.html", "admin.html", "customize.html", "system-check.html"],
     "javascript_directory": "assets/js",
-    "stylesheets": [
-      "style.css",
-      "theme.css"
-    ],
+    "stylesheets": ["style.css", "theme.css", "portal.css"],
     "api_directory": "api",
     "sql_directory": "supabase/migrations",
-    "historical_sql_directory": "docs/sql"
+    "historical_sql_directory": "docs/sql",
+    "historical_browser_modules": [
+      "assets/js/customer-experience-v8-7-2.js",
+      "assets/js/customer-portal.js",
+      "assets/js/employee-portal.js"
+    ]
   },
   "features": [
     "secure quote workflow",
     "admin portal",
-    "customer portal",
+    "retired customer portal redirect",
     "employee portal",
     "managed carousels",
     "individual photo slots",
@@ -47,4 +46,3 @@
   ],
   "archive_policy": "Historical release notes and legacy guides remain under docs/archive and docs/releases."
 }
-

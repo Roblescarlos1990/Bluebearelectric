@@ -1,13 +1,13 @@
 # Mobile Homepage Design QA
 
-- Source visual truth: `C:\Users\prins\.codex\generated_images\019fba57-9267-79f0-b440-9a16c52c3bbb\exec-55c52c20-f67c-41b2-a257-b2ea9a77c167.png`
-- Implementation screenshot: `C:\Users\prins\Documents\Codex\2026-07-31\referenced-chatgpt-conversation-this-is-untrusted\outputs\mobile-option-1-final.png`
-- Final comparison: `C:\Users\prins\Documents\Codex\2026-07-31\referenced-chatgpt-conversation-this-is-untrusted\outputs\mobile-option-1-comparison-v3.png`
+- Permanent implementation baseline: `docs/baselines/phase-0/mobile-homepage.png`
+- Mobile navigation baseline: `docs/baselines/phase-0/mobile-navigation-open.png`
+- Desktop regression baseline: `docs/baselines/phase-0/desktop-homepage.png`
 - Target viewport: 390 × 844 CSS px
-- Source pixels: 853 × 1844
-- Implementation capture pixels: 375 × 812
-- Density normalization: both artifacts were resampled to 390 × 844 before the side-by-side comparison.
 - State: mobile homepage, intro dismissed, navigation closed.
+
+The original concept and temporary comparison files were intentionally excluded from production
+documentation. The repository baselines above are the durable regression evidence.
 
 ## Full-view comparison evidence
 
@@ -46,7 +46,7 @@ A separate crop was not needed because the normalized full-view comparison keeps
 - No horizontal overflow at 390 × 844.
 - No browser console errors or warnings observed.
 - Desktop check at 1280 × 720 keeps the existing desktop hero and card visible while hiding the mobile-only hero.
-- Repository validator passes all 18 HTML pages, 41 JavaScript files, and local references.
+- Repository validator passes all 20 HTML pages, 54 JavaScript files, and local references.
 
 ## Follow-up polish
 
