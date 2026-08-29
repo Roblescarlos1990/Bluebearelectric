@@ -6,17 +6,49 @@
     <title>Services | Blue Bear Electric</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme.css" />
-    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
-    <link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#030a13" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/optimized/site/truck-1440.avif"
+      imagesrcset="assets/images/optimized/site/truck-480.avif 480w, assets/images/optimized/site/truck-960.avif 960w, assets/images/optimized/site/truck-1440.avif 1440w"
+      imagesizes="100vw"
+      type="image/avif"
+      fetchpriority="high"
+      data-primary-image-preload
+    />
   </head>
   <body class="blue-bear-site">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="index.html"
-          ><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"
+          ><img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric logo"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="160px"
+            decoding="async"
+            loading="eager"
         /></a>
         <div class="links">
           <a href="index.html">Home</a><a href="services.html">Services</a
@@ -38,14 +70,7 @@
       </nav>
     </header>
     <main id="main-content" tabindex="-1">
-      <section
-        class="page-hero"
-        style="
-          background-image:
-            linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
-            url('assets/images/site/truck.jpg');
-        "
-      >
+      <section class="page-hero page-hero-truck">
         <div>
           <div class="eyebrow">Blue Bear Electric</div>
           <h1>Services</h1>
@@ -70,6 +95,15 @@
               src="assets/images/site/vfd.jpg"
               alt="Industrial variable frequency drives"
               data-photo-slot="services-vfd"
+              width="1280"
+              height="1707"
+              srcset="
+                assets/images/optimized/site/vfd-480.webp 480w,
+                assets/images/optimized/site/vfd-960.webp 960w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <div class="card-body">
               <h3>Industrial Electrical</h3>
@@ -84,6 +118,15 @@
               src="assets/images/site/fuse-panel.jpg"
               alt="Commercial electrical distribution panel"
               data-photo-slot="services-fuse-panel"
+              width="800"
+              height="1067"
+              srcset="
+                assets/images/optimized/site/fuse-panel-480.webp 480w,
+                assets/images/optimized/site/fuse-panel-800.webp 800w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <div class="card-body">
               <h3>Commercial</h3>
@@ -95,6 +138,16 @@
               src="assets/images/site/instagram.jpg"
               alt="Residential electrical installation"
               data-photo-slot="services-instagram"
+              width="1600"
+              height="1776"
+              srcset="
+                assets/images/optimized/site/instagram-480.webp   480w,
+                assets/images/optimized/site/instagram-960.webp   960w,
+                assets/images/optimized/site/instagram-1440.webp 1440w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <div class="card-body">
               <h3>Residential</h3>
@@ -106,6 +159,16 @@
               src="assets/images/site/solar-field.jpg"
               alt="Utility-scale solar field"
               data-photo-slot="services-solar-field"
+              width="1600"
+              height="1200"
+              srcset="
+                assets/images/optimized/site/solar-field-480.webp   480w,
+                assets/images/optimized/site/solar-field-960.webp   960w,
+                assets/images/optimized/site/solar-field-1440.webp 1440w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <div class="card-body">
               <h3>Solar & BESS</h3>
@@ -117,6 +180,16 @@
               src="assets/images/site/megger.jpg"
               alt="Electrical insulation resistance testing"
               data-photo-slot="services-megger"
+              width="1280"
+              height="1705"
+              srcset="
+                assets/images/optimized/site/megger-480.webp   480w,
+                assets/images/optimized/site/megger-960.webp   960w,
+                assets/images/optimized/site/megger-1280.webp 1280w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <div class="card-body">
               <h3>Service & Repair</h3>
@@ -128,6 +201,16 @@
               src="assets/images/engineering-inspection/case-study/engineering-inspection-hero.webp"
               alt="Aerial drone and thermal electrical inspection"
               data-photo-slot="services-engineering-inspection-hero"
+              width="1600"
+              height="889"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-480.webp   480w,
+                assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-960.webp   960w,
+                assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-1440.webp 1440w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <div class="card-body">
               <div class="eyebrow">Engineering Inspection</div>
@@ -145,7 +228,19 @@
     <footer class="footer">
       <div class="foot-grid">
         <div>
-          <img src="assets/images/site/logo.jpg" alt="Blue Bear Electric" />
+          <img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="180px"
+            decoding="async"
+            loading="lazy"
+          />
           <p class="small">
             CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor
           </p>
@@ -172,6 +267,8 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/image-performance.js"></script>
+
     <script src="assets/js/supabase-config.js"></script>
     <script src="assets/js/site-shell.js"></script>
     <script src="assets/js/theme-loader.js"></script>

@@ -24,8 +24,8 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 ├── api/                  Vercel serverless endpoints
 ├── assets/
 │   ├── branding/         Canonical Blue Bear logo and watermark assets
-│   ├── data/             Managed photo-slot registry
-│   ├── images/           Public, service, and inspection media
+│   ├── data/             Managed photo slots and generated image metadata
+│   ├── images/           Source media plus generated responsive derivatives
 │   └── js/               Browser behavior and feature modules
 ├── database/             Diagnostics, compatibility migrations, and seeds
 ├── docs/
@@ -72,6 +72,7 @@ The first browser installation downloads an isolated Chromium runtime. Individua
 | Command                       | Purpose                                                                                                                         |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `npm run format:check`        | Check runtime HTML, CSS, API and browser JavaScript, tooling, tests, workflow files, JSON, and active Markdown with Prettier.   |
+| `npm run media:build`         | Regenerate responsive AVIF/WebP derivatives, app icons, image metadata, inventory, and runtime image markup.                    |
 | `npm run lint:html`           | Validate all runtime HTML with `html-validate`.                                                                                 |
 | `npm run lint:css`            | Check active root stylesheets with Stylelint.                                                                                   |
 | `npm run lint:js`             | Check active API, browser, test, and script JavaScript with ESLint.                                                             |
@@ -105,6 +106,23 @@ Then verify the homepage, mobile navigation, service pages, project filters and 
 ## Brand assets
 
 `assets/branding/blue-bear/logo-mark-solid.png` is the canonical solid-color bear mark used by the homepage intro, favicon, and app metadata. The original artwork is retained separately; other logo variants support documents, watermarks, and wider placements.
+
+The generated browser and install icons are `favicon.ico`, Apple touch 180×180, app 192×192 and 512×512, and maskable 512×512. The maskable version deliberately has a larger safe zone so launchers do not crop the bear or lightning bolt.
+
+## Image pipeline
+
+Source photographs stay in their existing stable locations. Responsive AVIF and WebP derivatives live under `assets/images/optimized/`; generated brand derivatives live under `assets/branding/blue-bear/optimized/`. Do not edit generated derivatives by hand.
+
+Install the pinned media dependency and rebuild after replacing a source image:
+
+```powershell
+python -m pip install -r requirements-media.txt
+npm run media:build
+npx prettier --write "*.html" docs/IMAGE-INVENTORY.md assets/data/image-variants.json
+npm run test:all
+```
+
+`npm run media:compress-sources` is an intentional one-time fallback recompression task, not the normal update command. Full operating details, ownership boundaries, and rollback notes are in [`docs/guides/MEDIA-PIPELINE.md`](docs/guides/MEDIA-PIPELINE.md).
 
 ## Content and data
 

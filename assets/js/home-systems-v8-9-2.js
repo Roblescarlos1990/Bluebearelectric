@@ -124,7 +124,7 @@
         let d = i - activeIndex;
         if (d > items.length / 2) d -= items.length;
         if (d < -items.length / 2) d += items.length;
-        return `<button type="button" class="home-system-card ${d === 0 ? 'active' : ''}" style="--offset:${d};z-index:${50 - Math.abs(d)}" data-card-index="${i}" aria-label="${esc(item.title)}"><img src="${esc(item.src)}" alt="${esc(item.alt || item.title)}"><span>${esc(item.title)}</span></button>`;
+        return `<button type="button" class="home-system-card ${d === 0 ? 'active' : ''}" style="--offset:${d};z-index:${50 - Math.abs(d)}" data-card-index="${i}" aria-label="${esc(item.title)}"><img src="${esc(item.src)}" alt="${esc(item.alt || item.title)}" loading="lazy" decoding="async"><span>${esc(item.title)}</span></button>`;
       })
       .join('');
     deck.querySelectorAll('[data-card-index]').forEach(
@@ -141,7 +141,7 @@
     box.innerHTML = items
       .map(
         (x, i) =>
-          `<button type="button" class="${i === activeIndex ? 'active' : ''}" data-thumb="${i}"><img src="${esc(x.src)}" alt=""><span>${i + 1}</span></button>`,
+          `<button type="button" class="${i === activeIndex ? 'active' : ''}" data-thumb="${i}"><img src="${esc(x.src)}" alt="" loading="lazy" decoding="async" data-image-sizes="96px"><span>${i + 1}</span></button>`,
       )
       .join('');
     box
@@ -153,7 +153,7 @@
     if (!item) return;
     const modal = document.createElement('div');
     modal.className = 'home-system-lightbox';
-    modal.innerHTML = `<button type="button" aria-label="Close">×</button><img src="${esc(item.src)}" alt="${esc(item.alt || item.title)}"><h2>${esc(item.title)}</h2>`;
+    modal.innerHTML = `<button type="button" aria-label="Close">×</button><img src="${esc(item.src)}" alt="${esc(item.alt || item.title)}" loading="eager" decoding="async"><h2>${esc(item.title)}</h2>`;
     modal.onclick = (e) => {
       if (e.target === modal || e.target.tagName === 'BUTTON') modal.remove();
     };

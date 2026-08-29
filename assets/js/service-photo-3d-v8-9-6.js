@@ -27,7 +27,7 @@
     const open = () => {
       const m = document.createElement('div');
       m.className = 'service-photo-lightbox';
-      m.innerHTML = `<button type="button">×</button><img src="${img.currentSrc || img.src}" alt="${img.alt || 'Project photo'}">`;
+      m.innerHTML = `<button type="button">×</button><img src="${img.currentSrc || img.src}" alt="${img.alt || 'Project photo'}" loading="eager" decoding="async">`;
       m.onclick = (e) => {
         if (e.target === m || e.target.tagName === 'BUTTON') m.remove();
       };

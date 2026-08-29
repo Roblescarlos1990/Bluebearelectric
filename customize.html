@@ -8,8 +8,18 @@
     <title>VoltFlow | Site Customizer</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme.css" />
-    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
-    <link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#030a13" />
   </head>
@@ -17,7 +27,18 @@
     <header class="topbar">
       <nav class="nav">
         <a class="brand" href="index.html"
-          ><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"
+          ><img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric logo"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="160px"
+            decoding="async"
+            loading="eager"
         /></a>
         <div class="links">
           <a href="index.html">Website</a><a href="admin.html">Command Center</a>
@@ -139,6 +160,8 @@
         </div>
       </div>
     </section>
+    <script src="assets/js/image-performance.js"></script>
+
     <script src="assets/js/site-shell.js"></script>
     <script src="assets/js/theme-loader.js"></script>
     <script src="assets/js/customizer.js"></script>

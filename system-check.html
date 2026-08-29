@@ -8,8 +8,18 @@
     <title>VoltFlow System Check</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme.css" />
-    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
-    <link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#030a13" />
   </head>
@@ -28,6 +38,15 @@
           document.getElementById('img-check').textContent =
             'IMAGE FAILED — assets/images/site/logo.jpg is missing'
         "
+        width="900"
+        height="620"
+        srcset="
+          assets/images/optimized/site/logo-480.webp 480w,
+          assets/images/optimized/site/logo-900.webp 900w
+        "
+        sizes="160px"
+        decoding="async"
+        loading="lazy"
       />
       <p id="img-check">Image pending…</p>
       <h3>Direct checks</h3>
@@ -46,5 +65,6 @@
     <script>
       document.getElementById('js-check').textContent = 'JavaScript loaded successfully';
     </script>
+    <script src="assets/js/image-performance.js"></script>
   </body>
 </html>

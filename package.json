@@ -5,6 +5,8 @@
   "description": "Quality and browser-test tooling for the Blue Bear Electric static site.",
   "type": "module",
   "scripts": {
+    "media:build": "python scripts/media-pipeline.py && node scripts/apply-image-markup.mjs",
+    "media:compress-sources": "python scripts/media-pipeline.py --compress-sources && node scripts/apply-image-markup.mjs",
     "format:check": "prettier --check \"*.html\" \"*.css\" \"*.json\" \"*.mjs\" \"*.md\" \"api/**/*.js\" \"assets/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"docs/**/*.md\" \".github/**/*.yml\"",
     "lint:html": "html-validate \"*.html\"",
     "lint:css": "stylelint \"style.css\" \"theme.css\" \"portal.css\"",

@@ -9,15 +9,37 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme.css" />
     <link rel="stylesheet" href="portal.css" />
-    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
     <link rel="manifest" href="site.webmanifest" />
   </head>
   <body class="portal-body">
     <header class="portal-top">
       <a href="index.html" class="portal-brand"
-        ><img src="assets/branding/blue-bear/logo-mark-solid.png" alt="" /><span
-          >BLUE BEAR ELECTRIC</span
-        ></a
+        ><img
+          src="assets/branding/blue-bear/logo-mark-solid.png"
+          alt=""
+          width="1254"
+          height="1254"
+          srcset="
+            assets/branding/blue-bear/optimized/logo-mark-solid-96.webp   96w,
+            assets/branding/blue-bear/optimized/logo-mark-solid-192.webp 192w,
+            assets/branding/blue-bear/optimized/logo-mark-solid-384.webp 384w
+          "
+          sizes="160px"
+          decoding="async"
+          loading="eager"
+        /><span>BLUE BEAR ELECTRIC</span></a
       ><a href="admin.html" class="portal-home">Full Admin</a>
     </header>
     <main class="portal-wrap">
@@ -43,7 +65,20 @@
       <section class="admin-employee-app" data-admin-app hidden>
         <aside class="employee-sidebar">
           <div class="employee-brand">
-            <img src="assets/branding/blue-bear/logo-mark-solid.png" alt="" />
+            <img
+              src="assets/branding/blue-bear/logo-mark-solid.png"
+              alt=""
+              width="1254"
+              height="1254"
+              srcset="
+                assets/branding/blue-bear/optimized/logo-mark-solid-96.webp   96w,
+                assets/branding/blue-bear/optimized/logo-mark-solid-192.webp 192w,
+                assets/branding/blue-bear/optimized/logo-mark-solid-384.webp 384w
+              "
+              sizes="160px"
+              decoding="async"
+              loading="lazy"
+            />
             <div><b>BLUE BEAR</b><small>Administration</small></div>
           </div>
           <nav>
@@ -112,6 +147,8 @@
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/image-performance.js"></script>
+
     <script src="assets/js/supabase-config.js"></script>
     <script src="assets/js/admin-employee-portal-v1.js"></script>
   </body>

@@ -23,9 +23,12 @@
       images.forEach((img) => {
         const row = map.get(img.dataset.photoSlot);
         if (!row) return;
+        img.removeAttribute('srcset');
+        img.removeAttribute('sizes');
         img.src = row.public_url;
         if (row.alt_text) img.alt = row.alt_text;
         img.dataset.photoSource = 'managed';
+        window.BLUE_BEAR_IMAGES?.enhance(img);
       });
     } catch (error) {
       console.warn('Photo slot fallback in use', error);

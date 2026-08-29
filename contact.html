@@ -6,17 +6,49 @@
     <title>Contact | Blue Bear Electric</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme.css" />
-    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
-    <link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#030a13" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/optimized/site/truck-1440.avif"
+      imagesrcset="assets/images/optimized/site/truck-480.avif 480w, assets/images/optimized/site/truck-960.avif 960w, assets/images/optimized/site/truck-1440.avif 1440w"
+      imagesizes="100vw"
+      type="image/avif"
+      fetchpriority="high"
+      data-primary-image-preload
+    />
   </head>
   <body class="blue-bear-site">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="index.html"
-          ><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"
+          ><img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric logo"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="160px"
+            decoding="async"
+            loading="eager"
         /></a>
         <div class="links">
           <a href="index.html">Home</a><a href="services.html">Services</a
@@ -38,14 +70,7 @@
       </nav>
     </header>
     <main id="main-content" tabindex="-1">
-      <section
-        class="page-hero"
-        style="
-          background-image:
-            linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
-            url('assets/images/site/truck.jpg');
-        "
-      >
+      <section class="page-hero page-hero-truck">
         <div>
           <div class="eyebrow">Blue Bear Electric</div>
           <h1>Contact</h1>
@@ -232,7 +257,19 @@
     <footer class="footer">
       <div class="foot-grid">
         <div>
-          <img src="assets/images/site/logo.jpg" alt="Blue Bear Electric" />
+          <img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="180px"
+            decoding="async"
+            loading="lazy"
+          />
           <p class="small">
             CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor
           </p>
@@ -259,6 +296,8 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/image-performance.js"></script>
+
     <script src="assets/js/supabase-config.js"></script>
     <script src="assets/js/site-shell.js"></script>
     <script src="assets/js/contact-backend.js"></script>

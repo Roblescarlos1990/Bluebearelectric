@@ -65,7 +65,7 @@
       card.type = 'button';
       card.className = 'bb3d-card';
       card.dataset.index = index;
-      card.innerHTML = `<img src="${escapeHTML(item.src)}" alt="${escapeHTML(item.title)}" loading="${index === 0 ? 'eager' : 'lazy'}"><span class="bb3d-shine"></span>`;
+      card.innerHTML = `<img src="${escapeHTML(item.src)}" alt="${escapeHTML(item.alt || item.title || 'Project image')}" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async"${index === 0 ? ' fetchpriority="high" data-image-priority="high"' : ''}><span class="bb3d-shine"></span>`;
       card.onclick = () => {
         if (index === active) openLightbox(item);
         else go(index);
@@ -75,7 +75,7 @@
       thumb.type = 'button';
       thumb.className = 'bb3d-thumb';
       thumb.dataset.index = index;
-      thumb.innerHTML = `<img src="${escapeHTML(item.src)}" alt=""><span>${index + 1}</span>`;
+      thumb.innerHTML = `<img src="${escapeHTML(item.src)}" alt="" loading="lazy" decoding="async" data-image-sizes="96px"><span>${index + 1}</span>`;
       thumb.onclick = () => go(index);
       thumbs.appendChild(thumb);
     });
@@ -167,7 +167,7 @@
     function openLightbox(item) {
       const modal = document.createElement('div');
       modal.className = 'bb3d-lightbox';
-      modal.innerHTML = `<button type="button" aria-label="Close">×</button><img src="${escapeHTML(item.src)}" alt="${escapeHTML(item.title)}"><div><h2>${escapeHTML(item.title)}</h2><p>${escapeHTML(item.caption || '')}</p></div>`;
+      modal.innerHTML = `<button type="button" aria-label="Close">×</button><img src="${escapeHTML(item.src)}" alt="${escapeHTML(item.alt || item.title || 'Project image')}" loading="eager" decoding="async"><div><h2>${escapeHTML(item.title)}</h2><p>${escapeHTML(item.caption || '')}</p></div>`;
       modal.onclick = (e) => {
         if (e.target === modal || e.target.tagName === 'BUTTON') modal.remove();
       };

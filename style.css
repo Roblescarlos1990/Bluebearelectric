@@ -118,7 +118,7 @@ img {
   grid-template-columns: 1.05fr 0.95fr;
   background:
     linear-gradient(90deg, rgba(4, 9, 16, 0.98), rgba(4, 9, 16, 0.62)),
-    url('../images/site/switchgear.jpg') center/cover;
+    url('assets/images/site/switchgear.jpg') center/cover;
   position: relative;
   overflow: hidden;
 }
@@ -460,7 +460,43 @@ img {
   padding: 90px 20px;
   background:
     linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
-    url('../images/site/truck.jpg') center/cover;
+    url('assets/images/site/truck.jpg') center/cover;
+}
+.page-hero-truck {
+  background:
+    linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
+    image-set(
+        url('assets/images/optimized/site/truck-1440.avif') type('image/avif'),
+        url('assets/images/optimized/site/truck-1440.webp') type('image/webp'),
+        url('assets/images/site/truck.jpg') type('image/jpeg')
+      )
+      center/cover;
+}
+.page-hero-megger {
+  background:
+    linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
+    url('assets/images/site/megger.jpg') center/cover;
+  background:
+    linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
+    image-set(
+        url('assets/images/optimized/site/megger-1280.avif') type('image/avif'),
+        url('assets/images/optimized/site/megger-1280.webp') type('image/webp'),
+        url('assets/images/site/megger.jpg') type('image/jpeg')
+      )
+      center/cover;
+}
+.page-hero-solar {
+  background:
+    linear-gradient(90deg, rgba(4, 9, 16, 0.96), rgba(4, 9, 16, 0.48)),
+    url('assets/images/site/solar-field.jpg') center/cover;
+  background:
+    linear-gradient(90deg, rgba(4, 9, 16, 0.96), rgba(4, 9, 16, 0.48)),
+    image-set(
+        url('assets/images/optimized/site/solar-field-1440.avif') type('image/avif'),
+        url('assets/images/optimized/site/solar-field-1440.webp') type('image/webp'),
+        url('assets/images/site/solar-field.jpg') type('image/jpeg')
+      )
+      center/cover;
 }
 .page-hero div {
   max-width: 1220px;
@@ -4334,15 +4370,35 @@ textarea:focus {
 }
 .service-hero-industrial {
   background-image: url('assets/images/site/switchgear.jpg');
+  background-image: image-set(
+    url('assets/images/optimized/site/switchgear-1280.avif') type('image/avif'),
+    url('assets/images/optimized/site/switchgear-1280.webp') type('image/webp'),
+    url('assets/images/site/switchgear.jpg') type('image/jpeg')
+  );
 }
 .service-hero-commercial {
   background-image: url('assets/images/site/fuse-panel.jpg');
+  background-image: image-set(
+    url('assets/images/optimized/site/fuse-panel-800.avif') type('image/avif'),
+    url('assets/images/optimized/site/fuse-panel-800.webp') type('image/webp'),
+    url('assets/images/site/fuse-panel.jpg') type('image/jpeg')
+  );
 }
 .service-hero-residential {
   background-image: url('assets/images/site/instagram.jpg');
+  background-image: image-set(
+    url('assets/images/optimized/site/instagram-1440.avif') type('image/avif'),
+    url('assets/images/optimized/site/instagram-1440.webp') type('image/webp'),
+    url('assets/images/site/instagram.jpg') type('image/jpeg')
+  );
 }
 .service-hero-solar {
   background-image: url('assets/images/site/solar-field.jpg');
+  background-image: image-set(
+    url('assets/images/optimized/site/solar-field-1440.avif') type('image/avif'),
+    url('assets/images/optimized/site/solar-field-1440.webp') type('image/webp'),
+    url('assets/images/site/solar-field.jpg') type('image/jpeg')
+  );
 }
 .service-hero-overlay {
   position: absolute;
@@ -6354,6 +6410,14 @@ textarea {
   background:
     linear-gradient(90deg, rgba(3, 9, 17, 0.98), rgba(3, 9, 17, 0.75)),
     url('assets/images/site/switchgear.jpg') center/cover;
+  background:
+    linear-gradient(90deg, rgba(3, 9, 17, 0.98), rgba(3, 9, 17, 0.75)),
+    image-set(
+        url('assets/images/optimized/site/switchgear-1280.avif') type('image/avif'),
+        url('assets/images/optimized/site/switchgear-1280.webp') type('image/webp'),
+        url('assets/images/site/switchgear.jpg') type('image/jpeg')
+      )
+      center/cover;
 }
 .hero-text {
   max-width: 760px;
@@ -6616,6 +6680,94 @@ textarea {
   }
 }
 
+/* Blue Bear Phase 4 — compact responsive image sources */
+@media (max-width: 720px) {
+  body::before {
+    content: none;
+  }
+  .service-hero-industrial {
+    background-image: image-set(
+      url('assets/images/optimized/site/switchgear-480.avif') type('image/avif') 1x,
+      url('assets/images/optimized/site/switchgear-480.webp') type('image/webp') 1x,
+      url('assets/images/optimized/site/switchgear-960.avif') type('image/avif') 2x,
+      url('assets/images/optimized/site/switchgear-960.webp') type('image/webp') 2x
+    );
+  }
+  .service-hero-commercial {
+    background-image: image-set(
+      url('assets/images/optimized/site/fuse-panel-480.avif') type('image/avif') 1x,
+      url('assets/images/optimized/site/fuse-panel-480.webp') type('image/webp') 1x,
+      url('assets/images/optimized/site/fuse-panel-800.avif') type('image/avif') 2x,
+      url('assets/images/optimized/site/fuse-panel-800.webp') type('image/webp') 2x
+    );
+  }
+  .service-hero-residential {
+    background-image: image-set(
+      url('assets/images/optimized/site/instagram-480.avif') type('image/avif') 1x,
+      url('assets/images/optimized/site/instagram-480.webp') type('image/webp') 1x,
+      url('assets/images/optimized/site/instagram-960.avif') type('image/avif') 2x,
+      url('assets/images/optimized/site/instagram-960.webp') type('image/webp') 2x
+    );
+  }
+  .service-hero-solar {
+    background-image: image-set(
+      url('assets/images/optimized/site/solar-field-480.avif') type('image/avif') 1x,
+      url('assets/images/optimized/site/solar-field-480.webp') type('image/webp') 1x,
+      url('assets/images/optimized/site/solar-field-960.avif') type('image/avif') 2x,
+      url('assets/images/optimized/site/solar-field-960.webp') type('image/webp') 2x
+    );
+  }
+  .page-hero-truck {
+    background:
+      linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
+      image-set(
+          url('assets/images/optimized/site/truck-480.avif') type('image/avif') 1x,
+          url('assets/images/optimized/site/truck-480.webp') type('image/webp') 1x,
+          url('assets/images/optimized/site/truck-960.avif') type('image/avif') 2x,
+          url('assets/images/optimized/site/truck-960.webp') type('image/webp') 2x
+        )
+        center/cover;
+  }
+  .page-hero-megger {
+    background:
+      linear-gradient(90deg, rgba(4, 9, 16, 0.94), rgba(4, 9, 16, 0.55)),
+      image-set(
+          url('assets/images/optimized/site/megger-480.avif') type('image/avif') 1x,
+          url('assets/images/optimized/site/megger-480.webp') type('image/webp') 1x,
+          url('assets/images/optimized/site/megger-960.avif') type('image/avif') 2x,
+          url('assets/images/optimized/site/megger-960.webp') type('image/webp') 2x
+        )
+        center/cover;
+  }
+  .page-hero-solar {
+    background:
+      linear-gradient(90deg, rgba(4, 9, 16, 0.96), rgba(4, 9, 16, 0.48)),
+      image-set(
+          url('assets/images/optimized/site/solar-field-480.avif') type('image/avif') 1x,
+          url('assets/images/optimized/site/solar-field-480.webp') type('image/webp') 1x,
+          url('assets/images/optimized/site/solar-field-960.avif') type('image/avif') 2x,
+          url('assets/images/optimized/site/solar-field-960.webp') type('image/webp') 2x
+        )
+        center/cover;
+  }
+  .blue-bear-site .hero {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(2, 10, 22, 0.96) 0%,
+        rgba(2, 10, 22, 0.74) 56%,
+        rgba(2, 10, 22, 0.35) 100%
+      ),
+      image-set(
+          url('assets/images/optimized/site/switchgear-480.avif') type('image/avif') 1x,
+          url('assets/images/optimized/site/switchgear-480.webp') type('image/webp') 1x,
+          url('assets/images/optimized/site/switchgear-960.avif') type('image/avif') 2x,
+          url('assets/images/optimized/site/switchgear-960.webp') type('image/webp') 2x
+        )
+        62% center/cover no-repeat;
+  }
+}
+
 /* Mobile homepage conversion direction — selected concept 1 */
 .brand-logo-mobile,
 .mobile-conversion-hero {
@@ -6645,7 +6797,7 @@ textarea {
   }
   .blue-bear-site .hamb {
     display: inline-flex;
-    min-width: 100px;
+    width: 120px;
     min-height: 52px;
     padding: 0 15px;
     border: 2px solid var(--yellow);
@@ -6676,6 +6828,20 @@ textarea {
         rgba(2, 10, 22, 0.35) 100%
       ),
       url('assets/images/site/switchgear.jpg') 62% center/cover no-repeat;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(2, 10, 22, 0.96) 0%,
+        rgba(2, 10, 22, 0.74) 56%,
+        rgba(2, 10, 22, 0.35) 100%
+      ),
+      image-set(
+          url('assets/images/optimized/site/switchgear-480.avif') type('image/avif') 1x,
+          url('assets/images/optimized/site/switchgear-480.webp') type('image/webp') 1x,
+          url('assets/images/optimized/site/switchgear-960.avif') type('image/avif') 2x,
+          url('assets/images/optimized/site/switchgear-960.webp') type('image/webp') 2x
+        )
+        62% center/cover no-repeat;
   }
   .blue-bear-site .hero::after {
     background: linear-gradient(180deg, rgba(2, 10, 22, 0.04), #020b18 96%);

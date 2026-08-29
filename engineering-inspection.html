@@ -10,8 +10,18 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme.css" />
-    <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png" />
-    <link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#030a13" />
   </head>
@@ -20,7 +30,18 @@
     <header class="topbar">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="index.html"
-          ><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"
+          ><img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric logo"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="160px"
+            decoding="async"
+            loading="eager"
         /></a>
         <div class="links">
           <a href="index.html">Home</a><a href="services.html">Services</a
@@ -54,6 +75,18 @@
             src="assets/images/engineering-inspection/case-study/engineering-inspection-hero.webp"
             alt="Aerial visual and thermal inspection of high-voltage electrical equipment"
             data-photo-slot="engineering-inspection-engineering-inspection-hero"
+            width="1600"
+            height="889"
+            srcset="
+              assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-480.webp   480w,
+              assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-960.webp   960w,
+              assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-1440.webp 1440w
+            "
+            sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+            decoding="async"
+            loading="eager"
+            fetchpriority="high"
+            data-image-priority="high"
           />
         </div>
         <div class="inspection-hero-overlay"></div>
@@ -208,6 +241,15 @@
               src="assets/images/engineering-inspection/case-study/visual-overhead.webp"
               alt="Aerial visual inspection view"
               data-photo-slot="engineering-inspection-visual-overhead"
+              width="640"
+              height="512"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/visual-overhead-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/visual-overhead-640.webp 640w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <span class="thermal-viewer-scan"></span>
           </div>
@@ -275,6 +317,15 @@
               src="assets/images/engineering-inspection/case-study/thermal-overhead-blended.webp"
               alt="Blended aerial thermal inspection view"
               data-photo-slot="engineering-inspection-thermal-overhead-blended"
+              width="1600"
+              height="900"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-960.webp 960w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <figcaption>
               Blended overhead view used to compare the equipment with the solar-loaded background.
@@ -285,6 +336,15 @@
               src="assets/images/engineering-inspection/case-study/thermal-overhead-detail.webp"
               alt="Detailed overhead thermal view"
               data-photo-slot="engineering-inspection-thermal-overhead-detail"
+              width="1280"
+              height="720"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-960.webp 960w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <figcaption>
               Detailed thermal view showing uniform temperature behavior across comparable
@@ -296,6 +356,15 @@
               src="assets/images/engineering-inspection/case-study/thermal-oblique.webp"
               alt="Oblique thermal inspection view"
               data-photo-slot="engineering-inspection-thermal-oblique"
+              width="1600"
+              height="900"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/thermal-oblique-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/thermal-oblique-960.webp 960w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <figcaption>
               Oblique thermal view used to evaluate component gradients and equipment surfaces.
@@ -306,6 +375,15 @@
               src="assets/images/engineering-inspection/case-study/visual-oblique.webp"
               alt="Oblique visual inspection reference"
               data-photo-slot="engineering-inspection-visual-oblique"
+              width="640"
+              height="512"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/visual-oblique-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/visual-oblique-640.webp 640w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
             />
             <figcaption>
               Visible-light reference for equipment condition and documentation.
@@ -473,7 +551,21 @@
       </section>
     </main>
     <footer class="footer">
-      <div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo" /></div>
+      <div>
+        <img
+          src="assets/images/site/logo.jpg"
+          alt="Blue Bear Electric logo"
+          width="900"
+          height="620"
+          srcset="
+            assets/images/optimized/site/logo-480.webp 480w,
+            assets/images/optimized/site/logo-900.webp 900w
+          "
+          sizes="180px"
+          decoding="async"
+          loading="lazy"
+        />
+      </div>
       <div>
         <h4>Inspection Services</h4>
         <a href="#capabilities">Capabilities</a><a href="#thermal-viewer">Thermal Viewer</a
@@ -485,6 +577,8 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/image-performance.js"></script>
+
     <script src="assets/js/supabase-config.js"></script>
     <script src="assets/js/site-shell.js"></script>
     <script src="assets/js/theme-loader.js"></script>

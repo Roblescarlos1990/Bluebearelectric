@@ -55,11 +55,18 @@ for (const htmlFile of htmlFiles) {
       errors.push(`${relative}: missing favicon metadata`);
     if (!/<link\b[^>]*rel=["']manifest["']/i.test(html))
       errors.push(`${relative}: missing web manifest metadata`);
+    if (!/<link\b[^>]*rel=["']apple-touch-icon["'][^>]*sizes=["']180x180["']/i.test(html))
+      errors.push(`${relative}: missing dedicated 180x180 Apple touch icon`);
+    if (!html.includes('assets/js/image-performance.js'))
+      errors.push(`${relative}: missing responsive image runtime`);
   }
 
-  const references = [...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)].map(
-    (match) => match[1],
-  );
+  const references = [
+    ...[...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)].map((match) => match[1]),
+    ...[...html.matchAll(/\b(?:srcset|imagesrcset)=["']([^"']+)["']/gi)].flatMap((match) =>
+      match[1].split(',').map((candidate) => candidate.trim().split(/\s+/)[0]),
+    ),
+  ];
   for (const reference of references) {
     if (/^(?:https?:|mailto:|tel:|data:|blob:|#)/i.test(reference)) continue;
     const cleanReference = reference.split('#')[0].split('?')[0];
@@ -67,6 +74,30 @@ for (const htmlFile of htmlFiles) {
     const resolved = cleanReference.startsWith('/')
       ? path.join(root, cleanReference.slice(1))
       : path.resolve(path.dirname(htmlFile), cleanReference);
+    if (!(await exists(resolved))) errors.push(`${relative}: missing local asset ${reference}`);
+  }
+
+  if (path.dirname(relative) === '.') {
+    for (const image of html.matchAll(/<img\b[^>]*>/gi)) {
+      const markup = image[0];
+      for (const attribute of ['alt', 'width', 'height', 'loading', 'decoding']) {
+        if (!new RegExp(`\\b${attribute}\\s*=`, 'i').test(markup))
+          errors.push(`${relative}: image missing ${attribute}: ${markup.slice(0, 120)}`);
+      }
+    }
+    const highPriorityCount = [...html.matchAll(/\bfetchpriority=["']high["']/gi)].length;
+    if (highPriorityCount > 1)
+      errors.push(`${relative}: more than one image is marked fetchpriority=high`);
+  }
+}
+
+for (const cssFile of files.filter((file) => path.extname(file) === '.css')) {
+  const relative = path.relative(root, cssFile);
+  const css = await readFile(cssFile, 'utf8');
+  for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/gi)) {
+    const reference = match[1];
+    if (/^(?:https?:|data:|blob:|#)/i.test(reference)) continue;
+    const resolved = path.resolve(path.dirname(cssFile), reference.split('?')[0]);
     if (!(await exists(resolved))) errors.push(`${relative}: missing local asset ${reference}`);
   }
 }
@@ -93,8 +124,36 @@ else {
       const iconPath = path.join(root, icon.src.replace(/^\//, ''));
       if (!(await exists(iconPath))) errors.push(`site.webmanifest: missing icon ${icon.src}`);
     }
+    if (!manifest.icons?.some((icon) => icon.sizes === '192x192' && icon.purpose === 'any'))
+      errors.push('site.webmanifest is missing the 192x192 app icon');
+    if (!manifest.icons?.some((icon) => icon.sizes === '512x512' && icon.purpose === 'any'))
+      errors.push('site.webmanifest is missing the 512x512 app icon');
+    if (!manifest.icons?.some((icon) => icon.sizes === '512x512' && icon.purpose === 'maskable'))
+      errors.push('site.webmanifest is missing the padded 512x512 maskable icon');
   } catch (error) {
     errors.push(`site.webmanifest is invalid JSON: ${error.message}`);
+  }
+}
+
+const imageManifestPath = path.join(root, 'assets', 'data', 'image-variants.json');
+if (!(await exists(imageManifestPath))) errors.push('assets/data/image-variants.json is missing');
+else {
+  try {
+    const imageManifest = JSON.parse(await readFile(imageManifestPath, 'utf8'));
+    for (const [source, details] of Object.entries(imageManifest.images || {})) {
+      if (!(await exists(path.join(root, source))))
+        errors.push(`image metadata source is missing: ${source}`);
+      const formats = new Set();
+      for (const variant of details.variants || []) {
+        formats.add(variant.format);
+        if (!(await exists(path.join(root, variant.path))))
+          errors.push(`image metadata variant is missing: ${variant.path}`);
+      }
+      if (!formats.has('avif') || !formats.has('webp'))
+        errors.push(`image metadata lacks AVIF/WebP variants: ${source}`);
+    }
+  } catch (error) {
+    errors.push(`assets/data/image-variants.json is invalid JSON: ${error.message}`);
   }
 }
 

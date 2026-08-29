@@ -9,10 +9,22 @@
   "theme_color": "#030a13",
   "icons": [
     {
-      "src": "/assets/branding/blue-bear/logo-mark-solid.png",
-      "sizes": "1254x1254",
+      "src": "/assets/branding/blue-bear/icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/branding/blue-bear/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/branding/blue-bear/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
