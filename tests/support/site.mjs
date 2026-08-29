@@ -12,6 +12,7 @@ export const publicRoutes = [
   '/projects.html',
   '/about.html',
   '/contact.html',
+  '/security-policy.html',
 ];
 
 export async function mockPublishedContent(page) {

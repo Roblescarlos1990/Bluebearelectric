@@ -8,6 +8,7 @@ import {
 } from '../support/site.mjs';
 
 test.beforeEach(async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
   await mockPublishedContent(page);
 });
 
@@ -49,18 +50,58 @@ test('mobile navigation opens, closes, and retains the phone link', async ({ pag
   const mobileNavigation = page.locator('#mobile-navigation');
   await expect(menuButton).toBeVisible();
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(mobileNavigation).toHaveAttribute('aria-hidden', 'true');
+  await expect(mobileNavigation).toBeHidden();
 
   await menuButton.click();
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+  await expect(mobileNavigation).toHaveAttribute('aria-hidden', 'false');
   await expect(mobileNavigation).toHaveClass(/open/);
+  await expect(mobileNavigation.getByRole('link').first()).toBeFocused();
   await expect(mobileNavigation.getByRole('link', { name: /Call 760-234-8306/i })).toHaveAttribute(
     'href',
     'tel:7602348306',
   );
+  const touchTargets = [menuButton, mobileNavigation.getByRole('link').first()];
+  for (const target of touchTargets) {
+    const box = await target.boundingBox();
+    expect(box?.width).toBeGreaterThanOrEqual(44);
+    expect(box?.height).toBeGreaterThanOrEqual(44);
+  }
 
-  await menuButton.click();
+  await page.keyboard.press('Escape');
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(menuButton).toBeFocused();
+  await expect(mobileNavigation).toHaveAttribute('aria-hidden', 'true');
   await expect(mobileNavigation).not.toHaveClass(/open/);
+  await expect(mobileNavigation).toBeHidden();
+});
+
+test('public pages expose a skip link, one main landmark, and one accessible primary heading', async ({
+  page,
+}) => {
+  for (const route of publicRoutes) {
+    await openPage(page, route);
+    await expect(page.locator('main#main-content')).toHaveCount(1);
+    await page.keyboard.press('Tab');
+    const skipLink = page.getByRole('link', { name: 'Skip to main content' });
+    await expect(skipLink).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('main#main-content')).toBeFocused();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+  }
+});
+
+test('primary navigation has an accessible name and indicates the current page', async ({
+  page,
+}) => {
+  const routes = ['/', '/services.html', '/industrial.html', '/projects.html', '/about.html'];
+  for (const route of routes) {
+    await openPage(page, route);
+    const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+    await expect(navigation).toHaveCount(1);
+    await expect(navigation.locator('.links [aria-current="page"]')).toHaveCount(1);
+  }
 });
 
 test('service cards preserve the six expected destinations', async ({ page }) => {
@@ -98,12 +139,111 @@ test('contact form reports required-field errors without sending a request', asy
   await openPage(page, '/contact.html');
   await page.getByRole('button', { name: 'Send My Estimate Request' }).click();
 
-  await expect(page.locator('[data-form-status]')).toHaveText(
-    'Please complete your name, phone number, and service needed.',
-  );
-  await expect(page.getByLabel('Full name')).toBeFocused();
+  const summary = page.locator('[data-form-error-summary]');
+  await expect(summary).toBeVisible();
+  await expect(summary).toBeFocused();
+  await expect(summary.getByRole('link')).toHaveCount(3);
+  await expect(page.locator('[name="full_name"]')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.locator('[name="phone"]')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.locator('[name="service_type"]')).toHaveAttribute('aria-invalid', 'true');
+  await summary.getByRole('link', { name: 'Enter your full name.' }).click();
+  await expect(page.getByLabel(/Full name/)).toBeFocused();
   const invalidCount = await page.locator('form[data-lead-form] :invalid').count();
   expect(invalidCount).toBe(3);
+});
+
+test('contact form reports an invalid email beside the field and in the error summary', async ({
+  page,
+}) => {
+  await openPage(page, '/contact.html');
+  await page.getByLabel(/Full name/).fill('Phase Three Test');
+  await page.getByLabel(/Phone number/).fill('760-555-0100');
+  await page.getByLabel(/Email address/).fill('not-an-email');
+  await page.getByLabel(/Service needed/).selectOption({ label: 'Commercial' });
+  await page.getByRole('button', { name: 'Send My Estimate Request' }).click();
+
+  await expect(page.locator('[data-field-error="email"]')).toHaveText(
+    'Enter an email address in the format name@example.com.',
+  );
+  await expect(page.locator('[data-form-error-summary]')).toContainText(
+    'Enter an email address in the format name@example.com.',
+  );
+});
+
+test('mocked successful estimate submission announces success and manages dialog focus', async ({
+  page,
+}) => {
+  await page.route('**/api/quote', async (route) => {
+    await route.fulfill({
+      status: 201,
+      contentType: 'application/json',
+      body: JSON.stringify({ ok: true, reference: 'PHASE3QA' }),
+    });
+  });
+  await openPage(page, '/contact.html');
+  await page.getByLabel(/Full name/).fill('Phase Three Test');
+  await page.getByLabel(/Phone number/).fill('760-555-0100');
+  await page.getByLabel(/Service needed/).selectOption({ label: 'Commercial' });
+  const submit = page.getByRole('button', { name: 'Send My Estimate Request' });
+  await submit.click();
+
+  const dialog = page.getByRole('dialog', { name: /Thank You/i });
+  await expect(dialog).toBeVisible();
+  await expect(page.locator('[data-form-status]')).toContainText('Request delivered securely');
+  await expect(dialog.getByRole('button', { name: 'Done' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(submit).toBeFocused();
+});
+
+test('mocked submission failure is announced and moves focus to the error summary', async ({
+  page,
+}) => {
+  await page.route('**/api/quote', async (route) => {
+    await route.fulfill({
+      status: 500,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        ok: false,
+        message: 'The request system is temporarily unavailable.',
+      }),
+    });
+  });
+  await openPage(page, '/contact.html');
+  await page.getByLabel(/Full name/).fill('Phase Three Test');
+  await page.getByLabel(/Phone number/).fill('760-555-0100');
+  await page.getByLabel(/Service needed/).selectOption({ label: 'Commercial' });
+  await page.getByRole('button', { name: 'Send My Estimate Request' }).click();
+
+  const summary = page.locator('[data-form-error-summary]');
+  await expect(summary).toBeVisible();
+  await expect(summary).toBeFocused();
+  await expect(summary).toContainText('The request system is temporarily unavailable.');
+  await expect(page.locator('[data-form-status]')).toHaveAttribute('role', 'alert');
+});
+
+test('interactive service diagrams support arrow-key tab navigation', async ({ page }) => {
+  const diagrams = [
+    { route: '/residential.html', tablist: 'Residential electrical systems' },
+    { route: '/solar-bess.html', tablist: 'Solar energy flow stages' },
+    { route: '/engineering-inspection.html', tablist: 'Inspection image mode' },
+  ];
+
+  for (const { route, tablist } of diagrams) {
+    await openPage(page, route);
+    const tabs = page.getByRole('tablist', { name: tablist }).getByRole('tab');
+    const first = tabs.first();
+    const second = tabs.nth(1);
+    await first.focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(second).toBeFocused();
+    await expect(second).toHaveAttribute('aria-selected', 'true');
+    await expect(first).toHaveAttribute('aria-selected', 'false');
+    await expect(page.getByRole('tabpanel')).toHaveAttribute(
+      'aria-labelledby',
+      await second.getAttribute('id'),
+    );
+  }
 });
 
 test('customer, employee, and admin entry points remain available', async ({ page }) => {
@@ -133,5 +273,43 @@ test('public pages do not develop horizontal overflow at mobile width', async ({
     expect(dimensions.scrollWidth, `${route} should fit the mobile viewport`).toBeLessThanOrEqual(
       dimensions.clientWidth,
     );
+  }
+});
+
+test('public pages reflow at a viewport equivalent to 200 percent browser zoom', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 640, height: 900 });
+
+  for (const route of publicRoutes) {
+    await openPage(page, route);
+    const dimensions = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
+    expect(dimensions.scrollWidth, `${route} should reflow at 200% zoom`).toBeLessThanOrEqual(
+      dimensions.clientWidth,
+    );
+  }
+});
+
+test('core public pages tolerate WCAG text-spacing overrides', async ({ page }) => {
+  const routes = ['/', '/services.html', '/projects.html', '/contact.html'];
+  for (const route of routes) {
+    await openPage(page, route);
+    await page.addStyleTag({
+      content: `
+        * { line-height: 1.5 !important; letter-spacing: 0.12em !important; word-spacing: 0.16em !important; }
+        p { margin-bottom: 2em !important; }
+      `,
+    });
+    const dimensions = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
+    expect(dimensions.scrollWidth, `${route} should tolerate text spacing`).toBeLessThanOrEqual(
+      dimensions.clientWidth,
+    );
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   }
 });

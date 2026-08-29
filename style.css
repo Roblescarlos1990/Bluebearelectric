@@ -6787,3 +6787,208 @@ textarea {
     border-right: 0;
   }
 }
+
+/* Blue Bear Phase 3 — public accessibility foundation */
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 16px;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 10px 16px;
+  border: 2px solid #06101d;
+  border-radius: 8px;
+  background: var(--yellow);
+  color: #06101d;
+  font-size: 14px;
+  font-weight: 900;
+  transform: translateY(-160%);
+  transition: transform 0.18s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  transform: translateY(0);
+}
+main[id] {
+  outline: none;
+}
+.links a[aria-current='page'] {
+  color: var(--yellow);
+}
+.links a[aria-current='page']::after {
+  right: 0;
+}
+.mobile a[aria-current='page'] {
+  background: rgba(255, 196, 0, 0.1);
+  color: var(--yellow);
+}
+.gallery-filter.active,
+.gallery-filter.active:hover,
+.gallery-filter.active:focus-visible {
+  border-color: #ffc400;
+  background: #ffc400;
+  color: #06101d;
+}
+.bess-chain:focus-visible,
+[role='tabpanel']:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 4px;
+}
+.service-jump a,
+.filter-button,
+.project-filter,
+.bb3d-thumb,
+.bb3d-arrow {
+  min-height: 44px;
+}
+.service-jump a {
+  display: inline-flex;
+  align-items: center;
+}
+.form-field {
+  min-width: 0;
+}
+.form-field-wide,
+.form-instructions,
+.form-error-summary,
+.form-status,
+.form-privacy {
+  grid-column: 1 / -1;
+}
+.form-field label {
+  display: flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 7px;
+  color: #f3f8ff;
+  font-size: 14px;
+  font-weight: 800;
+}
+.field-required,
+.field-optional {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 3px 7px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.045em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.field-required {
+  background: var(--yellow);
+  color: #06101d;
+}
+.field-optional {
+  border: 1px solid rgba(211, 226, 242, 0.34);
+  color: #d3e2f2;
+}
+.form-instructions {
+  margin: 0;
+  color: #d3e2f2;
+  font-size: 14px;
+}
+.form-help,
+.form-field-error {
+  margin: 6px 2px 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.form-help {
+  color: #c0d1e4;
+}
+.form-field-error {
+  min-height: 0;
+  color: #ffb4b4;
+  font-weight: 800;
+}
+.form-field-error:not(:empty) {
+  min-height: 18px;
+}
+.form :where(input, select, textarea)[aria-invalid='true'] {
+  border-color: #ff8f8f;
+  box-shadow: 0 0 0 2px rgba(255, 143, 143, 0.2);
+}
+.form-error-summary {
+  padding: 16px 18px;
+  border: 2px solid #ff9d9d;
+  border-radius: 12px;
+  background: rgba(94, 16, 26, 0.42);
+  color: #fff;
+}
+.form-error-summary[hidden] {
+  display: none;
+}
+.form-error-summary h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.form-error-summary ul {
+  margin: 0;
+  padding-left: 22px;
+}
+.form-error-summary a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-underline-offset: 3px;
+}
+.form-status:not(:empty) {
+  min-height: 44px;
+  padding: 11px 13px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.055);
+}
+.form-status.ok {
+  color: #8dffbc;
+}
+.form-status.error {
+  color: #ffb4b4;
+}
+.links {
+  font-size: clamp(11px, 0.78vw, 12px);
+}
+@media (max-width: 1180px) {
+  .links {
+    font-size: 11px;
+  }
+}
+@media (max-width: 620px) {
+  .blue-bear-site .mobile-conversion-hero .eyebrow {
+    white-space: normal;
+  }
+  .blue-bear-site .mobile-trust-row span {
+    font-size: 10px;
+  }
+  .form {
+    grid-template-columns: 1fr;
+  }
+  .form-field,
+  .form-field-wide,
+  .form-instructions,
+  .form-error-summary,
+  .form-status,
+  .form-privacy {
+    grid-column: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

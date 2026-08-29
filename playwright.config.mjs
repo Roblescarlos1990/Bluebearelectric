@@ -21,16 +21,19 @@ export default defineConfig({
     baseURL,
     browserName: 'chromium',
     colorScheme: 'dark',
+    launchOptions: process.env.PLAYWRIGHT_EXECUTABLE_PATH
+      ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH }
+      : undefined,
     reducedMotion: 'reduce',
     serviceWorkers: 'block',
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
-    video: 'retain-on-failure',
+    video: process.env.PLAYWRIGHT_EXECUTABLE_PATH ? 'off' : 'retain-on-failure',
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], colorScheme: 'dark', reducedMotion: 'reduce' },
     },
   ],
 });

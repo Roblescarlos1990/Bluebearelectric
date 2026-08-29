@@ -1,12 +1,35 @@
+const normalizePageName = (pathname) => {
+  const pageName = pathname.split('/').filter(Boolean).pop() || 'index.html';
+  return pageName.toLowerCase();
+};
+
+const currentPage = normalizePageName(window.location.pathname);
+const activePageAliases = {
+  'service-repair.html': 'services.html',
+};
+document.querySelectorAll('.nav .links a[href], .nav .mobile a[href]').forEach((link) => {
+  const url = new URL(link.getAttribute('href'), window.location.href);
+  if (url.protocol !== window.location.protocol || url.host !== window.location.host) return;
+  const linkPage = normalizePageName(url.pathname);
+  const isCurrent = linkPage === currentPage || linkPage === activePageAliases[currentPage];
+  link.toggleAttribute('aria-current', isCurrent);
+  if (isCurrent) link.setAttribute('aria-current', 'page');
+});
+
 const hamb = document.querySelector('.hamb');
 const mobile = document.querySelector('.mobile');
 if (hamb && mobile) {
-  const setMenuState = (open) => {
+  const menuLinks = [...mobile.querySelectorAll('a[href]')];
+  const setMenuState = (open, { focusMenu = false, returnFocus = false } = {}) => {
     mobile.classList.toggle('open', open);
+    mobile.hidden = !open;
+    mobile.setAttribute('aria-hidden', String(!open));
     hamb.setAttribute('aria-expanded', String(open));
     hamb.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     const label = hamb.querySelector('span');
     if (label) label.textContent = open ? 'Close' : 'Menu';
+    if (focusMenu) requestAnimationFrame(() => menuLinks[0]?.focus());
+    if (returnFocus) requestAnimationFrame(() => hamb.focus());
   };
 
   if (!mobile.id) mobile.id = 'mobile-navigation';
@@ -14,14 +37,16 @@ if (hamb && mobile) {
   hamb.setAttribute('aria-controls', mobile.id);
   setMenuState(false);
 
-  hamb.addEventListener('click', () => setMenuState(!mobile.classList.contains('open')));
+  hamb.addEventListener('click', () => {
+    const open = mobile.classList.contains('open');
+    setMenuState(!open, open ? { returnFocus: true } : { focusMenu: true });
+  });
   mobile
     .querySelectorAll('a')
     .forEach((link) => link.addEventListener('click', () => setMenuState(false)));
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && mobile.classList.contains('open')) {
-      setMenuState(false);
-      hamb.focus();
+      setMenuState(false, { returnFocus: true });
     }
   });
   window.addEventListener(
@@ -32,6 +57,42 @@ if (hamb && mobile) {
     { passive: true },
   );
 }
+
+document.querySelectorAll('[role="tablist"]').forEach((tablist) => {
+  const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+  if (!tabs.length) return;
+  const selectTab = (selected) => {
+    tabs.forEach((tab) => {
+      const active = tab === selected;
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    const panelId = selected.getAttribute('aria-controls');
+    const panel = panelId ? document.getElementById(panelId) : null;
+    if (panel && selected.id) panel.setAttribute('aria-labelledby', selected.id);
+  };
+  tabs.forEach((tab) => tab.addEventListener('click', () => selectTab(tab)));
+  tablist.addEventListener('keydown', (event) => {
+    const currentIndex = tabs.indexOf(document.activeElement);
+    if (currentIndex < 0) return;
+    let nextIndex;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      nextIndex = (currentIndex + 1) % tabs.length;
+    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    } else if (event.key === 'Home') {
+      nextIndex = 0;
+    } else if (event.key === 'End') {
+      nextIndex = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[nextIndex].focus();
+    tabs[nextIndex].click();
+  });
+  selectTab(tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
+});
 
 document.querySelectorAll('[data-scroll]').forEach((btn) =>
   btn.addEventListener('click', (e) => {
