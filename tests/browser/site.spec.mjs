@@ -104,6 +104,75 @@ test('primary navigation has an accessible name and indicates the current page',
   }
 });
 
+test('public html and clean routes stay available with consistent navigation and canonicals', async ({
+  page,
+  request,
+}) => {
+  const expectedNavigation = [
+    ['Home', 'index.html'],
+    ['Services', 'services.html'],
+    ['Industrial', 'industrial.html'],
+    ['Commercial', 'commercial.html'],
+    ['Residential', 'residential.html'],
+    ['Solar & BESS', 'solar-bess.html'],
+    ['Drone & Thermal', 'engineering-inspection.html'],
+    ['Projects', 'projects.html'],
+    ['About', 'about.html'],
+    ['Contact', 'contact.html'],
+    ['Portal', 'customer-portal.html'],
+  ];
+  const expectedMobileNavigation = [
+    ['Services', 'services.html'],
+    ['Industrial', 'industrial.html'],
+    ['Projects', 'projects.html'],
+    ['Contact', 'contact.html'],
+    ['Portal', 'customer-portal.html'],
+    ['Call 760-234-8306', 'tel:7602348306'],
+  ];
+  const canonicalUrls = new Set();
+
+  for (const route of publicRoutes) {
+    const htmlRoute = route === '/' ? '/index.html' : route;
+    const cleanRoute = htmlRoute === '/index.html' ? '/' : htmlRoute.replace(/\.html$/, '');
+    expect(
+      (await request.get(htmlRoute)).ok(),
+      htmlRoute + ' should remain available',
+    ).toBeTruthy();
+    expect(
+      (await request.get(cleanRoute)).ok(),
+      cleanRoute + ' should remain available',
+    ).toBeTruthy();
+
+    await openPage(page, htmlRoute);
+    const expectedCanonical =
+      'https://bluebearelectric.com' + (cleanRoute === '/' ? '/' : cleanRoute);
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveCount(1);
+    await expect(canonical).toHaveAttribute('href', expectedCanonical);
+    canonicalUrls.add(await canonical.getAttribute('href'));
+
+    if (route === '/security-policy.html') continue;
+    const navigation = await page
+      .locator('.links a')
+      .evaluateAll((links) =>
+        links.map((link) => [link.textContent.trim(), link.getAttribute('href')]),
+      );
+    expect(navigation).toEqual(expectedNavigation);
+    const mobileNavigation = await page
+      .locator('#mobile-navigation a')
+      .evaluateAll((links) =>
+        links.map((link) => [link.textContent.trim(), link.getAttribute('href')]),
+      );
+    expect(mobileNavigation).toEqual(expectedMobileNavigation);
+    const footer = page.locator('footer.footer');
+    await expect(footer).toContainText('760-234-8306');
+    await expect(footer).toContainText('Imperial County, CA');
+    await expect(footer).toContainText('1141313');
+  }
+
+  expect(canonicalUrls.size).toBe(publicRoutes.length);
+});
+
 test('service cards preserve the six expected destinations', async ({ page }) => {
   await openPage(page, '/services.html');
   const expectedDestinations = new Map([

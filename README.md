@@ -4,6 +4,8 @@ Production website and operations portal for Blue Bear Electric, a licensed elec
 
 The repository is a static, multi-page Vercel site with serverless quote handling, Supabase-backed content and portal features, managed media, and the engineering inspection division.
 
+Public pages use a small build-time template for shared navigation, footer content, company facts, and canonical URLs. The generated root HTML is committed, so the deployed site remains static and essential navigation never depends on client-side rendering.
+
 ## Production routes
 
 | Area                          | Entry point                       |
@@ -22,6 +24,7 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 ```text
 .
 ├── api/                  Vercel serverless endpoints
+├── config/               Shared public-site facts, links, and page variants
 ├── assets/
 │   ├── branding/         Canonical Blue Bear logo and watermark assets
 │   ├── data/             Managed photo slots and generated image metadata
@@ -34,6 +37,7 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 │   ├── sql/              Historical Supabase bootstrap and release SQL
 │   └── archive/          Legacy reference material only
 ├── scripts/              Local validation and deployed security checks
+├── src/templates/        Build-time public header and footer templates
 ├── supabase/migrations/  Incremental production database migrations
 ├── *.html                Stable public and portal routes
 ├── style.css             Shared layout and component styles
@@ -42,20 +46,26 @@ The repository is a static, multi-page Vercel site with serverless quote handlin
 └── vercel.json           Routing and security headers
 ```
 
-Root HTML and CSS files are intentional. Existing production URLs and root-relative image behavior depend on this static deployment structure; feature JavaScript and media belong under `assets/`.
+Root HTML and CSS files are intentional. Existing production URLs and root-relative image behavior depend on this static deployment structure; feature JavaScript and media belong under `assets/`. Do not hand-edit content between shared public-shell markers. Change shared facts in `config/site.json`, change shared markup in `src/templates/public-shell.mjs`, and regenerate the committed pages.
 
 See [`docs/CODE-MAP.md`](docs/CODE-MAP.md) before changing runtime code. It identifies public,
 portal, admin, API, database, deployment, and historical ownership boundaries.
 
 ## Local preview
 
-The production site remains static and has no build step. A simple preview still works without installing packages:
+The production site remains static at runtime. A simple preview still works without installing packages because generated HTML is committed:
 
 ```powershell
 python -m http.server 4173
 ```
 
 Open `http://127.0.0.1:4173/`. Use a private browser window when checking the one-time homepage intro.
+
+After changing shared links, company facts, header or footer markup, install development dependencies and regenerate the public shell before previewing:
+
+    npm ci
+    npm run site:build
+    npm run site:check
 
 ## Development quality checks
 
@@ -71,6 +81,8 @@ The first browser installation downloads an isolated Chromium runtime. Individua
 
 | Command                       | Purpose                                                                                                                         |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run site:build`          | Materialize shared public header, footer, company facts, links, and canonical URLs into committed root HTML.                    |
+| `npm run site:check`          | Fail when committed public HTML is stale, a public route is unowned, canonicals collide, or portal/admin isolation is broken.   |
 | `npm run format:check`        | Check runtime HTML, CSS, API and browser JavaScript, tooling, tests, workflow files, JSON, and active Markdown with Prettier.   |
 | `npm run media:build`         | Regenerate responsive AVIF/WebP derivatives, app icons, image metadata, inventory, and runtime image markup.                    |
 | `npm run lint:html`           | Validate all runtime HTML with `html-validate`.                                                                                 |
@@ -126,7 +138,8 @@ npm run test:all
 
 ## Content and data
 
-- Static marketing copy lives in the root HTML pages.
+- Page-specific marketing copy lives in root HTML outside generated public-shell markers.
+- Shared public links and company facts live in `config/site.json`; header and footer markup lives in `src/templates/public-shell.mjs`.
 - Managed public content and media use Supabase.
 - Permanent image locations are registered in `assets/data/photo-slots.json`.
 - New database changes belong in `supabase/migrations/`; historical bootstrap SQL remains in `docs/sql/` and `database/` as documented in `docs/ACTIVE-SQL-MIGRATIONS.md`.

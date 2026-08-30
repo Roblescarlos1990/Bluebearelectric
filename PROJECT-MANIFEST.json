@@ -1,6 +1,6 @@
 {
   "project": "Blue Bear Electric Website",
-  "version": "9.3.1",
+  "version": "9.5.0",
   "deployment": "Vercel static multi-page site with serverless API",
   "runtime": {
     "public_pages": [
@@ -19,6 +19,9 @@
     ],
     "portal_pages": ["customer-portal.html", "employee-portal.html", "reset-password.html"],
     "admin_pages": ["admin-portal.html", "admin.html", "customize.html", "system-check.html"],
+    "shared_site_config": "config/site.json",
+    "shared_public_template": "src/templates/public-shell.mjs",
+    "shared_html_generator": "scripts/build-shared-html.mjs",
     "javascript_directory": "assets/js",
     "stylesheets": ["style.css", "theme.css", "portal.css"],
     "api_directory": "api",
@@ -40,6 +43,8 @@
     "engineering inspection division",
     "logo-only cinematic intro",
     "responsive production design system",
+    "build-time shared public header and footer",
+    "unique clean-route canonical metadata",
     "browser and app icon metadata",
     "document studio",
     "project command center"

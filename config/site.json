@@ -1,0 +1,75 @@
+{
+  "siteUrl": "https://bluebearelectric.com",
+  "business": {
+    "name": "Blue Bear Electric",
+    "phoneDisplay": "760-234-8306",
+    "phoneHref": "tel:7602348306",
+    "serviceArea": "Imperial County, CA",
+    "license": "1141313",
+    "credentials": ["OSHA Certified", "Bonded & Insured", "Union Contractor"],
+    "summary": "Innovating and providing professional electrical solutions for industrial, commercial and residential customers across Imperial County.",
+    "mission": "Innovate and help companies and communities with the professional help they deserve."
+  },
+  "links": {
+    "home": { "label": "Home", "href": "index.html" },
+    "services": { "label": "Services", "href": "services.html" },
+    "industrial": { "label": "Industrial", "href": "industrial.html" },
+    "commercial": { "label": "Commercial", "href": "commercial.html" },
+    "residential": { "label": "Residential", "href": "residential.html" },
+    "solar": { "label": "Solar & BESS", "href": "solar-bess.html" },
+    "inspection": {
+      "label": "Drone & Thermal",
+      "href": "engineering-inspection.html"
+    },
+    "projects": { "label": "Projects", "href": "projects.html" },
+    "about": { "label": "About", "href": "about.html" },
+    "contact": { "label": "Contact", "href": "contact.html" },
+    "portal": { "label": "Portal", "href": "customer-portal.html" }
+  },
+  "navigation": {
+    "desktop": [
+      "home",
+      "services",
+      "industrial",
+      "commercial",
+      "residential",
+      "solar",
+      "inspection",
+      "projects",
+      "about",
+      "contact",
+      "portal"
+    ],
+    "mobile": ["services", "industrial", "projects", "contact", "portal"]
+  },
+  "footer": {
+    "quickLinksCompact": ["home", "services", "projects"],
+    "quickLinksStandard": ["home", "services", "projects", "contact"],
+    "quickLinksHome": ["services", "projects", "about", "contact", "portal"],
+    "capabilities": ["Industrial", "Commercial", "Residential", "Solar & BESS", "Service & Repair"],
+    "services": ["New Installation", "Maintenance", "Upgrades", "Repairs", "Emergency Service"]
+  },
+  "standalonePages": ["security-policy.html"],
+  "pages": {
+    "about.html": { "header": "compact", "footer": "standard" },
+    "commercial.html": { "header": "full", "footer": "capabilities" },
+    "contact.html": {
+      "header": "compact-request",
+      "footer": "standard"
+    },
+    "engineering-inspection.html": {
+      "header": "inspection",
+      "footer": "inspection"
+    },
+    "index.html": { "header": "home", "footer": "home" },
+    "industrial.html": { "header": "full", "footer": "capabilities" },
+    "projects.html": {
+      "header": "compact-request",
+      "footer": "standard"
+    },
+    "residential.html": { "header": "full", "footer": "capabilities" },
+    "service-repair.html": { "header": "compact", "footer": "standard" },
+    "services.html": { "header": "compact", "footer": "standard" },
+    "solar-bess.html": { "header": "full", "footer": "capabilities" }
+  }
+}

@@ -2,22 +2,24 @@
   "name": "blue-bear-electric-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Quality and browser-test tooling for the Blue Bear Electric static site.",
+  "description": "Build, quality, and browser-test tooling for the Blue Bear Electric static site.",
   "type": "module",
   "scripts": {
+    "site:build": "node scripts/build-shared-html.mjs",
+    "site:check": "node scripts/build-shared-html.mjs --check",
     "media:build": "python scripts/media-pipeline.py && node scripts/apply-image-markup.mjs",
     "media:compress-sources": "python scripts/media-pipeline.py --compress-sources && node scripts/apply-image-markup.mjs",
-    "format:check": "prettier --check \"*.html\" \"*.css\" \"*.json\" \"*.mjs\" \"*.md\" \"api/**/*.js\" \"assets/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"docs/**/*.md\" \".github/**/*.yml\"",
+    "format:check": "prettier --check \"*.html\" \"*.css\" \"*.json\" \"*.mjs\" \"*.md\" \"api/**/*.js\" \"assets/js/**/*.js\" \"config/**/*.json\" \"scripts/**/*.mjs\" \"src/**/*.mjs\" \"tests/**/*.mjs\" \"docs/**/*.md\" \".github/**/*.yml\"",
     "lint:html": "html-validate \"*.html\"",
     "lint:css": "stylelint \"style.css\" \"theme.css\" \"portal.css\"",
-    "lint:js": "eslint \"api/**/*.js\" \"assets/js/**/*.js\" \"scripts/**/*.mjs\" \"tests/**/*.mjs\" \"playwright.config.mjs\"",
+    "lint:js": "eslint \"api/**/*.js\" \"assets/js/**/*.js\" \"scripts/**/*.mjs\" \"src/**/*.mjs\" \"tests/**/*.mjs\" \"playwright.config.mjs\"",
     "validate:site": "node scripts/validate-site.mjs",
     "test:links": "node scripts/check-links.mjs",
     "test:install": "node scripts/run-playwright.mjs install chromium",
     "test:accessibility": "node scripts/run-playwright.mjs test tests/accessibility",
     "test:browser": "node scripts/run-playwright.mjs test tests/browser",
     "test:browser:headed": "node scripts/run-playwright.mjs test tests/browser --headed",
-    "test:all": "npm run format:check && npm run lint:html && npm run lint:css && npm run lint:js && npm run validate:site && npm run test:links && npm run test:accessibility && npm run test:browser"
+    "test:all": "npm run site:check && npm run format:check && npm run lint:html && npm run lint:css && npm run lint:js && npm run validate:site && npm run test:links && npm run test:accessibility && npm run test:browser"
   },
   "engines": {
     "node": ">=22"

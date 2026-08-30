@@ -6,15 +6,16 @@ determined by the script tags in the root HTML pages.
 
 ## Safe change boundaries
 
-| Work area                      | Primary files                                                                | Required care                                                                                                               |
-| ------------------------------ | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Public copy and page structure | Root marketing HTML files                                                    | Preserve filenames, links, form names, `data-*` hooks, and script order.                                                    |
-| Public styling                 | `style.css`, `theme.css`                                                     | Preserve cascade order and verify desktop and mobile screenshots.                                                           |
-| Public interactions            | Public/shared modules listed below                                           | Keep selectors, storage keys, URL parameters, and events stable.                                                            |
-| Employee and admin portals     | Portal HTML, `portal.css`, and portal/admin modules                          | Test authentication entry points; do not change Supabase table or field names casually.                                     |
-| Quote delivery                 | `contact.html`, `index.html`, `assets/js/contact-backend.js`, `api/quote.js` | Never submit a live test without approval. Preserve Turnstile, email, and database contracts.                               |
-| Database                       | `supabase/migrations/`                                                       | Add a new migration; do not edit an applied migration. `docs/sql/` and `database/` are historical or diagnostic references. |
-| Deployment                     | `vercel.json`, `.github/workflows/`, `docs/DEPLOYMENT.md`                    | Verify headers, routes, environment-variable requirements, and the full quality gate.                                       |
+| Work area                      | Primary files                                                                         | Required care                                                                                                               |
+| ------------------------------ | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Shared public shell            | `config/site.json`, `src/templates/public-shell.mjs`, `scripts/build-shared-html.mjs` | Regenerate committed HTML; never move essential navigation to client-side rendering.                                        |
+| Public copy and page structure | Root marketing HTML outside generated shell markers                                   | Preserve filenames, links, form names, `data-*` hooks, and script order.                                                    |
+| Public styling                 | `style.css`, `theme.css`                                                              | Preserve cascade order and verify desktop and mobile screenshots.                                                           |
+| Public interactions            | Public/shared modules listed below                                                    | Keep selectors, storage keys, URL parameters, and events stable.                                                            |
+| Employee and admin portals     | Portal HTML, `portal.css`, and portal/admin modules                                   | Test authentication entry points; do not change Supabase table or field names casually.                                     |
+| Quote delivery                 | `contact.html`, `index.html`, `assets/js/contact-backend.js`, `api/quote.js`          | Never submit a live test without approval. Preserve Turnstile, email, and database contracts.                               |
+| Database                       | `supabase/migrations/`                                                                | Add a new migration; do not edit an applied migration. `docs/sql/` and `database/` are historical or diagnostic references. |
+| Deployment                     | `vercel.json`, `.github/workflows/`, `docs/DEPLOYMENT.md`                             | Verify headers, routes, environment-variable requirements, and the full quality gate.                                       |
 
 ## Stylesheets
 
@@ -26,6 +27,17 @@ determined by the script tags in the root HTML pages.
 
 Do not merge or reorder stylesheet rules as part of formatting-only work. The root location is
 intentional because deployed HTML and image URLs depend on the current static-site structure.
+
+## Build-time public shell
+
+The public header, footer, company facts, navigation links, footer links, phone number, service
+area, license, credentials, and canonical routes are materialized at build time. Edit shared data
+in `config/site.json`, edit shell markup in `src/templates/public-shell.mjs`, then run
+`npm run site:build`. The root HTML outputs are committed so all navigation and content work with
+JavaScript disabled.
+
+The standalone security policy is intentionally listed without the marketing header and footer.
+Portal and admin pages remain outside this public generator and retain their separate layouts.
 
 ## Public and shared browser modules
 
