@@ -7,6 +7,24 @@ test.beforeEach(async ({ page }) => {
   await mockPublishedContent(page);
 });
 
+test('homepage intro renders only the active bear-logo scene', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'no-preference' });
+  await page.addInitScript(() => sessionStorage.removeItem('blueBearIntroSeenV2'));
+  await openPage(page, '/');
+
+  const intro = page.locator('.bbe-cinematic-3d-intro');
+  await expect(intro).toBeVisible();
+  await expect(intro.locator('.bbe-logo-stage img')).toHaveAttribute(
+    'src',
+    /logo-mark-solid\.png$/,
+  );
+  await expect(intro.locator('h1, p, .bbe-intro-footer, .bbe-cinematic-loader')).toHaveCount(0);
+  await expect(intro).toHaveText('');
+
+  await expect(intro).toHaveCount(0, { timeout: 4_000 });
+  await expect(page.locator('html')).not.toHaveClass(/bbe-intro-active/);
+});
+
 test('public-page images reserve space and use non-blocking loading metadata', async ({ page }) => {
   for (const route of publicRoutes) {
     await openPage(page, route);

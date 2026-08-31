@@ -1,3 +1,4 @@
+/* Portal-only layer, loaded after style.css and theme.css on portal routes. */
 :root {
   --portal-bg: #020810;
   --portal-panel: rgba(9, 24, 42, 0.88);

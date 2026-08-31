@@ -5,6 +5,8 @@
   "description": "Build, quality, and browser-test tooling for the Blue Bear Electric static site.",
   "type": "module",
   "scripts": {
+    "css:audit": "node scripts/audit-css.mjs",
+    "css:baseline": "node scripts/capture-css-baselines.mjs",
     "site:build": "node scripts/build-shared-html.mjs",
     "site:check": "node scripts/build-shared-html.mjs --check",
     "media:build": "python scripts/media-pipeline.py && node scripts/apply-image-markup.mjs",

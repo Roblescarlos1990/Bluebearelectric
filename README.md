@@ -40,8 +40,9 @@ Public pages use a small build-time template for shared navigation, footer conte
 ├── src/templates/        Build-time public header and footer templates
 ├── supabase/migrations/  Incremental production database migrations
 ├── *.html                Stable public and portal routes
-├── style.css             Shared layout and component styles
-├── theme.css             Brand and feature-specific presentation
+├── style.css             Tokens, base styles, shared layout, and production public overrides
+├── theme.css             Feature, admin, media, inspection, and intro enhancements
+├── portal.css            Portal-only presentation loaded after the shared styles
 ├── site.webmanifest      Browser and app metadata
 └── vercel.json           Routing and security headers
 ```
@@ -50,6 +51,8 @@ Root HTML and CSS files are intentional. Existing production URLs and root-relat
 
 See [`docs/CODE-MAP.md`](docs/CODE-MAP.md) before changing runtime code. It identifies public,
 portal, admin, API, database, deployment, and historical ownership boundaries.
+The stylesheet load order, token ownership, responsive breakpoints, and cascade rules are in
+[`docs/guides/CSS-ARCHITECTURE.md`](docs/guides/CSS-ARCHITECTURE.md).
 
 ## Local preview
 
@@ -79,21 +82,23 @@ npm run test:all
 
 The first browser installation downloads an isolated Chromium runtime. Individual checks are available when working on a focused change:
 
-| Command                       | Purpose                                                                                                                         |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run site:build`          | Materialize shared public header, footer, company facts, links, and canonical URLs into committed root HTML.                    |
-| `npm run site:check`          | Fail when committed public HTML is stale, a public route is unowned, canonicals collide, or portal/admin isolation is broken.   |
-| `npm run format:check`        | Check runtime HTML, CSS, API and browser JavaScript, tooling, tests, workflow files, JSON, and active Markdown with Prettier.   |
-| `npm run media:build`         | Regenerate responsive AVIF/WebP derivatives, app icons, image metadata, inventory, and runtime image markup.                    |
-| `npm run lint:html`           | Validate all runtime HTML with `html-validate`.                                                                                 |
-| `npm run lint:css`            | Check active root stylesheets with Stylelint.                                                                                   |
-| `npm run lint:js`             | Check active API, browser, test, and script JavaScript with ESLint.                                                             |
-| `npm run validate:site`       | Run the repository metadata, asset-reference, and JavaScript syntax validator.                                                  |
-| `npm run test:links`          | Verify local runtime links, assets, and URL fragments.                                                                          |
-| `npm run test:accessibility`  | Scan the primary public conversion pages with axe and fail on accessibility regressions beyond the recorded baseline.           |
-| `npm run test:browser`        | Run Chromium smoke tests for navigation, mobile behavior, services, gallery, form validation, portals, and horizontal overflow. |
-| `npm run test:browser:headed` | Run the browser smoke suite with a visible Chromium window for debugging.                                                       |
-| `npm run test:all`            | Run the complete Phase 1 quality gate in CI order.                                                                              |
+| Command                         | Purpose                                                                                                                         |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run css:audit`             | Report stylesheet size, rules, declarations, repeated selectors, exact duplicates, breakpoints, and focal cascade definitions.  |
+| `npm run css:baseline -- after` | Capture the eight documented Phase 6 homepage viewport baselines after starting the local test server automatically.            |
+| `npm run site:build`            | Materialize shared public header, footer, company facts, links, and canonical URLs into committed root HTML.                    |
+| `npm run site:check`            | Fail when committed public HTML is stale, a public route is unowned, canonicals collide, or portal/admin isolation is broken.   |
+| `npm run format:check`          | Check runtime HTML, CSS, API and browser JavaScript, tooling, tests, workflow files, JSON, and active Markdown with Prettier.   |
+| `npm run media:build`           | Regenerate responsive AVIF/WebP derivatives, app icons, image metadata, inventory, and runtime image markup.                    |
+| `npm run lint:html`             | Validate all runtime HTML with `html-validate`.                                                                                 |
+| `npm run lint:css`              | Check active root stylesheets with Stylelint.                                                                                   |
+| `npm run lint:js`               | Check active API, browser, test, and script JavaScript with ESLint.                                                             |
+| `npm run validate:site`         | Run the repository metadata, asset-reference, and JavaScript syntax validator.                                                  |
+| `npm run test:links`            | Verify local runtime links, assets, and URL fragments.                                                                          |
+| `npm run test:accessibility`    | Scan the primary public conversion pages with axe and fail on accessibility regressions beyond the recorded baseline.           |
+| `npm run test:browser`          | Run Chromium smoke tests for navigation, mobile behavior, services, gallery, form validation, portals, and horizontal overflow. |
+| `npm run test:browser:headed`   | Run the browser smoke suite with a visible Chromium window for debugging.                                                       |
+| `npm run test:all`              | Run the complete Phase 1 quality gate in CI order.                                                                              |
 
 Playwright records screenshots, traces, and video only when a browser test fails. GitHub Actions uploads `playwright-report/` and `test-results/` on failure. Configure the `Phase 1 quality gate / Formatting, lint, accessibility, and browser tests` check as required in the `main` branch ruleset before merging cleanup pull requests.
 

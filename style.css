@@ -1,3 +1,13 @@
+/*
+ * Blue Bear cascade map
+ * 1. Tokens and base/reset
+ * 2. Shared public layout, navigation, buttons, forms, and components
+ * 3. Feature and admin compatibility blocks (kept in original source order)
+ * 4. Production public overrides, responsive rules, and utilities
+ *
+ * Native @layer is intentionally not introduced here: changing the layer origin
+ * would reorder the established cascade. See docs/guides/CSS-ARCHITECTURE.md.
+ */
 :root {
   --bg: #050b14;
   --bg2: #071426;
@@ -9,6 +19,15 @@
   --muted: #b9c7d8;
   --line: rgba(255, 255, 255, 0.12);
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+  --content-max: 1280px;
+  --button-radius: 12px;
+  --card-radius: 20px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --section-space: 70px;
+  --ease: cubic-bezier(0.22, 0.75, 0.25, 1);
+  --focus-ring: 0 0 0 3px rgba(255, 196, 0, 0.38);
 }
 * {
   box-sizing: border-box;
@@ -602,12 +621,7 @@ img {
   }
 }
 
-/* ================================
-   V4.1 Photo + Motion Upgrade
-   ================================ */
-:root {
-  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
+/* Shared public photo and motion enhancements */
 body::before {
   content: '';
   position: fixed;
@@ -1511,9 +1525,6 @@ textarea:focus {
   padding: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.line-table > div:last-child {
-  border-bottom: 0;
-}
 .totals {
   margin: 14px 0;
   padding: 14px;
@@ -2149,10 +2160,7 @@ textarea:focus {
   font-family: Arial, sans-serif;
 }
 
-/* =========================================================
-   VoltFlow V6.6 Repolish Pass
-   Premium spacing, cleaner command center, mobile improvements
-   ========================================================= */
+/* Admin command center compatibility layer */
 :root {
   --glass: rgba(255, 255, 255, 0.065);
   --glass2: rgba(255, 255, 255, 0.035);
@@ -6267,15 +6275,7 @@ textarea:focus {
   }
 }
 
-/* Blue Bear V9.3 — production site polish */
-:root {
-  --content-max: 1280px;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --ease: cubic-bezier(0.22, 0.75, 0.25, 1);
-  --focus-ring: 0 0 0 3px rgba(255, 196, 0, 0.38);
-}
+/* Production public layer: base refinements and component overrides */
 html {
   overflow-x: clip;
   scroll-padding-top: 96px;
