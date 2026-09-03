@@ -1,5 +1,7 @@
 # Production Deployment
 
+Phase 9 status as of September 3, 2026: pull request #4 is merged, its Vercel production deployment succeeded, the production V9.4.0 migration is applied, leaked-password protection is enabled, and the Supabase security advisor reports no security lints. A documentation and migration-history filename follow-up remains under review.
+
 ## Before deployment
 
 1. Review and run pending operational Supabase migrations in `supabase/migrations/`; use `docs/sql/` only for historical bootstrap migrations. V9.4.0 was applied to production on September 3, 2026 and must not be rerun.
@@ -9,7 +11,7 @@
 5. Run `npm run test:all` locally; this includes the shared-shell synchronization and route checks.
 6. Run `npm run security:audit` and `npm run security:test`.
 7. Run `node scripts/security-smoke-test.mjs` against the deployed preview when applicable.
-8. Confirm Supabase leaked-password protection is enabled and the security advisor is clear before merging Phase 9.
+8. Confirm Supabase leaked-password protection is enabled and the security advisor is clear. This gate passed for Phase 9 on September 3, 2026; repeat the check before future authentication releases.
 
 ## Deploy
 

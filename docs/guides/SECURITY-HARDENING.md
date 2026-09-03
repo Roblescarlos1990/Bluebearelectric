@@ -1,6 +1,6 @@
 # Phase 9 Security Hardening
 
-This guide records the browser, API, Supabase, storage, and deployment security boundary for Blue Bear Electric. It reflects the branch audit and approved production database rollout completed on September 3, 2026. The V9.4.0 migration is applied; the branch remains unmerged while the final authentication setting is completed.
+This guide records the browser, API, Supabase, storage, and deployment security boundary for Blue Bear Electric. It reflects the branch audit and approved production database rollout completed on September 3, 2026. The V9.4.0 migration is applied, leaked-password protection is enabled, and the Supabase security advisor is clear. Phase 9 was merged in pull request #4; the final verification record and migration-history filename alignment remain under review in a separate follow-up.
 
 ## Browser policy
 
@@ -52,7 +52,7 @@ Read-only production inspection on September 3, 2026 found:
 - `project-photos` is private. Customers can read only public gallery objects belonging to their own project; approved employees and administrators have their documented access.
 - `site-media` is intentionally public for website content; uploads, updates, and deletes remain administrator-only.
 
-The approved V9.4.0 migration in `supabase/migrations/20260903102607_phase_9_security_hardening.sql` was applied to production on September 3, 2026 at 19:18 UTC. It adds defense in depth:
+The approved V9.4.0 migration in `supabase/migrations/20260903191858_phase_9_security_hardening.sql` was applied to production on September 3, 2026 at 19:18 UTC. The filename matches the version recorded in Supabase migration history. It adds defense in depth:
 
 1. Removes the anonymous direct `leads` insert policy so callers cannot bypass `/api/quote`.
 2. Revokes anonymous table/sequence/function privileges, then restores read-only access to the nine published-content tables.
@@ -65,9 +65,9 @@ Post-migration verification confirmed all 54 public tables retain RLS, anonymous
 
 The post-migration performance-advisor snapshot contains 102 optimization notices: 47 unused-index informational notices, 54 overlapping-permissive-policy warnings, and one Auth connection-allocation informational notice. These are not release-blocking security failures and require a separate query-usage review before any index or policy is removed or consolidated.
 
-## Remaining dashboard action
+## Authentication dashboard verification
 
-The Supabase security advisor currently reports one warning: leaked-password protection is disabled. Enable it in Supabase Auth password security, then rerun the security advisor. Reference: <https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection>.
+Leaked-password protection was enabled for the production project on September 3, 2026. A follow-up Supabase security-advisor run returned no security lints. Reference: <https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection>.
 
 ## Required server environment
 
@@ -88,7 +88,8 @@ These values belong only in Vercel server environment settings:
 2. Complete: deploy a branch preview and run the protected deployed system check.
 3. Complete: review and apply the V9.4.0 Supabase migration once.
 4. Complete: verify grants, RLS, storage rules, anonymous access boundaries, the homepage, and portal entry points after migration.
-5. Pending: enable leaked-password protection and rerun the Supabase security advisor.
-6. Pending approval: merge only after the preview, database, and authentication gates pass.
+5. Complete: enable leaked-password protection and confirm that the Supabase security advisor returns no security lints.
+6. Complete: merge Phase 9 through pull request #4 and confirm the Vercel production deployment succeeds.
+7. Pending review: merge the documentation and migration-history filename follow-up after its checks pass.
 
 Never include environment values, access tokens, customer records, or signed storage URLs in issues, screenshots, test fixtures, or logs.
