@@ -66,9 +66,9 @@ production leads.
   `20260903191858_phase_9_security_hardening`.
 - Supabase's production security advisor returns no security lints, and leaked-password protection
   is enabled.
-- The `main` protection rule is staged to require pull requests, the GitHub quality gate, Supabase
+- The active `main` protection rule requires pull requests, the GitHub quality gate, Supabase
   Preview, an up-to-date branch, and resolved conversations while disallowing force pushes,
-  deletion, and administrator bypass. GitHub owner confirmation is required before the rule is saved.
+  deletion, and administrator bypass. GitHub reports protection enforcement for everyone.
 
 ## Browser and observability limits
 
