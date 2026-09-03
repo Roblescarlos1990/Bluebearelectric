@@ -163,4 +163,3 @@ npm run test:all
 Deploy the repository root to Vercel. Do not configure a subdirectory as the project root. Required environment variables and the release checklist are documented in `docs/DEPLOYMENT.md`.
 
 Never commit secrets, service-role keys, customer data, or local environment files.
-

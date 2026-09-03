@@ -93,4 +93,3 @@ These values belong only in Vercel server environment settings:
 7. Complete: merge the documentation and migration-history filename follow-ups in pull requests #5 and #6 after their checks pass.
 
 Never include environment values, access tokens, customer records, or signed storage URLs in issues, screenshots, test fixtures, or logs.
-

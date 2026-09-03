@@ -86,4 +86,3 @@ The production release is stable and the cleanup functionality is complete. No r
 Future runtime changes must continue through a pull request and the complete quality gate. Repeat a
 physical Android Chrome and desktop Safari/Edge pass when those devices are available, and restore
 the Vercel connector's project access before relying on it for post-deployment runtime-error review.
-

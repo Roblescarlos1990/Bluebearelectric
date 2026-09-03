@@ -68,4 +68,3 @@ Optional overrides:
 
 - `ADMIN_FROM_EMAIL` — defaults to `Blue Bear Electric <estimates@${RESEND_EMAIL_DOMAIN}>`
 - `ADMIN_REPLY_TO_EMAIL` — defaults to `ADMIN_NOTIFICATION_EMAIL`
-
