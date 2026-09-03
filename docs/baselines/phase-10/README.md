@@ -60,6 +60,8 @@ production leads.
 
 - GitHub's required quality job and Supabase Preview check are green on the production commit.
 - GitHub reports the Vercel production status as `success` with “Deployment has completed.”
+- The authenticated Vercel log dashboard shows successful `200` responses for recent production
+  and Phase 10 preview `/api/security-config` requests, with no error rows in the visible timeline.
 - Supabase records migrations `20260822160545_database_hardening` and
   `20260903191858_phase_9_security_hardening`.
 - Supabase's production security advisor returns no security lints, and leaked-password protection
@@ -75,10 +77,10 @@ production leads.
   Chrome regression run was not available for this closeout and is not represented as a device pass.
 - Desktop Chromium and the production in-app browser were verified. Physical desktop Safari and
   Edge were unavailable and are not represented as browser passes.
-- The connected Vercel account reports the deployment status through GitHub, but Vercel's runtime
-  log and error endpoints return `403 Forbidden` for this project. Production route behavior and the
-  browser console are verified; private function-log review remains an explicit observability access
-  limitation rather than a silent pass.
+- Vercel's connected runtime log and error API endpoints return `403 Forbidden` for this project.
+  The authenticated dashboard was available and its recent production and preview function entries
+  were successful, but programmatic post-deployment error review remains an explicit observability
+  access limitation rather than a silent pass.
 
 ## Release decision
 
