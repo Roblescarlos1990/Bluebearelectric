@@ -30,6 +30,8 @@
       data: { session },
     } = await client.auth.getSession();
     if (!session) return;
+    const { data: isAdmin, error: adminError } = await client.rpc('is_admin');
+    if (adminError || !isAdmin) return;
 
     const [daily, jsa, veh, mat, comp] = await Promise.all([
       read('field_daily_reports'),

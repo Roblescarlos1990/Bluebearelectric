@@ -1336,13 +1336,13 @@
       "fetchTargets": []
     },
     "v6-7-field-ops-admin.js": {
-      "bytes": 2829,
+      "bytes": 2948,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
       "supabaseTables": [],
       "supabaseBuckets": [],
-      "supabaseRpcCalls": [],
+      "supabaseRpcCalls": ["is_admin"],
       "dynamicSupabaseTargets": [],
       "customEventsListened": [],
       "customEventsDispatched": [],
