@@ -118,6 +118,8 @@ Search metadata ownership, published-claim rules, Android installation, Safari A
 
 The enforced browser policy, pinned browser dependency, quote abuse controls, Supabase RLS/storage review, required server secrets, and Phase 9 release order are documented in [`docs/guides/SECURITY-HARDENING.md`](docs/guides/SECURITY-HARDENING.md).
 
+The final production evidence, platform health, browser coverage, and explicitly documented test limitations are recorded in [`docs/baselines/phase-10/README.md`](docs/baselines/phase-10/README.md).
+
 For a deployed preview, also run:
 
 ```powershell
@@ -161,3 +163,4 @@ npm run test:all
 Deploy the repository root to Vercel. Do not configure a subdirectory as the project root. Required environment variables and the release checklist are documented in `docs/DEPLOYMENT.md`.
 
 Never commit secrets, service-role keys, customer data, or local environment files.
+
