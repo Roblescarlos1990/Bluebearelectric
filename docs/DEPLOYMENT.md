@@ -1,6 +1,6 @@
 # Production Deployment
 
-Phase 9 status as of September 3, 2026: pull request #4 is merged, its Vercel production deployment succeeded, the production V9.4.0 migration is applied, leaked-password protection is enabled, and the Supabase security advisor reports no security lints. A documentation and migration-history filename follow-up remains under review.
+Phase 9 status as of September 3, 2026: pull request #4 is merged, its Vercel production deployment succeeded, the production V9.4.0 migration is applied, leaked-password protection is enabled, and the Supabase security advisor reports no security lints. Pull requests #5 and #6 completed the documentation and migration-history filename follow-ups.
 
 ## Before deployment
 

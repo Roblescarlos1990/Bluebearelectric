@@ -1,6 +1,6 @@
 # Phase 9 Security Hardening
 
-This guide records the browser, API, Supabase, storage, and deployment security boundary for Blue Bear Electric. It reflects the branch audit and approved production database rollout completed on September 3, 2026. The V9.4.0 migration is applied, leaked-password protection is enabled, and the Supabase security advisor is clear. Phase 9 was merged in pull request #4; the final verification record and migration-history filename alignment remain under review in a separate follow-up.
+This guide records the browser, API, Supabase, storage, and deployment security boundary for Blue Bear Electric. It reflects the branch audit and approved production database rollout completed on September 3, 2026. The V9.4.0 migration is applied, leaked-password protection is enabled, and the Supabase security advisor is clear. Phase 9 was merged in pull request #4; pull requests #5 and #6 completed its documentation and migration-history filename follow-ups.
 
 ## Browser policy
 
@@ -90,6 +90,6 @@ These values belong only in Vercel server environment settings:
 4. Complete: verify grants, RLS, storage rules, anonymous access boundaries, the homepage, and portal entry points after migration.
 5. Complete: enable leaked-password protection and confirm that the Supabase security advisor returns no security lints.
 6. Complete: merge Phase 9 through pull request #4 and confirm the Vercel production deployment succeeds.
-7. Pending review: merge the documentation and migration-history filename follow-up after its checks pass.
+7. Complete: merge the documentation and migration-history filename follow-ups in pull requests #5 and #6 after their checks pass.
 
 Never include environment values, access tokens, customer records, or signed storage URLs in issues, screenshots, test fixtures, or logs.
