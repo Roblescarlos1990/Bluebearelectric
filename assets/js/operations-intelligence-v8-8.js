@@ -408,7 +408,6 @@
       if (box) box.hidden = true;
     }
   });
-  window.addEventListener('voltflow:data-updated', load);
   client.auth.getSession().then(({ data: s }) => {
     if (s.session) setTimeout(load, 700);
   });

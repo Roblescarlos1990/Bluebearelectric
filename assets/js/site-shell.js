@@ -94,12 +94,16 @@ document.querySelectorAll('[role="tablist"]').forEach((tablist) => {
   selectTab(tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
 });
 
-document.querySelectorAll('[data-scroll]').forEach((btn) =>
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.querySelector(btn.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-  }),
-);
+document.querySelectorAll('[data-scroll]').forEach((button) => {
+  button.addEventListener('click', (event) => {
+    const href = button.getAttribute('href');
+    if (!href?.startsWith('#')) return;
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
@@ -170,8 +174,8 @@ if (hero && heroCard && window.matchMedia('(min-width:951px)').matches) {
   });
 }
 
-// Mobile floating call button
-if (!document.querySelector('.floating-call')) {
+// Mobile floating call button. Keep public conversion UI out of portal and admin routes.
+if (document.querySelector('main#main-content') && !document.querySelector('.floating-call')) {
   const call = document.createElement('a');
   call.href = 'tel:7602348306';
   call.className = 'floating-call';

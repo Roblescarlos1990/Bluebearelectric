@@ -44,7 +44,7 @@ Portal and admin pages remain outside this public generator and retain their sep
 | Module                              | Purpose                                                                                                        |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `blue-bear-3d-carousel.js`          | Enhances service-page galleries with the shared Blue Bear carousel interaction.                                |
-| `brand-experience.js`               | Runs the logo-only intro and shared brand/reveal behavior.                                                     |
+| `brand-experience.js`               | Runs the logo-only intro and applies shared Blue Bear brand artwork.                                           |
 | `company-profile.js`                | Applies shared company profile and contact information to marked page elements.                                |
 | `contact-backend.js`                | Validates quote forms, loads security configuration, and submits approved requests to `/api/quote`.            |
 | `engineering-inspection-v9.js`      | Powers the public drone and thermal-inspection experience.                                                     |
@@ -54,7 +54,7 @@ Portal and admin pages remain outside this public generator and retain their sep
 | `public-content.js`                 | Applies published Supabase content, service, and portfolio overrides.                                          |
 | `service-experience.js`             | Handles service-page technical selectors and related visual details.                                           |
 | `service-photo-3d-v8-9-6.js`        | Adds pointer depth and lightbox behavior to service photography.                                               |
-| `site-shell.js`                     | Owns shared navigation, mobile-menu state, and common shell behavior.                                          |
+| `site-shell.js`                     | Owns shared navigation, mobile-menu state, reveal behavior, and public conversion affordances.                 |
 | `supabase-config.js`                | Exposes the public Supabase project URL and publishable browser key. It must never contain a service-role key. |
 | `theme-loader.js`                   | Restores saved theme variables for the customization workflow.                                                 |
 | `typical-project-prefill-v8-9-4.js` | Prefills the estimate form from approved project query parameters.                                             |
@@ -86,19 +86,17 @@ Portal and admin pages remain outside this public generator and retain their sep
 | `v6-5-doc-center.js`                 | Printable project, estimate, invoice, and schedule document exports.                          |
 | `v6-7-field-ops-admin.js`            | Admin summaries for field reports, JSA forms, vehicles, materials, and completion checklists. |
 
-## Inactive historical browser modules
+## Removed historical browser modules
 
-These files are retained for reference but are not loaded by any current root HTML route:
+Phase 7 removed `customer-portal.js`, `customer-experience-v8-7-2.js`, and `employee-portal.js`
+after the generated route inventory confirmed that no root HTML page loaded them. The customer
+portal route continues to redirect to the current employee portal, which is implemented by
+`employee-portal-v1.js`. Git history is the recovery source for the retired implementations; do not
+restore or reconnect them without a dedicated functional, authorization, RLS, and storage-policy
+review.
 
-| Module                          | Status                                                                                   |
-| ------------------------------- | ---------------------------------------------------------------------------------------- |
-| `customer-portal.js`            | Historical customer portal. `customer-portal.html` now redirects to the employee portal. |
-| `customer-experience-v8-7-2.js` | Historical enhancement for the retired customer portal.                                  |
-| `employee-portal.js`            | Earlier employee field-operations portal, superseded by `employee-portal-v1.js`.         |
-
-Do not reconnect an inactive module by adding a script tag without a dedicated functional and
-security review. Removal should happen only in a later dead-code phase after history and database
-dependencies are checked.
+The generated page-to-module map, web-storage keys, Supabase targets, custom events, fetch targets,
+and DOM data hooks live in `docs/JAVASCRIPT-INVENTORY.md`.
 
 ## Serverless API modules
 

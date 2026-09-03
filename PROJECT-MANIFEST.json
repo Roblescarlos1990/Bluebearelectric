@@ -27,11 +27,7 @@
     "api_directory": "api",
     "sql_directory": "supabase/migrations",
     "historical_sql_directory": "docs/sql",
-    "historical_browser_modules": [
-      "assets/js/customer-experience-v8-7-2.js",
-      "assets/js/customer-portal.js",
-      "assets/js/employee-portal.js"
-    ]
+    "javascript_inventory": "docs/JAVASCRIPT-INVENTORY.md"
   },
   "features": [
     "secure quote workflow",

@@ -7,6 +7,8 @@
   "scripts": {
     "css:audit": "node scripts/audit-css.mjs",
     "css:baseline": "node scripts/capture-css-baselines.mjs",
+    "js:audit": "node scripts/audit-javascript.mjs --write",
+    "js:check": "node scripts/audit-javascript.mjs --check",
     "site:build": "node scripts/build-shared-html.mjs",
     "site:check": "node scripts/build-shared-html.mjs --check",
     "media:build": "python scripts/media-pipeline.py && node scripts/apply-image-markup.mjs",
@@ -21,7 +23,7 @@
     "test:accessibility": "node scripts/run-playwright.mjs test tests/accessibility",
     "test:browser": "node scripts/run-playwright.mjs test tests/browser",
     "test:browser:headed": "node scripts/run-playwright.mjs test tests/browser --headed",
-    "test:all": "npm run site:check && npm run format:check && npm run lint:html && npm run lint:css && npm run lint:js && npm run validate:site && npm run test:links && npm run test:accessibility && npm run test:browser"
+    "test:all": "npm run site:check && npm run js:check && npm run format:check && npm run lint:html && npm run lint:css && npm run lint:js && npm run validate:site && npm run test:links && npm run test:accessibility && npm run test:browser"
   },
   "engines": {
     "node": ">=22"
