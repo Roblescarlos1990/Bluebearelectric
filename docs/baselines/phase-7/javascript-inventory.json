@@ -1200,7 +1200,7 @@
       "fetchTargets": []
     },
     "system-check.js": {
-      "bytes": 671,
+      "bytes": 1941,
       "pages": ["system-check.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -1211,7 +1211,7 @@
       "customEventsListened": [],
       "customEventsDispatched": [],
       "dataAttributes": ["data-system-check-image"],
-      "fetchTargets": []
+      "fetchTargets": ["/api/quote", "/api/security-config"]
     },
     "theme-loader.js": {
       "bytes": 369,

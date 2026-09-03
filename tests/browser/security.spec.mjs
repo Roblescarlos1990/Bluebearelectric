@@ -42,6 +42,12 @@ test('system check uses external behavior under the enforced policy', async ({ p
   await openPage(page, '/system-check.html');
   await expect(page.locator('#js-check')).toHaveText('JavaScript loaded successfully');
   await expect(page.locator('#img-check')).toHaveText('Image loaded successfully');
+  await expect(page.locator('#security-config-check')).toHaveText(
+    'Security config API loaded successfully',
+  );
+  await expect(page.locator('#quote-api-check')).toHaveText(
+    'Quote API method guard loaded successfully',
+  );
   expect(await page.evaluate(() => window.__blueBearCspViolations)).toEqual([]);
   expect(runtimeErrors).toEqual([]);
 });
