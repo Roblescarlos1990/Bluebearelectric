@@ -1,5 +1,5 @@
 import { createReadStream } from 'node:fs';
-import { access, stat } from 'node:fs/promises';
+import { access, readFile, stat } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import { createServer } from 'node:http';
 import path from 'node:path';
@@ -8,6 +8,33 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const port = Number(process.env.PHASE1_TEST_PORT || 43118);
 const host = '127.0.0.1';
+const vercelConfig = JSON.parse(await readFile(path.join(root, 'vercel.json'), 'utf8'));
+const globalHeaderRule = vercelConfig.headers.find((rule) => rule.source === '/(.*)');
+const securityHeaders = Object.fromEntries(
+  (globalHeaderRule?.headers || []).map(({ key, value }) => [key, value]),
+);
+const privateHeaderRule = vercelConfig.headers.find((rule) =>
+  rule.source.startsWith('/(admin|admin-portal|'),
+);
+const privateHeaders = Object.fromEntries(
+  (privateHeaderRule?.headers || []).map(({ key, value }) => [key, value]),
+);
+const privateEntryPoints = new Set([
+  'admin',
+  'admin-portal',
+  'customer-portal',
+  'employee-portal',
+  'reset-password',
+  'customize',
+  'system-check',
+]);
+
+function headersForPath(pathname) {
+  const entryPoint = pathname.replace(/^\//, '').replace(/\.html$/, '');
+  return privateEntryPoints.has(entryPoint)
+    ? { ...securityHeaders, ...privateHeaders }
+    : securityHeaders;
+}
 
 const contentTypes = new Map([
   ['.css', 'text/css; charset=utf-8'],
@@ -45,9 +72,11 @@ async function resolveRequest(pathname) {
 
 const server = createServer(async (request, response) => {
   const requestUrl = new URL(request.url || '/', `http://${request.headers.host || host}`);
+  const requestHeaders = headersForPath(requestUrl.pathname);
 
   if (requestUrl.pathname === '/api/security-config') {
     response.writeHead(200, {
+      ...requestHeaders,
       'Cache-Control': 'no-store',
       'Content-Type': 'application/json; charset=utf-8',
     });
@@ -56,7 +85,11 @@ const server = createServer(async (request, response) => {
   }
 
   if (requestUrl.pathname === '/api/quote') {
-    response.writeHead(405, { 'Content-Type': 'application/json; charset=utf-8' });
+    response.writeHead(405, {
+      ...requestHeaders,
+      'Cache-Control': 'no-store',
+      'Content-Type': 'application/json; charset=utf-8',
+    });
     response.end(
       JSON.stringify({ ok: false, message: 'Method not allowed in local test server.' }),
     );
@@ -65,12 +98,16 @@ const server = createServer(async (request, response) => {
 
   const filePath = await resolveRequest(requestUrl.pathname);
   if (!filePath) {
-    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    response.writeHead(404, {
+      ...requestHeaders,
+      'Content-Type': 'text/plain; charset=utf-8',
+    });
     response.end('Not found');
     return;
   }
 
   response.writeHead(200, {
+    ...requestHeaders,
     'Cache-Control': 'no-store',
     'Content-Type':
       contentTypes.get(path.extname(filePath).toLowerCase()) || 'application/octet-stream',

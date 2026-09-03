@@ -23,8 +23,8 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#030a13" />
   </head>
-  <body style="padding: 32px">
-    <main class="admin-panel" style="max-width: 850px; margin: auto">
+  <body class="system-check-page">
+    <main class="admin-panel system-check-panel">
       <h1>VoltFlow System Check</h1>
       <p>If this page has a dark Blue Bear layout, the root CSS loaded.</p>
       <div id="js-check" class="badge">JavaScript pending…</div>
@@ -32,12 +32,8 @@
       <img
         src="assets/images/site/logo.jpg"
         alt="Blue Bear logo"
-        style="max-width: 260px; border-radius: 12px"
-        onload="document.getElementById('img-check').textContent = 'Image loaded successfully'"
-        onerror="
-          document.getElementById('img-check').textContent =
-            'IMAGE FAILED — assets/images/site/logo.jpg is missing'
-        "
+        class="system-check-image"
+        data-system-check-image
         width="900"
         height="620"
         srcset="
@@ -62,9 +58,7 @@
         <p><a href="docs/sql/V8-4-CONTENT-MANAGER.sql">V8.4 SQL Migration</a></p>
       </section>
     </main>
-    <script>
-      document.getElementById('js-check').textContent = 'JavaScript loaded successfully';
-    </script>
+    <script src="assets/js/system-check.js"></script>
     <script src="assets/js/image-performance.js"></script>
   </body>
 </html>

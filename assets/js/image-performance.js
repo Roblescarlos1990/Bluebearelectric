@@ -19,6 +19,18 @@
 
   function enhanceImage(image) {
     if (!(image instanceof HTMLImageElement)) return;
+    if (image.dataset.fallbackSrc && !image.dataset.fallbackReady) {
+      image.dataset.fallbackReady = 'true';
+      const loadFallback = () => {
+        const fallback = image.dataset.fallbackSrc;
+        if (!fallback || image.getAttribute('src') === fallback) return;
+        image.removeAttribute('srcset');
+        image.removeAttribute('sizes');
+        image.src = fallback;
+      };
+      image.addEventListener('error', loadFallback);
+      if (image.complete && !image.naturalWidth) loadFallback();
+    }
     const source = image.getAttribute('src') || '';
     image.decoding = 'async';
     if (!source.startsWith('assets/')) {

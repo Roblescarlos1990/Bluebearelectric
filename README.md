@@ -88,6 +88,8 @@ The first browser installation downloads an isolated Chromium runtime. Individua
 | `npm run css:baseline -- after` | Capture the eight documented Phase 6 homepage viewport baselines after starting the local test server automatically.            |
 | `npm run site:build`            | Materialize shared public shell, search/social metadata, structured data, canonical URLs, and sitemap into committed files.     |
 | `npm run site:check`            | Fail on stale generated HTML/sitemap, missing route ownership, duplicate descriptions/canonicals, or portal/admin leakage.      |
+| `npm run security:audit`        | Verify enforced CSP, browser dependencies, inline-code rules, secret signatures, and required security migrations.              |
+| `npm run security:test`         | Exercise quote API origin, payload, validation, rate-limit, Turnstile, and sensitive-error behavior with isolated mocks.        |
 | `npm run format:check`          | Check runtime HTML, CSS, API and browser JavaScript, tooling, tests, workflow files, JSON, and active Markdown with Prettier.   |
 | `npm run media:build`           | Regenerate responsive AVIF/WebP derivatives, app icons, image metadata, inventory, and runtime image markup.                    |
 | `npm run lint:html`             | Validate all runtime HTML with `html-validate`.                                                                                 |
@@ -98,7 +100,7 @@ The first browser installation downloads an isolated Chromium runtime. Individua
 | `npm run test:accessibility`    | Scan the primary public conversion pages with axe and fail on accessibility regressions beyond the recorded baseline.           |
 | `npm run test:browser`          | Run Chromium smoke tests for navigation, mobile behavior, services, gallery, form validation, portals, and horizontal overflow. |
 | `npm run test:browser:headed`   | Run the browser smoke suite with a visible Chromium window for debugging.                                                       |
-| `npm run test:all`              | Run the complete Phase 1 quality gate in CI order.                                                                              |
+| `npm run test:all`              | Run the complete production quality gate in CI order.                                                                           |
 
 Playwright records screenshots, traces, and video only when a browser test fails. GitHub Actions uploads `playwright-report/` and `test-results/` on failure. Configure the `Phase 1 quality gate / Formatting, lint, accessibility, and browser tests` check as required in the `main` branch ruleset before merging cleanup pull requests.
 
@@ -113,6 +115,8 @@ node scripts/validate-site.mjs
 The validator checks HTML metadata, local links and assets, the web manifest, and JavaScript syntax.
 
 Search metadata ownership, published-claim rules, Android installation, Safari Add to Home Screen, and the deliberate no-offline decision are documented in [`docs/guides/SEARCH-AND-INSTALLABILITY.md`](docs/guides/SEARCH-AND-INSTALLABILITY.md).
+
+The enforced browser policy, pinned browser dependency, quote abuse controls, Supabase RLS/storage review, required server secrets, and Phase 9 release order are documented in [`docs/guides/SECURITY-HARDENING.md`](docs/guides/SECURITY-HARDENING.md).
 
 For a deployed preview, also run:
 

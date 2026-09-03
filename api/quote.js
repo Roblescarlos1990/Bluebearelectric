@@ -6,6 +6,37 @@ const JSON_HEADERS = {
 };
 const MAX_BODY_BYTES = 24_000;
 const DEFAULT_ALLOWED_COUNTRIES = ['US', 'CA', 'MX'];
+const ALLOWED_SERVICE_TYPES = new Set([
+  'Industrial',
+  'Commercial',
+  'Residential',
+  'Solar / BESS',
+  'Emergency Repair',
+  'Maintenance',
+]);
+const ALLOWED_URGENCY_LEVELS = new Set(['Normal', 'This Week', 'Emergency']);
+const UPSTREAM_TIMEOUT_MS = 4_500;
+
+class UpstreamRequestError extends Error {
+  constructor(provider, status) {
+    super(`${provider} request failed.`);
+    this.name = 'UpstreamRequestError';
+    this.provider = provider;
+    this.status = status;
+  }
+}
+
+function safeLog(label, error) {
+  console.error(label, {
+    name: error?.name || 'Error',
+    provider: error?.provider || undefined,
+    status: Number.isFinite(error?.status) ? error.status : undefined,
+  });
+}
+
+function upstreamSignal() {
+  return AbortSignal.timeout(UPSTREAM_TIMEOUT_MS);
+}
 
 function json(res, status, body) {
   res.status(status).setHeader('Content-Type', JSON_HEADERS['Content-Type']);
@@ -22,9 +53,11 @@ function normalize(value, max = 500) {
     .slice(0, max);
 }
 function hash(value) {
+  const secret = process.env.SECURITY_HASH_SALT || process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!secret) throw new Error('Server security configuration is incomplete.');
   return crypto
-    .createHash('sha256')
-    .update(`${process.env.SECURITY_HASH_SALT || 'voltflow'}:${value || ''}`)
+    .createHmac('sha256', secret)
+    .update(String(value || ''))
     .digest('hex');
 }
 function getIp(req) {
@@ -41,11 +74,21 @@ function getCountry(req) {
 function allowedOrigin(req) {
   const configured = String(process.env.ALLOWED_ORIGIN || '')
     .split(',')
-    .map((v) => v.trim())
+    .map((value) => value.trim().replace(/\/$/, '').toLowerCase())
     .filter(Boolean);
-  if (!configured.length) return true;
-  const origin = String(req.headers.origin || '');
-  return configured.includes(origin);
+  const origin = String(req.headers.origin || '').replace(/\/$/, '');
+  if (!origin) return true;
+
+  const host = String(req.headers.host || '').toLowerCase();
+  const forwardedProtocol = String(req.headers['x-forwarded-proto'] || '').toLowerCase();
+  const protocol = forwardedProtocol || (host.startsWith('localhost:') ? 'http' : 'https');
+  const sameOrigin = host && origin.toLowerCase() === `${protocol}://${host}`;
+  const defaults = ['https://bluebearelectric.com', 'https://www.bluebearelectric.com'];
+  return (
+    sameOrigin ||
+    defaults.includes(origin.toLowerCase()) ||
+    configured.includes(origin.toLowerCase())
+  );
 }
 async function supabase(path, options = {}) {
   const url = process.env.SUPABASE_URL;
@@ -53,6 +96,7 @@ async function supabase(path, options = {}) {
   if (!url || !key) throw new Error('Server database configuration is incomplete.');
   const response = await fetch(`${url}/rest/v1/${path}`, {
     ...options,
+    signal: upstreamSignal(),
     headers: {
       apikey: key,
       Authorization: `Bearer ${key}`,
@@ -62,16 +106,16 @@ async function supabase(path, options = {}) {
     },
   });
   const text = await response.text();
+  if (!response.ok) throw new UpstreamRequestError('database', response.status);
   let data = null;
   try {
     data = text ? JSON.parse(text) : null;
   } catch {
-    data = text;
+    throw new UpstreamRequestError('database', 502);
   }
-  if (!response.ok) throw new Error(typeof data === 'string' ? data : JSON.stringify(data));
   return data;
 }
-async function verifyTurnstile(token, ip) {
+async function verifyTurnstile(token, ip, requestHost) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   if (!secret) return { success: true, skipped: true };
   if (!token) return { success: false, reason: 'missing-token' };
@@ -79,9 +123,34 @@ async function verifyTurnstile(token, ip) {
   const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
     body,
+    signal: upstreamSignal(),
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   });
-  return response.json();
+  if (!response.ok) throw new UpstreamRequestError('turnstile', response.status);
+  const result = await response.json();
+  if (result.success && result.action && result.action !== 'quote') {
+    return { success: false, reason: 'unexpected-action' };
+  }
+  if (result.success) {
+    const verifiedHostname = String(result.hostname || '').toLowerCase();
+    const requestHostname = String(requestHost || '')
+      .split(':')[0]
+      .toLowerCase();
+    const allowedHostnames = new Set(
+      [
+        'bluebearelectric.com',
+        'www.bluebearelectric.com',
+        requestHostname,
+        ...String(process.env.TURNSTILE_ALLOWED_HOSTNAMES || '')
+          .split(',')
+          .map((value) => value.trim().toLowerCase()),
+      ].filter(Boolean),
+    );
+    if (!verifiedHostname || !allowedHostnames.has(verifiedHostname)) {
+      return { success: false, reason: 'unexpected-hostname' };
+    }
+  }
+  return result;
 }
 async function countAttempts(column, value, sinceIso, acceptedOnly = true) {
   const accepted = acceptedOnly ? '&accepted=eq.true' : '';
@@ -95,7 +164,7 @@ async function recordAttempt(row) {
   try {
     await supabase('quote_attempts', { method: 'POST', body: JSON.stringify(row) });
   } catch (error) {
-    console.error('quote_attempt_log_failed', error.message);
+    safeLog('quote_attempt_log_failed', error);
   }
 }
 async function recordEvent(event_type, severity, details) {
@@ -113,7 +182,7 @@ async function recordEvent(event_type, severity, details) {
       }),
     });
   } catch (error) {
-    console.error('security_event_log_failed', error.message);
+    safeLog('security_event_log_failed', error);
   }
 }
 function suspiciousText(payload) {
@@ -148,6 +217,7 @@ Powered by VoltFlow`;
   try {
     const response = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
+      signal: upstreamSignal(),
       headers: {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
@@ -176,10 +246,10 @@ Powered by VoltFlow`;
       }),
     });
     const data = await response.json();
-    if (!response.ok) throw new Error(JSON.stringify(data));
+    if (!response.ok) throw new UpstreamRequestError('email-copy', response.status);
     return data.output_text || fallback;
   } catch (error) {
-    console.error('ai_email_generation_failed', error.message);
+    safeLog('ai_email_generation_failed', error);
     return fallback;
   }
 }
@@ -199,6 +269,7 @@ async function sendAcknowledgement(payload, reference, body) {
   if (payload.email) {
     const customer = await fetch('https://api.resend.com/emails', {
       method: 'POST',
+      signal: upstreamSignal(),
       headers: {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
@@ -212,12 +283,13 @@ async function sendAcknowledgement(payload, reference, body) {
         text: body,
       }),
     });
-    if (!customer.ok) throw new Error(`customer_email_failed: ${await customer.text()}`);
+    if (!customer.ok) throw new UpstreamRequestError('customer-email', customer.status);
   }
 
   if (adminNotificationEmail) {
     const admin = await fetch('https://api.resend.com/emails', {
       method: 'POST',
+      signal: upstreamSignal(),
       headers: {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         'Content-Type': 'application/json',
@@ -231,7 +303,7 @@ async function sendAcknowledgement(payload, reference, body) {
         text: `New lead received.\n\nName: ${payload.full_name}\nPhone: ${payload.phone}\nEmail: ${payload.email || 'Not provided'}\nCity: ${payload.city || 'Not provided'}\nUrgency: ${payload.urgency}\nService: ${payload.service_type}\nReference: ${reference || 'Pending'}\n\nMessage:\n${payload.message || 'No message provided.'}`,
       }),
     });
-    if (!admin.ok) throw new Error(`admin_notification_failed: ${await admin.text()}`);
+    if (!admin.ok) throw new UpstreamRequestError('admin-email', admin.status);
   }
 
   return {
@@ -246,9 +318,89 @@ module.exports = async function handler(req, res) {
   if (!allowedOrigin(req))
     return json(res, 403, { ok: false, message: 'Request origin is not allowed.' });
 
+  const contentType = String(req.headers['content-type'] || '').toLowerCase();
+  if (!contentType.startsWith('application/json')) {
+    return json(res, 415, { ok: false, message: 'Content type must be application/json.' });
+  }
+
   const contentLength = Number(req.headers['content-length'] || 0);
   if (contentLength > MAX_BODY_BYTES)
     return json(res, 413, { ok: false, message: 'Request is too large.' });
+
+  let body = req.body;
+  if (typeof body === 'string') {
+    if (Buffer.byteLength(body, 'utf8') > MAX_BODY_BYTES) {
+      return json(res, 413, { ok: false, message: 'Request is too large.' });
+    }
+    try {
+      body = JSON.parse(body);
+    } catch {
+      return json(res, 400, { ok: false, message: 'Invalid request format.' });
+    }
+  }
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return json(res, 400, { ok: false, message: 'Invalid request format.' });
+  }
+  if (Buffer.byteLength(JSON.stringify(body), 'utf8') > MAX_BODY_BYTES) {
+    return json(res, 413, { ok: false, message: 'Request is too large.' });
+  }
+
+  const fieldLimits = {
+    full_name: 120,
+    phone: 50,
+    email: 160,
+    city: 120,
+    service_type: 100,
+    urgency: 50,
+    message: 2500,
+    company_website: 200,
+    turnstile_token: 4000,
+  };
+  const oversizedField = Object.entries(fieldLimits).find(
+    ([field, limit]) => String(body[field] ?? '').length > limit,
+  );
+  if (oversizedField) {
+    return json(res, 400, { ok: false, message: 'One or more fields are too long.' });
+  }
+
+  const payload = {
+    full_name: normalize(body.full_name, 120),
+    phone: normalize(body.phone, 50),
+    email: normalize(body.email, 160).toLowerCase(),
+    city: normalize(body.city, 120),
+    service_type: normalize(body.service_type, 100),
+    urgency: normalize(body.urgency || 'Normal', 50),
+    message: normalize(body.message, 2500),
+    source: 'website-secure-api',
+    status: 'New',
+  };
+
+  if (!payload.full_name || !payload.phone || !payload.service_type) {
+    return json(res, 400, {
+      ok: false,
+      message: 'Name, phone number, and service needed are required.',
+    });
+  }
+  const phoneDigits = payload.phone.replace(/\D/g, '');
+  if (!/^[+()\d.\s-]+$/.test(payload.phone) || phoneDigits.length < 7 || phoneDigits.length > 15) {
+    return json(res, 400, { ok: false, message: 'Please enter a valid phone number.' });
+  }
+  if (payload.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+    return json(res, 400, { ok: false, message: 'Please enter a valid email address.' });
+  }
+  if (!ALLOWED_SERVICE_TYPES.has(payload.service_type)) {
+    return json(res, 400, { ok: false, message: 'Please choose a valid service.' });
+  }
+  if (!ALLOWED_URGENCY_LEVELS.has(payload.urgency)) {
+    return json(res, 400, { ok: false, message: 'Please choose a valid urgency.' });
+  }
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    safeLog('quote_security_configuration_failed', new Error('Missing server configuration.'));
+    return json(res, 503, {
+      ok: false,
+      message: 'The request system is temporarily unavailable. Please call 760-234-8306.',
+    });
+  }
 
   const ip = getIp(req);
   const country = getCountry(req);
@@ -261,27 +413,6 @@ module.exports = async function handler(req, res) {
     .map((v) => v.trim().toUpperCase())
     .filter(Boolean);
   const geoMode = String(process.env.GEO_MODE || 'monitor').toLowerCase();
-
-  let body = req.body;
-  if (typeof body === 'string') {
-    try {
-      body = JSON.parse(body);
-    } catch {
-      return json(res, 400, { ok: false, message: 'Invalid request format.' });
-    }
-  }
-  body = body || {};
-  const payload = {
-    full_name: normalize(body.full_name, 120),
-    phone: normalize(body.phone, 50),
-    email: normalize(body.email, 160).toLowerCase(),
-    city: normalize(body.city, 120),
-    service_type: normalize(body.service_type, 100),
-    urgency: normalize(body.urgency || 'Normal', 50),
-    message: normalize(body.message, 2500),
-    source: 'website-secure-api',
-    status: 'New',
-  };
   const email_hash = hash(payload.email || 'none');
   const phone_hash = hash(payload.phone || 'none');
   const baseAttempt = {
@@ -311,15 +442,6 @@ module.exports = async function handler(req, res) {
     return json(res, 400, { ok: false, message: 'Please review the form and try again.' });
   }
 
-  if (!payload.full_name || !payload.phone || !payload.service_type) {
-    return json(res, 400, {
-      ok: false,
-      message: 'Name, phone number, and service needed are required.',
-    });
-  }
-  if (payload.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
-    return json(res, 400, { ok: false, message: 'Please enter a valid email address.' });
-  }
   if (suspiciousText(payload)) {
     await recordAttempt({ ...baseAttempt, reason: 'spam_content' });
     await recordEvent('quote_spam_blocked', 'medium', { country, ip_hash, reason: 'spam_content' });
@@ -341,7 +463,16 @@ module.exports = async function handler(req, res) {
       });
   }
 
-  const turnstile = await verifyTurnstile(normalize(body.turnstile_token, 4000), ip);
+  let turnstile;
+  try {
+    turnstile = await verifyTurnstile(normalize(body.turnstile_token, 4000), ip, req.headers.host);
+  } catch (error) {
+    safeLog('turnstile_verification_failed', error);
+    return json(res, 503, {
+      ok: false,
+      message: 'Security verification is temporarily unavailable. Please try again.',
+    });
+  }
   if (!turnstile.success) {
     await recordAttempt({ ...baseAttempt, reason: 'turnstile_failed' });
     await recordEvent('quote_bot_challenge_failed', 'medium', {
@@ -359,12 +490,24 @@ module.exports = async function handler(req, res) {
   const now = Date.now();
   const tenMinutesAgo = new Date(now - 10 * 60 * 1000).toISOString();
   const dayAgo = new Date(now - 24 * 60 * 60 * 1000).toISOString();
-  const [ip10, ip24, email24, phone24] = await Promise.all([
-    countAttempts('ip_hash', ip_hash, tenMinutesAgo),
-    countAttempts('ip_hash', ip_hash, dayAgo),
-    payload.email ? countAttempts('email_hash', email_hash, dayAgo) : 0,
-    countAttempts('phone_hash', phone_hash, dayAgo),
-  ]);
+  let ip10;
+  let ip24;
+  let email24;
+  let phone24;
+  try {
+    [ip10, ip24, email24, phone24] = await Promise.all([
+      countAttempts('ip_hash', ip_hash, tenMinutesAgo),
+      countAttempts('ip_hash', ip_hash, dayAgo),
+      payload.email ? countAttempts('email_hash', email_hash, dayAgo) : 0,
+      countAttempts('phone_hash', phone_hash, dayAgo),
+    ]);
+  } catch (error) {
+    safeLog('quote_rate_limit_check_failed', error);
+    return json(res, 503, {
+      ok: false,
+      message: 'The request system is temporarily unavailable. Please call 760-234-8306.',
+    });
+  }
   if (ip10 >= 3 || ip24 >= 8 || email24 >= 3 || phone24 >= 3) {
     await recordAttempt({ ...baseAttempt, reason: 'rate_limited' });
     await recordEvent('quote_rate_limited', 'medium', {
@@ -399,7 +542,7 @@ module.exports = async function handler(req, res) {
       email_status = sent.sent ? 'sent' : 'not_configured';
     } catch (emailError) {
       email_status = 'failed';
-      console.error('automatic_email_failed', emailError.message);
+      safeLog('automatic_email_failed', emailError);
       await recordEvent('automatic_email_failed', 'medium', {
         country,
         ip_hash,
@@ -413,7 +556,7 @@ module.exports = async function handler(req, res) {
       email_status,
     });
   } catch (error) {
-    console.error('secure_quote_insert_failed', error);
+    safeLog('secure_quote_insert_failed', error);
     await recordAttempt({ ...baseAttempt, reason: 'database_error' });
     await recordEvent('quote_submission_error', 'high', {
       country,

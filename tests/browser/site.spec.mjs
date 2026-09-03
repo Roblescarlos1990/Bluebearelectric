@@ -369,11 +369,15 @@ test('core public pages tolerate WCAG text-spacing overrides', async ({ page }) 
   const routes = ['/', '/services.html', '/projects.html', '/contact.html'];
   for (const route of routes) {
     await openPage(page, route);
-    await page.addStyleTag({
-      content: `
-        * { line-height: 1.5 !important; letter-spacing: 0.12em !important; word-spacing: 0.16em !important; }
-        p { margin-bottom: 2em !important; }
-      `,
+    await page.evaluate(() => {
+      document.querySelectorAll('*').forEach((element) => {
+        element.style.setProperty('line-height', '1.5', 'important');
+        element.style.setProperty('letter-spacing', '0.12em', 'important');
+        element.style.setProperty('word-spacing', '0.16em', 'important');
+      });
+      document.querySelectorAll('p').forEach((paragraph) => {
+        paragraph.style.setProperty('margin-bottom', '2em', 'important');
+      });
     });
     const dimensions = await page.evaluate(() => ({
       clientWidth: document.documentElement.clientWidth,

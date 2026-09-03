@@ -13,6 +13,7 @@ Current feature migrations include:
 Current operational migration:
 
 - `supabase/migrations/20260822155652_database_hardening.sql` — V9.3.1 RLS hardening, authorization-helper cleanup, migration-history access, and foreign-key indexes
+- `supabase/migrations/20260903102607_phase_9_security_hardening.sql` — V9.4.0 anonymous Data API grant reduction, protected estimate-only lead creation, and employee time-entry ownership enforcement
 
 New operational schema changes belong in `supabase/migrations/` and should be
 created with `supabase migration new <name>`. The historical SQL under

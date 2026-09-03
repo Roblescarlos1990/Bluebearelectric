@@ -1,8 +1,8 @@
 {
   "summary": {
     "pages": 19,
-    "modules": 38,
-    "activeModules": 38,
+    "modules": 40,
+    "activeModules": 40,
     "unusedModules": 0,
     "duplicatePageLoads": 0,
     "missingModules": 0,
@@ -79,7 +79,7 @@
       "typical-project-prefill-v8-9-4.js",
       "photo-slots-v9-1-2.js"
     ],
-    "customer-portal.html": ["image-performance.js"],
+    "customer-portal.html": ["customer-portal.js", "image-performance.js"],
     "customize.html": [
       "image-performance.js",
       "site-shell.js",
@@ -191,7 +191,7 @@
       "service-photo-3d-v8-9-6.js",
       "photo-slots-v9-1-2.js"
     ],
-    "system-check.html": ["image-performance.js"]
+    "system-check.html": ["system-check.js", "image-performance.js"]
   },
   "modules": {
     "admin-backend.js": {
@@ -496,7 +496,7 @@
       "fetchTargets": []
     },
     "contact-backend.js": {
-      "bytes": 15352,
+      "bytes": 15377,
       "pages": ["contact.html", "index.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -587,6 +587,20 @@
         "data-new-customer",
         "data-tab"
       ],
+      "fetchTargets": []
+    },
+    "customer-portal.js": {
+      "bytes": 72,
+      "pages": ["customer-portal.html"],
+      "localStorageKeys": [],
+      "sessionStorageKeys": [],
+      "supabaseTables": [],
+      "supabaseBuckets": [],
+      "supabaseRpcCalls": [],
+      "dynamicSupabaseTargets": [],
+      "customEventsListened": [],
+      "customEventsDispatched": [],
+      "dataAttributes": [],
       "fetchTargets": []
     },
     "customizer.js": {
@@ -778,7 +792,7 @@
       "fetchTargets": []
     },
     "image-performance.js": {
-      "bytes": 2990,
+      "bytes": 3507,
       "pages": [
         "about.html",
         "admin-portal.html",
@@ -810,6 +824,8 @@
       "customEventsDispatched": [],
       "dataAttributes": [
         "data-bb3d-thumbs",
+        "data-fallback-ready",
+        "data-fallback-src",
         "data-home-thumbs",
         "data-image-priority",
         "data-image-sizes"
@@ -1181,6 +1197,20 @@
       "customEventsListened": [],
       "customEventsDispatched": [],
       "dataAttributes": [],
+      "fetchTargets": []
+    },
+    "system-check.js": {
+      "bytes": 671,
+      "pages": ["system-check.html"],
+      "localStorageKeys": [],
+      "sessionStorageKeys": [],
+      "supabaseTables": [],
+      "supabaseBuckets": [],
+      "supabaseRpcCalls": [],
+      "dynamicSupabaseTargets": [],
+      "customEventsListened": [],
+      "customEventsDispatched": [],
+      "dataAttributes": ["data-system-check-image"],
       "fetchTargets": []
     },
     "theme-loader.js": {

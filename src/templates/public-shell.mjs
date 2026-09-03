@@ -92,7 +92,9 @@ export function renderPublicHeader(config, variantName) {
     '">Call ' +
     escapeHtml(business.phoneDisplay) +
     '</a>';
-  const menuIcon = variant.menuIcon ? '<i class="bi bi-list" aria-hidden="true"></i>' : '';
+  const menuIcon = variant.menuIcon
+    ? '<svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg>'
+    : '';
 
   return [
     '<header class="topbar">',

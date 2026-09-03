@@ -209,6 +209,7 @@
       await loadTurnstileScript();
       const widgetId = window.turnstile.render(slot, {
         sitekey: securityConfig.turnstileSiteKey,
+        action: 'quote',
         theme: 'dark',
         size: 'flexible',
         'response-field': false,

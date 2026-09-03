@@ -6769,6 +6769,16 @@ textarea {
 }
 
 /* Mobile homepage conversion direction — selected concept 1 */
+.ui-icon {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  flex: 0 0 auto;
+}
 .brand-logo-mobile,
 .mobile-conversion-hero {
   display: none;
@@ -6809,7 +6819,7 @@ textarea {
     box-shadow: none;
     gap: 8px;
   }
-  .blue-bear-site .hamb .bi {
+  .blue-bear-site .hamb .ui-icon {
     color: var(--yellow);
     font-size: 25px;
     line-height: 1;
@@ -6913,7 +6923,7 @@ textarea {
     font-size: 13px;
     line-height: 1;
   }
-  .blue-bear-site .mobile-conversion-actions .action-label .bi {
+  .blue-bear-site .mobile-conversion-actions .action-label .ui-icon {
     color: var(--yellow);
     font-size: 20px;
   }
@@ -6944,7 +6954,7 @@ textarea {
     flex-direction: column;
     gap: 6px;
   }
-  .blue-bear-site .mobile-trust-row .bi {
+  .blue-bear-site .mobile-trust-row .ui-icon {
     color: var(--yellow);
     font-size: 22px;
     line-height: 1;
@@ -6952,6 +6962,18 @@ textarea {
   .blue-bear-site .mobile-trust-row span:last-child {
     border-right: 0;
   }
+}
+
+.system-check-page {
+  padding: 32px;
+}
+.system-check-panel {
+  max-width: 850px;
+  margin: auto;
+}
+.system-check-image {
+  max-width: 260px;
+  border-radius: 12px;
 }
 
 /* Blue Bear Phase 3 — public accessibility foundation */
