@@ -91,7 +91,11 @@ for (const file of htmlFiles) {
       continue;
     }
     inlineJsonLd += 1;
-    const hash = `sha256-${crypto.createHash('sha256').update(match[2]).digest('base64')}`;
+    const browserNormalizedSource = match[2].replace(/\r\n?/g, '\n');
+    const hash = `sha256-${crypto
+      .createHash('sha256')
+      .update(browserNormalizedSource)
+      .digest('base64')}`;
     if (!directives.get('script-src')?.includes(`'${hash}'`)) {
       fail(`${file} JSON-LD hash is absent from script-src (${hash}).`);
     }
@@ -161,6 +165,16 @@ for (const file of clientFiles) {
 }
 
 const quoteApi = await readFile(path.join(root, 'api', 'quote.js'), 'utf8');
+const securityConfigApi = await readFile(path.join(root, 'api', 'security-config.js'), 'utf8');
+if (/\bmodule\.exports\b/.test(quoteApi) || !/\bexport\s+default\b/.test(quoteApi)) {
+  fail('Quote API must use the repository ESM module format for the Vercel runtime.');
+}
+if (
+  /\bmodule\.exports\b/.test(securityConfigApi) ||
+  !/\bexport\s+default\b/.test(securityConfigApi)
+) {
+  fail('Security-config API must use the repository ESM module format for the Vercel runtime.');
+}
 if (!quoteApi.includes("createHmac('sha256'")) fail('Quote identifiers are not HMAC protected.');
 if (quoteApi.includes("SECURITY_HASH_SALT || 'voltflow'")) {
   fail('Quote hashing still has a predictable fallback salt.');

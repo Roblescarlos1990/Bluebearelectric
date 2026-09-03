@@ -1,13 +1,22 @@
 import assert from 'node:assert/strict';
-import { createRequire } from 'node:module';
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-import vm from 'node:vm';
-import { fileURLToPath } from 'node:url';
+import quoteHandler from '../api/quote.js';
+import securityConfigHandler from '../api/security-config.js';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const source = await readFile(path.join(root, 'api', 'quote.js'), 'utf8');
-const require = createRequire(import.meta.url);
+const controlledEnvironmentKeys = [
+  'ADMIN_NOTIFICATION_EMAIL',
+  'ALLOWED_ORIGIN',
+  'ALLOWED_QUOTE_COUNTRIES',
+  'EMAIL_FROM',
+  'GEO_MODE',
+  'OPENAI_API_KEY',
+  'RESEND_API_KEY',
+  'SECURITY_HASH_SALT',
+  'SUPABASE_SERVICE_ROLE_KEY',
+  'SUPABASE_URL',
+  'TURNSTILE_ALLOWED_HOSTNAMES',
+  'TURNSTILE_SECRET_KEY',
+  'TURNSTILE_SITE_KEY',
+];
 const validBody = {
   full_name: 'Phase Nine Test',
   phone: '760-555-0199',
@@ -23,32 +32,35 @@ const validBody = {
 
 function loadHandler(fetchImplementation, environment = {}) {
   const logs = [];
-  const module = { exports: {} };
-  const context = vm.createContext({
-    AbortSignal,
-    Buffer,
-    Response,
-    URLSearchParams,
-    clearTimeout,
-    console: {
-      error: (...values) => logs.push(values),
-      warn: (...values) => logs.push(values),
-    },
-    fetch: fetchImplementation,
-    module,
-    process: {
-      env: {
-        SUPABASE_URL: 'https://database.test',
-        SUPABASE_SERVICE_ROLE_KEY: 'test-server-role-key',
-        SECURITY_HASH_SALT: 'phase-nine-private-test-salt',
-        ...environment,
-      },
-    },
-    require,
-    setTimeout,
-  });
-  new vm.Script(source, { filename: 'api/quote.js' }).runInContext(context);
-  return { handler: module.exports, logs };
+  const handler = async (req, res) => {
+    const originalFetch = globalThis.fetch;
+    const originalConsoleError = console.error;
+    const originalEnvironment = Object.fromEntries(
+      controlledEnvironmentKeys.map((key) => [key, process.env[key]]),
+    );
+
+    for (const key of controlledEnvironmentKeys) delete process.env[key];
+    Object.assign(process.env, {
+      SUPABASE_URL: 'https://database.test',
+      SUPABASE_SERVICE_ROLE_KEY: 'test-server-role-key',
+      SECURITY_HASH_SALT: 'phase-nine-private-test-salt',
+      ...environment,
+    });
+    globalThis.fetch = fetchImplementation;
+    console.error = (...values) => logs.push(values);
+
+    try {
+      return await quoteHandler(req, res);
+    } finally {
+      globalThis.fetch = originalFetch;
+      console.error = originalConsoleError;
+      for (const key of controlledEnvironmentKeys) {
+        if (originalEnvironment[key] === undefined) delete process.env[key];
+        else process.env[key] = originalEnvironment[key];
+      }
+    }
+  };
+  return { handler, logs };
 }
 
 function request(body = validBody, overrides = {}) {
@@ -111,6 +123,14 @@ async function run(name, callback) {
 const noFetch = async () => {
   throw new Error('Unexpected upstream request.');
 };
+
+await run('exports ESM handlers for the Vercel runtime', async () => {
+  assert.equal(typeof quoteHandler, 'function');
+  assert.equal(typeof securityConfigHandler, 'function');
+  const result = response();
+  securityConfigHandler({}, result);
+  assert.equal(JSON.parse(result.body).geoMode, 'monitor');
+});
 
 await run('rejects unsupported methods', async () => {
   const { handler } = loadHandler(noFetch);

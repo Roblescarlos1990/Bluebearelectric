@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+import crypto from 'node:crypto';
 
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
@@ -313,7 +313,7 @@ async function sendAcknowledgement(payload, reference, body) {
   };
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return json(res, 405, { ok: false, message: 'Method not allowed.' });
   if (!allowedOrigin(req))
     return json(res, 403, { ok: false, message: 'Request origin is not allowed.' });
@@ -568,4 +568,4 @@ module.exports = async function handler(req, res) {
       message: 'The request system is temporarily unavailable. Please call 760-234-8306.',
     });
   }
-};
+}
