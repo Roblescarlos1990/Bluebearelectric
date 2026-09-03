@@ -7,10 +7,8 @@
     if (!window.supabase || !window.BLUE_BEAR_SUPABASE_URL || !window.BLUE_BEAR_SUPABASE_KEY)
       return;
     try {
-      const client = window.supabase.createClient(
-        window.BLUE_BEAR_SUPABASE_URL,
-        window.BLUE_BEAR_SUPABASE_KEY,
-      );
+      const client = window.BLUE_BEAR_SUPABASE_CLIENT;
+      if (!client) return;
       const keys = images.map((img) => img.dataset.photoSlot).filter(Boolean);
       const { data, error } = await client
         .from('website_photo_slots')

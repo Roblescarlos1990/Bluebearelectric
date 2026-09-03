@@ -164,6 +164,20 @@ for (const file of clientFiles) {
   if (serverOnlyNames.test(contents)) fail(`${file} references a server-only secret name.`);
 }
 
+const browserClientCreators = [];
+for (const file of projectFiles.filter((entry) => entry.startsWith('assets/js/'))) {
+  const contents = await readFile(path.join(root, file), 'utf8').catch(() => '');
+  if (/\.createClient\s*\(/.test(contents)) browserClientCreators.push(file);
+}
+if (
+  browserClientCreators.length !== 1 ||
+  browserClientCreators[0] !== 'assets/js/supabase-config.js'
+) {
+  fail(
+    `Browser Supabase clients must use the shared singleton; creators found in: ${browserClientCreators.join(', ') || 'none'}`,
+  );
+}
+
 const quoteApi = await readFile(path.join(root, 'api', 'quote.js'), 'utf8');
 const securityConfigApi = await readFile(path.join(root, 'api', 'security-config.js'), 'utf8');
 if (/\bmodule\.exports\b/.test(quoteApi) || !/\bexport\s+default\b/.test(quoteApi)) {
@@ -215,4 +229,5 @@ console.log(
   `- ${inlineStyleAttributes} inventoried inline style attributes; no inline style blocks`,
 );
 console.log(`- ${pinnedSdkIncludes} exact, integrity-protected Supabase SDK includes`);
+console.log('- one shared browser Supabase client; duplicate auth clients rejected');
 console.log('- enforced CSP, approved remote origins, and repository secret signatures verified');

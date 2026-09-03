@@ -1,9 +1,7 @@
 (function () {
   if (!window.supabase) return;
-  const client = window.supabase.createClient(
-    window.BLUE_BEAR_SUPABASE_URL,
-    window.BLUE_BEAR_SUPABASE_KEY,
-  );
+  const client = window.BLUE_BEAR_SUPABASE_CLIENT;
+  if (!client) return;
   const $ = (s) => document.querySelector(s);
   const pageSelect = $('[data-photo-slot-page]');
   const search = $('[data-photo-slot-search]');

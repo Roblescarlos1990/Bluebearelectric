@@ -1,9 +1,7 @@
 (() => {
   if (!window.supabase) return;
-  const client = window.supabase.createClient(
-    window.BLUE_BEAR_SUPABASE_URL,
-    window.BLUE_BEAR_SUPABASE_KEY,
-  );
+  const client = window.BLUE_BEAR_SUPABASE_CLIENT;
+  if (!client) return;
   const $ = (s) => document.querySelector(s),
     $$ = (s) => [...document.querySelectorAll(s)];
   const esc = (v) =>

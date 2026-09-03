@@ -1,6 +1,6 @@
 # Phase 9 Security Hardening
 
-This guide records the browser, API, Supabase, storage, and deployment security boundary for Blue Bear Electric. It reflects the branch audit completed on September 3, 2026. Production database changes remain pending until the V9.4.0 migration is separately approved and applied.
+This guide records the browser, API, Supabase, storage, and deployment security boundary for Blue Bear Electric. It reflects the branch audit and approved production database rollout completed on September 3, 2026. The V9.4.0 migration is applied; the branch remains unmerged while the final authentication setting is completed.
 
 ## Browser policy
 
@@ -14,6 +14,7 @@ Vercel serves an enforced Content Security Policy from `vercel.json`.
 - Images and media: same-origin assets, data/blob assets, and the Blue Bear Supabase project host only.
 - Connections: same-origin requests, the Blue Bear Supabase HTTPS/WebSocket endpoints, and Cloudflare Turnstile only.
 - Frames: Cloudflare Turnstile only. Third-party framing of Blue Bear pages remains denied.
+- Supabase initialization: every browser module shares the single client created in `supabase-config.js`, avoiding duplicate auth sessions and storage-key contention.
 
 Bootstrap Icons was removed because loading an entire remote font and stylesheet for five mobile icons was unnecessary. The small icons are now local inline SVG markup.
 
@@ -51,7 +52,7 @@ Read-only production inspection on September 3, 2026 found:
 - `project-photos` is private. Customers can read only public gallery objects belonging to their own project; approved employees and administrators have their documented access.
 - `site-media` is intentionally public for website content; uploads, updates, and deletes remain administrator-only.
 
-The V9.4.0 migration in `supabase/migrations/20260903102607_phase_9_security_hardening.sql` adds defense in depth:
+The approved V9.4.0 migration in `supabase/migrations/20260903102607_phase_9_security_hardening.sql` was applied to production on September 3, 2026 at 19:18 UTC. It adds defense in depth:
 
 1. Removes the anonymous direct `leads` insert policy so callers cannot bypass `/api/quote`.
 2. Revokes anonymous table/sequence/function privileges, then restores read-only access to the nine published-content tables.
@@ -60,7 +61,9 @@ The V9.4.0 migration in `supabase/migrations/20260903102607_phase_9_security_har
 5. Removes anonymous `site-media` object listing while preserving public delivery of known URLs and administrator object access.
 6. Tightens default privileges for future database objects created by the migration owner.
 
-Do not apply this migration from a preview deployment automatically. Review and apply it once, then rerun the Supabase security advisor and the deployed smoke test.
+Post-migration verification confirmed all 54 public tables retain RLS, anonymous lead insertion is revoked, service-role lead insertion is retained, anonymous access is limited to `SELECT` on the nine published-content tables, browser function execution is restricted to the intended helpers, storage limits are active, and the new employee-owned time-entry policy is active. The migration is recorded as V9.4.0 in `voltflow_schema_migrations` and as version `20260903191858` in Supabase migration history. Do not rerun it or apply it automatically from a preview deployment.
+
+The post-migration performance-advisor snapshot contains 102 optimization notices: 47 unused-index informational notices, 54 overlapping-permissive-policy warnings, and one Auth connection-allocation informational notice. These are not release-blocking security failures and require a separate query-usage review before any index or policy is removed or consolidated.
 
 ## Remaining dashboard action
 
@@ -81,11 +84,11 @@ These values belong only in Vercel server environment settings:
 
 ## Release order
 
-1. Run `npm ci`, `npm run site:check`, `npm run security:audit`, `npm run security:test`, and `npm run test:all`.
-2. Deploy a branch preview and run the deployed security smoke test.
-3. Review and apply the V9.4.0 Supabase migration once.
-4. Verify anonymous private-table counts remain zero and repeat portal authorization checks.
-5. Enable leaked-password protection and rerun the Supabase security advisor.
-6. Merge only after the preview, database, and authentication gates pass.
+1. Complete: run `npm ci`, `npm run site:check`, `npm run security:audit`, `npm run security:test`, and `npm run test:all`.
+2. Complete: deploy a branch preview and run the protected deployed system check.
+3. Complete: review and apply the V9.4.0 Supabase migration once.
+4. Complete: verify grants, RLS, storage rules, anonymous access boundaries, the homepage, and portal entry points after migration.
+5. Pending: enable leaked-password protection and rerun the Supabase security advisor.
+6. Pending approval: merge only after the preview, database, and authentication gates pass.
 
 Never include environment values, access tokens, customer records, or signed storage URLs in issues, screenshots, test fixtures, or logs.

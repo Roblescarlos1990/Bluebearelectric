@@ -1,10 +1,8 @@
 (function () {
   if (!window.supabase) return;
-  const c = window.supabase.createClient(
-      window.BLUE_BEAR_SUPABASE_URL,
-      window.BLUE_BEAR_SUPABASE_KEY,
-    ),
+  const c = window.BLUE_BEAR_SUPABASE_CLIENT,
     $ = (s) => document.querySelector(s);
+  if (!c) return;
   const page = $('[data-carousel-page]'),
     key = $('[data-carousel-system]'),
     list = $('[data-carousel-manager-list]'),

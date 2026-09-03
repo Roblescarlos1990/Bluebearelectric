@@ -195,7 +195,7 @@
   },
   "modules": {
     "admin-backend.js": {
-      "bytes": 31851,
+      "bytes": 31803,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -270,7 +270,7 @@
       "fetchTargets": []
     },
     "admin-employee-portal-v1.js": {
-      "bytes": 8391,
+      "bytes": 8343,
       "pages": ["admin-portal.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -310,7 +310,7 @@
       "fetchTargets": []
     },
     "billing-v8-6.js": {
-      "bytes": 29726,
+      "bytes": 29678,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -366,7 +366,7 @@
       "fetchTargets": []
     },
     "blue-bear-3d-carousel.js": {
-      "bytes": 7129,
+      "bytes": 7064,
       "pages": [
         "commercial.html",
         "industrial.html",
@@ -443,7 +443,7 @@
       "fetchTargets": []
     },
     "carousel-manager-v8-9-2.js": {
-      "bytes": 5817,
+      "bytes": 5758,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -520,7 +520,7 @@
       "fetchTargets": ["/api/quote", "/api/security-config"]
     },
     "content-manager.js": {
-      "bytes": 13440,
+      "bytes": 13392,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -555,7 +555,7 @@
       "fetchTargets": []
     },
     "crm-v8-5.js": {
-      "bytes": 16338,
+      "bytes": 16290,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -618,7 +618,7 @@
       "fetchTargets": []
     },
     "document-studio-v8-8-1.js": {
-      "bytes": 4545,
+      "bytes": 4497,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -643,7 +643,7 @@
       "fetchTargets": []
     },
     "employee-portal-v1.js": {
-      "bytes": 12999,
+      "bytes": 12951,
       "pages": ["employee-portal.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -700,7 +700,7 @@
       "fetchTargets": []
     },
     "engineering-inspection-admin-v9.js": {
-      "bytes": 2613,
+      "bytes": 2565,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -763,7 +763,7 @@
       "fetchTargets": []
     },
     "home-systems-v8-9-2.js": {
-      "bytes": 6362,
+      "bytes": 6230,
       "pages": ["residential.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -833,7 +833,7 @@
       "fetchTargets": []
     },
     "media-v8-7-2.js": {
-      "bytes": 8443,
+      "bytes": 8395,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -866,7 +866,7 @@
       "fetchTargets": []
     },
     "operations-intelligence-v8-8.js": {
-      "bytes": 14720,
+      "bytes": 14672,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -905,7 +905,7 @@
       "fetchTargets": []
     },
     "photo-slot-admin-v9-1-2.js": {
-      "bytes": 6381,
+      "bytes": 6333,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -930,7 +930,7 @@
       "fetchTargets": ["assets/data/photo-slots.json"]
     },
     "photo-slots-v9-1-2.js": {
-      "bytes": 1323,
+      "bytes": 1267,
       "pages": [
         "about.html",
         "commercial.html",
@@ -956,7 +956,7 @@
       "fetchTargets": []
     },
     "project-command-center-v8-7.js": {
-      "bytes": 19967,
+      "bytes": 19873,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -1022,7 +1022,7 @@
       "fetchTargets": []
     },
     "public-content.js": {
-      "bytes": 3947,
+      "bytes": 3899,
       "pages": [
         "about.html",
         "commercial.html",
@@ -1062,7 +1062,7 @@
       "fetchTargets": []
     },
     "reset-password-v1.js": {
-      "bytes": 884,
+      "bytes": 836,
       "pages": ["reset-password.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -1076,7 +1076,7 @@
       "fetchTargets": []
     },
     "security-dashboard.js": {
-      "bytes": 3940,
+      "bytes": 3892,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -1170,7 +1170,7 @@
       "fetchTargets": []
     },
     "supabase-config.js": {
-      "bytes": 158,
+      "bytes": 387,
       "pages": [
         "about.html",
         "admin-portal.html",
@@ -1256,7 +1256,7 @@
       "fetchTargets": []
     },
     "v6-3-command-center.js": {
-      "bytes": 4763,
+      "bytes": 4691,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -1336,7 +1336,7 @@
       "fetchTargets": []
     },
     "v6-7-field-ops-admin.js": {
-      "bytes": 2773,
+      "bytes": 2829,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],

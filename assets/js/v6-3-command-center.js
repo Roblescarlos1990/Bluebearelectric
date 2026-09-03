@@ -7,10 +7,7 @@
       /[&<>"']/g,
       (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m],
     );
-  const client = window.supabase?.createClient(
-    window.BLUE_BEAR_SUPABASE_URL,
-    window.BLUE_BEAR_SUPABASE_KEY,
-  );
+  const client = window.BLUE_BEAR_SUPABASE_CLIENT;
   async function count(table) {
     const { count } = await client.from(table).select('*', { count: 'exact', head: true });
     return count || 0;

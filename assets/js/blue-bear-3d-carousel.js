@@ -19,10 +19,8 @@
       key = root.dataset.carouselKey || 'hero';
     if (page && window.supabase && window.BLUE_BEAR_SUPABASE_URL && window.BLUE_BEAR_SUPABASE_KEY) {
       try {
-        const c = window.supabase.createClient(
-          window.BLUE_BEAR_SUPABASE_URL,
-          window.BLUE_BEAR_SUPABASE_KEY,
-        );
+        const c = window.BLUE_BEAR_SUPABASE_CLIENT;
+        if (!c) return;
         const r = await c
           .from('website_carousel_items')
           .select('*')

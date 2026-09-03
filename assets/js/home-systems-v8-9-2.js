@@ -23,11 +23,8 @@
       .then((r) => r.json())
       .catch(() => ({ systems: {} }));
     systems = fallback.systems || {};
-    if (window.supabase && window.BLUE_BEAR_SUPABASE_URL && window.BLUE_BEAR_SUPABASE_KEY) {
-      client = window.supabase.createClient(
-        window.BLUE_BEAR_SUPABASE_URL,
-        window.BLUE_BEAR_SUPABASE_KEY,
-      );
+    if (window.BLUE_BEAR_SUPABASE_CLIENT) {
+      client = window.BLUE_BEAR_SUPABASE_CLIENT;
       const { data, error } = await client
         .from('website_carousel_items')
         .select('*')

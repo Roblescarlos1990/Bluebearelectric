@@ -298,8 +298,8 @@ ${dataAttributeSections()}
 
 - Public modules may submit a quote or read explicitly published website content; they do not expose
   administrator CRUD controls.
-- Employee and administrator modules remain separate entry points and create their own authenticated
-  Supabase clients.
+- Employee and administrator modules remain separate entry points but reuse the shared authenticated
+  Supabase client initialized by \`supabase-config.js\`.
 - Authorization remains enforced by Supabase authentication, table policies, storage policies, and
   the administrator-membership queries. Hiding a button or panel is not treated as authorization.
 - The publishable browser key in \`supabase-config.js\` is not a service-role key. RLS and storage

@@ -34,11 +34,8 @@
       .replace(/[^a-z0-9]+/g, '-');
   const getClient = () => {
     if (client) return client;
-    if (!window.supabase || !window.BLUE_BEAR_SUPABASE_URL) return null;
-    client = window.supabase.createClient(
-      window.BLUE_BEAR_SUPABASE_URL,
-      window.BLUE_BEAR_SUPABASE_KEY,
-    );
+    if (!window.BLUE_BEAR_SUPABASE_CLIENT) return null;
+    client = window.BLUE_BEAR_SUPABASE_CLIENT;
     return client;
   };
   async function isAdmin() {

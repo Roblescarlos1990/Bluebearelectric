@@ -41,23 +41,23 @@ Portal and admin pages remain outside this public generator and retain their sep
 
 ## Public and shared browser modules
 
-| Module                              | Purpose                                                                                                        |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `blue-bear-3d-carousel.js`          | Enhances service-page galleries with the shared Blue Bear carousel interaction.                                |
-| `brand-experience.js`               | Runs the logo-only intro and applies shared Blue Bear brand artwork.                                           |
-| `company-profile.js`                | Applies shared company profile and contact information to marked page elements.                                |
-| `contact-backend.js`                | Validates quote forms, loads security configuration, and submits approved requests to `/api/quote`.            |
-| `engineering-inspection-v9.js`      | Powers the public drone and thermal-inspection experience.                                                     |
-| `home-systems-v8-9-2.js`            | Powers residential home-system cards and interactions.                                                         |
-| `photo-slots-v9-1-2.js`             | Replaces registered public images with published Supabase photo-slot overrides.                                |
-| `project-gallery.js`                | Handles project filters, keyboard interaction, and the project lightbox.                                       |
-| `public-content.js`                 | Applies published Supabase content, service, and portfolio overrides.                                          |
-| `service-experience.js`             | Handles service-page technical selectors and related visual details.                                           |
-| `service-photo-3d-v8-9-6.js`        | Adds pointer depth and lightbox behavior to service photography.                                               |
-| `site-shell.js`                     | Owns shared navigation, mobile-menu state, reveal behavior, and public conversion affordances.                 |
-| `supabase-config.js`                | Exposes the public Supabase project URL and publishable browser key. It must never contain a service-role key. |
-| `theme-loader.js`                   | Restores saved theme variables for the customization workflow.                                                 |
-| `typical-project-prefill-v8-9-4.js` | Prefills the estimate form from approved project query parameters.                                             |
+| Module                              | Purpose                                                                                                                                          |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `blue-bear-3d-carousel.js`          | Enhances service-page galleries with the shared Blue Bear carousel interaction.                                                                  |
+| `brand-experience.js`               | Runs the logo-only intro and applies shared Blue Bear brand artwork.                                                                             |
+| `company-profile.js`                | Applies shared company profile and contact information to marked page elements.                                                                  |
+| `contact-backend.js`                | Validates quote forms, loads security configuration, and submits approved requests to `/api/quote`.                                              |
+| `engineering-inspection-v9.js`      | Powers the public drone and thermal-inspection experience.                                                                                       |
+| `home-systems-v8-9-2.js`            | Powers residential home-system cards and interactions.                                                                                           |
+| `photo-slots-v9-1-2.js`             | Replaces registered public images with published Supabase photo-slot overrides.                                                                  |
+| `project-gallery.js`                | Handles project filters, keyboard interaction, and the project lightbox.                                                                         |
+| `public-content.js`                 | Applies published Supabase content, service, and portfolio overrides.                                                                            |
+| `service-experience.js`             | Handles service-page technical selectors and related visual details.                                                                             |
+| `service-photo-3d-v8-9-6.js`        | Adds pointer depth and lightbox behavior to service photography.                                                                                 |
+| `site-shell.js`                     | Owns shared navigation, mobile-menu state, reveal behavior, and public conversion affordances.                                                   |
+| `supabase-config.js`                | Exposes the public project URL and publishable key and creates the one shared browser Supabase client. It must never contain a service-role key. |
+| `theme-loader.js`                   | Restores saved theme variables for the customization workflow.                                                                                   |
+| `typical-project-prefill-v8-9-4.js` | Prefills the estimate form from approved project query parameters.                                                                               |
 
 ## Active portal and administration modules
 

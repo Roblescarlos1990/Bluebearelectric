@@ -1,9 +1,7 @@
 (function () {
   if (!window.supabase || !document.querySelector('[data-admin-dashboard]')) return;
-  const client = window.supabase.createClient(
-    window.BLUE_BEAR_SUPABASE_URL,
-    window.BLUE_BEAR_SUPABASE_KEY,
-  );
+  const client = window.BLUE_BEAR_SUPABASE_CLIENT;
+  if (!client) return;
   const $ = (s) => document.querySelector(s);
   const esc = (v) =>
     String(v ?? '').replace(
@@ -28,6 +26,11 @@
     el.innerHTML = data.length ? data.map(map).join('') : '<p class="small">No records yet.</p>';
   }
   async function loadFieldOps() {
+    const {
+      data: { session },
+    } = await client.auth.getSession();
+    if (!session) return;
+
     const [daily, jsa, veh, mat, comp] = await Promise.all([
       read('field_daily_reports'),
       read('safety_jsa_forms'),
