@@ -4,7 +4,7 @@ Production website and operations portal for Blue Bear Electric, a licensed elec
 
 The repository is a static, multi-page Vercel site with serverless quote handling, Supabase-backed content and portal features, managed media, and the engineering inspection division.
 
-Public pages use a small build-time template for shared navigation, footer content, company facts, and canonical URLs. The generated root HTML is committed, so the deployed site remains static and essential navigation never depends on client-side rendering.
+Public pages use a small build-time template for shared navigation, footer content, company facts, search/social metadata, and canonical URLs. The generator also owns the public sitemap. Generated root HTML is committed, so the deployed site remains static and essential navigation never depends on client-side rendering.
 
 ## Production routes
 
@@ -47,7 +47,7 @@ Public pages use a small build-time template for shared navigation, footer conte
 └── vercel.json           Routing and security headers
 ```
 
-Root HTML and CSS files are intentional. Existing production URLs and root-relative image behavior depend on this static deployment structure; feature JavaScript and media belong under `assets/`. Do not hand-edit content between shared public-shell markers. Change shared facts in `config/site.json`, change shared markup in `src/templates/public-shell.mjs`, and regenerate the committed pages.
+Root HTML and CSS files are intentional. Existing production URLs and root-relative image behavior depend on this static deployment structure; feature JavaScript and media belong under `assets/`. Do not hand-edit content between generated public-shell or public-SEO markers. Change shared facts and metadata in `config/site.json`, change shared markup in `src/templates/public-shell.mjs`, and regenerate the committed pages.
 
 See [`docs/CODE-MAP.md`](docs/CODE-MAP.md) before changing runtime code. It identifies public,
 portal, admin, API, database, deployment, and historical ownership boundaries.
@@ -64,7 +64,7 @@ python -m http.server 4173
 
 Open `http://127.0.0.1:4173/`. Use a private browser window when checking the one-time homepage intro.
 
-After changing shared links, company facts, header or footer markup, install development dependencies and regenerate the public shell before previewing:
+After changing shared links, company facts, metadata, header or footer markup, install development dependencies and regenerate the public shell and sitemap before previewing:
 
     npm ci
     npm run site:build
@@ -86,8 +86,8 @@ The first browser installation downloads an isolated Chromium runtime. Individua
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `npm run css:audit`             | Report stylesheet size, rules, declarations, repeated selectors, exact duplicates, breakpoints, and focal cascade definitions.  |
 | `npm run css:baseline -- after` | Capture the eight documented Phase 6 homepage viewport baselines after starting the local test server automatically.            |
-| `npm run site:build`            | Materialize shared public header, footer, company facts, links, and canonical URLs into committed root HTML.                    |
-| `npm run site:check`            | Fail when committed public HTML is stale, a public route is unowned, canonicals collide, or portal/admin isolation is broken.   |
+| `npm run site:build`            | Materialize shared public shell, search/social metadata, structured data, canonical URLs, and sitemap into committed files.     |
+| `npm run site:check`            | Fail on stale generated HTML/sitemap, missing route ownership, duplicate descriptions/canonicals, or portal/admin leakage.      |
 | `npm run format:check`          | Check runtime HTML, CSS, API and browser JavaScript, tooling, tests, workflow files, JSON, and active Markdown with Prettier.   |
 | `npm run media:build`           | Regenerate responsive AVIF/WebP derivatives, app icons, image metadata, inventory, and runtime image markup.                    |
 | `npm run lint:html`             | Validate all runtime HTML with `html-validate`.                                                                                 |
@@ -111,6 +111,8 @@ node scripts/validate-site.mjs
 ```
 
 The validator checks HTML metadata, local links and assets, the web manifest, and JavaScript syntax.
+
+Search metadata ownership, published-claim rules, Android installation, Safari Add to Home Screen, and the deliberate no-offline decision are documented in [`docs/guides/SEARCH-AND-INSTALLABILITY.md`](docs/guides/SEARCH-AND-INSTALLABILITY.md).
 
 For a deployed preview, also run:
 

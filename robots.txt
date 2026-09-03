@@ -1,24 +1,3 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
 User-agent: GPTBot
 Disallow: /
 
@@ -35,10 +14,21 @@ User-agent: Meta-ExternalAgent
 Disallow: /
 
 User-agent: *
+Allow: /
 Disallow: /admin.html
+Disallow: /admin
+Disallow: /admin-portal.html
+Disallow: /admin-portal
 Disallow: /employee-portal.html
+Disallow: /employee-portal
 Disallow: /customer-portal.html
+Disallow: /customer-portal
 Disallow: /customize.html
+Disallow: /customize
+Disallow: /reset-password.html
+Disallow: /reset-password
+Disallow: /system-check.html
+Disallow: /system-check
 Disallow: /api/
 
 Sitemap: https://bluebearelectric.com/sitemap.xml

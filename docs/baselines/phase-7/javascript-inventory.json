@@ -496,7 +496,7 @@
       "fetchTargets": []
     },
     "contact-backend.js": {
-      "bytes": 15307,
+      "bytes": 15352,
       "pages": ["contact.html", "index.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],
@@ -520,7 +520,7 @@
       "fetchTargets": ["/api/quote", "/api/security-config"]
     },
     "content-manager.js": {
-      "bytes": 13429,
+      "bytes": 13440,
       "pages": ["admin.html"],
       "localStorageKeys": [],
       "sessionStorageKeys": [],

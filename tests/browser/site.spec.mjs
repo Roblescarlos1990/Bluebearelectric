@@ -37,7 +37,10 @@ test('desktop navigation and estimate call to action reach the expected pages', 
   await expect(page.getByRole('heading', { level: 1, name: 'Services' })).toBeVisible();
 
   await openPage(page, '/');
-  await page.getByRole('link', { name: 'Request My Estimate', exact: true }).click();
+  await page
+    .locator('.hero')
+    .getByRole('link', { name: 'Request a Free Estimate', exact: true })
+    .click();
   await expect(page).toHaveURL(/\/contact\.html$/);
   await expect(page.getByRole('heading', { level: 1, name: 'Contact' })).toBeVisible();
 });

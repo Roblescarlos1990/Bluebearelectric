@@ -196,11 +196,26 @@ test('mobile homepage selects a compact AVIF hero without material layout shift'
 });
 
 test('install manifest exposes complete any-purpose and maskable icon sets', async ({
+  page,
   request,
 }) => {
   const response = await request.get('/site.webmanifest');
   expect(response.ok()).toBeTruthy();
   const manifest = await response.json();
+  expect(manifest).toMatchObject({
+    name: 'Blue Bear Electric',
+    short_name: 'Blue Bear',
+    id: '/',
+    start_url: '/',
+    scope: '/',
+    lang: 'en-US',
+    display: 'standalone',
+    theme_color: '#030a13',
+    background_color: '#030a13',
+    prefer_related_applications: false,
+  });
+  expect(manifest.display_override).toContain('standalone');
+  expect(manifest.categories).toEqual(expect.arrayContaining(['business', 'utilities']));
   expect(manifest.icons).toEqual(
     expect.arrayContaining([
       expect.objectContaining({ sizes: '192x192', purpose: 'any' }),
@@ -214,4 +229,14 @@ test('install manifest exposes complete any-purpose and maskable icon sets', asy
     expect(iconResponse.ok(), `${icon.src} should load`).toBeTruthy();
     expect(iconResponse.headers()['content-type']).toContain('image/png');
   }
+
+  await openPage(page, '/');
+  await expect(page.locator('link[rel="apple-touch-icon"][sizes="180x180"]')).toHaveAttribute(
+    'href',
+    /apple-touch-icon\.png$/,
+  );
+  await expect(page.locator('meta[name="apple-mobile-web-app-capable"]')).toHaveAttribute(
+    'content',
+    'yes',
+  );
 });

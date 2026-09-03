@@ -9,19 +9,19 @@ HTML without waiting for JavaScript.
 
 ## Ownership
 
-| Source                         | Responsibility                                                                                                                                        |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| config/site.json               | Company facts, phone number, service area, license, credentials, shared link definitions, navigation order, footer lists, and per-page shell variants |
-| src/templates/public-shell.mjs | The single public header renderer and single public footer renderer                                                                                   |
-| scripts/build-shared-html.mjs  | Route ownership checks, canonical generation, public-shell materialization, formatting, and synchronization checks                                    |
-| Root public HTML               | Committed deployment output plus page-specific content outside generated markers                                                                      |
+| Source                         | Responsibility                                                                                                           |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| config/site.json               | Company facts, search/social metadata, shared links, navigation order, footer lists, and per-page shell variants         |
+| src/templates/public-shell.mjs | The single public header renderer and single public footer renderer                                                      |
+| scripts/build-shared-html.mjs  | Route ownership checks, public shell and SEO materialization, sitemap generation, formatting, and synchronization checks |
+| Root public HTML               | Committed deployment output plus page-specific content outside generated markers                                         |
 
 Security-policy.html is an intentional standalone public page. Customer, employee, reset-password,
 admin, customization, and system-check entry points are not processed by the public generator.
 
 ## Editing workflow
 
-1. Update shared business facts or link destinations in config/site.json.
+1. Update shared business facts, page metadata, or link destinations in config/site.json.
 2. Update public header or footer markup in src/templates/public-shell.mjs only when the structure
    must change.
 3. Keep page-specific body copy in the appropriate root HTML file outside the generated markers.
@@ -39,6 +39,9 @@ Do not hand-edit content between these marker pairs:
     <!-- shared:public-footer:start -->
     <!-- shared:public-footer:end -->
 
+    <!-- shared:public-seo:start -->
+    <!-- shared:public-seo:end -->
+
 The next build intentionally replaces those regions.
 
 ## Route and SEO guarantees
@@ -46,14 +49,16 @@ The next build intentionally replaces those regions.
 - Every public route remains a root .html file.
 - Vercel clean URLs continue to expose the same extensionless routes.
 - Existing relative links and inbound .html links remain valid.
-- Each public page receives one unique canonical URL on bluebearelectric.com.
+- Each public page receives one unique description and canonical URL on bluebearelectric.com.
 - The homepage canonical is the root domain; other canonicals use the clean extensionless route.
+- Open Graph, social-card, and Electrician structured metadata are present in delivered HTML.
+- The generated sitemap contains only indexable public clean routes.
 - Essential navigation and footer content are present in the delivered HTML.
 - Portal and admin layouts are checked for accidental public-shell markers.
 
 The site:check command fails if a configured route leaves the public manifest, a public route has no
-declared owner, generated output is stale, canonical URLs collide, or a portal/admin page is pulled
-into the public shell.
+declared owner or SEO entry, generated output is stale, canonical URLs or descriptions collide, or a
+portal/admin page is pulled into the public shell.
 
 ## Page variants
 

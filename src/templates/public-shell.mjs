@@ -57,7 +57,7 @@ function renderLogo({ mobileMark = false, footer = false, alt } = {}) {
 const headerVariants = {
   compact: {
     ctaHref: 'contact.html',
-    ctaLabel: 'Get Free Estimate',
+    ctaLabel: 'Request a Free Estimate',
   },
   'compact-request': {
     ctaHref: 'contact.html',
@@ -65,7 +65,7 @@ const headerVariants = {
   },
   full: {
     ctaHref: 'contact.html',
-    ctaLabel: 'Get Free Estimate',
+    ctaLabel: 'Request a Free Estimate',
   },
   home: {
     ctaHref: 'contact.html',
@@ -195,7 +195,7 @@ export function renderPublicFooter(config, variantName) {
       renderBrandColumn(config, credentialLine(config)),
       renderLinkColumn(config, 'Quick Links', footer.quickLinksStandard),
       renderTextColumn('Capabilities', footer.capabilities),
-      renderTextColumn('Contact', contactLines(config, 'License #')),
+      renderTextColumn('Contact', contactLines(config)),
     ]);
   }
 

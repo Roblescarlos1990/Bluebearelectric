@@ -355,7 +355,7 @@
     if (!w) return;
     const c = state.content.company?.content_value || {},
       h = state.content.homepage_hero?.content_value || {};
-    w.innerHTML = `<div class="site-preview-hero"><span>${esc(h.eyebrow || 'Industrial • Commercial • Residential')}</span><h3>${esc(h.headline || 'Homepage headline')}</h3><p>${esc(h.description || 'Homepage description')}</p><div class="cta-row"><span class="btn yellow">${esc(h.primary_button || 'Call Now')}</span><span class="btn blue">${esc(h.secondary_button || 'Request Estimate')}</span></div></div><div class="site-preview-meta"><b>${esc(c.company_name || 'Blue Bear Electric')}</b><span>${esc(c.phone || '')} • CA Lic #${esc(c.license || '')}</span><p>${esc(c.mission || '')}</p></div>`;
+    w.innerHTML = `<div class="site-preview-hero"><span>${esc(h.eyebrow || 'Industrial • Commercial • Residential')}</span><h3>${esc(h.headline || 'Homepage headline')}</h3><p>${esc(h.description || 'Homepage description')}</p><div class="cta-row"><span class="btn yellow">${esc(h.primary_button || 'Call Now')}</span><span class="btn blue">${esc(h.secondary_button || 'Request a Free Estimate')}</span></div></div><div class="site-preview-meta"><b>${esc(c.company_name || 'Blue Bear Electric')}</b><span>${esc(c.phone || '')} • CA License #${esc(c.license || '')}</span><p>${esc(c.mission || '')}</p></div>`;
   }
 
   const page = $('[data-tab-page="website"]');

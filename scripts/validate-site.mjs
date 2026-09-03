@@ -115,6 +115,25 @@ if (!(await exists(manifestPath))) errors.push('site.webmanifest is missing');
 else {
   try {
     const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+    const requiredManifestValues = {
+      name: 'Blue Bear Electric',
+      short_name: 'Blue Bear',
+      id: '/',
+      start_url: '/',
+      scope: '/',
+      lang: 'en-US',
+      display: 'standalone',
+      background_color: '#030a13',
+      theme_color: '#030a13',
+    };
+    for (const [field, expected] of Object.entries(requiredManifestValues)) {
+      if (manifest[field] !== expected)
+        errors.push(`site.webmanifest: ${field} must be ${JSON.stringify(expected)}`);
+    }
+    if (manifest.prefer_related_applications !== false)
+      errors.push('site.webmanifest: prefer_related_applications must be false');
+    if (!manifest.display_override?.includes('standalone'))
+      errors.push('site.webmanifest: display_override must include standalone');
     if (!manifest.icons?.length) errors.push('site.webmanifest has no icons');
     for (const icon of manifest.icons || []) {
       if (!icon.src) {
@@ -133,6 +152,62 @@ else {
   } catch (error) {
     errors.push(`site.webmanifest is invalid JSON: ${error.message}`);
   }
+}
+
+const projectPath = path.join(root, 'PROJECT-MANIFEST.json');
+const configPath = path.join(root, 'config', 'site.json');
+try {
+  const project = JSON.parse(await readFile(projectPath, 'utf8'));
+  const config = JSON.parse(await readFile(configPath, 'utf8'));
+  const publicPages = project.runtime.public_pages;
+  const descriptions = new Set();
+  const canonicals = new Set();
+
+  for (const filename of publicPages) {
+    const html = await readFile(path.join(root, filename), 'utf8');
+    const descriptionMatches = [
+      ...html.matchAll(
+        /<meta\b(?=[^>]*name=["']description["'])[^>]*content=["']([^"']+)["'][^>]*>/gi,
+      ),
+    ];
+    const canonicalMatches = [
+      ...html.matchAll(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*href=["']([^"']+)["'][^>]*>/gi),
+    ];
+    if (descriptionMatches.length !== 1)
+      errors.push(`${filename}: expected exactly one meta description`);
+    if (canonicalMatches.length !== 1)
+      errors.push(`${filename}: expected exactly one canonical URL`);
+    const description = config.seo?.pages?.[filename]?.description;
+    if (!description) errors.push(`${filename}: missing config/site.json SEO description`);
+    else if (descriptions.has(description)) errors.push(`${filename}: duplicate SEO description`);
+    else descriptions.add(description);
+    const canonical = canonicalMatches[0]?.[1];
+    if (canonical && canonicals.has(canonical)) errors.push(`${filename}: duplicate canonical URL`);
+    else if (canonical) canonicals.add(canonical);
+    for (const required of ['og:title', 'og:description', 'og:url', 'og:image', 'og:image:alt']) {
+      if (!new RegExp(`<meta\\b(?=[^>]*property=["']${required}["'])`, 'i').test(html))
+        errors.push(`${filename}: missing ${required} metadata`);
+    }
+    if (
+      !/<script\b(?=[^>]*type=["']application\/ld\+json["'])(?=[^>]*data-blue-bear-business)[^>]*>/i.test(
+        html,
+      )
+    )
+      errors.push(`${filename}: missing Electrician structured data`);
+  }
+
+  const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
+  const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const expectedSitemapUrls = publicPages
+    .filter((filename) => config.seo.pages[filename].indexable !== false)
+    .map((filename) => {
+      const route = filename === 'index.html' ? '/' : '/' + filename.replace(/\.html$/i, '');
+      return config.siteUrl.replace(/\/$/, '') + route;
+    });
+  if (JSON.stringify(sitemapUrls) !== JSON.stringify(expectedSitemapUrls))
+    errors.push('sitemap.xml does not match the configured indexable public routes');
+} catch (error) {
+  errors.push(`search metadata validation failed: ${error.message}`);
 }
 
 const imageManifestPath = path.join(root, 'assets', 'data', 'image-variants.json');

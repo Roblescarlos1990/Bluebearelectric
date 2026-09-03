@@ -41,6 +41,8 @@
     "responsive production design system",
     "build-time shared public header and footer",
     "unique clean-route canonical metadata",
+    "generated search, social, and Electrician structured metadata",
+    "public-only XML sitemap and private-route crawler exclusions",
     "browser and app icon metadata",
     "document studio",
     "project command center"
