@@ -1,0 +1,9 @@
+# Historical reference material is intentionally preserved verbatim.
+docs/archive/
+docs/releases/
+
+node_modules/
+.npm-cache/
+test-results/
+playwright-report/
+coverage/

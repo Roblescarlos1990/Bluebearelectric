@@ -1,9 +1,169 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>VoltFlow | Site Customizer</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png"><link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png"><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#030a13"></head><body>
-<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Website</a><a href="admin.html">Command Center</a></div><a class="btn yellow" href="admin.html">Back to Admin</a></nav></header>
-<section class="page-hero"><div><div class="eyebrow">VoltFlow</div><h1>Site Customizer</h1><p class="lead">Preview colors, button shape, card shape, and spacing before making permanent changes.</p></div></section>
-<section class="section"><div class="estimate"><div><h2>Theme Controls</h2><p class="small">Changes save only in this browser for preview. Copy the generated CSS into <strong>theme.css</strong> to publish the design for everyone.</p><form class="form" id="themeForm">
-<label>Primary Yellow<input type="color" name="yellow" value="#ffc400"></label><label>Electric Blue<input type="color" name="blue2" value="#0d8bff"></label><label>Background<input type="color" name="bg" value="#050b14"></label><label>Panel Color<input type="color" name="panel" value="#0b1a2e"></label><label>Button Radius<input type="range" name="button-radius" min="0" max="30" value="12"><span data-value="button-radius">12px</span></label><label>Card Radius<input type="range" name="card-radius" min="0" max="36" value="20"><span data-value="card-radius">20px</span></label><label>Section Spacing<input type="range" name="section-space" min="35" max="110" value="70"><span data-value="section-space">70px</span></label>
-<button class="btn yellow" type="submit">Save Preview Theme</button><button class="btn dark" type="button" id="resetTheme">Reset</button></form></div>
-<div><h2>Live Preview</h2><div class="admin-panel"><div class="eyebrow">Industrial • Commercial • Residential</div><h2>Powering Imperial County</h2><p class="small">Use this card to preview global colors, spacing, rounded corners, and button motion.</p><div class="cta-row"><button class="btn yellow">Primary Button</button><button class="btn blue">Secondary Button</button><button class="btn dark">Dark Button</button></div></div><h3>Generated CSS</h3><textarea id="cssOutput" style="width:100%;min-height:250px;background:#071323;color:white;border:1px solid var(--line);border-radius:12px;padding:14px"></textarea><button class="btn blue" id="copyCss" type="button">Copy CSS</button></div></div></section>
-<section class="section"><div class="section-title"><h2>Where Photos Go</h2><p>Upload website photos into <code>assets/images/site/</code>. Admin project photos remain in Supabase Storage.</p></div><div class="projects"><div class="project-card"><div class="card-body"><h3>Logo</h3><p><code>assets/images/site/logo.jpg</code></p></div></div><div class="project-card"><div class="card-body"><h3>Truck</h3><p><code>assets/images/site/truck.jpg</code></p></div></div><div class="project-card"><div class="card-body"><h3>Hero</h3><p>Replace <code>switchgear.jpg</code> or edit the hero URL in CSS.</p></div></div><div class="project-card"><div class="card-body"><h3>Service Photos</h3><p>Use clear names such as <code>industrial-panel-01.jpg</code>.</p></div></div></div></section>
-<script src="assets/js/site-shell.js"></script><script src="assets/js/theme-loader.js"></script><script src="assets/js/customizer.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>VoltFlow | Site Customizer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#030a13" />
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav">
+        <a class="brand" href="index.html"
+          ><img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric logo"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="160px"
+            decoding="async"
+            loading="eager"
+        /></a>
+        <div class="links">
+          <a href="index.html">Website</a><a href="admin.html">Command Center</a>
+        </div>
+        <a class="btn yellow" href="admin.html">Back to Admin</a>
+      </nav>
+    </header>
+    <section class="page-hero">
+      <div>
+        <div class="eyebrow">VoltFlow</div>
+        <h1>Site Customizer</h1>
+        <p class="lead">
+          Preview colors, button shape, card shape, and spacing before making permanent changes.
+        </p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="estimate">
+        <div>
+          <h2>Theme Controls</h2>
+          <p class="small">
+            Changes save only in this browser for preview. Copy the generated CSS into
+            <strong>theme.css</strong> to publish the design for everyone.
+          </p>
+          <form class="form" id="themeForm">
+            <label>Primary Yellow<input type="color" name="yellow" value="#ffc400" /></label
+            ><label>Electric Blue<input type="color" name="blue2" value="#0d8bff" /></label
+            ><label>Background<input type="color" name="bg" value="#050b14" /></label
+            ><label>Panel Color<input type="color" name="panel" value="#0b1a2e" /></label
+            ><label
+              >Button Radius<input
+                type="range"
+                name="button-radius"
+                min="0"
+                max="30"
+                value="12"
+              /><span data-value="button-radius">12px</span></label
+            ><label
+              >Card Radius<input type="range" name="card-radius" min="0" max="36" value="20" /><span
+                data-value="card-radius"
+                >20px</span
+              ></label
+            ><label
+              >Section Spacing<input
+                type="range"
+                name="section-space"
+                min="35"
+                max="110"
+                value="70"
+              /><span data-value="section-space">70px</span></label
+            >
+            <button class="btn yellow" type="submit">Save Preview Theme</button
+            ><button class="btn dark" type="button" id="resetTheme">Reset</button>
+          </form>
+        </div>
+        <div>
+          <h2>Live Preview</h2>
+          <div class="admin-panel">
+            <div class="eyebrow">Industrial • Commercial • Residential</div>
+            <h2>Powering Imperial County</h2>
+            <p class="small">
+              Use this card to preview global colors, spacing, rounded corners, and button motion.
+            </p>
+            <div class="cta-row">
+              <button class="btn yellow">Primary Button</button
+              ><button class="btn blue">Secondary Button</button
+              ><button class="btn dark">Dark Button</button>
+            </div>
+          </div>
+          <h3>Generated CSS</h3>
+          <textarea
+            id="cssOutput"
+            style="
+              width: 100%;
+              min-height: 250px;
+              background: #071323;
+              color: white;
+              border: 1px solid var(--line);
+              border-radius: 12px;
+              padding: 14px;
+            "
+          ></textarea
+          ><button class="btn blue" id="copyCss" type="button">Copy CSS</button>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-title">
+        <h2>Where Photos Go</h2>
+        <p>
+          Upload website photos into <code>assets/images/site/</code>. Admin project photos remain
+          in Supabase Storage.
+        </p>
+      </div>
+      <div class="projects">
+        <div class="project-card">
+          <div class="card-body">
+            <h3>Logo</h3>
+            <p><code>assets/images/site/logo.jpg</code></p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-body">
+            <h3>Truck</h3>
+            <p><code>assets/images/site/truck.jpg</code></p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-body">
+            <h3>Hero</h3>
+            <p>Replace <code>switchgear.jpg</code> or edit the hero URL in CSS.</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-body">
+            <h3>Service Photos</h3>
+            <p>Use clear names such as <code>industrial-panel-01.jpg</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="assets/js/image-performance.js"></script>
+
+    <script src="assets/js/site-shell.js"></script>
+    <script src="assets/js/theme-loader.js"></script>
+    <script src="assets/js/customizer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2490 @@
+{
+  "version": 1,
+  "images": {
+    "assets/images/engineering-inspection/case-study/engineering-inspection-hero.webp": {
+      "height": 889,
+      "size_bytes": 223472,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 267,
+          "path": "assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-480.avif",
+          "size_bytes": 13758,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 267,
+          "path": "assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-480.webp",
+          "size_bytes": 26014,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 533,
+          "path": "assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-960.avif",
+          "size_bytes": 44720,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 533,
+          "path": "assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-960.webp",
+          "size_bytes": 83478,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 800,
+          "path": "assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-1440.avif",
+          "size_bytes": 87505,
+          "width": 1440
+        },
+        {
+          "format": "webp",
+          "height": 800,
+          "path": "assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-1440.webp",
+          "size_bytes": 154630,
+          "width": 1440
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/engineering-inspection/case-study/thermal-oblique.webp": {
+      "height": 900,
+      "size_bytes": 315228,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 270,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-oblique-480.avif",
+          "size_bytes": 11610,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 270,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-oblique-480.webp",
+          "size_bytes": 21000,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 540,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-oblique-960.avif",
+          "size_bytes": 45568,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 540,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-oblique-960.webp",
+          "size_bytes": 91846,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/engineering-inspection/case-study/thermal-overhead-blended.webp": {
+      "height": 900,
+      "size_bytes": 424942,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 270,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-480.avif",
+          "size_bytes": 9131,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 270,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-480.webp",
+          "size_bytes": 15838,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 540,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-960.avif",
+          "size_bytes": 49988,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 540,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-960.webp",
+          "size_bytes": 106612,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/engineering-inspection/case-study/thermal-overhead-detail.webp": {
+      "height": 720,
+      "size_bytes": 224240,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 270,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-480.avif",
+          "size_bytes": 10647,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 270,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-480.webp",
+          "size_bytes": 18352,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 540,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-960.avif",
+          "size_bytes": 48014,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 540,
+          "path": "assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-960.webp",
+          "size_bytes": 92400,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/engineering-inspection/case-study/visual-oblique.webp": {
+      "height": 512,
+      "size_bytes": 63060,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 384,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-oblique-480.avif",
+          "size_bytes": 18770,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 384,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-oblique-480.webp",
+          "size_bytes": 33374,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 512,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-oblique-640.avif",
+          "size_bytes": 29649,
+          "width": 640
+        },
+        {
+          "format": "webp",
+          "height": 512,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-oblique-640.webp",
+          "size_bytes": 55034,
+          "width": 640
+        }
+      ],
+      "width": 640
+    },
+    "assets/images/engineering-inspection/case-study/visual-overhead.webp": {
+      "height": 512,
+      "size_bytes": 63484,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 384,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-overhead-480.avif",
+          "size_bytes": 19109,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 384,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-overhead-480.webp",
+          "size_bytes": 33440,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 512,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-overhead-640.avif",
+          "size_bytes": 30374,
+          "width": 640
+        },
+        {
+          "format": "webp",
+          "height": 512,
+          "path": "assets/images/optimized/engineering-inspection/case-study/visual-overhead-640.webp",
+          "size_bytes": 55590,
+          "width": 640
+        }
+      ],
+      "width": 640
+    },
+    "assets/images/media/commercial/hero/commercial-hero-01.jpg": {
+      "height": 1067,
+      "size_bytes": 120415,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-01-480.avif",
+          "size_bytes": 19613,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-01-480.webp",
+          "size_bytes": 33212,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1067,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-01-800.avif",
+          "size_bytes": 42311,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 1067,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-01-800.webp",
+          "size_bytes": 67096,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/commercial/hero/commercial-hero-02.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-02-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-02-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-02-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-02-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/commercial/hero/commercial-hero-03.jpg": {
+      "height": 656,
+      "size_bytes": 226620,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 201,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-03-480.avif",
+          "size_bytes": 13996,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 201,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-03-480.webp",
+          "size_bytes": 27224,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 402,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-03-960.avif",
+          "size_bytes": 39551,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 402,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-03-960.webp",
+          "size_bytes": 72606,
+          "width": 960
+        }
+      ],
+      "width": 1568
+    },
+    "assets/images/media/commercial/hero/commercial-hero-04.jpg": {
+      "height": 450,
+      "size_bytes": 62859,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 270,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-04-480.avif",
+          "size_bytes": 10511,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 270,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-04-480.webp",
+          "size_bytes": 18652,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 450,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-04-800.avif",
+          "size_bytes": 26558,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 450,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-04-800.webp",
+          "size_bytes": 41186,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/commercial/hero/commercial-hero-05.jpg": {
+      "height": 1707,
+      "size_bytes": 309607,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-05-480.avif",
+          "size_bytes": 23508,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-05-480.webp",
+          "size_bytes": 43440,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-05-960.avif",
+          "size_bytes": 71837,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/commercial/hero/commercial-hero-05-960.webp",
+          "size_bytes": 123910,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/industrial/hero/industrial-hero-01.jpg": {
+      "height": 1707,
+      "size_bytes": 322863,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-01-480.avif",
+          "size_bytes": 22486,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-01-480.webp",
+          "size_bytes": 42016,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-01-960.avif",
+          "size_bytes": 69988,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-01-960.webp",
+          "size_bytes": 122828,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 1707,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-01-1280.avif",
+          "size_bytes": 118066,
+          "width": 1280
+        },
+        {
+          "format": "webp",
+          "height": 1707,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-01-1280.webp",
+          "size_bytes": 194466,
+          "width": 1280
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/industrial/hero/industrial-hero-02.jpg": {
+      "height": 1707,
+      "size_bytes": 218362,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-02-480.avif",
+          "size_bytes": 14849,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-02-480.webp",
+          "size_bytes": 24870,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-02-960.avif",
+          "size_bytes": 43942,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-02-960.webp",
+          "size_bytes": 68288,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/industrial/hero/industrial-hero-03.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-03-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-03-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-03-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-03-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/industrial/hero/industrial-hero-04.jpg": {
+      "height": 1705,
+      "size_bytes": 284312,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 639,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-04-480.avif",
+          "size_bytes": 23680,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 639,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-04-480.webp",
+          "size_bytes": 42246,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1279,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-04-960.avif",
+          "size_bytes": 65401,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1279,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-04-960.webp",
+          "size_bytes": 109978,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/industrial/hero/industrial-hero-05.jpg": {
+      "height": 1707,
+      "size_bytes": 297328,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-05-480.avif",
+          "size_bytes": 19760,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-05-480.webp",
+          "size_bytes": 35208,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-05-960.avif",
+          "size_bytes": 59314,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/industrial/hero/industrial-hero-05-960.webp",
+          "size_bytes": 96926,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/hero/residential-hero-01.jpg": {
+      "height": 1067,
+      "size_bytes": 120415,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-01-480.avif",
+          "size_bytes": 19613,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-01-480.webp",
+          "size_bytes": 33212,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-01-800.avif",
+          "size_bytes": 42311,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-01-800.webp",
+          "size_bytes": 67096,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/residential/hero/residential-hero-02.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-02-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-02-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-02-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-02-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/residential/hero/residential-hero-03.jpg": {
+      "height": 1707,
+      "size_bytes": 218362,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-03-480.avif",
+          "size_bytes": 14849,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-03-480.webp",
+          "size_bytes": 24870,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-03-960.avif",
+          "size_bytes": 43942,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-03-960.webp",
+          "size_bytes": 68288,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/hero/residential-hero-04.jpg": {
+      "height": 656,
+      "size_bytes": 226620,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-04-480.avif",
+          "size_bytes": 13996,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-04-480.webp",
+          "size_bytes": 27224,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-04-960.avif",
+          "size_bytes": 39551,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-04-960.webp",
+          "size_bytes": 72606,
+          "width": 960
+        }
+      ],
+      "width": 1568
+    },
+    "assets/images/media/residential/hero/residential-hero-05.jpg": {
+      "height": 1707,
+      "size_bytes": 309607,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-05-480.avif",
+          "size_bytes": 23508,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-05-480.webp",
+          "size_bytes": 43440,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-05-960.avif",
+          "size_bytes": 71837,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/hero/residential-hero-05-960.webp",
+          "size_bytes": 123910,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/home-systems/ev/ev-01.jpg": {
+      "height": 656,
+      "size_bytes": 226620,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-01-480.avif",
+          "size_bytes": 13996,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-01-480.webp",
+          "size_bytes": 27224,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-01-960.avif",
+          "size_bytes": 39551,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-01-960.webp",
+          "size_bytes": 72606,
+          "width": 960
+        }
+      ],
+      "width": 1568
+    },
+    "assets/images/media/residential/home-systems/ev/ev-02.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-02-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-02-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-02-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-02-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/residential/home-systems/ev/ev-03.jpg": {
+      "height": 1067,
+      "size_bytes": 120415,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-03-480.avif",
+          "size_bytes": 19613,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-03-480.webp",
+          "size_bytes": 33212,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-03-800.avif",
+          "size_bytes": 42311,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-03-800.webp",
+          "size_bytes": 67096,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/residential/home-systems/ev/ev-04.jpg": {
+      "height": 1707,
+      "size_bytes": 559147,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-04-480.avif",
+          "size_bytes": 34592,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-04-480.webp",
+          "size_bytes": 70074,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-04-960.avif",
+          "size_bytes": 135829,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-04-960.webp",
+          "size_bytes": 270776,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/home-systems/ev/ev-05.jpg": {
+      "height": 1707,
+      "size_bytes": 297328,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-05-480.avif",
+          "size_bytes": 19760,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-05-480.webp",
+          "size_bytes": 35208,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-05-960.avif",
+          "size_bytes": 59314,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/ev/ev-05-960.webp",
+          "size_bytes": 96926,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/home-systems/garage/garage-01.jpg": {
+      "height": 656,
+      "size_bytes": 226620,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-01-480.avif",
+          "size_bytes": 13996,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-01-480.webp",
+          "size_bytes": 27224,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-01-960.avif",
+          "size_bytes": 39551,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-01-960.webp",
+          "size_bytes": 72606,
+          "width": 960
+        }
+      ],
+      "width": 1568
+    },
+    "assets/images/media/residential/home-systems/garage/garage-02.jpg": {
+      "height": 1067,
+      "size_bytes": 120415,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-02-480.avif",
+          "size_bytes": 19613,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-02-480.webp",
+          "size_bytes": 33212,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-02-800.avif",
+          "size_bytes": 42311,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-02-800.webp",
+          "size_bytes": 67096,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/residential/home-systems/garage/garage-03.jpg": {
+      "height": 1707,
+      "size_bytes": 297328,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-03-480.avif",
+          "size_bytes": 19760,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-03-480.webp",
+          "size_bytes": 35208,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-03-960.avif",
+          "size_bytes": 59314,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-03-960.webp",
+          "size_bytes": 96926,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/home-systems/garage/garage-04.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-04-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-04-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-04-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-04-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/residential/home-systems/garage/garage-05.jpg": {
+      "height": 1707,
+      "size_bytes": 218362,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-05-480.avif",
+          "size_bytes": 14849,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-05-480.webp",
+          "size_bytes": 24870,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-05-960.avif",
+          "size_bytes": 43942,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/garage/garage-05-960.webp",
+          "size_bytes": 68288,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/home-systems/lighting/lighting-01.jpg": {
+      "height": 1776,
+      "size_bytes": 282874,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 533,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-01-480.avif",
+          "size_bytes": 19291,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 533,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-01-480.webp",
+          "size_bytes": 30264,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1066,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-01-960.avif",
+          "size_bytes": 50979,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1066,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-01-960.webp",
+          "size_bytes": 79652,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/residential/home-systems/lighting/lighting-02.jpg": {
+      "height": 1067,
+      "size_bytes": 120415,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-02-480.avif",
+          "size_bytes": 19613,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-02-480.webp",
+          "size_bytes": 33212,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-02-800.avif",
+          "size_bytes": 42311,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-02-800.webp",
+          "size_bytes": 67096,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/residential/home-systems/lighting/lighting-03.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-03-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-03-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-03-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-03-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/residential/home-systems/lighting/lighting-04.jpg": {
+      "height": 656,
+      "size_bytes": 226620,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-04-480.avif",
+          "size_bytes": 13996,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 201,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-04-480.webp",
+          "size_bytes": 27224,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-04-960.avif",
+          "size_bytes": 39551,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 402,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-04-960.webp",
+          "size_bytes": 72606,
+          "width": 960
+        }
+      ],
+      "width": 1568
+    },
+    "assets/images/media/residential/home-systems/lighting/lighting-05.jpg": {
+      "height": 1707,
+      "size_bytes": 559147,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-05-480.avif",
+          "size_bytes": 34592,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-05-480.webp",
+          "size_bytes": 70074,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-05-960.avif",
+          "size_bytes": 135829,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/lighting/lighting-05-960.webp",
+          "size_bytes": 270776,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/home-systems/panel/panel-01.jpg": {
+      "height": 1067,
+      "size_bytes": 120415,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-01-480.avif",
+          "size_bytes": 19613,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-01-480.webp",
+          "size_bytes": 33212,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-01-800.avif",
+          "size_bytes": 42311,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 1067,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-01-800.webp",
+          "size_bytes": 67096,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/residential/home-systems/panel/panel-02.jpg": {
+      "height": 1707,
+      "size_bytes": 218362,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-02-480.avif",
+          "size_bytes": 14849,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-02-480.webp",
+          "size_bytes": 24870,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-02-960.avif",
+          "size_bytes": 43942,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-02-960.webp",
+          "size_bytes": 68288,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/residential/home-systems/panel/panel-03.jpg": {
+      "height": 450,
+      "size_bytes": 62859,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 270,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-03-480.avif",
+          "size_bytes": 10511,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 270,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-03-480.webp",
+          "size_bytes": 18652,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 450,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-03-800.avif",
+          "size_bytes": 26558,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 450,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-03-800.webp",
+          "size_bytes": 41186,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/media/residential/home-systems/panel/panel-04.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-04-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-04-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-04-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-04-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/residential/home-systems/panel/panel-05.jpg": {
+      "height": 1705,
+      "size_bytes": 284312,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 639,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-05-480.avif",
+          "size_bytes": 23680,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 639,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-05-480.webp",
+          "size_bytes": 42246,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1279,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-05-960.avif",
+          "size_bytes": 65401,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1279,
+          "path": "assets/images/optimized/media/residential/home-systems/panel/panel-05-960.webp",
+          "size_bytes": 109978,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/service-repair/hero/service-repair-hero-01.jpg": {
+      "height": 1707,
+      "size_bytes": 503721,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-01-480.avif",
+          "size_bytes": 35836,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-01-480.webp",
+          "size_bytes": 70036,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-01-960.avif",
+          "size_bytes": 129270,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-01-960.webp",
+          "size_bytes": 251476,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 1707,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-01-1280.avif",
+          "size_bytes": 220355,
+          "width": 1280
+        },
+        {
+          "format": "webp",
+          "height": 1707,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-01-1280.webp",
+          "size_bytes": 410992,
+          "width": 1280
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/service-repair/hero/service-repair-hero-02.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-02-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-02-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-02-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-02-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/service-repair/hero/service-repair-hero-03.jpg": {
+      "height": 1705,
+      "size_bytes": 284312,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 639,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-03-480.avif",
+          "size_bytes": 23680,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 639,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-03-480.webp",
+          "size_bytes": 42246,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1279,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-03-960.avif",
+          "size_bytes": 65401,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1279,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-03-960.webp",
+          "size_bytes": 109978,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/service-repair/hero/service-repair-hero-04.jpg": {
+      "height": 1707,
+      "size_bytes": 297328,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-04-480.avif",
+          "size_bytes": 19760,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-04-480.webp",
+          "size_bytes": 35208,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-04-960.avif",
+          "size_bytes": 59314,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-04-960.webp",
+          "size_bytes": 96926,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/service-repair/hero/service-repair-hero-05.jpg": {
+      "height": 656,
+      "size_bytes": 226620,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 201,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-05-480.avif",
+          "size_bytes": 13996,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 201,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-05-480.webp",
+          "size_bytes": 27224,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 402,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-05-960.avif",
+          "size_bytes": 39551,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 402,
+          "path": "assets/images/optimized/media/service-repair/hero/service-repair-hero-05-960.webp",
+          "size_bytes": 72606,
+          "width": 960
+        }
+      ],
+      "width": 1568
+    },
+    "assets/images/media/solar-bess/hero/solar-bess-hero-01.jpg": {
+      "height": 1200,
+      "size_bytes": 678740,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-01-480.avif",
+          "size_bytes": 23368,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-01-480.webp",
+          "size_bytes": 48936,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-01-960.avif",
+          "size_bytes": 104133,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-01-960.webp",
+          "size_bytes": 212042,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 1080,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-01-1440.avif",
+          "size_bytes": 238150,
+          "width": 1440
+        },
+        {
+          "format": "webp",
+          "height": 1080,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-01-1440.webp",
+          "size_bytes": 483876,
+          "width": 1440
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/media/solar-bess/hero/solar-bess-hero-02.jpg": {
+      "height": 1707,
+      "size_bytes": 309607,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-02-480.avif",
+          "size_bytes": 23508,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-02-480.webp",
+          "size_bytes": 43440,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-02-960.avif",
+          "size_bytes": 71837,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-02-960.webp",
+          "size_bytes": 123910,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/solar-bess/hero/solar-bess-hero-03.jpg": {
+      "height": 1707,
+      "size_bytes": 559147,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-03-480.avif",
+          "size_bytes": 34592,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-03-480.webp",
+          "size_bytes": 70074,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-03-960.avif",
+          "size_bytes": 135829,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-03-960.webp",
+          "size_bytes": 270776,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/solar-bess/hero/solar-bess-hero-04.jpg": {
+      "height": 1707,
+      "size_bytes": 218362,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-04-480.avif",
+          "size_bytes": 14849,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-04-480.webp",
+          "size_bytes": 24870,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-04-960.avif",
+          "size_bytes": 43942,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-04-960.webp",
+          "size_bytes": 68288,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/media/solar-bess/hero/solar-bess-hero-05.jpg": {
+      "height": 1707,
+      "size_bytes": 322863,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-05-480.avif",
+          "size_bytes": 22486,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-05-480.webp",
+          "size_bytes": 42016,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-05-960.avif",
+          "size_bytes": 69988,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/media/solar-bess/hero/solar-bess-hero-05-960.webp",
+          "size_bytes": 122828,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/burnt-combiner.jpg": {
+      "height": 1707,
+      "size_bytes": 503721,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/burnt-combiner-480.avif",
+          "size_bytes": 35836,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/burnt-combiner-480.webp",
+          "size_bytes": 70036,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/site/burnt-combiner-960.avif",
+          "size_bytes": 129270,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/site/burnt-combiner-960.webp",
+          "size_bytes": 251476,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/combiner.jpg": {
+      "height": 1707,
+      "size_bytes": 309607,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/combiner-480.avif",
+          "size_bytes": 23508,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/combiner-480.webp",
+          "size_bytes": 43440,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/site/combiner-960.avif",
+          "size_bytes": 71837,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/site/combiner-960.webp",
+          "size_bytes": 123910,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/fuse-panel.jpg": {
+      "height": 1067,
+      "size_bytes": 120415,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/fuse-panel-480.avif",
+          "size_bytes": 19613,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/fuse-panel-480.webp",
+          "size_bytes": 33212,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1067,
+          "path": "assets/images/optimized/site/fuse-panel-800.avif",
+          "size_bytes": 42311,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 1067,
+          "path": "assets/images/optimized/site/fuse-panel-800.webp",
+          "size_bytes": 67096,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/site/instagram.jpg": {
+      "height": 1776,
+      "size_bytes": 282874,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 533,
+          "path": "assets/images/optimized/site/instagram-480.avif",
+          "size_bytes": 19291,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 533,
+          "path": "assets/images/optimized/site/instagram-480.webp",
+          "size_bytes": 30264,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1066,
+          "path": "assets/images/optimized/site/instagram-960.avif",
+          "size_bytes": 50979,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1066,
+          "path": "assets/images/optimized/site/instagram-960.webp",
+          "size_bytes": 79652,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 1598,
+          "path": "assets/images/optimized/site/instagram-1440.avif",
+          "size_bytes": 85415,
+          "width": 1440
+        },
+        {
+          "format": "webp",
+          "height": 1598,
+          "path": "assets/images/optimized/site/instagram-1440.webp",
+          "size_bytes": 128744,
+          "width": 1440
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/site/locator.jpg": {
+      "height": 1707,
+      "size_bytes": 472389,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/locator-480.avif",
+          "size_bytes": 39800,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/locator-480.webp",
+          "size_bytes": 85840,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/site/locator-960.avif",
+          "size_bytes": 120255,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/site/locator-960.webp",
+          "size_bytes": 246098,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/logo.jpg": {
+      "height": 620,
+      "size_bytes": 49417,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 331,
+          "path": "assets/images/optimized/site/logo-480.avif",
+          "size_bytes": 6325,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 331,
+          "path": "assets/images/optimized/site/logo-480.webp",
+          "size_bytes": 12030,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 620,
+          "path": "assets/images/optimized/site/logo-900.avif",
+          "size_bytes": 14839,
+          "width": 900
+        },
+        {
+          "format": "webp",
+          "height": 620,
+          "path": "assets/images/optimized/site/logo-900.webp",
+          "size_bytes": 23126,
+          "width": 900
+        }
+      ],
+      "width": 900
+    },
+    "assets/images/site/megger.jpg": {
+      "height": 1705,
+      "size_bytes": 284312,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 639,
+          "path": "assets/images/optimized/site/megger-480.avif",
+          "size_bytes": 23680,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 639,
+          "path": "assets/images/optimized/site/megger-480.webp",
+          "size_bytes": 42246,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1279,
+          "path": "assets/images/optimized/site/megger-960.avif",
+          "size_bytes": 65401,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1279,
+          "path": "assets/images/optimized/site/megger-960.webp",
+          "size_bytes": 109978,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 1705,
+          "path": "assets/images/optimized/site/megger-1280.avif",
+          "size_bytes": 101602,
+          "width": 1280
+        },
+        {
+          "format": "webp",
+          "height": 1705,
+          "path": "assets/images/optimized/site/megger-1280.webp",
+          "size_bytes": 158280,
+          "width": 1280
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/mv-cabinet.jpg": {
+      "height": 1707,
+      "size_bytes": 218362,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/mv-cabinet-480.avif",
+          "size_bytes": 14849,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/mv-cabinet-480.webp",
+          "size_bytes": 24870,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/site/mv-cabinet-960.avif",
+          "size_bytes": 43942,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/site/mv-cabinet-960.webp",
+          "size_bytes": 68288,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/mv-close.jpg": {
+      "height": 450,
+      "size_bytes": 62859,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 270,
+          "path": "assets/images/optimized/site/mv-close-480.avif",
+          "size_bytes": 10511,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 270,
+          "path": "assets/images/optimized/site/mv-close-480.webp",
+          "size_bytes": 18652,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 450,
+          "path": "assets/images/optimized/site/mv-close-800.avif",
+          "size_bytes": 26558,
+          "width": 800
+        },
+        {
+          "format": "webp",
+          "height": 450,
+          "path": "assets/images/optimized/site/mv-close-800.webp",
+          "size_bytes": 41186,
+          "width": 800
+        }
+      ],
+      "width": 800
+    },
+    "assets/images/site/solar-field.jpg": {
+      "height": 1200,
+      "size_bytes": 678740,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/site/solar-field-480.avif",
+          "size_bytes": 23368,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/site/solar-field-480.webp",
+          "size_bytes": 48936,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/site/solar-field-960.avif",
+          "size_bytes": 104133,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/site/solar-field-960.webp",
+          "size_bytes": 212042,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 1080,
+          "path": "assets/images/optimized/site/solar-field-1440.avif",
+          "size_bytes": 238150,
+          "width": 1440
+        },
+        {
+          "format": "webp",
+          "height": 1080,
+          "path": "assets/images/optimized/site/solar-field-1440.webp",
+          "size_bytes": 483876,
+          "width": 1440
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/site/solar-wire.jpg": {
+      "height": 1707,
+      "size_bytes": 559147,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/solar-wire-480.avif",
+          "size_bytes": 34592,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/solar-wire-480.webp",
+          "size_bytes": 70074,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/site/solar-wire-960.avif",
+          "size_bytes": 135829,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/site/solar-wire-960.webp",
+          "size_bytes": 270776,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/switchgear.jpg": {
+      "height": 1707,
+      "size_bytes": 322863,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/switchgear-480.avif",
+          "size_bytes": 22486,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/switchgear-480.webp",
+          "size_bytes": 42016,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/site/switchgear-960.avif",
+          "size_bytes": 69988,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/site/switchgear-960.webp",
+          "size_bytes": 122828,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 1707,
+          "path": "assets/images/optimized/site/switchgear-1280.avif",
+          "size_bytes": 118066,
+          "width": 1280
+        },
+        {
+          "format": "webp",
+          "height": 1707,
+          "path": "assets/images/optimized/site/switchgear-1280.webp",
+          "size_bytes": 194466,
+          "width": 1280
+        }
+      ],
+      "width": 1280
+    },
+    "assets/images/site/testing.jpg": {
+      "height": 1200,
+      "size_bytes": 464813,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 360,
+          "path": "assets/images/optimized/site/testing-480.avif",
+          "size_bytes": 19166,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 360,
+          "path": "assets/images/optimized/site/testing-480.webp",
+          "size_bytes": 38284,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 720,
+          "path": "assets/images/optimized/site/testing-960.avif",
+          "size_bytes": 71030,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 720,
+          "path": "assets/images/optimized/site/testing-960.webp",
+          "size_bytes": 140666,
+          "width": 960
+        }
+      ],
+      "width": 1600
+    },
+    "assets/images/site/truck.jpg": {
+      "height": 656,
+      "size_bytes": 226620,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 201,
+          "path": "assets/images/optimized/site/truck-480.avif",
+          "size_bytes": 13996,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 201,
+          "path": "assets/images/optimized/site/truck-480.webp",
+          "size_bytes": 27224,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 402,
+          "path": "assets/images/optimized/site/truck-960.avif",
+          "size_bytes": 39551,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 402,
+          "path": "assets/images/optimized/site/truck-960.webp",
+          "size_bytes": 72606,
+          "width": 960
+        },
+        {
+          "format": "avif",
+          "height": 602,
+          "path": "assets/images/optimized/site/truck-1440.avif",
+          "size_bytes": 68341,
+          "width": 1440
+        },
+        {
+          "format": "webp",
+          "height": 602,
+          "path": "assets/images/optimized/site/truck-1440.webp",
+          "size_bytes": 122904,
+          "width": 1440
+        }
+      ],
+      "width": 1568
+    },
+    "assets/images/site/vfd.jpg": {
+      "height": 1707,
+      "size_bytes": 297328,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 640,
+          "path": "assets/images/optimized/site/vfd-480.avif",
+          "size_bytes": 19760,
+          "width": 480
+        },
+        {
+          "format": "webp",
+          "height": 640,
+          "path": "assets/images/optimized/site/vfd-480.webp",
+          "size_bytes": 35208,
+          "width": 480
+        },
+        {
+          "format": "avif",
+          "height": 1280,
+          "path": "assets/images/optimized/site/vfd-960.avif",
+          "size_bytes": 59314,
+          "width": 960
+        },
+        {
+          "format": "webp",
+          "height": 1280,
+          "path": "assets/images/optimized/site/vfd-960.webp",
+          "size_bytes": 96926,
+          "width": 960
+        }
+      ],
+      "width": 1280
+    },
+    "assets/branding/blue-bear/logo-mark-solid.png": {
+      "height": 1254,
+      "size_bytes": 649320,
+      "variants": [
+        {
+          "format": "avif",
+          "height": 69,
+          "path": "assets/branding/blue-bear/optimized/logo-mark-solid-96.avif",
+          "size_bytes": 2522,
+          "width": 96
+        },
+        {
+          "format": "webp",
+          "height": 69,
+          "path": "assets/branding/blue-bear/optimized/logo-mark-solid-96.webp",
+          "size_bytes": 4132,
+          "width": 96
+        },
+        {
+          "format": "avif",
+          "height": 139,
+          "path": "assets/branding/blue-bear/optimized/logo-mark-solid-192.avif",
+          "size_bytes": 5175,
+          "width": 192
+        },
+        {
+          "format": "webp",
+          "height": 139,
+          "path": "assets/branding/blue-bear/optimized/logo-mark-solid-192.webp",
+          "size_bytes": 9240,
+          "width": 192
+        },
+        {
+          "format": "avif",
+          "height": 278,
+          "path": "assets/branding/blue-bear/optimized/logo-mark-solid-384.avif",
+          "size_bytes": 10232,
+          "width": 384
+        },
+        {
+          "format": "webp",
+          "height": 278,
+          "path": "assets/branding/blue-bear/optimized/logo-mark-solid-384.webp",
+          "size_bytes": 20208,
+          "width": 384
+        }
+      ],
+      "width": 1254
+    }
+  }
+}

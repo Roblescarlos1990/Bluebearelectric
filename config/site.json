@@ -1,0 +1,138 @@
+{
+  "siteUrl": "https://bluebearelectric.com",
+  "business": {
+    "name": "Blue Bear Electric",
+    "phoneDisplay": "760-234-8306",
+    "phoneHref": "tel:7602348306",
+    "phoneInternational": "+1-760-234-8306",
+    "serviceArea": "Imperial County, CA",
+    "serviceAreaLong": "Imperial County, California",
+    "license": "1141313",
+    "credentials": ["OSHA Certified", "Bonded & Insured", "Union Contractor"],
+    "summary": "Innovating and providing professional electrical solutions for industrial, commercial and residential customers across Imperial County.",
+    "mission": "Innovate and help companies and communities with the professional help they deserve."
+  },
+  "seo": {
+    "locale": "en_US",
+    "socialImage": {
+      "path": "/assets/branding/blue-bear/logo-cinematic-wide.png",
+      "width": 1900,
+      "height": 651,
+      "type": "image/png",
+      "alt": "Blue Bear Electric bear and lightning logo"
+    },
+    "pages": {
+      "about.html": {
+        "title": "About Blue Bear | Blue Bear Electric",
+        "description": "Meet Blue Bear Electric, an Imperial County electrical contractor serving industrial, commercial, residential, solar, and battery projects."
+      },
+      "commercial.html": {
+        "title": "Commercial Electrical Services | Blue Bear Electric",
+        "description": "Commercial electrical installation, upgrades, lighting, distribution, maintenance, and troubleshooting for Imperial County facilities."
+      },
+      "contact.html": {
+        "title": "Contact | Blue Bear Electric",
+        "description": "Request a free electrical estimate or contact Blue Bear Electric for industrial, commercial, residential, solar, BESS, and repair service."
+      },
+      "engineering-inspection.html": {
+        "title": "Drone Inspection & Thermal Diagnostics | Blue Bear Electric",
+        "description": "Drone inspections, radiometric thermal imaging, solar inspections, electrical asset documentation, and professional reporting."
+      },
+      "index.html": {
+        "title": "Blue Bear Electric | Imperial County Electrical Contractor",
+        "description": "Licensed Imperial County electrical contractor for industrial, commercial, residential, solar, BESS, maintenance, and repair projects."
+      },
+      "industrial.html": {
+        "title": "Industrial Electrical Services | Blue Bear Electric",
+        "description": "Industrial electrical construction, testing, maintenance, shutdown support, and equipment service for Imperial County facilities."
+      },
+      "projects.html": {
+        "title": "Projects | Blue Bear Electric",
+        "description": "View selected Blue Bear Electric work across industrial power, solar, battery storage, testing, repair, and residential service."
+      },
+      "residential.html": {
+        "title": "Residential Electrical Services | Blue Bear Electric",
+        "description": "Residential panel upgrades, EV charging, lighting, troubleshooting, surge protection, and electrical repairs in Imperial County."
+      },
+      "security-policy.html": {
+        "title": "Security Reporting | VoltFlow",
+        "description": "Report a suspected security issue affecting the Blue Bear Electric website or VoltFlow operations portal.",
+        "indexable": false
+      },
+      "service-repair.html": {
+        "title": "Service & Repair | Blue Bear Electric",
+        "description": "Electrical troubleshooting, testing, maintenance, equipment replacement, and urgent repair support in Imperial County."
+      },
+      "services.html": {
+        "title": "Services | Blue Bear Electric",
+        "description": "Explore Blue Bear Electric services for industrial, commercial, residential, solar, BESS, inspection, maintenance, and repair work."
+      },
+      "solar-bess.html": {
+        "title": "Solar & BESS Electrical Services | Blue Bear Electric",
+        "description": "Solar and battery energy storage electrical installation, testing, corrective maintenance, and equipment support in Imperial County."
+      }
+    }
+  },
+  "links": {
+    "home": { "label": "Home", "href": "index.html" },
+    "services": { "label": "Services", "href": "services.html" },
+    "industrial": { "label": "Industrial", "href": "industrial.html" },
+    "commercial": { "label": "Commercial", "href": "commercial.html" },
+    "residential": { "label": "Residential", "href": "residential.html" },
+    "solar": { "label": "Solar & BESS", "href": "solar-bess.html" },
+    "inspection": {
+      "label": "Drone & Thermal",
+      "href": "engineering-inspection.html"
+    },
+    "projects": { "label": "Projects", "href": "projects.html" },
+    "about": { "label": "About", "href": "about.html" },
+    "contact": { "label": "Contact", "href": "contact.html" },
+    "portal": { "label": "Portal", "href": "customer-portal.html" }
+  },
+  "navigation": {
+    "desktop": [
+      "home",
+      "services",
+      "industrial",
+      "commercial",
+      "residential",
+      "solar",
+      "inspection",
+      "projects",
+      "about",
+      "contact",
+      "portal"
+    ],
+    "mobile": ["services", "industrial", "projects", "contact", "portal"]
+  },
+  "footer": {
+    "quickLinksCompact": ["home", "services", "projects"],
+    "quickLinksStandard": ["home", "services", "projects", "contact"],
+    "quickLinksHome": ["services", "projects", "about", "contact", "portal"],
+    "capabilities": ["Industrial", "Commercial", "Residential", "Solar & BESS", "Service & Repair"],
+    "services": ["New Installation", "Maintenance", "Upgrades", "Repairs", "Emergency Service"]
+  },
+  "standalonePages": ["security-policy.html"],
+  "pages": {
+    "about.html": { "header": "compact", "footer": "standard" },
+    "commercial.html": { "header": "full", "footer": "capabilities" },
+    "contact.html": {
+      "header": "compact-request",
+      "footer": "standard"
+    },
+    "engineering-inspection.html": {
+      "header": "inspection",
+      "footer": "inspection"
+    },
+    "index.html": { "header": "home", "footer": "home" },
+    "industrial.html": { "header": "full", "footer": "capabilities" },
+    "projects.html": {
+      "header": "compact-request",
+      "footer": "standard"
+    },
+    "residential.html": { "header": "full", "footer": "capabilities" },
+    "service-repair.html": { "header": "compact", "footer": "standard" },
+    "services.html": { "header": "compact", "footer": "standard" },
+    "solar-bess.html": { "header": "full", "footer": "capabilities" }
+  }
+}

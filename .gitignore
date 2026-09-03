@@ -1,9 +1,16 @@
 .DS_Store
 Thumbs.db
+__pycache__/
+*.py[cod]
 *.log
 .env
 .env.*
 !.env.example
 node_modules/
+.npm-cache/
+.playwright-browsers/
 .vercel/
 coverage/
+test-results/
+playwright-report/
+blob-report/

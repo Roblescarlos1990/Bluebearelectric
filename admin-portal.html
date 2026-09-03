@@ -1,1 +1,159 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store"><title>Employee Administration | Blue Bear Electric</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="stylesheet" href="portal.css"><link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png"></head><body class="portal-body"><header class="portal-top"><a href="index.html" class="portal-brand"><img src="assets/branding/blue-bear/logo-mark-solid.png" alt=""><span>BLUE BEAR ELECTRIC</span></a><a href="admin.html" class="portal-home">Full Admin</a></header><main class="portal-wrap"><section class="portal-auth" data-admin-login-shell><div class="portal-hero"><span class="portal-kicker">ADMINISTRATION</span><h1>Employee Account Control</h1><p>Approve registrations, disable access, review forms, publish announcements, and manage employee documents.</p></div><div class="portal-card"><h2>Administrator Sign In</h2><form class="portal-form" data-admin-login-form><label>Email<input name="email" type="email" required></label><label>Password<input name="password" type="password" required></label><button class="btn yellow" type="submit">Sign In</button><p class="form-status" data-admin-login-status></p></form></div></section><section class="admin-employee-app" data-admin-app hidden><aside class="employee-sidebar"><div class="employee-brand"><img src="assets/branding/blue-bear/logo-mark-solid.png" alt=""><div><b>BLUE BEAR</b><small>Administration</small></div></div><nav><button class="active" data-admin-page-button="accounts">Accounts</button><button data-admin-page-button="forms">Forms</button><button data-admin-page-button="announcements">Announcements</button><button data-admin-page-button="documents">Documents</button></nav><button class="employee-signout" data-admin-signout>Sign Out</button></aside><div class="employee-main"><header class="employee-header"><div><span class="portal-kicker">EMPLOYEE MANAGEMENT</span><h2>Blue Bear Administration</h2></div><div class="employee-role">ADMIN</div></header><p class="form-status" data-admin-status></p><section class="employee-page active" data-admin-page="accounts"><div class="portal-stat-grid"><article><small>Pending</small><strong data-pending-count>0</strong></article><article><small>Approved</small><strong data-approved-count>0</strong></article><article><small>Disabled</small><strong data-disabled-count>0</strong></article></div><div class="portal-panel"><h3>Employee Accounts</h3><div data-employee-account-list></div></div></section><section class="employee-page" data-admin-page="forms"><div class="portal-panel"><h3>Employee Form Submissions</h3><div data-admin-form-list></div></div></section><section class="employee-page" data-admin-page="announcements"><div class="portal-grid"><article class="portal-panel"><h3>Publish Announcement</h3><form class="portal-form" data-announcement-form><label>Title<input name="title" required></label><label>Priority<select name="priority"><option>Normal</option><option>Important</option><option>Urgent</option></select></label><label>Message<textarea name="message" rows="6" required></textarea></label><button class="btn yellow" type="submit">Publish</button></form></article><article class="portal-panel"><h3>Published Announcements</h3><div data-admin-announcement-list></div></article></div></section><section class="employee-page" data-admin-page="documents"><div class="portal-panel"><h3>Employee Documents</h3><div data-admin-document-list></div></div></section></div></section></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/supabase-config.js"></script><script src="assets/js/admin-employee-portal-v1.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>Employee Administration | Blue Bear Electric</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="portal.css" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+  </head>
+  <body class="portal-body">
+    <header class="portal-top">
+      <a href="index.html" class="portal-brand"
+        ><img
+          src="assets/branding/blue-bear/logo-mark-solid.png"
+          alt=""
+          width="1254"
+          height="1254"
+          srcset="
+            assets/branding/blue-bear/optimized/logo-mark-solid-96.webp   96w,
+            assets/branding/blue-bear/optimized/logo-mark-solid-192.webp 192w,
+            assets/branding/blue-bear/optimized/logo-mark-solid-384.webp 384w
+          "
+          sizes="160px"
+          decoding="async"
+          loading="eager"
+        /><span>BLUE BEAR ELECTRIC</span></a
+      ><a href="admin.html" class="portal-home">Full Admin</a>
+    </header>
+    <main class="portal-wrap">
+      <section class="portal-auth" data-admin-login-shell>
+        <div class="portal-hero">
+          <span class="portal-kicker">ADMINISTRATION</span>
+          <h1>Employee Account Control</h1>
+          <p>
+            Approve registrations, disable access, review forms, publish announcements, and manage
+            employee documents.
+          </p>
+        </div>
+        <div class="portal-card">
+          <h2>Administrator Sign In</h2>
+          <form class="portal-form" data-admin-login-form>
+            <label>Email<input name="email" type="email" required /></label
+            ><label>Password<input name="password" type="password" required /></label
+            ><button class="btn yellow" type="submit">Sign In</button>
+            <p class="form-status" data-admin-login-status></p>
+          </form>
+        </div>
+      </section>
+      <section class="admin-employee-app" data-admin-app hidden>
+        <aside class="employee-sidebar">
+          <div class="employee-brand">
+            <img
+              src="assets/branding/blue-bear/logo-mark-solid.png"
+              alt=""
+              width="1254"
+              height="1254"
+              srcset="
+                assets/branding/blue-bear/optimized/logo-mark-solid-96.webp   96w,
+                assets/branding/blue-bear/optimized/logo-mark-solid-192.webp 192w,
+                assets/branding/blue-bear/optimized/logo-mark-solid-384.webp 384w
+              "
+              sizes="160px"
+              decoding="async"
+              loading="lazy"
+            />
+            <div><b>BLUE BEAR</b><small>Administration</small></div>
+          </div>
+          <nav>
+            <button class="active" data-admin-page-button="accounts">Accounts</button
+            ><button data-admin-page-button="forms">Forms</button
+            ><button data-admin-page-button="announcements">Announcements</button
+            ><button data-admin-page-button="documents">Documents</button>
+          </nav>
+          <button class="employee-signout" data-admin-signout>Sign Out</button>
+        </aside>
+        <div class="employee-main">
+          <header class="employee-header">
+            <div>
+              <span class="portal-kicker">EMPLOYEE MANAGEMENT</span>
+              <h2>Blue Bear Administration</h2>
+            </div>
+            <div class="employee-role">ADMIN</div>
+          </header>
+          <p class="form-status" data-admin-status></p>
+          <section class="employee-page active" data-admin-page="accounts">
+            <div class="portal-stat-grid">
+              <article><small>Pending</small><strong data-pending-count>0</strong></article>
+              <article><small>Approved</small><strong data-approved-count>0</strong></article>
+              <article><small>Disabled</small><strong data-disabled-count>0</strong></article>
+            </div>
+            <div class="portal-panel">
+              <h3>Employee Accounts</h3>
+              <div data-employee-account-list></div>
+            </div>
+          </section>
+          <section class="employee-page" data-admin-page="forms">
+            <div class="portal-panel">
+              <h3>Employee Form Submissions</h3>
+              <div data-admin-form-list></div>
+            </div>
+          </section>
+          <section class="employee-page" data-admin-page="announcements">
+            <div class="portal-grid">
+              <article class="portal-panel">
+                <h3>Publish Announcement</h3>
+                <form class="portal-form" data-announcement-form>
+                  <label>Title<input name="title" required /></label
+                  ><label
+                    >Priority<select name="priority">
+                      <option>Normal</option>
+                      <option>Important</option>
+                      <option>Urgent</option>
+                    </select></label
+                  ><label>Message<textarea name="message" rows="6" required></textarea></label
+                  ><button class="btn yellow" type="submit">Publish</button>
+                </form>
+              </article>
+              <article class="portal-panel">
+                <h3>Published Announcements</h3>
+                <div data-admin-announcement-list></div>
+              </article>
+            </div>
+          </section>
+          <section class="employee-page" data-admin-page="documents">
+            <div class="portal-panel">
+              <h3>Employee Documents</h3>
+              <div data-admin-document-list></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"
+      integrity="sha384-yiVMs0R/Jyz7OhoXa/DsEMUSBLjEhr/QJta2ONO+zB6I8/GmNg/7AUFrZmAJV7KV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/image-performance.js"></script>
+
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/admin-employee-portal-v1.js"></script>
+  </body>
+</html>

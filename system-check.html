@@ -1,27 +1,67 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Cache-Control" content="no-store">
-  <title>VoltFlow System Check</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="theme.css">
-  <link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png">
-  <link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png">
-  <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#030a13">
-</head>
-<body style="padding:32px">
-  <main class="admin-panel" style="max-width:850px;margin:auto">
-    <h1>VoltFlow System Check</h1>
-    <p>If this page has a dark Blue Bear layout, the root CSS loaded.</p>
-    <div id="js-check" class="badge">JavaScript pending…</div>
-    <h3>Image check</h3>
-    <img src="assets/images/site/logo.jpg" alt="Blue Bear logo" style="max-width:260px;border-radius:12px" onload="document.getElementById('img-check').textContent='Image loaded successfully'" onerror="document.getElementById('img-check').textContent='IMAGE FAILED — assets/images/site/logo.jpg is missing'">
-    <p id="img-check">Image pending…</p>
-    <h3>Direct checks</h3>
-    <p><a class="btn yellow" href="style.css">Open root CSS</a> <a class="btn blue" href="assets/images/site/logo.jpg">Open logo file</a> <a class="btn dark" href="admin.html">Open Admin</a></p>
-  <section class="section"><h2>V8.4 Checks</h2><p><a href="assets/js/content-manager.js">Content Manager JavaScript</a></p><p><a href="assets/js/public-content.js">Public Content Loader</a></p><p><a href="docs/sql/V8-4-CONTENT-MANAGER.sql">V8.4 SQL Migration</a></p></section></main>
-  <script>document.getElementById('js-check').textContent='JavaScript loaded successfully';</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>VoltFlow System Check</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#030a13" />
+  </head>
+  <body class="system-check-page">
+    <main class="admin-panel system-check-panel">
+      <h1>VoltFlow System Check</h1>
+      <p>If this page has a dark Blue Bear layout, the root CSS loaded.</p>
+      <div id="js-check" class="badge">JavaScript pending…</div>
+      <h3>Image check</h3>
+      <img
+        src="assets/images/site/logo.jpg"
+        alt="Blue Bear logo"
+        class="system-check-image"
+        data-system-check-image
+        width="900"
+        height="620"
+        srcset="
+          assets/images/optimized/site/logo-480.webp 480w,
+          assets/images/optimized/site/logo-900.webp 900w
+        "
+        sizes="160px"
+        decoding="async"
+        loading="lazy"
+      />
+      <p id="img-check">Image pending…</p>
+      <h3>Serverless API checks</h3>
+      <p id="security-config-check">Security config pending…</p>
+      <p id="quote-api-check">Quote API pending…</p>
+      <h3>Direct checks</h3>
+      <p>
+        <a class="btn yellow" href="style.css">Open root CSS</a>
+        <a class="btn blue" href="assets/images/site/logo.jpg">Open logo file</a>
+        <a class="btn dark" href="admin.html">Open Admin</a>
+      </p>
+      <section class="section">
+        <h2>V8.4 Checks</h2>
+        <p><a href="assets/js/content-manager.js">Content Manager JavaScript</a></p>
+        <p><a href="assets/js/public-content.js">Public Content Loader</a></p>
+        <p><a href="docs/sql/V8-4-CONTENT-MANAGER.sql">V8.4 SQL Migration</a></p>
+      </section>
+    </main>
+    <script src="assets/js/system-check.js"></script>
+    <script src="assets/js/image-performance.js"></script>
+  </body>
 </html>

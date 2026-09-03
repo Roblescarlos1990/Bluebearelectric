@@ -4,7 +4,7 @@
 
   document.documentElement.style.setProperty(
     '--company-watermark-opacity',
-    String(config.publicWatermarkOpacity || 0.06)
+    String(config.publicWatermarkOpacity || 0.06),
   );
   document.body.classList.add('blue-bear-branded');
 

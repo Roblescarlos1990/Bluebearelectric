@@ -1,5 +1,387 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact | Blue Bear Electric</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="theme.css"><link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png"><link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png"><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#030a13"></head><body class="blue-bear-site">
-<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="engineering-inspection.html">Drone & Thermal</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html">Request a Free Estimate</a><button class="hamb" type="button" aria-expanded="false" aria-controls="mobile-navigation"><span>Menu</span></button><div class="mobile" id="mobile-navigation"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
-<section class="page-hero" style="background-image:linear-gradient(90deg,rgba(4,9,16,.94),rgba(4,9,16,.55)),url('assets/images/site/truck.jpg')"><div><div class="eyebrow">Blue Bear Electric</div><h1>Contact</h1><p class="lead">Call Blue Bear Electric or request an estimate for industrial, commercial, residential, solar or emergency electrical work.</p><div class="cta-row"><a class="btn yellow" href="tel:7602348306">Call 760-234-8306</a><a class="btn blue" href="#estimate-form">Start Estimate Request</a></div></div></section>
-<section class="section" id="estimate-form"><div class="estimate estimate-polished"><div><h2>Request a Free Estimate</h2><p class="small">Phone: 760-234-8306<br>Service Area: Imperial County, CA<br>CA License #1141313</p><p class="small">Complete the form and our team will review your request. For urgent electrical service, call us directly.</p><div class="estimate-benefits"><span>✓ Request delivered to our secure lead dashboard</span><span>✓ Clear follow-up from a local electrical professional</span><span>✓ No-obligation project review</span></div></div><form class="form lead-form" data-lead-form novalidate><input name="full_name" autocomplete="name" aria-label="Full name" placeholder="Full Name *" required><input name="phone" autocomplete="tel" aria-label="Phone number" placeholder="Phone Number *" required><input name="email" type="email" autocomplete="email" aria-label="Email address" placeholder="Email Address"><input name="city" autocomplete="address-level2" aria-label="City or service area" placeholder="City / Service Area"><select name="service_type" aria-label="Service needed" required><option value="">Select Service Needed *</option><option>Industrial</option><option>Commercial</option><option>Residential</option><option>Solar / BESS</option><option>Emergency Repair</option><option>Maintenance</option></select><select name="urgency" aria-label="Preferred timeframe"><option value="Normal">Preferred Timeframe</option><option value="Normal">Planning / Flexible</option><option value="This Week">Within This Week</option><option value="Emergency">Emergency / Urgent</option></select><textarea name="message" aria-label="Project details" placeholder="Briefly describe the project, issue, or service needed"></textarea><button class="btn yellow submit-estimate-btn" type="submit"><span class="btn-label">Send My Estimate Request</span><span class="btn-arrow" aria-hidden="true">→</span></button><p class="form-status" data-form-status aria-live="polite"></p><p class="form-privacy">By submitting, you agree that Blue Bear Electric may contact you about this request. Your information is used only to respond to your inquiry.</p></form></div></section>
-<footer class="footer"><div class="foot-grid"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric"><p class="small">CA License #1141313 • OSHA Certified • Bonded & Insured • Union Contractor</p></div><div><h4>Quick Links</h4><p class="small"><a href="index.html">Home</a><br><a href="services.html">Services</a><br><a href="projects.html">Projects</a></p></div><div><h4>Contact</h4><p class="small">760-234-8306<br>Imperial County, CA</p></div><div><h4>Mission</h4><p class="small">Innovate and help companies and communities with the professional help they deserve.</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/js/supabase-config.js"></script><script src="assets/js/site-shell.js"></script><script src="assets/js/contact-backend.js"></script><script src="assets/js/theme-loader.js"></script><script src="assets/js/public-content.js"></script><script src="assets/js/company-profile.js"></script><script src="assets/js/brand-experience.js"></script><script src="assets/js/typical-project-prefill-v8-9-4.js"></script><script src="assets/js/photo-slots-v9-1-2.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- shared:public-seo:start -->
+    <title>Contact | Blue Bear Electric</title>
+    <link rel="canonical" href="https://bluebearelectric.com/contact" />
+    <meta
+      name="description"
+      content="Request a free electrical estimate or contact Blue Bear Electric for industrial, commercial, residential, solar, BESS, and repair service."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Blue Bear Electric" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Contact | Blue Bear Electric" />
+    <meta
+      property="og:description"
+      content="Request a free electrical estimate or contact Blue Bear Electric for industrial, commercial, residential, solar, BESS, and repair service."
+    />
+    <meta property="og:url" content="https://bluebearelectric.com/contact" />
+    <meta
+      property="og:image"
+      content="https://bluebearelectric.com/assets/branding/blue-bear/logo-cinematic-wide.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1900" />
+    <meta property="og:image:height" content="651" />
+    <meta property="og:image:alt" content="Blue Bear Electric bear and lightning logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact | Blue Bear Electric" />
+    <meta
+      name="twitter:description"
+      content="Request a free electrical estimate or contact Blue Bear Electric for industrial, commercial, residential, solar, BESS, and repair service."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bluebearelectric.com/assets/branding/blue-bear/logo-cinematic-wide.png"
+    />
+    <meta name="twitter:image:alt" content="Blue Bear Electric bear and lightning logo" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Blue Bear" />
+    <script type="application/ld+json" data-blue-bear-business>
+      {
+        "@context": "https://schema.org",
+        "@type": "Electrician",
+        "@id": "https://bluebearelectric.com/#business",
+        "name": "Blue Bear Electric",
+        "url": "https://bluebearelectric.com/",
+        "telephone": "+1-760-234-8306",
+        "image": "https://bluebearelectric.com/assets/branding/blue-bear/logo-cinematic-wide.png",
+        "logo": "https://bluebearelectric.com/assets/branding/blue-bear/logo-mark-solid.png",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Imperial County, California"
+        },
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "California contractor license",
+          "value": "1141313"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-760-234-8306",
+          "contactType": "customer service",
+          "areaServed": "US-CA",
+          "availableLanguage": "English"
+        }
+      }
+    </script>
+    <!-- shared:public-seo:end -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#030a13" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/optimized/site/truck-1440.avif"
+      imagesrcset="assets/images/optimized/site/truck-480.avif 480w, assets/images/optimized/site/truck-960.avif 960w, assets/images/optimized/site/truck-1440.avif 1440w"
+      imagesizes="100vw"
+      type="image/avif"
+      fetchpriority="high"
+      data-primary-image-preload
+    />
+  </head>
+  <body class="blue-bear-site">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <!-- shared:public-header:start -->
+    <header class="topbar">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="index.html">
+          <img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric logo"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="160px"
+            decoding="async"
+            loading="eager"
+          />
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a><a href="services.html">Services</a
+          ><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a
+          ><a href="residential.html">Residential</a><a href="solar-bess.html">Solar &amp; BESS</a
+          ><a href="engineering-inspection.html">Drone &amp; Thermal</a
+          ><a href="projects.html">Projects</a><a href="about.html">About</a
+          ><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a>
+        </div>
+        <a class="btn yellow" href="contact.html">Request a Free Estimate</a>
+        <button class="hamb" type="button" aria-expanded="false" aria-controls="mobile-navigation">
+          <span>Menu</span>
+        </button>
+        <div class="mobile" id="mobile-navigation" aria-hidden="true" hidden>
+          <a href="services.html">Services</a><a href="industrial.html">Industrial</a
+          ><a href="projects.html">Projects</a><a href="contact.html">Contact</a
+          ><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a>
+        </div>
+      </nav>
+    </header>
+    <!-- shared:public-header:end -->
+    <main id="main-content" tabindex="-1">
+      <section class="page-hero page-hero-truck">
+        <div>
+          <div class="eyebrow">Blue Bear Electric</div>
+          <h1>Contact</h1>
+          <p class="lead">
+            Call Blue Bear Electric or request an estimate for industrial, commercial, residential,
+            solar or emergency electrical work.
+          </p>
+          <div class="cta-row">
+            <a class="btn yellow" href="tel:7602348306">Call 760-234-8306</a
+            ><a class="btn blue" href="#estimate-form">Start Estimate Request</a>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="estimate-form">
+        <div class="estimate estimate-polished">
+          <div>
+            <h2 id="contact-estimate-title">Request a Free Estimate</h2>
+            <p class="small">
+              Phone: 760-234-8306<br />Service Area: Imperial County, CA<br />CA License #1141313
+            </p>
+            <p class="small">
+              Complete the form and our team will contact you with availability and next steps after
+              reviewing the details. For urgent electrical service, call directly to confirm current
+              crew availability.
+            </p>
+            <div class="estimate-benefits">
+              <span>✓ Request delivered to our secure lead dashboard</span
+              ><span>✓ Clear follow-up from a local electrical professional</span
+              ><span>✓ No-obligation project review</span>
+            </div>
+          </div>
+          <form
+            class="form lead-form"
+            data-lead-form
+            aria-labelledby="contact-estimate-title"
+            aria-describedby="contact-form-instructions"
+            novalidate
+          >
+            <p class="form-instructions" id="contact-form-instructions">
+              Fields marked <strong>Required</strong> must be completed.
+            </p>
+            <div
+              class="form-error-summary"
+              data-form-error-summary
+              role="alert"
+              aria-labelledby="contact-error-summary-title"
+              tabindex="-1"
+              hidden
+            >
+              <h3 id="contact-error-summary-title">Please correct the following</h3>
+              <ul data-form-error-list></ul>
+            </div>
+            <div class="form-field">
+              <label for="contact-full-name"
+                >Full name <span class="field-required">Required</span></label
+              >
+              <input
+                id="contact-full-name"
+                name="full_name"
+                autocomplete="name"
+                placeholder="e.g., Jordan Garcia"
+                aria-describedby="contact-full-name-error"
+                required
+              />
+              <p
+                class="form-field-error"
+                id="contact-full-name-error"
+                data-field-error="full_name"
+              ></p>
+            </div>
+            <div class="form-field">
+              <label for="contact-phone"
+                >Phone number <span class="field-required">Required</span></label
+              >
+              <input
+                id="contact-phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="e.g., 760-234-8306"
+                aria-describedby="contact-phone-help contact-phone-error"
+                required
+              />
+              <p class="form-help" id="contact-phone-help">Include the area code.</p>
+              <p class="form-field-error" id="contact-phone-error" data-field-error="phone"></p>
+            </div>
+            <div class="form-field">
+              <label for="contact-email"
+                >Email address <span class="field-optional">Optional</span></label
+              >
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="e.g., jordan@example.com"
+                aria-describedby="contact-email-help contact-email-error"
+              />
+              <p class="form-help" id="contact-email-help">Used only to respond to this request.</p>
+              <p class="form-field-error" id="contact-email-error" data-field-error="email"></p>
+            </div>
+            <div class="form-field">
+              <label for="contact-city"
+                >City or service area <span class="field-optional">Optional</span></label
+              >
+              <input
+                id="contact-city"
+                name="city"
+                autocomplete="address-level2"
+                placeholder="e.g., El Centro"
+                aria-describedby="contact-city-error"
+              />
+              <p class="form-field-error" id="contact-city-error" data-field-error="city"></p>
+            </div>
+            <div class="form-field">
+              <label for="contact-service"
+                >Service needed <span class="field-required">Required</span></label
+              >
+              <select
+                id="contact-service"
+                name="service_type"
+                aria-describedby="contact-service-error"
+                required
+              >
+                <option value="">Choose a service</option>
+                <option>Industrial</option>
+                <option>Commercial</option>
+                <option>Residential</option>
+                <option>Solar / BESS</option>
+                <option>Emergency Repair</option>
+                <option>Maintenance</option>
+              </select>
+              <p
+                class="form-field-error"
+                id="contact-service-error"
+                data-field-error="service_type"
+              ></p>
+            </div>
+            <div class="form-field">
+              <label for="contact-urgency"
+                >Preferred timeframe <span class="field-optional">Optional</span></label
+              >
+              <select id="contact-urgency" name="urgency" aria-describedby="contact-urgency-error">
+                <option value="Normal">Planning / Flexible</option>
+                <option value="This Week">Within This Week</option>
+                <option value="Emergency">Emergency / Urgent</option>
+              </select>
+              <p class="form-field-error" id="contact-urgency-error" data-field-error="urgency"></p>
+            </div>
+            <div class="form-field form-field-wide">
+              <label for="contact-message"
+                >Project details <span class="field-optional">Optional</span></label
+              >
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="e.g., Panel upgrade for a commercial building"
+                aria-describedby="contact-message-help contact-message-error"
+              ></textarea>
+              <p class="form-help" id="contact-message-help">
+                Describe the project or issue without including sensitive information.
+              </p>
+              <p class="form-field-error" id="contact-message-error" data-field-error="message"></p>
+            </div>
+            <button class="btn yellow submit-estimate-btn" type="submit" formnovalidate>
+              <span class="btn-label">Send My Estimate Request</span
+              ><span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+            <p
+              class="form-status"
+              data-form-status
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+            <p class="form-privacy">
+              By submitting, you agree that Blue Bear Electric may contact you about this request.
+              Your information is used only to respond to your inquiry.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <!-- shared:public-footer:start -->
+    <footer class="footer">
+      <div class="foot-grid">
+        <div>
+          <img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="180px"
+            decoding="async"
+            loading="lazy"
+          />
+          <p class="small">
+            CA License #1141313 • OSHA Certified • Bonded &amp; Insured • Union Contractor
+          </p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p class="small">
+            <a href="index.html">Home</a><br /><a href="services.html">Services</a><br /><a
+              href="projects.html"
+              >Projects</a
+            >
+          </p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">760-234-8306<br />Imperial County, CA</p>
+        </div>
+        <div>
+          <h4>Mission</h4>
+          <p class="small">
+            Innovate and help companies and communities with the professional help they deserve.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- shared:public-footer:end -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"
+      integrity="sha384-yiVMs0R/Jyz7OhoXa/DsEMUSBLjEhr/QJta2ONO+zB6I8/GmNg/7AUFrZmAJV7KV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/image-performance.js"></script>
+
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/site-shell.js"></script>
+    <script src="assets/js/contact-backend.js"></script>
+    <script src="assets/js/theme-loader.js"></script>
+    <script src="assets/js/public-content.js"></script>
+    <script src="assets/js/company-profile.js"></script>
+    <script src="assets/js/brand-experience.js"></script>
+    <script src="assets/js/typical-project-prefill-v8-9-4.js"></script>
+    <script src="assets/js/photo-slots-v9-1-2.js"></script>
+  </body>
+</html>

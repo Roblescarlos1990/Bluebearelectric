@@ -1,148 +1,666 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Drone Inspection & Thermal Diagnostics | Blue Bear Electric</title>
-<meta name="description" content="Professional aerial inspections, radiometric thermal imaging, electrical asset documentation, solar inspections and engineering-style reporting for utility, industrial and commercial clients.">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="theme.css">
-<link rel="icon" href="assets/branding/blue-bear/logo-mark-solid.png" type="image/png"><link rel="apple-touch-icon" href="assets/branding/blue-bear/logo-mark-solid.png"><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#030a13">
-</head>
-<body class="blue-bear-site premium-service-layout engineering-inspection-page">
-<header class="topbar"><nav class="nav"><a class="brand" href="index.html"><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></a><div class="links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="engineering-inspection.html">Drone & Thermal</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a></div><a class="btn yellow" href="contact.html?service=Drone+%26+Thermal+Inspection&project=Aerial+Inspection+Request&source=typical-project#estimate-form">Request Inspection</a><button class="hamb" type="button" aria-expanded="false" aria-controls="mobile-navigation"><span>Menu</span></button><div class="mobile" id="mobile-navigation"><a href="services.html">Services</a><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a><a href="residential.html">Residential</a><a href="solar-bess.html">Solar & BESS</a><a href="engineering-inspection.html">Drone & Thermal</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a></div></nav></header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- shared:public-seo:start -->
+    <title>Drone Inspection &amp; Thermal Diagnostics | Blue Bear Electric</title>
+    <link rel="canonical" href="https://bluebearelectric.com/engineering-inspection" />
+    <meta
+      name="description"
+      content="Drone inspections, radiometric thermal imaging, solar inspections, electrical asset documentation, and professional reporting."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Blue Bear Electric" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:title"
+      content="Drone Inspection &amp; Thermal Diagnostics | Blue Bear Electric"
+    />
+    <meta
+      property="og:description"
+      content="Drone inspections, radiometric thermal imaging, solar inspections, electrical asset documentation, and professional reporting."
+    />
+    <meta property="og:url" content="https://bluebearelectric.com/engineering-inspection" />
+    <meta
+      property="og:image"
+      content="https://bluebearelectric.com/assets/branding/blue-bear/logo-cinematic-wide.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1900" />
+    <meta property="og:image:height" content="651" />
+    <meta property="og:image:alt" content="Blue Bear Electric bear and lightning logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Drone Inspection &amp; Thermal Diagnostics | Blue Bear Electric"
+    />
+    <meta
+      name="twitter:description"
+      content="Drone inspections, radiometric thermal imaging, solar inspections, electrical asset documentation, and professional reporting."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bluebearelectric.com/assets/branding/blue-bear/logo-cinematic-wide.png"
+    />
+    <meta name="twitter:image:alt" content="Blue Bear Electric bear and lightning logo" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Blue Bear" />
+    <script type="application/ld+json" data-blue-bear-business>
+      {
+        "@context": "https://schema.org",
+        "@type": "Electrician",
+        "@id": "https://bluebearelectric.com/#business",
+        "name": "Blue Bear Electric",
+        "url": "https://bluebearelectric.com/",
+        "telephone": "+1-760-234-8306",
+        "image": "https://bluebearelectric.com/assets/branding/blue-bear/logo-cinematic-wide.png",
+        "logo": "https://bluebearelectric.com/assets/branding/blue-bear/logo-mark-solid.png",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Imperial County, California"
+        },
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "California contractor license",
+          "value": "1141313"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-760-234-8306",
+          "contactType": "customer service",
+          "areaServed": "US-CA",
+          "availableLanguage": "English"
+        }
+      }
+    </script>
+    <!-- shared:public-seo:end -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="assets/branding/blue-bear/favicon-32.png"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/branding/blue-bear/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#030a13" />
+  </head>
+  <body class="blue-bear-site premium-service-layout engineering-inspection-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <!-- shared:public-header:start -->
+    <header class="topbar">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="index.html">
+          <img
+            src="assets/images/site/logo.jpg"
+            alt="Blue Bear Electric logo"
+            width="900"
+            height="620"
+            srcset="
+              assets/images/optimized/site/logo-480.webp 480w,
+              assets/images/optimized/site/logo-900.webp 900w
+            "
+            sizes="160px"
+            decoding="async"
+            loading="eager"
+          />
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a><a href="services.html">Services</a
+          ><a href="industrial.html">Industrial</a><a href="commercial.html">Commercial</a
+          ><a href="residential.html">Residential</a><a href="solar-bess.html">Solar &amp; BESS</a
+          ><a href="engineering-inspection.html">Drone &amp; Thermal</a
+          ><a href="projects.html">Projects</a><a href="about.html">About</a
+          ><a href="contact.html">Contact</a><a href="customer-portal.html">Portal</a>
+        </div>
+        <a
+          class="btn yellow"
+          href="contact.html?service=Drone+%26+Thermal+Inspection&amp;project=Aerial+Inspection+Request&amp;source=typical-project#estimate-form"
+          >Request Inspection</a
+        >
+        <button class="hamb" type="button" aria-expanded="false" aria-controls="mobile-navigation">
+          <span>Menu</span>
+        </button>
+        <div class="mobile" id="mobile-navigation" aria-hidden="true" hidden>
+          <a href="services.html">Services</a><a href="industrial.html">Industrial</a
+          ><a href="projects.html">Projects</a><a href="contact.html">Contact</a
+          ><a href="customer-portal.html">Portal</a><a href="tel:7602348306">Call 760-234-8306</a>
+        </div>
+      </nav>
+    </header>
+    <!-- shared:public-header:end -->
+    <main id="main-content" tabindex="-1">
+      <section class="inspection-hero">
+        <div class="inspection-hero-media">
+          <img
+            src="assets/images/engineering-inspection/case-study/engineering-inspection-hero.webp"
+            alt="Aerial visual and thermal inspection of high-voltage electrical equipment"
+            data-photo-slot="engineering-inspection-engineering-inspection-hero"
+            width="1600"
+            height="889"
+            srcset="
+              assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-480.webp   480w,
+              assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-960.webp   960w,
+              assets/images/optimized/engineering-inspection/case-study/engineering-inspection-hero-1440.webp 1440w
+            "
+            sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+            decoding="async"
+            loading="eager"
+            fetchpriority="high"
+            data-image-priority="high"
+          />
+        </div>
+        <div class="inspection-hero-overlay"></div>
+        <div class="inspection-hero-content">
+          <div class="eyebrow">Engineering Inspection Division</div>
+          <h1>Aerial Inspection & Thermal Diagnostics</h1>
+          <p>
+            Professional drone inspections for electrical infrastructure, renewable-energy assets,
+            industrial facilities and commercial properties—supported by radiometric imagery, field
+            analysis and customer-ready reports.
+          </p>
+          <div class="inspection-hero-actions">
+            <a
+              class="btn yellow"
+              href="contact.html?service=Drone+%26+Thermal+Inspection&project=Aerial+Inspection+Request&source=typical-project#estimate-form"
+              >Request an Inspection</a
+            >
+            <a class="btn dark" href="#sample-case-study">View Sample Case Study</a>
+          </div>
+          <div class="inspection-trust-strip">
+            <span>Visual Imaging</span><span>Radiometric Thermal</span
+            ><span>Asset Documentation</span><span>Inspection Reports</span>
+          </div>
+        </div>
+      </section>
 
-<section class="inspection-hero">
-  <div class="inspection-hero-media">
-    <img src="assets/images/engineering-inspection/case-study/engineering-inspection-hero.webp" alt="Aerial visual and thermal inspection of high-voltage electrical equipment" data-photo-slot="engineering-inspection-engineering-inspection-hero">
-  </div>
-  <div class="inspection-hero-overlay"></div>
-  <div class="inspection-hero-content">
-    <div class="eyebrow">Engineering Inspection Division</div>
-    <h1>Aerial Inspection & Thermal Diagnostics</h1>
-    <p>Professional drone inspections for electrical infrastructure, renewable-energy assets, industrial facilities and commercial properties—supported by radiometric imagery, field analysis and customer-ready reports.</p>
-    <div class="inspection-hero-actions">
-      <a class="btn yellow" href="contact.html?service=Drone+%26+Thermal+Inspection&project=Aerial+Inspection+Request&source=typical-project#estimate-form">Request an Inspection</a>
-      <a class="btn dark" href="#sample-case-study">View Sample Case Study</a>
-    </div>
-    <div class="inspection-trust-strip">
-      <span>Visual Imaging</span><span>Radiometric Thermal</span><span>Asset Documentation</span><span>Inspection Reports</span>
-    </div>
-  </div>
-</section>
+      <nav class="service-jump inspection-jump" aria-label="Drone and thermal page sections">
+        <a href="#capabilities">Capabilities</a>
+        <a href="#thermal-viewer">Thermal Viewer</a>
+        <a href="#sample-case-study">Case Study</a>
+        <a href="#deliverables">Deliverables</a>
+        <a href="#industries">Industries</a>
+        <a href="#process">Process</a>
+      </nav>
 
-<nav class="service-jump inspection-jump">
-  <a href="#capabilities">Capabilities</a>
-  <a href="#thermal-viewer">Thermal Viewer</a>
-  <a href="#sample-case-study">Case Study</a>
-  <a href="#deliverables">Deliverables</a>
-  <a href="#industries">Industries</a>
-  <a href="#process">Process</a>
-</nav>
+      <section class="service-section inspection-capabilities" id="capabilities">
+        <div class="service-heading">
+          <div class="eyebrow">Inspection Capabilities</div>
+          <h2>Electrical expertise behind every flight</h2>
+          <p>
+            The aircraft and sensors are tools. The value comes from understanding electrical
+            equipment, operating conditions, thermal patterns and field risk.
+          </p>
+        </div>
+        <div class="inspection-capability-grid">
+          <article>
+            <span>01</span>
+            <h3>Electrical Infrastructure</h3>
+            <p>
+              Aerial visual and thermal inspection of breakers, bushings, transformers, disconnects,
+              structures, conductors and accessible distribution equipment.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Solar & BESS Assets</h3>
+            <p>
+              Module, tracker, combiner, inverter, transformer, vegetation, drainage and
+              site-condition documentation for renewable-energy facilities.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Thermal Diagnostics</h3>
+            <p>
+              Radiometric imagery used to evaluate phase balance, connection heating, abnormal
+              gradients and equipment condition under operating load.
+            </p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Commercial Roofs</h3>
+            <p>
+              Safer visual documentation of rooftop electrical equipment, solar systems,
+              penetrations, storm damage and inaccessible building areas.
+            </p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Construction Progress</h3>
+            <p>
+              Repeatable aerial documentation for owners, contractors, insurance, quality control,
+              milestones and closeout records.
+            </p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>Emergency Assessment</h3>
+            <p>
+              Rapid documentation following equipment failures, storms, fires, flooding or
+              access-restricted incidents.
+            </p>
+          </article>
+        </div>
+      </section>
 
-<section class="service-section inspection-capabilities" id="capabilities">
-  <div class="service-heading"><div class="eyebrow">Inspection Capabilities</div><h2>Electrical expertise behind every flight</h2><p>The aircraft and sensors are tools. The value comes from understanding electrical equipment, operating conditions, thermal patterns and field risk.</p></div>
-  <div class="inspection-capability-grid">
-    <article><span>01</span><h3>Electrical Infrastructure</h3><p>Aerial visual and thermal inspection of breakers, bushings, transformers, disconnects, structures, conductors and accessible distribution equipment.</p></article>
-    <article><span>02</span><h3>Solar & BESS Assets</h3><p>Module, tracker, combiner, inverter, transformer, vegetation, drainage and site-condition documentation for renewable-energy facilities.</p></article>
-    <article><span>03</span><h3>Thermal Diagnostics</h3><p>Radiometric imagery used to evaluate phase balance, connection heating, abnormal gradients and equipment condition under operating load.</p></article>
-    <article><span>04</span><h3>Commercial Roofs</h3><p>Safer visual documentation of rooftop electrical equipment, solar systems, penetrations, storm damage and inaccessible building areas.</p></article>
-    <article><span>05</span><h3>Construction Progress</h3><p>Repeatable aerial documentation for owners, contractors, insurance, quality control, milestones and closeout records.</p></article>
-    <article><span>06</span><h3>Emergency Assessment</h3><p>Rapid documentation following equipment failures, storms, fires, flooding or access-restricted incidents.</p></article>
-  </div>
-</section>
+      <section class="service-section thermal-viewer-section" id="thermal-viewer">
+        <div class="service-heading">
+          <div class="eyebrow">Interactive Comparison</div>
+          <h2>Visual, thermal and blended inspection views</h2>
+          <p>
+            Switch between inspection modes to understand how the same asset can be evaluated from
+            multiple perspectives.
+          </p>
+        </div>
+        <div class="thermal-mode-tabs" role="tablist" aria-label="Inspection image mode">
+          <button
+            id="thermal-mode-tab-visual"
+            class="active"
+            type="button"
+            data-thermal-mode="visual"
+            role="tab"
+            aria-selected="true"
+            aria-controls="thermal-mode-panel"
+          >
+            Visual
+          </button>
+          <button
+            id="thermal-mode-tab-thermal"
+            type="button"
+            data-thermal-mode="thermal"
+            role="tab"
+            aria-selected="false"
+            aria-controls="thermal-mode-panel"
+            tabindex="-1"
+          >
+            Thermal
+          </button>
+          <button
+            id="thermal-mode-tab-blend"
+            type="button"
+            data-thermal-mode="blend"
+            role="tab"
+            aria-selected="false"
+            aria-controls="thermal-mode-panel"
+            tabindex="-1"
+          >
+            Blended
+          </button>
+        </div>
+        <div
+          class="thermal-inspection-viewer"
+          id="thermal-mode-panel"
+          data-thermal-viewer
+          role="tabpanel"
+          aria-labelledby="thermal-mode-tab-visual"
+          tabindex="0"
+        >
+          <div class="thermal-viewer-image">
+            <img
+              data-thermal-image
+              src="assets/images/engineering-inspection/case-study/visual-overhead.webp"
+              alt="Aerial visual inspection view"
+              data-photo-slot="engineering-inspection-visual-overhead"
+              width="640"
+              height="512"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/visual-overhead-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/visual-overhead-640.webp 640w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
+            />
+            <span class="thermal-viewer-scan"></span>
+          </div>
+          <aside>
+            <div class="eyebrow" data-thermal-label>Visible-Light Reference</div>
+            <h3 data-thermal-title>Asset condition and configuration</h3>
+            <p data-thermal-description>
+              High-resolution visual imagery documents equipment configuration, conductor routing,
+              structures, contamination and visible physical condition.
+            </p>
+            <ul data-thermal-points>
+              <li>Equipment identification and orientation</li>
+              <li>Visible damage or contamination</li>
+              <li>Safe documentation of elevated assets</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
 
-<section class="service-section thermal-viewer-section" id="thermal-viewer">
-  <div class="service-heading"><div class="eyebrow">Interactive Comparison</div><h2>Visual, thermal and blended inspection views</h2><p>Switch between inspection modes to understand how the same asset can be evaluated from multiple perspectives.</p></div>
-  <div class="thermal-mode-tabs" role="tablist">
-    <button class="active" data-thermal-mode="visual">Visual</button>
-    <button data-thermal-mode="thermal">Thermal</button>
-    <button data-thermal-mode="blend">Blended</button>
-  </div>
-  <div class="thermal-inspection-viewer" data-thermal-viewer>
-    <div class="thermal-viewer-image">
-      <img data-thermal-image src="assets/images/engineering-inspection/case-study/visual-overhead.webp" alt="Aerial visual inspection view" data-photo-slot="engineering-inspection-visual-overhead">
-      <span class="thermal-viewer-scan"></span>
-    </div>
-    <aside>
-      <div class="eyebrow" data-thermal-label>Visible-Light Reference</div>
-      <h3 data-thermal-title>Asset condition and configuration</h3>
-      <p data-thermal-description>High-resolution visual imagery documents equipment configuration, conductor routing, structures, contamination and visible physical condition.</p>
-      <ul data-thermal-points>
-        <li>Equipment identification and orientation</li>
-        <li>Visible damage or contamination</li>
-        <li>Safe documentation of elevated assets</li>
-      </ul>
-    </aside>
-  </div>
-</section>
+      <section class="service-section anonymized-case-study" id="sample-case-study">
+        <div class="case-study-header">
+          <div>
+            <div class="eyebrow">Anonymized Sample Case Study</div>
+            <h2>High-voltage breaker aerial thermal assessment</h2>
+            <p>
+              This example demonstrates the reporting method without identifying the customer,
+              facility, exact asset designation or personnel.
+            </p>
+          </div>
+          <span class="case-study-status">Normal Condition</span>
+        </div>
+        <div class="case-study-grid">
+          <article>
+            <b>Inspection method</b>
+            <p>
+              Drone-mounted radiometric infrared and visual imaging from overhead and oblique
+              angles.
+            </p>
+          </article>
+          <article>
+            <b>Operating condition</b>
+            <p>
+              Electrical asset energized and operating under normal load during high ambient
+              temperature and full sun.
+            </p>
+          </article>
+          <article>
+            <b>Assessment basis</b>
+            <p>
+              Phase-to-phase comparison, connection uniformity, bushing gradients, housing
+              temperature and visual condition.
+            </p>
+          </article>
+          <article>
+            <b>Result</b>
+            <p>
+              No elevated connection, localized hot spot or abnormal thermal gradient was
+              identified.
+            </p>
+          </article>
+        </div>
+        <div class="case-study-gallery">
+          <figure>
+            <img
+              src="assets/images/engineering-inspection/case-study/thermal-overhead-blended.webp"
+              alt="Blended aerial thermal inspection view"
+              data-photo-slot="engineering-inspection-thermal-overhead-blended"
+              width="1600"
+              height="900"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-blended-960.webp 960w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
+            />
+            <figcaption>
+              Blended overhead view used to compare the equipment with the solar-loaded background.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="assets/images/engineering-inspection/case-study/thermal-overhead-detail.webp"
+              alt="Detailed overhead thermal view"
+              data-photo-slot="engineering-inspection-thermal-overhead-detail"
+              width="1280"
+              height="720"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/thermal-overhead-detail-960.webp 960w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
+            />
+            <figcaption>
+              Detailed thermal view showing uniform temperature behavior across comparable
+              components.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="assets/images/engineering-inspection/case-study/thermal-oblique.webp"
+              alt="Oblique thermal inspection view"
+              data-photo-slot="engineering-inspection-thermal-oblique"
+              width="1600"
+              height="900"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/thermal-oblique-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/thermal-oblique-960.webp 960w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
+            />
+            <figcaption>
+              Oblique thermal view used to evaluate component gradients and equipment surfaces.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="assets/images/engineering-inspection/case-study/visual-oblique.webp"
+              alt="Oblique visual inspection reference"
+              data-photo-slot="engineering-inspection-visual-oblique"
+              width="640"
+              height="512"
+              srcset="
+                assets/images/optimized/engineering-inspection/case-study/visual-oblique-480.webp 480w,
+                assets/images/optimized/engineering-inspection/case-study/visual-oblique-640.webp 640w
+              "
+              sizes="(max-width: 720px) calc(100vw - 40px), min(50vw, 960px)"
+              decoding="async"
+              loading="lazy"
+            />
+            <figcaption>
+              Visible-light reference for equipment condition and documentation.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="case-study-recommendation">
+          <div>
+            <div class="eyebrow">Example Recommendation</div>
+            <h3>Retain the scan as a baseline</h3>
+          </div>
+          <p>
+            No corrective action was indicated by the sample inspection. The imagery can be retained
+            as a baseline and compared with future scans, especially after loading or operating
+            conditions change.
+          </p>
+        </div>
+      </section>
 
-<section class="service-section anonymized-case-study" id="sample-case-study">
-  <div class="case-study-header">
-    <div><div class="eyebrow">Anonymized Sample Case Study</div><h2>High-voltage breaker aerial thermal assessment</h2><p>This example demonstrates the reporting method without identifying the customer, facility, exact asset designation or personnel.</p></div>
-    <span class="case-study-status">Normal Condition</span>
-  </div>
-  <div class="case-study-grid">
-    <article><b>Inspection method</b><p>Drone-mounted radiometric infrared and visual imaging from overhead and oblique angles.</p></article>
-    <article><b>Operating condition</b><p>Electrical asset energized and operating under normal load during high ambient temperature and full sun.</p></article>
-    <article><b>Assessment basis</b><p>Phase-to-phase comparison, connection uniformity, bushing gradients, housing temperature and visual condition.</p></article>
-    <article><b>Result</b><p>No elevated connection, localized hot spot or abnormal thermal gradient was identified.</p></article>
-  </div>
-  <div class="case-study-gallery">
-    <figure><img src="assets/images/engineering-inspection/case-study/thermal-overhead-blended.webp" alt="Blended aerial thermal inspection view" data-photo-slot="engineering-inspection-thermal-overhead-blended"><figcaption>Blended overhead view used to compare the equipment with the solar-loaded background.</figcaption></figure>
-    <figure><img src="assets/images/engineering-inspection/case-study/thermal-overhead-detail.webp" alt="Detailed overhead thermal view" data-photo-slot="engineering-inspection-thermal-overhead-detail"><figcaption>Detailed thermal view showing uniform temperature behavior across comparable components.</figcaption></figure>
-    <figure><img src="assets/images/engineering-inspection/case-study/thermal-oblique.webp" alt="Oblique thermal inspection view" data-photo-slot="engineering-inspection-thermal-oblique"><figcaption>Oblique thermal view used to evaluate component gradients and equipment surfaces.</figcaption></figure>
-    <figure><img src="assets/images/engineering-inspection/case-study/visual-oblique.webp" alt="Oblique visual inspection reference" data-photo-slot="engineering-inspection-visual-oblique"><figcaption>Visible-light reference for equipment condition and documentation.</figcaption></figure>
-  </div>
-  <div class="case-study-recommendation">
-    <div><div class="eyebrow">Example Recommendation</div><h3>Retain the scan as a baseline</h3></div>
-    <p>No corrective action was indicated by the sample inspection. The imagery can be retained as a baseline and compared with future scans, especially after loading or operating conditions change.</p>
-  </div>
-</section>
+      <section class="service-section deliverables-section" id="deliverables">
+        <div class="service-heading">
+          <div class="eyebrow">Professional Deliverables</div>
+          <h2>Inspection data that can be acted on</h2>
+        </div>
+        <div class="deliverable-flow">
+          <article>
+            <span>01</span>
+            <h3>Flight & Capture</h3>
+            <p>
+              Planned visual and thermal data collection based on site conditions, operating status
+              and inspection objectives.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Image Review</h3>
+            <p>
+              Organized visible, thermal and blended imagery with meaningful comparisons and field
+              context.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Technical Findings</h3>
+            <p>Condition classifications, observations, limitations and recommended next steps.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Customer Report</h3>
+            <p>
+              Professional PDF summary with selected images, captions, findings and recommendations.
+            </p>
+          </article>
+        </div>
+        <div class="deliverable-checklist">
+          <span>Executive summary</span><span>Visual imagery</span><span>Thermal imagery</span
+          ><span>Asset observations</span><span>Severity classification</span
+          ><span>Recommendations</span><span>Digital archive</span
+          ><span>Customer-ready report</span>
+        </div>
+      </section>
 
-<section class="service-section deliverables-section" id="deliverables">
-  <div class="service-heading"><div class="eyebrow">Professional Deliverables</div><h2>Inspection data that can be acted on</h2></div>
-  <div class="deliverable-flow">
-    <article><span>01</span><h3>Flight & Capture</h3><p>Planned visual and thermal data collection based on site conditions, operating status and inspection objectives.</p></article>
-    <article><span>02</span><h3>Image Review</h3><p>Organized visible, thermal and blended imagery with meaningful comparisons and field context.</p></article>
-    <article><span>03</span><h3>Technical Findings</h3><p>Condition classifications, observations, limitations and recommended next steps.</p></article>
-    <article><span>04</span><h3>Customer Report</h3><p>Professional PDF summary with selected images, captions, findings and recommendations.</p></article>
-  </div>
-  <div class="deliverable-checklist">
-    <span>Executive summary</span><span>Visual imagery</span><span>Thermal imagery</span><span>Asset observations</span><span>Severity classification</span><span>Recommendations</span><span>Digital archive</span><span>Customer-ready report</span>
-  </div>
-</section>
+      <section class="service-section industries-section" id="industries">
+        <div class="service-heading">
+          <div class="eyebrow">Industries Served</div>
+          <h2>Built for infrastructure and operating facilities</h2>
+        </div>
+        <div class="industry-card-grid">
+          <article>
+            <h3>Solar & BESS</h3>
+            <p>
+              Utility-scale generation, storage, field equipment and balance-of-system
+              documentation.
+            </p>
+          </article>
+          <article>
+            <h3>Utilities & Substations</h3>
+            <p>
+              Visual and thermal support for elevated, energized and difficult-to-access electrical
+              assets.
+            </p>
+          </article>
+          <article>
+            <h3>Water & Irrigation</h3>
+            <p>
+              Pump stations, motor systems, electrical distribution, canals and remote facilities.
+            </p>
+          </article>
+          <article>
+            <h3>Industrial Facilities</h3>
+            <p>
+              Electrical infrastructure, process equipment, roofs, yards and construction
+              documentation.
+            </p>
+          </article>
+          <article>
+            <h3>Commercial Properties</h3>
+            <p>
+              Rooftop equipment, solar arrays, building envelope observations and progress
+              reporting.
+            </p>
+          </article>
+          <article>
+            <h3>Agriculture</h3>
+            <p>
+              Pumping infrastructure, remote assets, large properties, drainage and site-condition
+              imagery.
+            </p>
+          </article>
+        </div>
+      </section>
 
-<section class="service-section industries-section" id="industries">
-  <div class="service-heading"><div class="eyebrow">Industries Served</div><h2>Built for infrastructure and operating facilities</h2></div>
-  <div class="industry-card-grid">
-    <article><h3>Solar & BESS</h3><p>Utility-scale generation, storage, field equipment and balance-of-system documentation.</p></article>
-    <article><h3>Utilities & Substations</h3><p>Visual and thermal support for elevated, energized and difficult-to-access electrical assets.</p></article>
-    <article><h3>Water & Irrigation</h3><p>Pump stations, motor systems, electrical distribution, canals and remote facilities.</p></article>
-    <article><h3>Industrial Facilities</h3><p>Electrical infrastructure, process equipment, roofs, yards and construction documentation.</p></article>
-    <article><h3>Commercial Properties</h3><p>Rooftop equipment, solar arrays, building envelope observations and progress reporting.</p></article>
-    <article><h3>Agriculture</h3><p>Pumping infrastructure, remote assets, large properties, drainage and site-condition imagery.</p></article>
-  </div>
-</section>
+      <section class="service-section inspection-process" id="process">
+        <div class="service-heading">
+          <div class="eyebrow">Typical Inspection</div>
+          <h2>A controlled process from planning to final report</h2>
+        </div>
+        <div class="inspection-process-grid">
+          <article>
+            <span>1</span>
+            <h3>Define Scope</h3>
+            <p>
+              Identify assets, operating condition, inspection objective, site restrictions and
+              required deliverables.
+            </p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Plan Flight</h3>
+            <p>
+              Review access, airspace, weather, safety controls and the required visual and thermal
+              perspectives.
+            </p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Capture Data</h3>
+            <p>
+              Collect repeatable imagery while documenting load, ambient conditions and relevant
+              field observations.
+            </p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Analyze</h3>
+            <p>
+              Compare phases, components, visible condition and thermal behavior while accounting
+              for environmental influence.
+            </p>
+          </article>
+          <article>
+            <span>5</span>
+            <h3>Deliver Report</h3>
+            <p>
+              Provide selected images, findings, classifications, recommendations and a digital
+              record.
+            </p>
+          </article>
+        </div>
+        <a
+          class="btn yellow inspection-final-cta"
+          href="contact.html?service=Drone+%26+Thermal+Inspection&project=Engineering+Inspection&source=typical-project&details=I+am+interested+in+a+professional+aerial+visual+and+thermal+inspection.+Please+contact+me+to+review+the+assets%2C+site+conditions%2C+inspection+objectives+and+reporting+requirements.#estimate-form"
+          >Request an Engineering Inspection</a
+        >
+      </section>
+    </main>
+    <!-- shared:public-footer:start -->
+    <footer class="footer">
+      <div>
+        <img
+          src="assets/images/site/logo.jpg"
+          alt="Blue Bear Electric logo"
+          width="900"
+          height="620"
+          srcset="
+            assets/images/optimized/site/logo-480.webp 480w,
+            assets/images/optimized/site/logo-900.webp 900w
+          "
+          sizes="180px"
+          decoding="async"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <h4>Inspection Services</h4>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#thermal-viewer">Thermal Viewer</a>
+        <a href="#sample-case-study">Case Study</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>760-234-8306<br />Imperial County, CA<br />CA License #1141313</p>
+      </div>
+    </footer>
+    <!-- shared:public-footer:end -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js"
+      integrity="sha384-yiVMs0R/Jyz7OhoXa/DsEMUSBLjEhr/QJta2ONO+zB6I8/GmNg/7AUFrZmAJV7KV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/image-performance.js"></script>
 
-<section class="service-section inspection-process" id="process">
-  <div class="service-heading"><div class="eyebrow">Typical Inspection</div><h2>A controlled process from planning to final report</h2></div>
-  <div class="inspection-process-grid">
-    <article><span>1</span><h3>Define Scope</h3><p>Identify assets, operating condition, inspection objective, site restrictions and required deliverables.</p></article>
-    <article><span>2</span><h3>Plan Flight</h3><p>Review access, airspace, weather, safety controls and the required visual and thermal perspectives.</p></article>
-    <article><span>3</span><h3>Capture Data</h3><p>Collect repeatable imagery while documenting load, ambient conditions and relevant field observations.</p></article>
-    <article><span>4</span><h3>Analyze</h3><p>Compare phases, components, visible condition and thermal behavior while accounting for environmental influence.</p></article>
-    <article><span>5</span><h3>Deliver Report</h3><p>Provide selected images, findings, classifications, recommendations and a digital record.</p></article>
-  </div>
-  <a class="btn yellow inspection-final-cta" href="contact.html?service=Drone+%26+Thermal+Inspection&project=Engineering+Inspection&source=typical-project&details=I+am+interested+in+a+professional+aerial+visual+and+thermal+inspection.+Please+contact+me+to+review+the+assets%2C+site+conditions%2C+inspection+objectives+and+reporting+requirements.#estimate-form">Request an Engineering Inspection</a>
-</section>
-
-<footer class="footer"><div><img src="assets/images/site/logo.jpg" alt="Blue Bear Electric logo"></div><div><h4>Inspection Services</h4><a href="#capabilities">Capabilities</a><a href="#thermal-viewer">Thermal Viewer</a><a href="#sample-case-study">Case Study</a></div><div><h4>Contact</h4><p>760-234-8306<br>Imperial County, CA<br>CA License #1141313</p></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/supabase-config.js"></script>
-<script src="assets/js/site-shell.js"></script>
-<script src="assets/js/theme-loader.js"></script>
-<script src="assets/js/company-profile.js"></script>
-<script src="assets/js/brand-experience.js"></script>
-<script src="assets/js/engineering-inspection-v9.js"></script>
-<script src="assets/js/photo-slots-v9-1-2.js"></script></body></html>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/site-shell.js"></script>
+    <script src="assets/js/theme-loader.js"></script>
+    <script src="assets/js/company-profile.js"></script>
+    <script src="assets/js/brand-experience.js"></script>
+    <script src="assets/js/engineering-inspection-v9.js"></script>
+    <script src="assets/js/photo-slots-v9-1-2.js"></script>
+  </body>
+</html>
